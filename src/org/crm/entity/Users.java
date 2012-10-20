@@ -1,28 +1,15 @@
 package org.crm.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Users {
 	private int userId;
+	@NotEmpty
 	private String loginName;
-	private String tureName;
+	private String trueName;
 	private String loginPass;
 	private boolean flag;
 	private int roleId;
-
-	public Users() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Users(int userId, String loginName, String tureName,
-			String loginPass, boolean flag, int roleId) {
-		super();
-		this.userId = userId;
-		this.loginName = loginName;
-		this.tureName = tureName;
-		this.loginPass = loginPass;
-		this.flag = flag;
-		this.roleId = roleId;
-	}
 
 	public int getUserId() {
 		return userId;
@@ -40,16 +27,16 @@ public class Users {
 		this.loginName = loginName;
 	}
 
-	public String getTureName() {
-		return tureName;
-	}
-
-	public void setTureName(String tureName) {
-		this.tureName = tureName;
-	}
-
 	public String getLoginPass() {
 		return loginPass;
+	}
+
+	public String getTrueName() {
+		return trueName;
+	}
+
+	public void setTrueName(String trueName) {
+		this.trueName = trueName;
 	}
 
 	public void setLoginPass(String loginPass) {
@@ -70,6 +57,13 @@ public class Users {
 
 	public void setRoleId(int roleId) {
 		this.roleId = roleId;
+	}
+
+	@Override
+	public String toString() {
+		return "Users{" + "userId=" + userId + ", loginName=" + loginName
+				+ ", tureName=" + trueName + ", loginPass=" + loginPass
+				+ ", flag=" + flag + ", roleId=" + roleId + '}';
 	}
 
 }
