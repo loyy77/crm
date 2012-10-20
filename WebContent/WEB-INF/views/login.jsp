@@ -31,7 +31,7 @@
 
 <TABLE WIDTH=800 BORDER=0 CELLPADDING=0 CELLSPACING=0>
     <tr><td>
-            <form:form id="loginf" method="POST" action="login"  >
+            <form id="loginf" method="POST" action="login" >
         <table width="100%">
         <tr> 
           <th>ÓÃ»§Ãû</th>
@@ -47,7 +47,7 @@
         </tr>
        
       </table>
-</form:form>
+</form>
 </td></tr>
 </TABLE>
 </BODY>
