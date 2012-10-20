@@ -32,6 +32,9 @@ http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	<mvc:resources mapping="/images/**" location="/resources/images/" />
 	<mvc:resources mapping="/js/**" location="/resources/jquery/" />
 	<mvc:resources mapping="/views/**" location="/resources/" />
+	<mvc:resources mapping="/jsp/**" location="/WEB-INF/views/" />
+	
+	<mvc:resources  mapping="/ligerUI/**" location="/resources/ligerUI/"/>
 
 	<!-- Saves a locale change using a cookie
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />

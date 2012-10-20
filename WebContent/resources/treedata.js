@@ -1,7 +1,7 @@
 var indexdata = 
 [
     { text: '营销管理',isexpand:false, children: [ 
-		{url:"demos/base/resizable.htm",text:"营销机会管理"},
+		{url:"toSalesOpptyManage",text:"营销机会管理"},
 		{url:"demos/base/drag.htm",text:"客户开发计划"}
 	]
     },
@@ -28,7 +28,7 @@ var indexdata =
 		{url:"demos/comboBox/comboBoxSingle.htm",text:"查询产品信息"},
 		{url:"demos/comboBox/comboBoxSingleCheckBox.htm",text:"查询库存"},
 		
-	]},
+	]}
 	
 ];
 

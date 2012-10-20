@@ -105,7 +105,7 @@
  </style>
 </head>
 <body style="padding:0px;background:#EAEEF5;">  
-<div id="pageloading"></div>  
+<!-- <div id="pageloading"></div>   -->
 <div id="topmenu" class="l-topmenu">
     <div class="l-topmenu-logo">客户关系管理系统</div>
     <div class="l-topmenu-welcome">
