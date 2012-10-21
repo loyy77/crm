@@ -1,7 +1,7 @@
 var indexdata = 
 [
     { text: '营销管理',isexpand:false, children: [ 
-		{url:"toSalesOpptyManage",text:"营销机会管理"},
+		{url:"chance/toList",text:"营销机会管理"},
 		{url:"demos/base/drag.htm",text:"客户开发计划"}
 	]
     },

@@ -49,6 +49,7 @@
                     checkbox: false,
                     slide: false,
                     nodeWidth: 120,
+                    btnClickToToggleOnly:false, 
                     attribute: ['nodename', 'url'],
                     onSelect: function (node)
                     {
@@ -88,7 +89,8 @@
     body,html{height:100%;}
     body{ padding:0px; margin:0;   overflow:hidden;}  
     .l-link{ display:block; height:26px; line-height:26px; padding-left:10px; text-decoration:underline; color:#333;}
-    .l-link2{text-decoration:underline; color:white; margin-left:2px;margin-right:2px;}
+    .l-link2{text-decoration:overline; color:white; margin-left:2px;margin-right:2px;}
+    .l-link3{color:white}
     .l-layout-top{background:#102A49; color:White;}
     .l-layout-bottom{ background:#E5EDEF; text-align:center;}
     #pageloading{position:absolute; left:0px; top:0px; background:white url('images/loading.gif') no-repeat center; width:100%; height:100%;z-index:99999;}
@@ -109,6 +111,7 @@
 <div id="topmenu" class="l-topmenu">
     <div class="l-topmenu-logo">客户关系管理系统</div>
     <div class="l-topmenu-welcome">
+    	<span class="l-link3">当前登录用户：${user.loginName }<?span>
         <a href="index.aspx" class="l-link2">服务器版本</a>
         <span class="space">|</span>
         <a href="https://me.alipay.com/daomi" class="l-link2" target="_blank">捐赠</a> 

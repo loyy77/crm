@@ -5,40 +5,32 @@ import java.util.Date;
 public class Chance {
 	private int id;
 	private String source;
+	private String customerName;
 	private float rate;
 	private String title;
 	private String linkMan;
 	private String linkPhone;
 	private String description;
-	private int createId;
-	private Date createDate;
-	private int assignId;
-	private Date assignDate;
+	private Users createId;//创建人
+	private String createDate;
+	private Users assignId;//指派给
+	private String assignDate;
 	private int state;
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
 
 	public Chance() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Chance(int id, String source, float rate, String title,
-			String linkMan, String linkPhone, String description, int createId,
-			Date createDate, int assignId, Date assignDate, int state) {
-		super();
-		this.id = id;
-		this.source = source;
-		this.rate = rate;
-		this.title = title;
-		this.linkMan = linkMan;
-		this.linkPhone = linkPhone;
-		this.description = description;
-		this.createId = createId;
-		this.createDate = createDate;
-		this.assignId = assignId;
-		this.assignDate = assignDate;
-		this.state = state;
-	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -95,37 +87,41 @@ public class Chance {
 		this.description = description;
 	}
 
-	public int getCreateId() {
+
+
+
+	public Users getCreateId() {
 		return createId;
 	}
 
-	public void setCreateId(int createId) {
+	public void setCreateId(Users createId) {
 		this.createId = createId;
 	}
 
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public int getAssignId() {
+	public Users getAssignId() {
 		return assignId;
 	}
 
-	public void setAssignId(int assignId) {
-		this.assignId = assignId;
+	public String getCreateDate() {
+		return createDate;
 	}
 
-	public Date getAssignDate() {
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getAssignDate() {
 		return assignDate;
 	}
 
-	public void setAssignDate(Date assignDate) {
+	public void setAssignDate(String assignDate) {
 		this.assignDate = assignDate;
 	}
+
+	public void setAssignId(Users assignId) {
+		this.assignId = assignId;
+	}
+
 
 	public int getState() {
 		return state;

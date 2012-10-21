@@ -1,5 +1,7 @@
 package org.crm.web.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.crm.biz.UsersBiz;
 import org.crm.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,7 @@ public class UsersController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String proccessSubmit(Users user, BindingResult result, Model model) {
+	public String proccessSubmit(Users user, BindingResult result, Model model,HttpSession session) {
 
 		System.out.println("login..");
 
@@ -39,6 +41,7 @@ public class UsersController {
 		if (curruser.getUserId() > 0
 				&& curruser.getLoginName().trim().length() > 1) {
 			model.addAttribute("user", curruser);
+			session.setAttribute("user", curruser);
 			return "main";
 		}
 		return "redirect:/login";
