@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=gbk"
+    pageEncoding="gbk"%>
     
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -30,12 +30,12 @@
         {
             g = manager = $("#maingrid").ligerGrid({
                 columns:  [ 
-			{ display: 'ç¼–å·', name: 'id', align: 'center', width: 50 }, 
-			{ display: 'å…¬å¸å', name: 'customerName', minWidth: 120 }, 
-			{ display: 'æ¦‚è¦', name: 'title', minWidth: 150,align:'left' },  
-			{ display: 'è”ç³»äºº', name: 'linkMan', minWidth: 140 }, 
-			{ display: 'è”ç³»ç”µè¯', name: 'linkPhone', minWidth: 140 },  
-			{ display: 'åˆ›å»ºæ—¥æœŸ', name: 'createDate', minWidth: 140 } 
+			{ display: '±àºÅ', name: 'id', align: 'center', width: 50 }, 
+			{ display: '¹«Ë¾Ãû', name: 'customerName', minWidth: 120 }, 
+			{ display: '¸ÅÒª', name: 'title', minWidth: 150,align:'left' },  
+			{ display: 'ÁªÏµÈË', name: 'linkMan', minWidth: 140 }, 
+			{ display: 'ÁªÏµµç»°', name: 'linkPhone', minWidth: 140 },  
+			{ display: '´´½¨ÈÕÆÚ', name: 'createDate', minWidth: 140 } 
 			],dataAction: 'server',      
                 url:"../chance/list",
                 width: '99%'
@@ -47,22 +47,22 @@
     <script type="text/javascript">
 	  function itemclick(item)
         {
-		  if(item.text=="å¢åŠ "){
+		  if(item.text=="Ôö¼Ó"){
       			window.location.href="../chance/toChanceAdd";
-      	  }else if(item.text=="ä¿®æ”¹"){
+      	  }else if(item.text=="ĞŞ¸Ä"){
       		  	window.location.href="../chance.toChanceModify";
-      	  }else if(item.text=="åˆ é™¤"){
+      	  }else if(item.text=="É¾³ı"){
       		  window.location.href="../chance.doChanceDel";
       	  }
         }
         $(function ()
         {
             $("#toptoolbar").ligerToolBar({ items: [
-                { text: 'å¢åŠ ', click: itemclick , icon:'add'},
+                { text: 'Ôö¼Ó', click: itemclick , icon:'add'},
                 { line:true },
-                { text: 'ä¿®æ”¹', click: itemclick },
+                { text: 'ĞŞ¸Ä', click: itemclick },
                 { line:true },
-                { text: 'åˆ é™¤', click: itemclick }
+                { text: 'É¾³ı', click: itemclick }
             ]
             });
         });
@@ -71,9 +71,9 @@
 </head>
 <body  style="padding:0px">  
  <div class="l-clear"></div>
- <!-- å·¥å…·æ¡ ï¼Œè¯¥å·¥å…·æ¡åŒ…å« å¢åŠ ã€ä¿®æ”¹ã€åˆ é™¤  -->
+ <!-- ¹¤¾ßÌõ £¬¸Ã¹¤¾ßÌõ°üº¬ Ôö¼Ó¡¢ĞŞ¸Ä¡¢É¾³ı  -->
   <div id="toptoolbar" style="width:99%"></div>  
- <!-- è¡¨æ ¼ï¼Œæ•°æ®å±•ç¤ºçš„ä¸»è¦åŒºåŸŸ -->
+ <!-- ±í¸ñ£¬Êı¾İÕ¹Ê¾µÄÖ÷ÒªÇøÓò -->
   <div id="maingrid" style="margin-top:0px"></div> <br />
   <div style="display:none;">
   <!-- g data total ttt -->

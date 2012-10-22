@@ -2,8 +2,7 @@ package org.crm.web.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
+import org.apache.log4j.Logger;
 import org.crm.biz.ChanceBiz;
 import org.crm.common.Utils;
 import org.crm.entity.Chance;
@@ -19,7 +18,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.istack.internal.logging.Logger;
+
 
 @Controller
 @SessionAttributes("user")
@@ -47,7 +46,7 @@ public class ChanceController {
 	 * @return
 	 */
 	@RequestMapping("/chance/doChance")
-	public String proccessChanceSubmit(HttpSession session, Chance chance,@ModelAttribute("user") Users user) {
+	public String proccessChanceSubmit( Chance chance,@ModelAttribute("user") Users user) {
 		Users u =new Users();
 		u.setUserId(99999);
 		chance.setAssignId(u);
@@ -104,7 +103,7 @@ public class ChanceController {
 	 */
 	@RequestMapping("/chance/toChanceAdd")
 	public String toSalesOpptyManage(WebRequest request,@ModelAttribute("user") Users user,
-			Model model, Chance chance,HttpSession session) {
+			Model model, Chance chance) {
 		System.out.println("SalesOpptyManage........");
 
 	

@@ -13,8 +13,7 @@ public class UsersBiz {
 	private UsersDao usersDao;
 
 	public Users login(String loginName, String loginPass) {
-		return usersDao.getById(usersDao.getUserIdByLoignnameAndLoginpass(
-				loginName, loginPass));
+		return usersDao.getByNameAndPassword(loginName, loginPass);
 
 	}
 }

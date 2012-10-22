@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=gbk"
+    pageEncoding="gbk"%>
 <%@ taglib prefix="form"  uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -44,60 +44,60 @@
 </div>
         <table cellpadding="0" cellspacing="0" class="l-table-edit" >
             <tr>
-                <td align="right" class="l-table-edit-td">编号：</td>
+                <td align="right" class="l-table-edit-td">��ţ�</td>
                 <td align="left" class="l-table-edit-td"><form:input path="id" name="id" type="text" id="id" ltype="text" /></td>
-                <td align="left">机会来源：</td>
+                <td align="left">������Դ��</td>
                 <td align="left"><form:input path="source" name="source" type="text" id="source" ltype="text" /></td>
             </tr>
             <tr>
-                <td  align="right" class="l-table-edit-td" valign="top">客户名称：</td>
+                <td  align="right" class="l-table-edit-td" valign="top">�ͻ����ƣ�</td>
                  <td align="left" class="l-table-edit-td" ><form:input path="customerName"  name="customerName" type="text" id="customerName" ltype="text" />
-                 </td><td align="left">成功几率：</td> 
+                 </td><td align="left">�ɹ����ʣ�</td> 
                   <td align="left"><form:input path="rate" name="rate" type="text" id="rate" ltype="text" /></td>
             </tr>   
             
             <tr>
-                <td align="right"  valign="top" >概要：</td>
+                <td align="right"  valign="top" >��Ҫ��</td>
                 <td align="left" class="l-table-edit-td" colspan="3">
                   <form:input path="title" name="title" type="text" id="title" ltype="text" width="300" />
                 </td>
             </tr>  
                  
            <tr>
-                <td align="right" class="l-table-edit-td" valign="top">&nbsp;联系人：</td>
+                <td align="right" class="l-table-edit-td" valign="top">&nbsp;��ϵ�ˣ�</td>
                  <td align="left" class="l-table-edit-td" ><form:input path="linkMan" name="linkman" type="text" id="linkman" ltype="text" />
                  </td>
-                 <td align="left">联系电话：</td> 
+                 <td align="left">��ϵ�绰��</td> 
                   <td align="left"><form:input path="linkPhone" name="linkPhone" type="text" id="linkPhone" ltype="text" /></td>
             </tr>   
             
               <tr>
-                <td align="right" class="l-table-edit-td">机会描述：</td>
+                <td align="right" class="l-table-edit-td">����������</td>
                 <td align="left" class="l-table-edit-td" colspan="3"> 
              <%--    <form:textarea path="description"  /> --%>
                 <form:textarea path="description" cols="100" rows="4" class="l-textarea" style="width:430px"/>
                 </td>
             </tr>
            <tr>
-                <td align="right" class="l-table-edit-td">创建人：</td>
+                <td align="right" class="l-table-edit-td">�����ˣ�</td>
                 <td align="left" class="l-table-edit-td"><form:input value="${user.loginName }" name="createId.loginName" type="text" id="createId" ltype="text" readonly="true" path="createId.loginName" /></td>
-                <td align="left">创建日期：</td>
+                <td align="left">�������ڣ�</td>
                 <td align="left"><form:input path="createDate" name="assignDate" type="text" id="assignDate" readonly="true" ltype="text" /></td>
             </tr>
           
          <tr>
-                <td align="right" class="l-table-edit-td">指派给:</td>
+                <td align="right" class="l-table-edit-td">ָ�ɸ�:</td>
                 <td align="left" class="l-table-edit-td"><form:input path="assignId.loginName" name="assignId.loginName" type="text" id="assignId" readonly="true" ltype="text" /></td>
-                <td align="left">指派日期：</td>
+                <td align="left">ָ�����ڣ�</td>
                 <td align="left"><form:input path="assignDate" name="assignDate" type="text" id="assignDate" readonly="true" ltype="text" /></td>
             </tr>
         </table>
  <br />
-<input type="submit" value="提交" id="Button1" class="l-button l-button-submit" /> 
-<input type="reset" value="重置" class="l-button l-button-reset"/>
+<input type="submit" value="�ύ" id="Button1" class="l-button l-button-submit" /> 
+<input type="reset" value="����" class="l-button l-button-reset"/>
     </form:form>
     <div style="display:none">
-    <!--  数据统计代码 --></div>
+    <!--  ����ͳ�ƴ��� --></div>
 </body>
 
   

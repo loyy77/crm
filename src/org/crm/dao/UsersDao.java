@@ -19,7 +19,7 @@ public class UsersDao {
 	}
 
 	/**
-	 * Ìí¼ÓÓÃ»§
+	 * ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	 * 
 	 * @param user
 	 */
@@ -30,7 +30,7 @@ public class UsersDao {
 	}
 
 	/**
-	 * ¸üÐÂÓÃ»§ÐÅÏ¢£¨¿É¸üÐÂµÄÊôÐÔÓÐ£ºµÇÂ¼ÃÜÂë£¬ÕæÊµÐÕÃû£¬½ÇÉ«±àºÅ£¬±ê¼Ç£©
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½É¸ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Å£ï¿½ï¿½ï¿½Ç£ï¿½
 	 * 
 	 * @param user
 	 */
@@ -42,40 +42,51 @@ public class UsersDao {
 	}
 
 	/**
-	 * ²éÑ¯ËùÓÐÓÃ»§
+	 * ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	 * 
-	 * @return ËùÓÐÓÃ»§µÄÁÐ±í
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 	 */
 	public List<Users> findAll() {
 		return jdbcTemplate.queryForList("select * from users", Users.class);
 	}
 
 	/**
-	 * Í¨¹ýÓÃ»§µÄ±àºÅ²éÑ¯
+	 * Í¨ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ä±ï¿½Å²ï¿½Ñ¯
 	 * 
-	 * @param userId
-	 * @return Í¨¹ýId²éÑ¯µÃµ½µÄÓÃ»§¶ÔÏó
+	 * @param
+	 * @return Í¨ï¿½ï¿½Idï¿½ï¿½Ñ¯ï¿½Ãµï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
-	public Users getById(int userId) {
+	public Users getByNameAndPassword(String loginName,String loginPass) {
+		if (this.checkUserIsExist(loginName, loginPass)) {
+			String sql = "select userId,loginname,loginpass,truename,roleId,flag from users where loginname=? and loginpass=?";
 
-		String sql = "select userId,loginname,loginpass,truename,roleId,flag from users where userId=?";
+			Users u = jdbcTemplate.queryForObject(sql,
+					new Object[] { loginName, loginPass},
+					new UsersMapper());
+			return u;
+		}
+		return null;
 
-		Users user = jdbcTemplate.queryForObject(sql, new Object[] { userId },
-				new UsersMapper());
-		return user;
-
+	}
+	
+	public Users getById(int userId){
+		return jdbcTemplate.queryForObject("select * from users where userid=?",new Object[]{userId},new UsersMapper());
 	}
 
 	/**
-	 * Í¨¹ýÓÃ»§µÇÂ¼ÃûºÍÃÜÂë»ñµÃÓÃ»§µÄId
+	 * Í¨ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Id
 	 */
-	public int getUserIdByLoignnameAndLoginpass(String loginname,
-			String loginpass) {
+	public boolean checkUserIsExist(String loginname, String loginpass) {
 		// ,loginname,truename,roleId,flag
-		String userId = jdbcTemplate.queryForObject(
-				"select userId from users where loginname=? and loginpass=?",
-				new Object[] { loginname, loginpass }, String.class);
-		return Integer.valueOf(userId);
+		String sql = "select count(*) from users where loginname=? and loginpass=?";
+		String sql1 = "select userId from users where loginname=? and loginpass=?";
+		int count = jdbcTemplate.queryForInt(sql, new Object[] { loginname,
+				loginpass });
+		
+		if (count == 1) {
+			return true;
+		}
+		return false;
 
 	}
 }

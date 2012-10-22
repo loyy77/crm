@@ -44,6 +44,29 @@ public class ChanceDao {
 
 		return jdbcTemplate.query(sql, new ChanceMapperSimple());
 	}
+	/**
+	 * 删除一个机会（不是直接执行物理删除，只是改个标记）
+	 * @param id
+	 * @return
+	 */
+	public boolean del(int id){
+		String sql="delete from chance where id=?";
+		int rst=this.jdbcTemplate.update(sql, id);
+		if(rst==1){
+			return true;
+			
+		}return false;
+	}
+	/**
+	 * 修改营销机会的信息
+	 * @param chance
+	 * @return
+	 */
+	public boolean update(Chance chance){
+		
+		String sql="update chance set ";
+		return false;
+	}
 
 }
 
