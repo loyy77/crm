@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -23,130 +23,130 @@
 
     $.ligerDefaults.Grid = {
         title: null,
-        width: 'auto',                          //å®½åº¦å€¼
-        height: 'auto',                          //å®½åº¦å€¼
-        columnWidth: null,                      //é»˜è®¤åˆ—å®½åº¦
-        resizable: true,                        //tableæ˜¯å¦å¯ä¼¸ç¼©
+        width: 'auto',                          //¿í¶ÈÖµ
+        height: 'auto',                          //¿í¶ÈÖµ
+        columnWidth: null,                      //Ä¬ÈÏÁĞ¿í¶È
+        resizable: true,                        //tableÊÇ·ñ¿ÉÉìËõ
         url: false,                             //ajax url
-        usePager: true,                         //æ˜¯å¦åˆ†é¡µ
-        page: 1,                                //é»˜è®¤å½“å‰é¡µ 
-        pageSize: 10,                           //æ¯é¡µé»˜è®¤çš„ç»“æœæ•°
-        pageSizeOptions: [10, 20, 30, 40, 50],  //å¯é€‰æ‹©è®¾å®šçš„æ¯é¡µç»“æœæ•°
-        parms: [],                         //æäº¤åˆ°æœåŠ¡å™¨çš„å‚æ•°
-        columns: [],                          //æ•°æ®æº
-        minColToggle: 1,                        //æœ€å°æ˜¾ç¤ºçš„åˆ—
-        dataType: 'server',                     //æ•°æ®æºï¼šæœ¬åœ°(local)æˆ–(server),æœ¬åœ°æ˜¯å°†è¯»å–p.dataã€‚ä¸éœ€è¦é…ç½®ï¼Œå–å†³äºè®¾ç½®äº†dataæˆ–æ˜¯url
-        dataAction: 'server',                    //æäº¤æ•°æ®çš„æ–¹å¼ï¼šæœ¬åœ°(local)æˆ–(server),é€‰æ‹©æœ¬åœ°æ–¹å¼æ—¶å°†åœ¨å®¢æœç«¯åˆ†é¡µã€æ’åºã€‚ 
-        showTableToggleBtn: false,              //æ˜¯å¦æ˜¾ç¤º'æ˜¾ç¤ºéšè—Grid'æŒ‰é’® 
-        switchPageSizeApplyComboBox: false,     //åˆ‡æ¢æ¯é¡µè®°å½•æ•°æ˜¯å¦åº”ç”¨ligerComboBox
-        allowAdjustColWidth: true,              //æ˜¯å¦å…è®¸è°ƒæ•´åˆ—å®½     
-        checkbox: false,                         //æ˜¯å¦æ˜¾ç¤ºå¤é€‰æ¡†
-        allowHideColumn: true,                 //æ˜¯å¦æ˜¾ç¤º'åˆ‡æ¢åˆ—å±‚'æŒ‰é’®
-        enabledEdit: false,                      //æ˜¯å¦å…è®¸ç¼–è¾‘
-        isScroll: true,                         //æ˜¯å¦æ»šåŠ¨
-        onDragCol: null,                       //æ‹–åŠ¨åˆ—äº‹ä»¶
-        onToggleCol: null,                     //åˆ‡æ¢åˆ—äº‹ä»¶
-        onChangeSort: null,                    //æ”¹å˜æ’åºäº‹ä»¶
-        onSuccess: null,                       //æˆåŠŸè·å–æœåŠ¡å™¨æ•°æ®çš„äº‹ä»¶
-        onDblClickRow: null,                     //åŒå‡»è¡Œäº‹ä»¶
-        onSelectRow: null,                    //é€‰æ‹©è¡Œäº‹ä»¶
-        onUnSelectRow: null,                   //å–æ¶ˆé€‰æ‹©è¡Œäº‹ä»¶
-        onBeforeCheckRow: null,                 //é€‰æ‹©å‰äº‹ä»¶ï¼Œå¯ä»¥é€šè¿‡return falseé˜»æ­¢æ“ä½œ(å¤é€‰æ¡†)
-        onCheckRow: null,                    //é€‰æ‹©äº‹ä»¶(å¤é€‰æ¡†) 
-        onBeforeCheckAllRow: null,              //é€‰æ‹©å‰äº‹ä»¶ï¼Œå¯ä»¥é€šè¿‡return falseé˜»æ­¢æ“ä½œ(å¤é€‰æ¡† å…¨é€‰/å…¨ä¸é€‰)
-        onCheckAllRow: null,                    //é€‰æ‹©äº‹ä»¶(å¤é€‰æ¡† å…¨é€‰/å…¨ä¸é€‰)
-        onBeforeShowData: null,                  //æ˜¾ç¤ºæ•°æ®å‰äº‹ä»¶ï¼Œå¯ä»¥é€šè¿‡reutrn falseé˜»æ­¢æ“ä½œ
-        onAfterShowData: null,                 //æ˜¾ç¤ºå®Œæ•°æ®äº‹ä»¶
-        onError: null,                         //é”™è¯¯äº‹ä»¶
-        onSubmit: null,                         //æäº¤å‰äº‹ä»¶
-        dateFormat: 'yyyy-MM-dd',              //é»˜è®¤æ—¶é—´æ˜¾ç¤ºæ ¼å¼
-        InWindow: true,                        //æ˜¯å¦ä»¥çª—å£çš„é«˜åº¦ä¸ºå‡† heightè®¾ç½®ä¸ºç™¾åˆ†æ¯”æ—¶å¯ç”¨
-        statusName: '__status',                    //çŠ¶æ€å
-        method: 'post',                         //æäº¤æ–¹å¼
+        usePager: true,                         //ÊÇ·ñ·ÖÒ³
+        page: 1,                                //Ä¬ÈÏµ±Ç°Ò³ 
+        pageSize: 10,                           //Ã¿Ò³Ä¬ÈÏµÄ½á¹ûÊı
+        pageSizeOptions: [10, 20, 30, 40, 50],  //¿ÉÑ¡ÔñÉè¶¨µÄÃ¿Ò³½á¹ûÊı
+        parms: [],                         //Ìá½»µ½·şÎñÆ÷µÄ²ÎÊı
+        columns: [],                          //Êı¾İÔ´
+        minColToggle: 1,                        //×îĞ¡ÏÔÊ¾µÄÁĞ
+        dataType: 'server',                     //Êı¾İÔ´£º±¾µØ(local)»ò(server),±¾µØÊÇ½«¶ÁÈ¡p.data¡£²»ĞèÒªÅäÖÃ£¬È¡¾öÓÚÉèÖÃÁËdata»òÊÇurl
+        dataAction: 'server',                    //Ìá½»Êı¾İµÄ·½Ê½£º±¾µØ(local)»ò(server),Ñ¡Ôñ±¾µØ·½Ê½Ê±½«ÔÚ¿Í·ş¶Ë·ÖÒ³¡¢ÅÅĞò¡£ 
+        showTableToggleBtn: false,              //ÊÇ·ñÏÔÊ¾'ÏÔÊ¾Òş²ØGrid'°´Å¥ 
+        switchPageSizeApplyComboBox: false,     //ÇĞ»»Ã¿Ò³¼ÇÂ¼ÊıÊÇ·ñÓ¦ÓÃligerComboBox
+        allowAdjustColWidth: true,              //ÊÇ·ñÔÊĞíµ÷ÕûÁĞ¿í     
+        checkbox: false,                         //ÊÇ·ñÏÔÊ¾¸´Ñ¡¿ò
+        allowHideColumn: true,                 //ÊÇ·ñÏÔÊ¾'ÇĞ»»ÁĞ²ã'°´Å¥
+        enabledEdit: false,                      //ÊÇ·ñÔÊĞí±à¼­
+        isScroll: true,                         //ÊÇ·ñ¹ö¶¯
+        onDragCol: null,                       //ÍÏ¶¯ÁĞÊÂ¼ş
+        onToggleCol: null,                     //ÇĞ»»ÁĞÊÂ¼ş
+        onChangeSort: null,                    //¸Ä±äÅÅĞòÊÂ¼ş
+        onSuccess: null,                       //³É¹¦»ñÈ¡·şÎñÆ÷Êı¾İµÄÊÂ¼ş
+        onDblClickRow: null,                     //Ë«»÷ĞĞÊÂ¼ş
+        onSelectRow: null,                    //Ñ¡ÔñĞĞÊÂ¼ş
+        onUnSelectRow: null,                   //È¡ÏûÑ¡ÔñĞĞÊÂ¼ş
+        onBeforeCheckRow: null,                 //Ñ¡ÔñÇ°ÊÂ¼ş£¬¿ÉÒÔÍ¨¹ıreturn false×èÖ¹²Ù×÷(¸´Ñ¡¿ò)
+        onCheckRow: null,                    //Ñ¡ÔñÊÂ¼ş(¸´Ñ¡¿ò) 
+        onBeforeCheckAllRow: null,              //Ñ¡ÔñÇ°ÊÂ¼ş£¬¿ÉÒÔÍ¨¹ıreturn false×èÖ¹²Ù×÷(¸´Ñ¡¿ò È«Ñ¡/È«²»Ñ¡)
+        onCheckAllRow: null,                    //Ñ¡ÔñÊÂ¼ş(¸´Ñ¡¿ò È«Ñ¡/È«²»Ñ¡)
+        onBeforeShowData: null,                  //ÏÔÊ¾Êı¾İÇ°ÊÂ¼ş£¬¿ÉÒÔÍ¨¹ıreutrn false×èÖ¹²Ù×÷
+        onAfterShowData: null,                 //ÏÔÊ¾ÍêÊı¾İÊÂ¼ş
+        onError: null,                         //´íÎóÊÂ¼ş
+        onSubmit: null,                         //Ìá½»Ç°ÊÂ¼ş
+        dateFormat: 'yyyy-MM-dd',              //Ä¬ÈÏÊ±¼äÏÔÊ¾¸ñÊ½
+        InWindow: true,                        //ÊÇ·ñÒÔ´°¿ÚµÄ¸ß¶ÈÎª×¼ heightÉèÖÃÎª°Ù·Ö±ÈÊ±¿ÉÓÃ
+        statusName: '__status',                    //×´Ì¬Ãû
+        method: 'post',                         //Ìá½»·½Ê½
         async: true,
-        fixedCellHeight: true,                       //æ˜¯å¦å›ºå®šå•å…ƒæ ¼çš„é«˜åº¦
-        heightDiff: 0,                         //é«˜åº¦è¡¥å·®,å½“è®¾ç½®height:100%æ—¶ï¼Œå¯èƒ½ä¼šæœ‰é«˜åº¦çš„è¯¯å·®ï¼Œå¯ä»¥é€šè¿‡è¿™ä¸ªå±æ€§è°ƒæ•´
-        cssClass: null,                    //ç±»å
-        root: 'Rows',                       //æ•°æ®æºå­—æ®µå
-        record: 'Total',                     //æ•°æ®æºè®°å½•æ•°å­—æ®µå
-        pageParmName: 'page',               //é¡µç´¢å¼•å‚æ•°åï¼Œ(æäº¤ç»™æœåŠ¡å™¨)
-        pagesizeParmName: 'pagesize',        //é¡µè®°å½•æ•°å‚æ•°åï¼Œ(æäº¤ç»™æœåŠ¡å™¨)
-        sortnameParmName: 'sortname',        //é¡µæ’åºåˆ—å(æäº¤ç»™æœåŠ¡å™¨)
-        sortorderParmName: 'sortorder',      //é¡µæ’åºæ–¹å‘(æäº¤ç»™æœåŠ¡å™¨)
-        onReload: null,                    //åˆ·æ–°äº‹ä»¶ï¼Œå¯ä»¥é€šè¿‡return falseæ¥é˜»æ­¢æ“ä½œ
-        onToFirst: null,                     //ç¬¬ä¸€é¡µï¼Œå¯ä»¥é€šè¿‡return falseæ¥é˜»æ­¢æ“ä½œ
-        onToPrev: null,                      //ä¸Šä¸€é¡µï¼Œå¯ä»¥é€šè¿‡return falseæ¥é˜»æ­¢æ“ä½œ
-        onToNext: null,                      //ä¸‹ä¸€é¡µï¼Œå¯ä»¥é€šè¿‡return falseæ¥é˜»æ­¢æ“ä½œ
-        onToLast: null,                      //æœ€åä¸€é¡µï¼Œå¯ä»¥é€šè¿‡return falseæ¥é˜»æ­¢æ“ä½œ
-        allowUnSelectRow: false,           //æ˜¯å¦å…è®¸åé€‰è¡Œ 
-        alternatingRow: true,           //å¥‡å¶è¡Œæ•ˆæœ
+        fixedCellHeight: true,                       //ÊÇ·ñ¹Ì¶¨µ¥Ôª¸ñµÄ¸ß¶È
+        heightDiff: 0,                         //¸ß¶È²¹²î,µ±ÉèÖÃheight:100%Ê±£¬¿ÉÄÜ»áÓĞ¸ß¶ÈµÄÎó²î£¬¿ÉÒÔÍ¨¹ıÕâ¸öÊôĞÔµ÷Õû
+        cssClass: null,                    //ÀàÃû
+        root: 'Rows',                       //Êı¾İÔ´×Ö¶ÎÃû
+        record: 'Total',                     //Êı¾İÔ´¼ÇÂ¼Êı×Ö¶ÎÃû
+        pageParmName: 'page',               //Ò³Ë÷Òı²ÎÊıÃû£¬(Ìá½»¸ø·şÎñÆ÷)
+        pagesizeParmName: 'pagesize',        //Ò³¼ÇÂ¼Êı²ÎÊıÃû£¬(Ìá½»¸ø·şÎñÆ÷)
+        sortnameParmName: 'sortname',        //Ò³ÅÅĞòÁĞÃû(Ìá½»¸ø·şÎñÆ÷)
+        sortorderParmName: 'sortorder',      //Ò³ÅÅĞò·½Ïò(Ìá½»¸ø·şÎñÆ÷)
+        onReload: null,                    //Ë¢ĞÂÊÂ¼ş£¬¿ÉÒÔÍ¨¹ıreturn falseÀ´×èÖ¹²Ù×÷
+        onToFirst: null,                     //µÚÒ»Ò³£¬¿ÉÒÔÍ¨¹ıreturn falseÀ´×èÖ¹²Ù×÷
+        onToPrev: null,                      //ÉÏÒ»Ò³£¬¿ÉÒÔÍ¨¹ıreturn falseÀ´×èÖ¹²Ù×÷
+        onToNext: null,                      //ÏÂÒ»Ò³£¬¿ÉÒÔÍ¨¹ıreturn falseÀ´×èÖ¹²Ù×÷
+        onToLast: null,                      //×îºóÒ»Ò³£¬¿ÉÒÔÍ¨¹ıreturn falseÀ´×èÖ¹²Ù×÷
+        allowUnSelectRow: false,           //ÊÇ·ñÔÊĞí·´Ñ¡ĞĞ 
+        alternatingRow: true,           //ÆæÅ¼ĞĞĞ§¹û
         mouseoverRowCssClass: 'l-grid-row-over',
-        enabledSort: true,                      //æ˜¯å¦å…è®¸æ’åº
-        rowAttrRender: null,                  //è¡Œè‡ªå®šä¹‰å±æ€§æ¸²æŸ“å™¨(åŒ…æ‹¬styleï¼Œä¹Ÿå¯ä»¥å®šä¹‰)
-        groupColumnName: null,                 //åˆ†ç»„ - åˆ—å
-        groupColumnDisplay: 'åˆ†ç»„',             //åˆ†ç»„ - åˆ—æ˜¾ç¤ºåå­—
-        groupRender: null,                     //åˆ†ç»„ - æ¸²æŸ“å™¨
-        totalRender: null,                       //ç»Ÿè®¡è¡Œ(å…¨éƒ¨æ•°æ®)
-        delayLoad: false,                        //åˆå§‹åŒ–æ—¶æ˜¯å¦ä¸åŠ è½½
-        where: null,                           //æ•°æ®è¿‡æ»¤æŸ¥è¯¢å‡½æ•°,(å‚æ•°ä¸€ data itemï¼Œå‚æ•°äºŒ data item index)
-        selectRowButtonOnly: false,            //å¤é€‰æ¡†æ¨¡å¼æ—¶ï¼Œæ˜¯å¦åªå…è®¸ç‚¹å‡»å¤é€‰æ¡†æ‰èƒ½é€‰æ‹©è¡Œ
-        onAfterAddRow: null,                     //å¢åŠ è¡Œåäº‹ä»¶
-        onBeforeEdit: null,                      //ç¼–è¾‘å‰äº‹ä»¶
-        onBeforeSubmitEdit: null,               //éªŒè¯ç¼–è¾‘å™¨ç»“æœæ˜¯å¦é€šè¿‡
-        onAfterEdit: null,                       //ç»“æŸç¼–è¾‘åäº‹ä»¶
-        onLoading: null,                        //åŠ è½½æ—¶å‡½æ•°
-        onLoaded: null,                          //åŠ è½½å®Œå‡½æ•°
-        onContextmenu: null,                   //å³å‡»äº‹ä»¶
-        whenRClickToSelect: false,                //å³å‡»è¡Œæ—¶æ˜¯å¦é€‰ä¸­
-        contentType: null,                     //Ajax contentTypeå‚æ•°
-        checkboxColWidth: 27,                  //å¤é€‰æ¡†åˆ—å®½åº¦
-        detailColWidth: 29,                     //æ˜ç»†åˆ—å®½åº¦
-        clickToEdit: true,                      //æ˜¯å¦ç‚¹å‡»å•å…ƒæ ¼çš„æ—¶å€™å°±ç¼–è¾‘
-        detailToEdit: false,                     //æ˜¯å¦ç‚¹å‡»æ˜ç»†çš„æ—¶å€™è¿›å…¥ç¼–è¾‘
+        enabledSort: true,                      //ÊÇ·ñÔÊĞíÅÅĞò
+        rowAttrRender: null,                  //ĞĞ×Ô¶¨ÒåÊôĞÔäÖÈ¾Æ÷(°üÀ¨style£¬Ò²¿ÉÒÔ¶¨Òå)
+        groupColumnName: null,                 //·Ö×é - ÁĞÃû
+        groupColumnDisplay: '·Ö×é',             //·Ö×é - ÁĞÏÔÊ¾Ãû×Ö
+        groupRender: null,                     //·Ö×é - äÖÈ¾Æ÷
+        totalRender: null,                       //Í³¼ÆĞĞ(È«²¿Êı¾İ)
+        delayLoad: false,                        //³õÊ¼»¯Ê±ÊÇ·ñ²»¼ÓÔØ
+        where: null,                           //Êı¾İ¹ıÂË²éÑ¯º¯Êı,(²ÎÊıÒ» data item£¬²ÎÊı¶ş data item index)
+        selectRowButtonOnly: false,            //¸´Ñ¡¿òÄ£Ê½Ê±£¬ÊÇ·ñÖ»ÔÊĞíµã»÷¸´Ñ¡¿ò²ÅÄÜÑ¡ÔñĞĞ
+        onAfterAddRow: null,                     //Ôö¼ÓĞĞºóÊÂ¼ş
+        onBeforeEdit: null,                      //±à¼­Ç°ÊÂ¼ş
+        onBeforeSubmitEdit: null,               //ÑéÖ¤±à¼­Æ÷½á¹ûÊÇ·ñÍ¨¹ı
+        onAfterEdit: null,                       //½áÊø±à¼­ºóÊÂ¼ş
+        onLoading: null,                        //¼ÓÔØÊ±º¯Êı
+        onLoaded: null,                          //¼ÓÔØÍêº¯Êı
+        onContextmenu: null,                   //ÓÒ»÷ÊÂ¼ş
+        whenRClickToSelect: false,                //ÓÒ»÷ĞĞÊ±ÊÇ·ñÑ¡ÖĞ
+        contentType: null,                     //Ajax contentType²ÎÊı
+        checkboxColWidth: 27,                  //¸´Ñ¡¿òÁĞ¿í¶È
+        detailColWidth: 29,                     //Ã÷Ï¸ÁĞ¿í¶È
+        clickToEdit: true,                      //ÊÇ·ñµã»÷µ¥Ôª¸ñµÄÊ±ºò¾Í±à¼­
+        detailToEdit: false,                     //ÊÇ·ñµã»÷Ã÷Ï¸µÄÊ±ºò½øÈë±à¼­
         onEndEdit: null,
         minColumnWidth: 80,
-        tree: null,                            //treeGridæ¨¡å¼
-        isChecked: null,                       //å¤é€‰æ¡† åˆå§‹åŒ–å‡½æ•°
-        frozen: true,                          //æ˜¯å¦å›ºå®šåˆ—
-        frozenDetail: false,                    //æ˜ç»†æŒ‰é’®æ˜¯å¦åœ¨å›ºå®šåˆ—ä¸­
-        frozenCheckbox: true,                  //å¤é€‰æ¡†æŒ‰é’®æ˜¯å¦åœ¨å›ºå®šåˆ—ä¸­
+        tree: null,                            //treeGridÄ£Ê½
+        isChecked: null,                       //¸´Ñ¡¿ò ³õÊ¼»¯º¯Êı
+        frozen: true,                          //ÊÇ·ñ¹Ì¶¨ÁĞ
+        frozenDetail: false,                    //Ã÷Ï¸°´Å¥ÊÇ·ñÔÚ¹Ì¶¨ÁĞÖĞ
+        frozenCheckbox: true,                  //¸´Ñ¡¿ò°´Å¥ÊÇ·ñÔÚ¹Ì¶¨ÁĞÖĞ
         detailHeight: 260,
-        rownumbers: false,                         //æ˜¯å¦æ˜¾ç¤ºè¡Œåºå·
-        frozenRownumbers: true,                  //è¡Œåºå·æ˜¯å¦åœ¨å›ºå®šåˆ—ä¸­
+        rownumbers: false,                         //ÊÇ·ñÏÔÊ¾ĞĞĞòºÅ
+        frozenRownumbers: true,                  //ĞĞĞòºÅÊÇ·ñÔÚ¹Ì¶¨ÁĞÖĞ
         rownumbersColWidth: 26,
-        colDraggable: false,                       //æ˜¯å¦å…è®¸è¡¨å¤´æ‹–æ‹½
-        rowDraggable: false,                         //æ˜¯å¦å…è®¸è¡Œæ‹–æ‹½
+        colDraggable: false,                       //ÊÇ·ñÔÊĞí±íÍ·ÍÏ×§
+        rowDraggable: false,                         //ÊÇ·ñÔÊĞíĞĞÍÏ×§
         rowDraggingRender: null,
-        autoCheckChildren: true,                  //æ˜¯å¦è‡ªåŠ¨é€‰ä¸­å­èŠ‚ç‚¹
-        onRowDragDrop: null,                    //è¡Œæ‹–æ‹½äº‹ä»¶
-        rowHeight: 22,                           //è¡Œé»˜è®¤çš„é«˜åº¦
-        headerRowHeight: 23,                    //è¡¨å¤´è¡Œçš„é«˜åº¦
-        toolbar: null,                           //å·¥å…·æ¡,å‚æ•°åŒ ligerToolbarçš„
-        headerImg: null                        //è¡¨æ ¼å¤´éƒ¨å›¾æ ‡
+        autoCheckChildren: true,                  //ÊÇ·ñ×Ô¶¯Ñ¡ÖĞ×Ó½Úµã
+        onRowDragDrop: null,                    //ĞĞÍÏ×§ÊÂ¼ş
+        rowHeight: 22,                           //ĞĞÄ¬ÈÏµÄ¸ß¶È
+        headerRowHeight: 23,                    //±íÍ·ĞĞµÄ¸ß¶È
+        toolbar: null,                           //¹¤¾ßÌõ,²ÎÊıÍ¬ ligerToolbarµÄ
+        headerImg: null                        //±í¸ñÍ·²¿Í¼±ê
     };
     $.ligerDefaults.GridString = {
-        errorMessage: 'å‘ç”Ÿé”™è¯¯',
-        pageStatMessage: 'æ˜¾ç¤ºä»{from}åˆ°{to}ï¼Œæ€» {total} æ¡ ã€‚æ¯é¡µæ˜¾ç¤ºï¼š{pagesize}',
+        errorMessage: '·¢Éú´íÎó',
+        pageStatMessage: 'ÏÔÊ¾´Ó{from}µ½{to}£¬×Ü {total} Ìõ ¡£Ã¿Ò³ÏÔÊ¾£º{pagesize}',
         pageTextMessage: 'Page',
-        loadingMessage: 'åŠ è½½ä¸­...',
-        findTextMessage: 'æŸ¥æ‰¾',
-        noRecordMessage: 'æ²¡æœ‰ç¬¦åˆæ¡ä»¶çš„è®°å½•å­˜åœ¨',
-        isContinueByDataChanged: 'æ•°æ®å·²ç»æ”¹å˜,å¦‚æœç»§ç»­å°†ä¸¢å¤±æ•°æ®,æ˜¯å¦ç»§ç»­?',
-        cancelMessage: 'å–æ¶ˆ',
-        saveMessage: 'ä¿å­˜',
-        applyMessage: 'åº”ç”¨',
-        draggingMessage: '{count}è¡Œ'
+        loadingMessage: '¼ÓÔØÖĞ...',
+        findTextMessage: '²éÕÒ',
+        noRecordMessage: 'Ã»ÓĞ·ûºÏÌõ¼şµÄ¼ÇÂ¼´æÔÚ',
+        isContinueByDataChanged: 'Êı¾İÒÑ¾­¸Ä±ä,Èç¹û¼ÌĞø½«¶ªÊ§Êı¾İ,ÊÇ·ñ¼ÌĞø?',
+        cancelMessage: 'È¡Ïû',
+        saveMessage: '±£´æ',
+        applyMessage: 'Ó¦ÓÃ',
+        draggingMessage: '{count}ĞĞ'
     };
-    //æ¥å£æ–¹æ³•æ‰©å±•
+    //½Ó¿Ú·½·¨À©Õ¹
     $.ligerMethos.Grid = $.ligerMethos.Grid || {};
 
-    //æ’åºå™¨æ‰©å±•
+    //ÅÅĞòÆ÷À©Õ¹
     $.ligerDefaults.Grid.sorters = $.ligerDefaults.Grid.sorters || {};
 
-    //æ ¼å¼åŒ–å™¨æ‰©å±•
+    //¸ñÊ½»¯Æ÷À©Õ¹
     $.ligerDefaults.Grid.formatters = $.ligerDefaults.Grid.formatters || {};
 
-    //ç¼–è¾‘å™¨æ‰©å±•
+    //±à¼­Æ÷À©Õ¹
     $.ligerDefaults.Grid.editors = $.ligerDefaults.Grid.editors || {};
 
 
@@ -473,7 +473,7 @@
                     }
                 };
             }
-            if (p.tree)//å¯ç”¨åˆ†é¡µæ¨¡å¼
+            if (p.tree)//ÆôÓÃ·ÖÒ³Ä£Ê½
             {
                 p.tree.childrenName = p.tree.childrenName || "children";
                 p.tree.isParent = p.tree.isParent || function (rowData)
@@ -550,41 +550,41 @@
             gridhtmlarr.push("            </div>");
             gridhtmlarr.push("         </div>");
             g.grid.html(gridhtmlarr.join(''));
-            //å¤´éƒ¨
+            //Í·²¿
             g.header = $(".l-panel-header:first", g.grid);
-            //ä¸»ä½“
+            //Ö÷Ìå
             g.body = $(".l-panel-body:first", g.grid);
-            //åº•éƒ¨å·¥å…·æ¡         
+            //µ×²¿¹¤¾ßÌõ         
             g.toolbar = $(".l-panel-bar:first", g.grid);
-            //æ˜¾ç¤º/éšè—åˆ—      
+            //ÏÔÊ¾/Òş²ØÁĞ      
             g.popup = $(".l-grid-popup:first", g.grid);
-            //åŠ è½½ä¸­
+            //¼ÓÔØÖĞ
             g.gridloading = $(".l-grid-loading:first", g.grid);
-            //è°ƒæ•´åˆ—å®½å±‚ 
+            //µ÷ÕûÁĞ¿í²ã 
             g.draggingline = $(".l-grid-dragging-line", g.grid);
-            //é¡¶éƒ¨å·¥å…·æ 
+            //¶¥²¿¹¤¾ßÀ¸
             g.topbar = $(".l-panel-topbar:first", g.grid);
 
             g.gridview = $(".l-grid:first", g.grid);
             g.gridview.attr("id", g.id + "grid");
             g.gridview1 = $(".l-grid1:first", g.gridview);
             g.gridview2 = $(".l-grid2:first", g.gridview);
-            //è¡¨å¤´     
+            //±íÍ·     
             g.gridheader = $(".l-grid-header:first", g.gridview2);
-            //è¡¨ä¸»ä½“     
+            //±íÖ÷Ìå     
             g.gridbody = $(".l-grid-body:first", g.gridview2);
 
             //frozen
             g.f = {};
-            //è¡¨å¤´     
+            //±íÍ·     
             g.f.gridheader = $(".l-grid-header:first", g.gridview1);
-            //è¡¨ä¸»ä½“     
+            //±íÖ÷Ìå     
             g.f.gridbody = $(".l-grid-body:first", g.gridview1);
 
             g.currentData = null;
             g.changedCells = {};
-            g.editors = {};                 //å¤šç¼–è¾‘å™¨åŒæ—¶å­˜åœ¨
-            g.editor = { editing: false };  //å•ç¼–è¾‘å™¨,é…ç½®clickToEdit
+            g.editors = {};                 //¶à±à¼­Æ÷Í¬Ê±´æÔÚ
+            g.editor = { editing: false };  //µ¥±à¼­Æ÷,ÅäÖÃclickToEdit
             if (p.height == "auto")
             {
                 g.bind("SysGridHeightChanged", function ()
@@ -692,7 +692,7 @@
         {
             this.loadData(this.options.data);
         },
-        //åˆ·æ–°æ•°æ®
+        //Ë¢ĞÂÊı¾İ
         loadData: function (loadDataParm)
         {
             var g = this, p = this.options;
@@ -714,7 +714,7 @@
                 p.dataType = "local";
                 p.data = loadDataParm;
             }
-            //å‚æ•°åˆå§‹åŒ–
+            //²ÎÊı³õÊ¼»¯
             if (!p.newPage) p.newPage = 1;
             if (p.dataAction == "server")
             {
@@ -867,9 +867,9 @@
             return editorInput;
         },
         /*
-        @description ä½¿ä¸€è¡Œè¿›å…¥ç¼–è¾‘çŠ¶æ€
-        @param  {rowParm} rowindexæˆ–è€…rowdata
-        @param {containerBulider} ç¼–è¾‘å™¨å¡«å……å±‚æ„é€ å™¨
+        @description Ê¹Ò»ĞĞ½øÈë±à¼­×´Ì¬
+        @param  {rowParm} rowindex»òÕßrowdata
+        @param {containerBulider} ±à¼­Æ÷Ìî³ä²ã¹¹ÔìÆ÷
         */
         beginEdit: function (rowParm, containerBulider)
         {
@@ -1005,12 +1005,12 @@
         {
             return this._setHeight(h);
         },
-        //æ˜¯å¦å¯ç”¨å¤é€‰æ¡†åˆ—
+        //ÊÇ·ñÆôÓÃ¸´Ñ¡¿òÁĞ
         enabledCheckbox: function ()
         {
             return this.options.checkbox ? true : false;
         },
-        //æ˜¯å¦å›ºå®šåˆ—
+        //ÊÇ·ñ¹Ì¶¨ÁĞ
         enabledFrozen: function ()
         {
             var g = this, p = this.options;
@@ -1028,19 +1028,19 @@
             this._setFrozen(false);
             return false;
         },
-        //æ˜¯å¦å¯ç”¨æ˜ç»†ç¼–è¾‘
+        //ÊÇ·ñÆôÓÃÃ÷Ï¸±à¼­
         enabledDetailEdit: function ()
         {
             if (!this.enabledDetail()) return false;
             return this.options.detailToEdit ? true : false;
         },
-        //æ˜¯å¦å¯ç”¨æ˜ç»†åˆ—
+        //ÊÇ·ñÆôÓÃÃ÷Ï¸ÁĞ
         enabledDetail: function ()
         {
             if (this.options.detail && this.options.detail.onShowDetail) return true;
             return false;
         },
-        //æ˜¯å¦å¯ç”¨åˆ†ç»„
+        //ÊÇ·ñÆôÓÃ·Ö×é
         enabledGroup: function ()
         {
             return this.options.groupColumnName ? true : false;
@@ -1111,9 +1111,9 @@
             g._removeSelected(rowdata);
         },
         /*
-        @param  {arg} column indexã€column nameã€columnã€å•å…ƒæ ¼
-        @param  {value} å€¼
-        @param  {rowParm} rowindexæˆ–è€…rowdata
+        @param  {arg} column index¡¢column name¡¢column¡¢µ¥Ôª¸ñ
+        @param  {value} Öµ
+        @param  {rowParm} rowindex»òÕßrowdata
         */
         updateCell: function (arg, value, rowParm)
         {
@@ -1219,7 +1219,7 @@
             g.records[o['__id']] = o;
             return o;
         },
-        //å°†åŸå§‹çš„æ•°æ®è½¬æ¢æˆé€‚åˆ gridçš„è¡Œæ•°æ® 
+        //½«Ô­Ê¼µÄÊı¾İ×ª»»³ÉÊÊºÏ gridµÄĞĞÊı¾İ 
         _getRows: function (data)
         {
             var g = this, p = this.options;
@@ -1320,7 +1320,7 @@
             rowdata = rowdata || {};
             g._addData(rowdata, parentRowData, neardata, isBefore);
             g.reRender();
-            //æ ‡è¯†çŠ¶æ€
+            //±êÊ¶×´Ì¬
             rowdata[p.statusName] = 'add';
             if (p.tree)
             {
@@ -1345,7 +1345,7 @@
         {
             var g = this, p = this.options;
             var rowdata = g.getRow(rowDom);
-            //æ ‡è¯†çŠ¶æ€
+            //±êÊ¶×´Ì¬
             g.isDataChanged = true;
             $.extend(rowdata, newRowData || {});
             if (rowdata[p.statusName] != 'add')
@@ -1420,7 +1420,7 @@
             }
             return data;
         },
-        //æ ¼å¼åŒ–æ•°æ®
+        //¸ñÊ½»¯Êı¾İ
         formatRecord: function (o, removeStatus)
         {
             delete o['__id'];
@@ -1483,7 +1483,7 @@
             }
             return null;
         },
-        //æ˜¯å¦åŒ…å«æ±‡æ€»
+        //ÊÇ·ñ°üº¬»ã×Ü
         isTotalSummary: function ()
         {
             var g = this, p = this.options;
@@ -1493,8 +1493,8 @@
             }
             return false;
         },
-        //æ ¹æ®å±‚æ¬¡è·å–åˆ—é›†åˆ
-        //å¦‚æœcolumnLevelä¸ºç©ºï¼Œè·å–å¶èŠ‚ç‚¹é›†åˆ
+        //¸ù¾İ²ã´Î»ñÈ¡ÁĞ¼¯ºÏ
+        //Èç¹ûcolumnLevelÎª¿Õ£¬»ñÈ¡Ò¶½Úµã¼¯ºÏ
         getColumns: function (columnLevel)
         {
             var g = this, p = this.options;
@@ -1513,7 +1513,7 @@
             }
             return columns;
         },
-        //æ”¹å˜æ’åº
+        //¸Ä±äÅÅĞò
         changeSort: function (columnName, sortOrder)
         {
             var g = this, p = this.options;
@@ -1546,7 +1546,7 @@
                 g.loadData(p.where);
             }
         },
-        //æ”¹å˜åˆ†é¡µ
+        //¸Ä±ä·ÖÒ³
         changePage: function (ctype)
         {
             var g = this, p = this.options;
@@ -1685,7 +1685,7 @@
             {
                 return g.rows[parseInt(rowParm)];
             }
-            else if (typeof (rowParm) == "object" && rowParm.nodeType == 1 && !rowParm['__id']) //domå¯¹è±¡
+            else if (typeof (rowParm) == "object" && rowParm.nodeType == 1 && !rowParm['__id']) //dom¶ÔÏó
             {
                 return g._getRowByDomId(rowParm.id);
             }
@@ -1694,11 +1694,11 @@
         _setColumnVisible: function (column, hide)
         {
             var g = this, p = this.options;
-            if (!hide)  //æ˜¾ç¤º
+            if (!hide)  //ÏÔÊ¾
             {
                 column._hide = false;
                 document.getElementById(column['__domid']).style.display = "";
-                //åˆ¤æ–­åˆ†ç»„åˆ—æ˜¯å¦éšè—,å¦‚æœéšè—äº†åˆ™æ˜¾ç¤ºå‡ºæ¥
+                //ÅĞ¶Ï·Ö×éÁĞÊÇ·ñÒş²Ø,Èç¹ûÒş²ØÁËÔòÏÔÊ¾³öÀ´
                 if (column['__pid'] != -1)
                 {
                     var pcol = g._columns[column['__pid']];
@@ -1709,11 +1709,11 @@
                     }
                 }
             }
-            else //éšè—
+            else //Òş²Ø
             {
                 column._hide = true;
                 document.getElementById(column['__domid']).style.display = "none";
-                //åˆ¤æ–­åŒåˆ†ç»„çš„åˆ—æ˜¯å¦éƒ½éšè—,å¦‚æœæ˜¯åˆ™éšè—åˆ†ç»„åˆ—
+                //ÅĞ¶ÏÍ¬·Ö×éµÄÁĞÊÇ·ñ¶¼Òş²Ø,Èç¹ûÊÇÔòÒş²Ø·Ö×éÁĞ
                 if (column['__pid'] != -1)
                 {
                     var hideall = true;
@@ -1735,7 +1735,7 @@
                 }
             }
         },
-        //æ˜¾ç¤ºéšè—åˆ—
+        //ÏÔÊ¾Òş²ØÁĞ
         toggleCol: function (columnparm, visible, toggleByPopup)
         {
             var g = this, p = this.options;
@@ -1781,7 +1781,7 @@
                 if (tobj) cells.push(tobj);
             }
             var colwidth = column._width;
-            //æ˜¾ç¤ºåˆ—
+            //ÏÔÊ¾ÁĞ
             if (visible && column._hide)
             {
                 if (column.frozen)
@@ -1791,7 +1791,7 @@
                 g._setColumnVisible(column, false);
                 $(cells).show();
             }
-            //éšè—åˆ—
+            //Òş²ØÁĞ
             else if (!visible && !column._hide)
             {
                 if (column.frozen)
@@ -1825,7 +1825,7 @@
                 });
             }
         },
-        //è®¾ç½®åˆ—å®½
+        //ÉèÖÃÁĞ¿í
         setColumnWidth: function (columnparm, newwidth)
         {
             var g = this, p = this.options;
@@ -1900,7 +1900,7 @@
 
             g.trigger('afterChangeColumnWidth', [column, newwidth]);
         },
-        //æ”¹å˜åˆ—è¡¨å¤´å†…å®¹
+        //¸Ä±äÁĞ±íÍ·ÄÚÈİ
         changeHeaderText: function (columnparm, headerText)
         {
             var g = this, p = this.options;
@@ -1938,7 +1938,7 @@
                 $(':checkbox[columnindex=' + columnindex + "]", g.popup).parent().next().html(headerText);
             }
         },
-        //æ”¹å˜åˆ—çš„ä½ç½®
+        //¸Ä±äÁĞµÄÎ»ÖÃ
         changeCol: function (from, to, isAfter)
         {
             var g = this, p = this.options;
@@ -2128,10 +2128,10 @@
                 listdata.push(rowdata);
             }
         },
-        //ç§»åŠ¨æ•°æ®(æ ‘)
-        //@parm [parentdata] é™„åŠ åˆ°å“ªä¸€ä¸ªèŠ‚ç‚¹ä¸‹çº§
-        //@parm [neardata] é™„åŠ åˆ°å“ªä¸€ä¸ªèŠ‚ç‚¹çš„ä¸Šæ–¹/ä¸‹æ–¹
-        //@parm [isBefore] æ˜¯å¦é™„åŠ åˆ°ä¸Šæ–¹
+        //ÒÆ¶¯Êı¾İ(Ê÷)
+        //@parm [parentdata] ¸½¼Óµ½ÄÄÒ»¸ö½ÚµãÏÂ¼¶
+        //@parm [neardata] ¸½¼Óµ½ÄÄÒ»¸ö½ÚµãµÄÉÏ·½/ÏÂ·½
+        //@parm [isBefore] ÊÇ·ñ¸½¼Óµ½ÉÏ·½
         _appendData: function (rowdata, parentdata, neardata, isBefore)
         {
             var g = this, p = this.options;
@@ -2232,13 +2232,13 @@
             var linkbtn = $(".l-grid-tree-link:first", targetRowObj);
             var opening = true;
             g.collapsedRows = g.collapsedRows || [];
-            if (linkbtn.hasClass("l-grid-tree-link-close")) //æ”¶ç¼©
+            if (linkbtn.hasClass("l-grid-tree-link-close")) //ÊÕËõ
             {
                 linkbtn.removeClass("l-grid-tree-link-close").addClass("l-grid-tree-link-open");
                 indexInCollapsedRows = $.inArray(rowdata, g.collapsedRows);
                 if (indexInCollapsedRows != -1) g.collapsedRows.splice(indexInCollapsedRows, 1);
             }
-            else //æŠ˜å 
+            else //ÕÛµş
             {
                 opening = false;
                 linkbtn.addClass("l-grid-tree-link-close").removeClass("l-grid-tree-link-open");
@@ -2267,25 +2267,25 @@
         {
             var g = this;
             g._clearGrid();
-            //åˆ›å»ºå¤´éƒ¨
+            //´´½¨Í·²¿
             g._initBuildHeader();
-            //å®½åº¦é«˜åº¦åˆå§‹åŒ–
+            //¿í¶È¸ß¶È³õÊ¼»¯
             g._initHeight();
-            //åˆ›å»ºåº•éƒ¨å·¥å…·æ¡
+            //´´½¨µ×²¿¹¤¾ßÌõ
             g._initFootbar();
-            //åˆ›å»ºåˆ†é¡µ
+            //´´½¨·ÖÒ³
             g._buildPager();
-            //åˆ›å»ºäº‹ä»¶
+            //´´½¨ÊÂ¼ş
             g._setEvent();
         },
         _setColumns: function (columns)
         {
             var g = this;
-            //åˆå§‹åŒ–åˆ—
+            //³õÊ¼»¯ÁĞ
             g._initColumns();
-            //åˆ›å»ºè¡¨å¤´
+            //´´½¨±íÍ·
             g._initBuildGridHeader();
-            //åˆ›å»º æ˜¾ç¤º/éšè— åˆ— åˆ—è¡¨
+            //´´½¨ ÏÔÊ¾/Òş²Ø ÁĞ ÁĞ±í
             g._initBuildPopup();
         },
         _initBuildHeader: function ()
@@ -2323,7 +2323,7 @@
         _initColumns: function ()
         {
             var g = this, p = this.options;
-            g._columns = {};             //å…¨éƒ¨åˆ—çš„ä¿¡æ¯  
+            g._columns = {};             //È«²¿ÁĞµÄĞÅÏ¢  
             g._columnCount = 0;
             g._columnLeafCount = 0;
             g._columnMaxLevel = 1;
@@ -2336,7 +2336,7 @@
                         delete column[props[i]];
                 }
             }
-            //è®¾ç½®idã€pidã€levelã€leafï¼Œè¿”å›å¶èŠ‚ç‚¹æ•°,å¦‚æœæ˜¯å¶èŠ‚ç‚¹ï¼Œè¿”å›1
+            //ÉèÖÃid¡¢pid¡¢level¡¢leaf£¬·µ»ØÒ¶½ÚµãÊı,Èç¹ûÊÇÒ¶½Úµã£¬·µ»Ø1
             function setColumn(column, level, pid, previd)
             {
                 removeProp(column, ['__id', '__pid', '__previd', '__nextid', '__domid', '__leaf', '__leafindex', '__level', '__colSpan', '__rowSpan']);
@@ -2367,7 +2367,7 @@
                 return leafcount;
             }
             var lastid = -1;
-            //è¡Œåºå·
+            //ĞĞĞòºÅ
             if (p.rownumbers)
             {
                 var frozenRownumbers = g.enabledGroup() ? false : p.frozen && p.frozenRownumbers;
@@ -2375,7 +2375,7 @@
                 setColumn(col, 1, -1, lastid);
                 lastid = col['__id'];
             }
-            //æ˜ç»†åˆ—
+            //Ã÷Ï¸ÁĞ
             if (g.enabledDetail())
             {
                 var frozenDetail = g.enabledGroup() ? false : p.frozen && p.frozenDetail;
@@ -2383,7 +2383,7 @@
                 setColumn(col, 1, -1, lastid);
                 lastid = col['__id'];
             }
-            //å¤é€‰æ¡†åˆ—
+            //¸´Ñ¡¿òÁĞ
             if (g.enabledCheckbox())
             {
                 var frozenCheckbox = g.enabledGroup() ? false : p.frozen && p.frozenCheckbox;
@@ -2397,7 +2397,7 @@
                 setColumn(col, 1, -1, lastid);
                 lastid = col['__id'];
             }
-            //è®¾ç½®colSpanå’ŒrowSpan
+            //ÉèÖÃcolSpanºÍrowSpan
             for (var id in g._columns)
             {
                 var col = g._columns[id];
@@ -2410,7 +2410,7 @@
                     col['__rowSpan'] = g._columnMaxLevel - col['__level'] + 1;
                 }
             }
-            //å¶çº§åˆ«åˆ—çš„ä¿¡æ¯  
+            //Ò¶¼¶±ğÁĞµÄĞÅÏ¢  
             g.columns = g.getColumns();
             $(g.columns).each(function (i, column)
             {
@@ -2551,8 +2551,8 @@
             $("tbody:first", g.f.gridheader).html("");
             for (var level = 1; level <= g._columnMaxLevel; level++)
             {
-                var columns = g.getColumns(level);           //è·å–levelå±‚æ¬¡çš„åˆ—é›†åˆ
-                var islast = level == g._columnMaxLevel;     //æ˜¯å¦æœ€æœ«çº§
+                var columns = g.getColumns(level);           //»ñÈ¡level²ã´ÎµÄÁĞ¼¯ºÏ
+                var islast = level == g._columnMaxLevel;     //ÊÇ·ñ×îÄ©¼¶
                 var tr = $("<tr class='l-grid-hd-row'></tr>");
                 var trf = $("<tr class='l-grid-hd-row'></tr>");
                 if (!islast) tr.add(trf).addClass("l-grid-hd-mul");
@@ -2607,7 +2607,7 @@
                     }
                 });
             }
-            //è¡¨å¤´ - æ˜¾ç¤º/éšè—'åˆ—æ§åˆ¶'æŒ‰é’®äº‹ä»¶
+            //±íÍ· - ÏÔÊ¾/Òş²Ø'ÁĞ¿ØÖÆ'°´Å¥ÊÂ¼ş
             if (p.allowHideColumn)
             {
                 $('tr', g.popup).hover(function ()
@@ -2651,7 +2651,7 @@
             var g = this, p = this.options;
             if (p.usePager)
             {
-                //åˆ›å»ºåº•éƒ¨å·¥å…·æ¡ - é€‰æ‹©æ¯é¡µæ˜¾ç¤ºè®°å½•æ•°
+                //´´½¨µ×²¿¹¤¾ßÌõ - Ñ¡ÔñÃ¿Ò³ÏÔÊ¾¼ÇÂ¼Êı
                 var optStr = "";
                 var selectedIndex = -1;
                 $(p.pageSizeOptions).each(function (i, item)
@@ -2705,27 +2705,27 @@
                     rowobj = rowobj.add(g.getRowObj(g.rows[i], true));
                 rowobj.unbind();
             }
-            //æ¸…ç©ºæ•°æ®
+            //Çå¿ÕÊı¾İ
             g.gridbody.html("");
             g.f.gridbody.html("");
             g.recordNumber = 0;
             g.records = {};
             g.rows = [];
-            //æ¸…ç©ºé€‰æ‹©çš„è¡Œ
+            //Çå¿ÕÑ¡ÔñµÄĞĞ
             g.selected = [];
             g.totalNumber = 0;
-            //ç¼–è¾‘å™¨è®¡ç®—å™¨
+            //±à¼­Æ÷¼ÆËãÆ÷
             g.editorcounter = 0;
         },
         _fillGridBody: function (data, frozen)
         {
             var g = this, p = this.options;
-            //åŠ è½½æ•°æ® 
+            //¼ÓÔØÊı¾İ 
             var gridhtmlarr = ['<div class="l-grid-body-inner"><table class="l-grid-body-table" cellpadding=0 cellspacing=0><tbody>'];
-            if (g.enabledGroup()) //å¯ç”¨åˆ†ç»„æ¨¡å¼
+            if (g.enabledGroup()) //ÆôÓÃ·Ö×éÄ£Ê½
             {
-                var groups = []; //åˆ†ç»„åˆ—åæ•°ç»„
-                var groupsdata = []; //åˆ‡æˆå‡ å—åçš„æ•°æ®
+                var groups = []; //·Ö×éÁĞÃûÊı×é
+                var groupsdata = []; //ÇĞ³É¼¸¿éºóµÄÊı¾İ
                 g.groups = groupsdata;
                 for (var rowparm in data)
                 {
@@ -2763,7 +2763,7 @@
                     gridhtmlarr.push('</tr>');
 
                     gridhtmlarr.push(g._getHtmlFromData(item, frozen));
-                    //æ±‡æ€»
+                    //»ã×Ü
                     if (g.isTotalSummary())
                         gridhtmlarr.push(g._getTotalSummaryHtml(item, "l-grid-totalsummary-group", frozen));
                 });
@@ -2774,10 +2774,10 @@
             }
             gridhtmlarr.push('</tbody></table></div>');
             (frozen ? g.f.gridbody : g.gridbody).html(gridhtmlarr.join(''));
-            //åˆ†ç»„æ—¶ä¸éœ€è¦            
+            //·Ö×éÊ±²»ĞèÒª            
             if (!g.enabledGroup())
             {
-                //åˆ›å»ºæ±‡æ€»è¡Œ
+                //´´½¨»ã×ÜĞĞ
                 g._bulidTotalSummary(frozen);
             }
             $("> div:first", g.gridbody).width(g.gridtablewidth);
@@ -2789,7 +2789,7 @@
             var data = g.currentData[p.root];
             if (p.usePager)
             {
-                //æ›´æ–°æ€»è®°å½•æ•°
+                //¸üĞÂ×Ü¼ÇÂ¼Êı
                 if (p.dataAction == "server" && g.data && g.data[p.record])
                     p.total = g.data[p.record];
                 else if (g.filteredData && g.filteredData[p.root])
@@ -2804,10 +2804,10 @@
                 if (!p.page) p.page = 1;
                 p.pageCount = Math.ceil(p.total / p.pageSize);
                 if (!p.pageCount) p.pageCount = 1;
-                //æ›´æ–°åˆ†é¡µ
+                //¸üĞÂ·ÖÒ³
                 g._buildPager();
             }
-            //åŠ è½½ä¸­
+            //¼ÓÔØÖĞ
             $('.l-bar-btnloading:first', g.toolbar).removeClass('l-bar-btnloading');
             if (g.trigger('beforeShowData', [g.currentData]) == false) return;
             g._clearGrid();
@@ -2897,7 +2897,7 @@
                     if (frozen != column.frozen) return;
                     gridhtmlarr.push('<td');
                     gridhtmlarr.push(' id="' + g._getCellDomId(item, this) + '"');
-                    //å¦‚æœæ˜¯è¡Œåºå·(ç³»ç»Ÿåˆ—)
+                    //Èç¹ûÊÇĞĞĞòºÅ(ÏµÍ³ÁĞ)
                     if (this.isrownumber)
                     {
                         gridhtmlarr.push(' class="l-grid-row-cell l-grid-row-cell-rownumbers" style="width:' + this.width + 'px"><div class="l-grid-row-cell-inner"');
@@ -2906,7 +2906,7 @@
                         gridhtmlarr.push('>' + (parseInt(item['__index']) + 1) + '</div></td>');
                         return;
                     }
-                    //å¦‚æœæ˜¯å¤é€‰æ¡†(ç³»ç»Ÿåˆ—)
+                    //Èç¹ûÊÇ¸´Ñ¡¿ò(ÏµÍ³ÁĞ)
                     if (this.ischeckbox)
                     {
                         gridhtmlarr.push(' class="l-grid-row-cell l-grid-row-cell-checkbox" style="width:' + this.width + 'px"><div class="l-grid-row-cell-inner"');
@@ -2915,7 +2915,7 @@
                         gridhtmlarr.push('><span class="l-grid-row-cell-btn-checkbox"></span></div></td>');
                         return;
                     }
-                    //å¦‚æœæ˜¯æ˜ç»†åˆ—(ç³»ç»Ÿåˆ—)
+                    //Èç¹ûÊÇÃ÷Ï¸ÁĞ(ÏµÍ³ÁĞ)
                     else if (this.isdetail)
                     {
                         gridhtmlarr.push(' class="l-grid-row-cell l-grid-row-cell-detail" style="width:' + this.width + 'px"><div class="l-grid-row-cell-inner"');
@@ -3085,7 +3085,7 @@
             }
             return data;
         },
-        //æ¯”è¾ƒæŸä¸€åˆ—ä¸¤ä¸ªæ•°æ®
+        //±È½ÏÄ³Ò»ÁĞÁ½¸öÊı¾İ
         _compareData: function (data1, data2, columnName, columnType)
         {
             var g = this, p = this.options;
@@ -3162,19 +3162,19 @@
             $(g.columns).each(function (columnindex, column)
             {
                 if (this.frozen != frozen) return;
-                //å¦‚æœæ˜¯è¡Œåºå·(ç³»ç»Ÿåˆ—)
+                //Èç¹ûÊÇĞĞĞòºÅ(ÏµÍ³ÁĞ)
                 if (this.isrownumber)
                 {
                     totalsummaryArr.push('<td class="l-grid-totalsummary-cell l-grid-totalsummary-cell-rownumbers" style="width:' + this.width + 'px"><div>&nbsp;</div></td>');
                     return;
                 }
-                //å¦‚æœæ˜¯å¤é€‰æ¡†(ç³»ç»Ÿåˆ—)
+                //Èç¹ûÊÇ¸´Ñ¡¿ò(ÏµÍ³ÁĞ)
                 if (this.ischeckbox)
                 {
                     totalsummaryArr.push('<td class="l-grid-totalsummary-cell l-grid-totalsummary-cell-checkbox" style="width:' + this.width + 'px"><div>&nbsp;</div></td>');
                     return;
                 }
-                //å¦‚æœæ˜¯æ˜ç»†åˆ—(ç³»ç»Ÿåˆ—)
+                //Èç¹ûÊÇÃ÷Ï¸ÁĞ(ÏµÍ³ÁĞ)
                 else if (this.isdetail)
                 {
                     totalsummaryArr.push('<td class="l-grid-totalsummary-cell l-grid-totalsummary-cell-detail" style="width:' + this.width + 'px"><div>&nbsp;</div></td>');
@@ -3304,10 +3304,10 @@
                 grid: fn("l-panel"),
                 indetail: indetail,
                 frozen: fn(g.gridview1[0]) ? true : false,
-                header: fn("l-panel-header"), //æ ‡é¢˜
-                gridheader: fn("l-grid-header"), //è¡¨æ ¼å¤´ 
+                header: fn("l-panel-header"), //±êÌâ
+                gridheader: fn("l-grid-header"), //±í¸ñÍ· 
                 gridbody: fn("l-grid-body"),
-                total: fn("l-panel-bar-total"), //æ€»æ±‡æ€» 
+                total: fn("l-panel-bar-total"), //×Ü»ã×Ü 
                 popup: fn("l-grid-popup"),
                 toolbar: fn("l-panel-bar")
             };
@@ -3391,7 +3391,7 @@
             {
                 delete g.ctrlKey;
             });
-            //è¡¨ä½“ - æ»šåŠ¨è”åŠ¨äº‹ä»¶ 
+            //±íÌå - ¹ö¶¯Áª¶¯ÊÂ¼ş 
             g.gridbody.bind('scroll.grid', function ()
             {
                 var scrollLeft = g.gridbody.scrollLeft();
@@ -3403,7 +3403,7 @@
                 g.endEdit();
                 g.trigger('SysGridHeightChanged');
             });
-            //å·¥å…·æ¡ - åˆ‡æ¢æ¯é¡µè®°å½•æ•°äº‹ä»¶
+            //¹¤¾ßÌõ - ÇĞ»»Ã¿Ò³¼ÇÂ¼ÊıÊÂ¼ş
             $('select', g.toolbar).change(function ()
             {
                 if (g.isDataChanged && !confirm(p.isContinueByDataChanged))
@@ -3412,7 +3412,7 @@
                 p.pageSize = this.value;
                 g.loadData(p.where);
             });
-            //å·¥å…·æ¡ - åˆ‡æ¢å½“å‰é¡µäº‹ä»¶
+            //¹¤¾ßÌõ - ÇĞ»»µ±Ç°Ò³ÊÂ¼ş
             $('span.pcontrol :text', g.toolbar).blur(function (e)
             {
                 g.changePage('input');
@@ -3424,7 +3424,7 @@
             {
                 $(this).removeClass("l-bar-button-over");
             });
-            //åˆ—æ‹–æ‹½æ”¯æŒ
+            //ÁĞÍÏ×§Ö§³Ö
             if ($.fn.ligerDrag && p.colDraggable)
             {
                 g.colDroptip = $("<div class='l-drag-coldroptip' style='display:none'><div class='l-drop-move-up'></div><div class='l-drop-move-down'></div></div>").appendTo('body');
@@ -3550,7 +3550,7 @@
                     }
                 });
             }
-            //è¡Œæ‹–æ‹½æ”¯æŒ
+            //ĞĞÍÏ×§Ö§³Ö
             if ($.fn.ligerDrag && p.rowDraggable)
             {
                 g.rowDroptip = $("<div class='l-drag-rowdroptip' style='display:none'></div>").appendTo('body');
@@ -3830,7 +3830,7 @@
                     g.popup.hide();
                 }
             }
-            if (src.checkboxall) //å¤é€‰æ¡†å…¨é€‰
+            if (src.checkboxall) //¸´Ñ¡¿òÈ«Ñ¡
             {
                 var row = $(src.hrow);
                 var uncheck = row.hasClass("l-checked");
@@ -3853,7 +3853,7 @@
                 }
                 g.trigger('checkAllRow', [!uncheck, g.element]);
             }
-            else if (src.hcelltext) //æ’åº
+            else if (src.hcelltext) //ÅÅĞò
             {
                 var hcell = $(src.hcelltext).parent().parent();
                 if (!p.enabledSort || !src.column) return;
@@ -3885,7 +3885,7 @@
                 }
                 $(".l-grid-hd-cell-sort", g.gridheader).add($(".l-grid-hd-cell-sort", g.f.gridheader)).not($(".l-grid-hd-cell-sort:first", hcell)).remove();
             }
-            //æ˜ç»†
+            //Ã÷Ï¸
             else if (src.detailbtn && p.detail)
             {
                 var item = src.data;
@@ -3974,7 +3974,7 @@
                     if (opening)
                     {
                         currentRow.show();
-                        //å¦‚æœæ˜¯æ˜ç»†å±•å¼€çš„è¡Œï¼Œå¹¶ä¸”ä¹‹å‰çš„çŠ¶æ€å·²ç»æ˜¯å…³é—­çš„ï¼Œéšè—ä¹‹
+                        //Èç¹ûÊÇÃ÷Ï¸Õ¹¿ªµÄĞĞ£¬²¢ÇÒÖ®Ç°µÄ×´Ì¬ÒÑ¾­ÊÇ¹Ø±ÕµÄ£¬Òş²ØÖ®
                         if (currentRow.hasClass("l-grid-detailpanel") && !currentRow.prev().find("td.l-grid-row-cell-detail:first span.l-grid-row-cell-detailbtn:first").hasClass("l-open"))
                         {
                             currentRow.hide();
@@ -3988,14 +3988,14 @@
                 }
                 g.trigger('SysGridHeightChanged');
             }
-            //æ ‘ - ä¼¸å±•/æ”¶ç¼©èŠ‚ç‚¹
+            //Ê÷ - ÉìÕ¹/ÊÕËõ½Úµã
             else if (src.treelink)
             {
                 g.toggle(src.data);
             }
-            else if (src.row && g.enabledCheckbox()) //å¤é€‰æ¡†é€‰æ‹©è¡Œ
+            else if (src.row && g.enabledCheckbox()) //¸´Ñ¡¿òÑ¡ÔñĞĞ
             {
-                //å¤é€‰æ¡†
+                //¸´Ñ¡¿ò
                 var selectRowButtonOnly = p.selectRowButtonOnly ? true : false;
                 if (p.enabledEdit) selectRowButtonOnly = true;
                 if (src.checkbox || !selectRowButtonOnly)
@@ -4028,7 +4028,7 @@
                     g._applyEditor(src.cell);
                 }
 
-                //é€‰æ‹©è¡Œ
+                //Ñ¡ÔñĞĞ
                 if ($(src.row).hasClass("l-selected"))
                 {
                     if (!p.allowUnSelectRow)
@@ -4082,7 +4082,7 @@
             var rowid = rowdata['__id'];
             var rowobj = g.getRowObj(rowid);
             var rowobj1 = g.getRowObj(rowid, true);
-            if (!g.enabledCheckbox() && !g.ctrlKey) //å•é€‰
+            if (!g.enabledCheckbox() && !g.ctrlKey) //µ¥Ñ¡
             {
                 for (var i in g.selected)
                 {

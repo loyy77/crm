@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ChanceDao {
+	
+	private int REMOVED=1; //状态被标记为删除的销售机会
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
@@ -40,7 +43,7 @@ public class ChanceDao {
 	 * @return
 	 */
 	public List<Chance> list() {
-		String sql = "select id,customerName,title,linkMan,linkPhone,createDate from chance";
+		String sql = "select id,customerName,title,linkMan,linkPhone,createDate from chance where state !=1";
 
 		return jdbcTemplate.query(sql, new ChanceMapperSimple());
 	}
@@ -50,21 +53,25 @@ public class ChanceDao {
 	 * @return
 	 */
 	public boolean del(int id){
-		String sql="delete from chance where id=?";
-		int rst=this.jdbcTemplate.update(sql, id);
+		String sql="update chance  set state = ? where id=?";
+		int rst=this.jdbcTemplate.update(sql, REMOVED,id);
 		if(rst==1){
 			return true;
 			
 		}return false;
 	}
 	/**
-	 * 修改营销机会的信息
+	 * 指派一个机会给营销人员
 	 * @param chance
 	 * @return
 	 */
-	public boolean update(Chance chance){
+	public boolean update(int chanceId,int assignId){
 		
-		String sql="update chance set ";
+		String sql="update chance set assginId=? where id=? and state != 1 ";
+		if(this.jdbcTemplate.update(sql,assignId,chanceId)==1){
+			return true;
+		}
+		
 		return false;
 	}
 

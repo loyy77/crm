@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -10,38 +10,38 @@
 {
 
 
-    //ligerui ç»§æ‰¿æ–¹æ³•
+    //ligerui ¼Ì³Ğ·½·¨
     Function.prototype.ligerExtend = function (parent, overrides)
     {
         if (typeof parent != 'function') return this;
-        //ä¿å­˜å¯¹çˆ¶ç±»çš„å¼•ç”¨
+        //±£´æ¶Ô¸¸ÀàµÄÒıÓÃ
         this.base = parent.prototype;
         this.base.constructor = parent;
-        //ç»§æ‰¿
+        //¼Ì³Ğ
         var f = function () { };
         f.prototype = parent.prototype;
         this.prototype = new f();
         this.prototype.constructor = this;
-        //é™„åŠ å±æ€§æ–¹æ³•
+        //¸½¼ÓÊôĞÔ·½·¨
         if (overrides) $.extend(this.prototype, overrides);
     };
-    //å»¶æ—¶åŠ è½½
+    //ÑÓÊ±¼ÓÔØ
     Function.prototype.ligerDefer = function (o, defer, args)
     {
         var fn = this;
         return setTimeout(function () { fn.apply(o, args || []); }, defer);
     };
 
-    // æ ¸å¿ƒå¯¹è±¡
+    // ºËĞÄ¶ÔÏó
     window.liger = $.ligerui = {
         version: 'V1.1.9',
         managerCount: 0,
-        //ç»„ä»¶ç®¡ç†å™¨æ± 
+        //×é¼ş¹ÜÀíÆ÷³Ø
         managers: {},
         managerIdPrev: 'ligerui',
-        //é”™è¯¯æç¤º
+        //´íÎóÌáÊ¾
         error: {
-            managerIsExist: 'ç®¡ç†å™¨idå·²ç»å­˜åœ¨'
+            managerIsExist: '¹ÜÀíÆ÷idÒÑ¾­´æÔÚ'
         },
         getId: function (prev)
         {
@@ -75,9 +75,9 @@
                 delete $.ligerui.managers[arg.id];
             }
         },
-        //è·å–ligeruiå¯¹è±¡
-        //1,ä¼ å…¥ligerui ID
-        //2,ä¼ å…¥Dom Object Array(jQuery)
+        //»ñÈ¡ligerui¶ÔÏó
+        //1,´«Èëligerui ID
+        //2,´«ÈëDom Object Array(jQuery)
         get: function (arg, idAttrName)
         {
             idAttrName = idAttrName || "ligeruiid";
@@ -92,7 +92,7 @@
             }
             return null;
         },
-        //æ ¹æ®ç±»å‹æŸ¥æ‰¾æŸä¸€ä¸ªå¯¹è±¡
+        //¸ù¾İÀàĞÍ²éÕÒÄ³Ò»¸ö¶ÔÏó
         find: function (type)
         {
             var arr = [];
@@ -123,11 +123,11 @@
             }
             return arr;
         },
-        //$.fn.liger{Plugin} å’Œ $.fn.ligerGet{Plugin}Manager
-        //ä¼šè°ƒç”¨è¿™ä¸ªæ–¹æ³•,å¹¶ä¼ å…¥ä½œç”¨åŸŸ(this)
-        //@parm [plugin]  æ’ä»¶å
-        //@parm [args] å‚æ•°(æ•°ç»„)
-        //@parm [ext] æ‰©å±•å‚æ•°,å®šä¹‰å‘½åç©ºé—´æˆ–è€…idå±æ€§å
+        //$.fn.liger{Plugin} ºÍ $.fn.ligerGet{Plugin}Manager
+        //»áµ÷ÓÃÕâ¸ö·½·¨,²¢´«Èë×÷ÓÃÓò(this)
+        //@parm [plugin]  ²å¼şÃû
+        //@parm [args] ²ÎÊı(Êı×é)
+        //@parm [ext] À©Õ¹²ÎÊı,¶¨ÒåÃüÃû¿Õ¼ä»òÕßidÊôĞÔÃû
         run: function (plugin, args, ext)
         {
             if (!plugin) return;
@@ -137,8 +137,8 @@
                 controlNamespace: 'controls',
                 idAttrName: 'ligeruiid',
                 isStatic: false,
-                hasElement: true,           //æ˜¯å¦æ‹¥æœ‰elementä¸»ä½“(æ¯”å¦‚dragã€resizableç­‰è¾…åŠ©æ€§æ’ä»¶å°±ä¸æ‹¥æœ‰)
-                propertyToElemnt: null      //é“¾æ¥åˆ°elementçš„å±æ€§å
+                hasElement: true,           //ÊÇ·ñÓµÓĞelementÖ÷Ìå(±ÈÈçdrag¡¢resizableµÈ¸¨ÖúĞÔ²å¼ş¾Í²»ÓµÓĞ)
+                propertyToElemnt: null      //Á´½Óµ½elementµÄÊôĞÔÃû
             }, ext || {});
             plugin = plugin.replace(/^ligerGet/, '');
             plugin = plugin.replace(/^liger/, '');
@@ -167,11 +167,11 @@
                 {
                     var manager = $.ligerui.get(this[ext.idAttrName] || $(this).attr(ext.idAttrName));
                     if (manager && args.length > 0) manager.set(args[0]);
-                    //å·²ç»æ‰§è¡Œè¿‡ 
+                    //ÒÑ¾­Ö´ĞĞ¹ı 
                     return;
                 }
                 if (args.length >= 1 && typeof args[0] == 'string') return;
-                //åªè¦ç¬¬ä¸€ä¸ªå‚æ•°ä¸æ˜¯stringç±»å‹,éƒ½æ‰§è¡Œç»„ä»¶çš„å®ä¾‹åŒ–å·¥ä½œ
+                //Ö»ÒªµÚÒ»¸ö²ÎÊı²»ÊÇstringÀàĞÍ,¶¼Ö´ĞĞ×é¼şµÄÊµÀı»¯¹¤×÷
                 var options = args.length > 0 ? args[0] : null;
                 var p = $.extend({}, $[ext.defaultsNamespace][plugin] || {}
                 , $[ext.defaultsNamespace][plugin + 'String'] || {}, options || {});
@@ -202,7 +202,7 @@
                 else
                 {
                     var method = args[0];
-                    if (!manager[method]) return; //ä¸å­˜åœ¨è¿™ä¸ªæ–¹æ³•
+                    if (!manager[method]) return; //²»´æÔÚÕâ¸ö·½·¨
                     var parms = Array.apply(null, args);
                     parms.shift();
                     return manager[method].apply(manager, parms);  //manager method
@@ -211,35 +211,35 @@
             return null;
         },
 
-        //æ‰©å±•
-        //1,é»˜è®¤å‚æ•°     
-        //2,æœ¬åœ°åŒ–æ‰©å±• 
+        //À©Õ¹
+        //1,Ä¬ÈÏ²ÎÊı     
+        //2,±¾µØ»¯À©Õ¹ 
         defaults: {},
-        //3,æ–¹æ³•æ¥å£æ‰©å±•
+        //3,·½·¨½Ó¿ÚÀ©Õ¹
         methods: {},
-        //å‘½åç©ºé—´
-        //æ ¸å¿ƒæ§ä»¶,å°è£…äº†ä¸€äº›å¸¸ç”¨æ–¹æ³•
+        //ÃüÃû¿Õ¼ä
+        //ºËĞÄ¿Ø¼ş,·â×°ÁËÒ»Ğ©³£ÓÃ·½·¨
         core: {},
-        //å‘½åç©ºé—´
-        //ç»„ä»¶çš„é›†åˆ
+        //ÃüÃû¿Õ¼ä
+        //×é¼şµÄ¼¯ºÏ
         controls: {},
-        //plugin æ’ä»¶çš„é›†åˆ
+        //plugin ²å¼şµÄ¼¯ºÏ
         plugins: {}
     };
 
 
-    //æ‰©å±•å¯¹è±¡
+    //À©Õ¹¶ÔÏó
     $.ligerDefaults = {};
 
-    //æ‰©å±•å¯¹è±¡
+    //À©Õ¹¶ÔÏó
     $.ligerMethos = {};
 
-    //å…³è”èµ·æ¥
+    //¹ØÁªÆğÀ´
     $.ligerui.defaults = $.ligerDefaults;
     $.ligerui.methods = $.ligerMethos;
 
-    //è·å–ligeruiå¯¹è±¡
-    //@parm [plugin]  æ’ä»¶å,å¯ä¸ºç©º
+    //»ñÈ¡ligerui¶ÔÏó
+    //@parm [plugin]  ²å¼şÃû,¿ÉÎª¿Õ
     $.fn.liger = function (plugin)
     {
         if (plugin)
@@ -253,16 +253,16 @@
     };
 
 
-    //ç»„ä»¶åŸºç±»
-    //1,å®Œæˆå®šä¹‰å‚æ•°å¤„ç†æ–¹æ³•å’Œå‚æ•°å±æ€§åˆå§‹åŒ–çš„å·¥ä½œ
-    //2,å®Œæˆå®šä¹‰äº‹ä»¶å¤„ç†æ–¹æ³•å’Œäº‹ä»¶å±æ€§åˆå§‹åŒ–çš„å·¥ä½œ
+    //×é¼ş»ùÀà
+    //1,Íê³É¶¨Òå²ÎÊı´¦Àí·½·¨ºÍ²ÎÊıÊôĞÔ³õÊ¼»¯µÄ¹¤×÷
+    //2,Íê³É¶¨ÒåÊÂ¼ş´¦Àí·½·¨ºÍÊÂ¼şÊôĞÔ³õÊ¼»¯µÄ¹¤×÷
     $.ligerui.core.Component = function (options)
     {
-        //äº‹ä»¶å®¹å™¨
+        //ÊÂ¼şÈİÆ÷
         this.events = this.events || {};
-        //é…ç½®å‚æ•°
+        //ÅäÖÃ²ÎÊı
         this.options = options || {};
-        //å­ç»„ä»¶é›†åˆç´¢å¼•
+        //×Ó×é¼ş¼¯ºÏË÷Òı
         this.children = {};
     };
     $.extend($.ligerui.core.Component.prototype, {
@@ -275,9 +275,9 @@
             return 'ligerui';
         },
 
-        //è®¾ç½®å±æ€§
-        // arg å±æ€§å    value å±æ€§å€¼ 
-        // arg å±æ€§/å€¼   value æ˜¯å¦åªè®¾ç½®äº‹ä»¶
+        //ÉèÖÃÊôĞÔ
+        // arg ÊôĞÔÃû    value ÊôĞÔÖµ 
+        // arg ÊôĞÔ/Öµ   value ÊÇ·ñÖ»ÉèÖÃÊÂ¼ş
         set: function (arg, value)
         {
             if (!arg) return;
@@ -312,7 +312,7 @@
                 return;
             }
             var name = arg;
-            //äº‹ä»¶å‚æ•°
+            //ÊÂ¼ş²ÎÊı
             if (name.indexOf('on') == 0)
             {
                 if (typeof value == 'function')
@@ -330,7 +330,7 @@
             this.trigger('propertychanged', arg, value);
         },
 
-        //è·å–å±æ€§
+        //»ñÈ¡ÊôĞÔ
         get: function (name)
         {
             var pn = '_get' + name.substr(0, 1).toUpperCase() + name.substr(1);
@@ -349,8 +349,8 @@
             return false;
         },
 
-        //è§¦å‘äº‹ä»¶
-        //data (å¯é€‰) Array(å¯é€‰)ä¼ é€’ç»™äº‹ä»¶å¤„ç†å‡½æ•°çš„é™„åŠ å‚æ•°
+        //´¥·¢ÊÂ¼ş
+        //data (¿ÉÑ¡) Array(¿ÉÑ¡)´«µİ¸øÊÂ¼ş´¦Àíº¯ÊıµÄ¸½¼Ó²ÎÊı
         trigger: function (arg, data)
         {
             var name = arg.toLowerCase();
@@ -369,7 +369,7 @@
             }
         },
 
-        //ç»‘å®šäº‹ä»¶
+        //°ó¶¨ÊÂ¼ş
         bind: function (arg, handler, context)
         {
             if (typeof arg == 'object')
@@ -388,7 +388,7 @@
             this.events[name] = event;
         },
 
-        //å–æ¶ˆç»‘å®š
+        //È¡Ïû°ó¶¨
         unbind: function (arg, handler)
         {
             if (!arg)
@@ -422,11 +422,11 @@
     });
 
 
-    //ç•Œé¢ç»„ä»¶åŸºç±», 
-    //1,å®Œæˆç•Œé¢åˆå§‹åŒ–:è®¾ç½®ç»„ä»¶idå¹¶å­˜å…¥ç»„ä»¶ç®¡ç†å™¨æ± ,åˆå§‹åŒ–å‚æ•°
-    //2,æ¸²æŸ“çš„å·¥ä½œ,ç»†èŠ‚äº¤ç»™å­ç±»å®ç°
-    //@parm [element] ç»„ä»¶å¯¹åº”çš„dom elementå¯¹è±¡
-    //@parm [options] ç»„ä»¶çš„å‚æ•°
+    //½çÃæ×é¼ş»ùÀà, 
+    //1,Íê³É½çÃæ³õÊ¼»¯:ÉèÖÃ×é¼şid²¢´æÈë×é¼ş¹ÜÀíÆ÷³Ø,³õÊ¼»¯²ÎÊı
+    //2,äÖÈ¾µÄ¹¤×÷,Ï¸½Ú½»¸ø×ÓÀàÊµÏÖ
+    //@parm [element] ×é¼ş¶ÔÓ¦µÄdom element¶ÔÏó
+    //@parm [options] ×é¼şµÄ²ÎÊı
     $.ligerui.core.UIComponent = function (element, options)
     {
         $.ligerui.core.UIComponent.base.constructor.call(this, options);
@@ -445,7 +445,7 @@
         {
             return '$.ligerui.core.UIComponent';
         },
-        //æ‰©å±•æ–¹æ³•
+        //À©Õ¹·½·¨
         _extendMethods: function ()
         {
 
@@ -461,12 +461,12 @@
             {
                 this.id = this.options.id || this.element.id || $.ligerui.getId(this.__idPrev());
             }
-            //å­˜å…¥ç®¡ç†å™¨æ± 
+            //´æÈë¹ÜÀíÆ÷³Ø
             $.ligerui.add(this);
 
             if (!this.element) return;
 
-            //è¯»å–attræ–¹æ³•,å¹¶åŠ è½½åˆ°å‚æ•°,æ¯”å¦‚['url']
+            //¶ÁÈ¡attr·½·¨,²¢¼ÓÔØµ½²ÎÊı,±ÈÈç['url']
             var attributes = this.attr();
             if (attributes && attributes instanceof Array)
             {
@@ -476,7 +476,7 @@
                     this.options[name] = $(this.element).attr(name);
                 }
             }
-            //è¯»å–ligeruiè¿™ä¸ªå±æ€§ï¼Œå¹¶åŠ è½½åˆ°å‚æ•°ï¼Œæ¯”å¦‚ ligerui = "width:120,heigth:100"
+            //¶ÁÈ¡ligeruiÕâ¸öÊôĞÔ£¬²¢¼ÓÔØµ½²ÎÊı£¬±ÈÈç ligerui = "width:120,heigth:100"
             var p = this.options;
             if ($(this.element).attr("ligerui"))
             {
@@ -490,7 +490,7 @@
                 catch (e) { }
             }
         },
-        //é¢„æ¸²æŸ“,å¯ä»¥ç”¨äºç»§æ‰¿æ‰©å±•
+        //Ô¤äÖÈ¾,¿ÉÒÔÓÃÓÚ¼Ì³ĞÀ©Õ¹
         _preRender: function ()
         {
 
@@ -506,7 +506,7 @@
                 $(this.element).attr("ligeruiid", this.id);
             }
         },
-        //è¿”å›è¦è½¬æ¢æˆligeruiå‚æ•°çš„å±æ€§,æ¯”å¦‚['url']
+        //·µ»ØÒª×ª»»³Éligerui²ÎÊıµÄÊôĞÔ,±ÈÈç['url']
         attr: function ()
         {
             return [];
@@ -520,7 +520,7 @@
     });
 
 
-    //è¡¨å•æ§ä»¶åŸºç±»
+    //±íµ¥¿Ø¼ş»ùÀà
     $.ligerui.controls.Input = function (element, options)
     {
         $.ligerui.controls.Input.base.constructor.call(this, element, options);
@@ -557,12 +557,12 @@
         }
     });
 
-    //å…¨å±€çª—å£å¯¹è±¡
+    //È«¾Ö´°¿Ú¶ÔÏó
     $.ligerui.win = {
-        //é¡¶ç«¯æ˜¾ç¤º
+        //¶¥¶ËÏÔÊ¾
         top: false,
 
-        //é®ç½©
+        //ÕÚÕÖ
         mask: function (win)
         {
             function setHeight()
@@ -582,7 +582,7 @@
             this.masking = true;
         },
 
-        //å–æ¶ˆé®ç½©
+        //È¡ÏûÕÚÕÖ
         unmask: function (win)
         {
             var jwins = $("body > .l-dialog:visible,body > .l-window:visible");
@@ -590,12 +590,12 @@
             {
                 var winid = jwins.eq(i).attr("ligeruiid");
                 if (win && win.id == winid) continue;
-                //è·å–ligeruiå¯¹è±¡
+                //»ñÈ¡ligerui¶ÔÏó
                 var winmanager = $.ligerui.get(winid);
                 if (!winmanager) continue;
-                //æ˜¯å¦æ¨¡æ€çª—å£
+                //ÊÇ·ñÄ£Ì¬´°¿Ú
                 var modal = winmanager.get('modal');
-                //å¦‚æœå­˜åœ¨å…¶ä»–æ¨¡æ€çª—å£ï¼Œé‚£ä¹ˆä¸ä¼šå–æ¶ˆé®ç½©
+                //Èç¹û´æÔÚÆäËûÄ£Ì¬´°¿Ú£¬ÄÇÃ´²»»áÈ¡ÏûÕÚÕÖ
                 if (modal) return;
             }
             if (this.windowMask)
@@ -603,7 +603,7 @@
             this.masking = false;
         },
 
-        //æ˜¾ç¤ºä»»åŠ¡æ 
+        //ÏÔÊ¾ÈÎÎñÀ¸
         createTaskbar: function ()
         {
             if (!this.taskbar)
@@ -618,7 +618,7 @@
             return this.taskbar;
         },
 
-        //å…³é—­ä»»åŠ¡æ 
+        //¹Ø±ÕÈÎÎñÀ¸
         removeTaskbar: function ()
         {
             var self = this;
@@ -644,7 +644,7 @@
             }
         },
 
-        //è·å–ä»»åŠ¡
+        //»ñÈ¡ÈÎÎñ
         getTask: function (win)
         {
             var self = this;
@@ -654,7 +654,7 @@
         },
 
 
-        //å¢åŠ ä»»åŠ¡
+        //Ôö¼ÓÈÎÎñ
         addTask: function (win)
         {
             var self = this;
@@ -691,7 +691,7 @@
             return false;
         },
 
-        //ç§»é™¤ä»»åŠ¡
+        //ÒÆ³ıÈÎÎñ
         removeTask: function (win)
         {
             var self = this;
@@ -708,7 +708,7 @@
             }
         },
 
-        //å‰ç«¯æ˜¾ç¤º
+        //Ç°¶ËÏÔÊ¾
         setFront: function (win)
         {
             var wins = $.ligerui.find($.ligerui.core.Win);
@@ -729,7 +729,7 @@
     };
 
 
-    //çª—å£åŸºç±» windowã€dialog
+    //´°¿Ú»ùÀà window¡¢dialog
     $.ligerui.core.Win = function (element, options)
     {
         $.ligerui.core.Win.base.constructor.call(this, element, options);

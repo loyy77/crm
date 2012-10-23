@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -33,24 +33,24 @@
         onDrag: false,
         onStopDrag: false,
         handler: null,
-        //ä»£ç† æ‹–åŠ¨æ—¶çš„ä¸»ä½“,å¯ä»¥æ˜¯'clone'æˆ–è€…æ˜¯å‡½æ•°,æ”¾å›jQuery å¯¹è±¡
+        //´úÀí ÍÏ¶¯Ê±µÄÖ÷Ìå,¿ÉÒÔÊÇ'clone'»òÕßÊÇº¯Êı,·Å»ØjQuery ¶ÔÏó
         proxy: true,
         revert: false,
         animate: true,
         onRevert: null,
         onEndRevert: null,
-        //æ¥æ”¶åŒºåŸŸ jQueryå¯¹è±¡æˆ–è€…jQueryé€‰æ‹©å­—ç¬¦
+        //½ÓÊÕÇøÓò jQuery¶ÔÏó»òÕßjQueryÑ¡Ôñ×Ö·û
         receive: null,
-        //è¿›å…¥åŒºåŸŸ
+        //½øÈëÇøÓò
         onDragEnter: null,
-        //åœ¨åŒºåŸŸç§»åŠ¨
+        //ÔÚÇøÓòÒÆ¶¯
         onDragOver: null,
-        //ç¦»å¼€åŒºåŸŸ
+        //Àë¿ªÇøÓò
         onDragLeave: null,
-        //åœ¨åŒºåŸŸé‡Šæ”¾
+        //ÔÚÇøÓòÊÍ·Å
         onDrop: null,
         disabled: false,
-        proxyX: null,     //ä»£ç†ç›¸å¯¹é¼ æ ‡æŒ‡é’ˆçš„ä½ç½®,å¦‚æœä¸è®¾ç½®åˆ™å¯¹åº”targetçš„left
+        proxyX: null,     //´úÀíÏà¶ÔÊó±êÖ¸ÕëµÄÎ»ÖÃ,Èç¹û²»ÉèÖÃÔò¶ÔÓ¦targetµÄleft
         proxyY: null
     };
 
@@ -105,7 +105,7 @@
             if (g.trigger('startDrag', [g.current, e]) == false) return false;
             g.cursor = "move";
             g._createProxy(p.proxy, e);
-            //ä»£ç†æ²¡æœ‰åˆ›å»ºæˆåŠŸ
+            //´úÀíÃ»ÓĞ´´½¨³É¹¦
             if (p.proxy && !g.proxy) return false;
             (g.proxy || g.handler).css('cursor', g.cursor);
             $(document).bind("selectstart.drag", function () { return false; });

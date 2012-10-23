@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -22,10 +22,10 @@
         onChangeValue: null,
         width: null,
         disabled: false,
-        value: null,     //åˆå§‹åŒ–å€¼ 
-        nullText: null,   //ä¸èƒ½ä¸ºç©ºæ—¶çš„æç¤º
-        digits: false,     //æ˜¯å¦é™å®šä¸ºæ•°å­—è¾“å…¥æ¡†
-        number: false    //æ˜¯å¦é™å®šä¸ºæµ®ç‚¹æ•°æ ¼å¼è¾“å…¥æ¡†
+        value: null,     //³õÊ¼»¯Öµ 
+        nullText: null,   //²»ÄÜÎª¿ÕÊ±µÄÌáÊ¾
+        digits: false,     //ÊÇ·ñÏŞ¶¨ÎªÊı×ÖÊäÈë¿ò
+        number: false    //ÊÇ·ñÏŞ¶¨Îª¸¡µãÊı¸ñÊ½ÊäÈë¿ò
     };
 
 
@@ -60,7 +60,7 @@
         {
             var g = this, p = this.options;
             g.inputText = $(this.element);
-            //å¤–å±‚
+            //Íâ²ã
             g.wrapper = g.inputText.wrap('<div class="l-text"></div>').parent();
             g.wrapper.append('<div class="l-text-l"></div><div class="l-text-r"></div>');
             if (!g.inputText.hasClass("l-text-field"))

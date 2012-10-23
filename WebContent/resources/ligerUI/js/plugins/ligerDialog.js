@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -11,7 +11,7 @@
 {
     var l = $.ligerui;
 
-    //å…¨å±€äº‹ä»¶
+    //È«¾ÖÊÂ¼ş
     $(".l-dialog-btn").live('mouseover', function ()
     {
         $(this).addClass("l-dialog-btn-over");
@@ -33,7 +33,7 @@
         return l.run.call(null, "ligerDialog", arguments, { isStatic: true });
     };
 
-    //dialog å›¾ç‰‡æ–‡ä»¶å¤¹çš„è·¯å¾„ é¢„åŠ è½½
+    //dialog Í¼Æ¬ÎÄ¼ş¼ĞµÄÂ·¾¶ Ô¤¼ÓÔØ
     $.ligerui.DialogImagePath = "../../lib/ligerUI/skins/Aqua/images/win/";
 
     function prevImage(paths)
@@ -46,44 +46,44 @@
     //prevImage(['dialog.gif', 'dialog-winbtns.gif', 'dialog-bc.gif', 'dialog-tc.gif']);
 
     $.ligerDefaults.Dialog = {
-        cls: null,       //ç»™dialogé™„åŠ css class
-        id: null,        //ç»™dialogé™„åŠ id
-        buttons: null, //æŒ‰é’®é›†åˆ 
-        isDrag: true,   //æ˜¯å¦æ‹–åŠ¨
-        width: 280,     //å®½åº¦
-        height: null,   //é«˜åº¦ï¼Œé»˜è®¤è‡ªé€‚åº” 
-        content: '',    //å†…å®¹
-        target: null,   //ç›®æ ‡å¯¹è±¡ï¼ŒæŒ‡å®šå®ƒå°†ä»¥appendTo()çš„æ–¹å¼è½½å…¥
-        url: null,      //ç›®æ ‡é¡µurlï¼Œé»˜è®¤ä»¥iframeçš„æ–¹å¼è½½å…¥
-        load: false,     //æ˜¯å¦ä»¥load()çš„æ–¹å¼åŠ è½½ç›®æ ‡é¡µçš„å†…å®¹
+        cls: null,       //¸ødialog¸½¼Ócss class
+        id: null,        //¸ødialog¸½¼Óid
+        buttons: null, //°´Å¥¼¯ºÏ 
+        isDrag: true,   //ÊÇ·ñÍÏ¶¯
+        width: 280,     //¿í¶È
+        height: null,   //¸ß¶È£¬Ä¬ÈÏ×ÔÊÊÓ¦ 
+        content: '',    //ÄÚÈİ
+        target: null,   //Ä¿±ê¶ÔÏó£¬Ö¸¶¨Ëü½«ÒÔappendTo()µÄ·½Ê½ÔØÈë
+        url: null,      //Ä¿±êÒ³url£¬Ä¬ÈÏÒÔiframeµÄ·½Ê½ÔØÈë
+        load: false,     //ÊÇ·ñÒÔload()µÄ·½Ê½¼ÓÔØÄ¿±êÒ³µÄÄÚÈİ
         onLoaded: null,
-        type: 'none',   //ç±»å‹ warnã€successã€errorã€question
-        left: null,     //ä½ç½®left
-        top: null,      //ä½ç½®top
-        modal: true,    //æ˜¯å¦æ¨¡æ€å¯¹è¯æ¡†
-        name: null,     //åˆ›å»ºiframeæ—¶ ä½œä¸ºiframeçš„nameå’Œid 
-        isResize: false, // æ˜¯å¦è°ƒæ•´å¤§å°
-        allowClose: true, //å…è®¸å…³é—­
+        type: 'none',   //ÀàĞÍ warn¡¢success¡¢error¡¢question
+        left: null,     //Î»ÖÃleft
+        top: null,      //Î»ÖÃtop
+        modal: true,    //ÊÇ·ñÄ£Ì¬¶Ô»°¿ò
+        name: null,     //´´½¨iframeÊ± ×÷ÎªiframeµÄnameºÍid 
+        isResize: false, // ÊÇ·ñµ÷Õû´óĞ¡
+        allowClose: true, //ÔÊĞí¹Ø±Õ
         opener: null,
-        timeParmName: null,  //æ˜¯å¦ç»™URLåé¢åŠ ä¸Šå€¼ä¸ºnew Date().getTime()çš„å‚æ•°ï¼Œå¦‚æœéœ€è¦æŒ‡å®šä¸€ä¸ªå‚æ•°åå³å¯
-        closeWhenEnter: null, //å›è½¦æ—¶æ˜¯å¦å…³é—­dialog
-        isHidden: true,        //å…³é—­å¯¹è¯æ¡†æ—¶æ˜¯å¦åªæ˜¯éšè—ï¼Œè¿˜æ˜¯é”€æ¯å¯¹è¯æ¡†
-        show: true,          //åˆå§‹åŒ–æ—¶æ˜¯å¦é©¬ä¸Šæ˜¾ç¤º
-        title: 'æç¤º',        //å¤´éƒ¨ 
-        showMax: false,                             //æ˜¯å¦æ˜¾ç¤ºæœ€å¤§åŒ–æŒ‰é’® 
-        showToggle: false,                          //æ˜¯å¦æ˜¾ç¤ºæ”¶ç¼©çª—å£æŒ‰é’®
-        showMin: false,                             //æ˜¯å¦æ˜¾ç¤ºæœ€å°åŒ–æŒ‰é’®
-        slide: $.browser.msie ? false : true,        //æ˜¯å¦ä»¥åŠ¨ç”»çš„å½¢å¼æ˜¾ç¤º 
-        fixedType: null,            //åœ¨å›ºå®šçš„ä½ç½®æ˜¾ç¤º, å¯ä»¥è®¾ç½®çš„å€¼æœ‰n, e, s, w, ne, se, sw, nw
-        showType: null             //æ˜¾ç¤ºç±»å‹,å¯ä»¥è®¾ç½®ä¸ºslide(å›ºå®šæ˜¾ç¤ºæ—¶æœ‰æ•ˆ)
+        timeParmName: null,  //ÊÇ·ñ¸øURLºóÃæ¼ÓÉÏÖµÎªnew Date().getTime()µÄ²ÎÊı£¬Èç¹ûĞèÒªÖ¸¶¨Ò»¸ö²ÎÊıÃû¼´¿É
+        closeWhenEnter: null, //»Ø³µÊ±ÊÇ·ñ¹Ø±Õdialog
+        isHidden: true,        //¹Ø±Õ¶Ô»°¿òÊ±ÊÇ·ñÖ»ÊÇÒş²Ø£¬»¹ÊÇÏú»Ù¶Ô»°¿ò
+        show: true,          //³õÊ¼»¯Ê±ÊÇ·ñÂíÉÏÏÔÊ¾
+        title: 'ÌáÊ¾',        //Í·²¿ 
+        showMax: false,                             //ÊÇ·ñÏÔÊ¾×î´ó»¯°´Å¥ 
+        showToggle: false,                          //ÊÇ·ñÏÔÊ¾ÊÕËõ´°¿Ú°´Å¥
+        showMin: false,                             //ÊÇ·ñÏÔÊ¾×îĞ¡»¯°´Å¥
+        slide: $.browser.msie ? false : true,        //ÊÇ·ñÒÔ¶¯»­µÄĞÎÊ½ÏÔÊ¾ 
+        fixedType: null,            //ÔÚ¹Ì¶¨µÄÎ»ÖÃÏÔÊ¾, ¿ÉÒÔÉèÖÃµÄÖµÓĞn, e, s, w, ne, se, sw, nw
+        showType: null             //ÏÔÊ¾ÀàĞÍ,¿ÉÒÔÉèÖÃÎªslide(¹Ì¶¨ÏÔÊ¾Ê±ÓĞĞ§)
     };
     $.ligerDefaults.DialogString = {
-        titleMessage: 'æç¤º',                     //æç¤ºæ–‡æœ¬æ ‡é¢˜
-        ok: 'ç¡®å®š',
-        yes: 'æ˜¯',
-        no: 'å¦',
-        cancel: 'å–æ¶ˆ',
-        waittingMessage: 'æ­£åœ¨ç­‰å¾…ä¸­,è¯·ç¨å€™...'
+        titleMessage: 'ÌáÊ¾',                     //ÌáÊ¾ÎÄ±¾±êÌâ
+        ok: 'È·¶¨',
+        yes: 'ÊÇ',
+        no: '·ñ',
+        cancel: 'È¡Ïû',
+        waittingMessage: 'ÕıÔÚµÈ´ıÖĞ,ÇëÉÔºò...'
     };
 
     $.ligerMethos.Dialog = $.ligerMethos.Dialog || {};
@@ -129,7 +129,7 @@
             }
             if (p.cls) g.dialog.addClass(p.cls);
             if (p.id) g.dialog.attr("id", p.id); 
-            //è®¾ç½®é”å®šå±å¹•ã€æ‹–åŠ¨æ”¯æŒ å’Œè®¾ç½®å›¾ç‰‡
+            //ÉèÖÃËø¶¨ÆÁÄ»¡¢ÍÏ¶¯Ö§³Ö ºÍÉèÖÃÍ¼Æ¬
             g.mask();
             if (p.isDrag)
                 g._applyDrag();
@@ -147,7 +147,7 @@
                 g.unmask();
                 g.dialog.hide();
             }
-            //è®¾ç½®ä¸»ä½“å†…å®¹
+            //ÉèÖÃÖ÷ÌåÄÚÈİ
             if (p.target)
             {
                 g.dialog.content.prepend(p.target);
@@ -184,7 +184,7 @@
                 }
             }
             if (p.opener) g.dialog.opener = p.opener;
-            //è®¾ç½®æŒ‰é’®
+            //ÉèÖÃ°´Å¥
             if (p.buttons)
             {
                 $(p.buttons).each(function (i, item)
@@ -209,7 +209,7 @@
                 l.win.setFront(g);
             });
 
-            //è®¾ç½®äº‹ä»¶
+            //ÉèÖÃÊÂ¼ş
             $(".l-dialog-tc .l-dialog-close", g.dialog).click(function ()
             {
                 if (p.isHidden)
@@ -219,7 +219,7 @@
             });
             if (!p.fixedType)
             {
-                //ä½ç½®åˆå§‹åŒ–
+                //Î»ÖÃ³õÊ¼»¯
                 var left = 0;
                 var top = 0;
                 var width = p.width || g.dialog.width();
@@ -277,7 +277,7 @@
                 g._onReisze();
             }
         },
-        //æœ€å¤§åŒ–
+        //×î´ó»¯
         max: function ()
         {
             var g = this, p = this.options;
@@ -303,7 +303,7 @@
             }
         },
 
-        //æ¢å¤
+        //»Ö¸´
         recover: function ()
         {
             var g = this, p = this.options;
@@ -336,7 +336,7 @@
             g.maximum = false;
         },
 
-        //æœ€å°åŒ–
+        //×îĞ¡»¯
         min: function ()
         {
             var g = this, p = this.options;
@@ -393,7 +393,7 @@
             g.show();
         },
 
-        //å±•å¼€ æ”¶ç¼©
+        //Õ¹¿ª ÊÕËõ
         toggle: function ()
         {
 
@@ -405,7 +405,7 @@
                 g.collapse();
         },
 
-        //æ”¶ç¼©
+        //ÊÕËõ
         collapse: function ()
         {
             var g = this, p = this.options;
@@ -417,7 +417,7 @@
             if (this.resizable) this.resizable.set({ disabled: true });
         },
 
-        //å±•å¼€
+        //Õ¹¿ª
         extend: function ()
         {
             var g = this, p = this.options;
@@ -570,7 +570,7 @@
                 g.wintoggle = null;
             }
         },
-        //æŒ‰ä¸‹å›è½¦
+        //°´ÏÂ»Ø³µ
         enter: function ()
         {
             var g = this, p = this.options;
@@ -687,7 +687,7 @@
             {
                 g.dialog.show();
             }
-            //å‰ç«¯æ˜¾ç¤º 
+            //Ç°¶ËÏÔÊ¾ 
             $.ligerui.win.setFront.ligerDefer($.ligerui.win, 100, [g]);
         },
         setUrl: function (url)
@@ -723,7 +723,7 @@
                         {
                             var triggers1 = l.find($.ligerui.controls.DateEditor);
                             var triggers2 = l.find($.ligerui.controls.ComboBox);
-                            //æ›´æ–°æ‰€æœ‰ä¸‹æ‹‰é€‰æ‹©æ¡†çš„ä½ç½®
+                            //¸üĞÂËùÓĞÏÂÀ­Ñ¡Ôñ¿òµÄÎ»ÖÃ
                             $($.merge(triggers1, triggers2)).each(function ()
                             {
                                 if (this.updateSelectBoxPosition)

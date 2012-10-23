@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -27,11 +27,11 @@
         childIcon: 'leaf',
         textFieldName: 'text',
         attribute: ['id', 'url'],
-        treeLine: true,            //æ˜¯å¦æ˜¾ç¤ºline
+        treeLine: true,            //ÊÇ·ñÏÔÊ¾line
         nodeWidth: 90,
         statusName: '__status',
-        isLeaf: null,              //æ˜¯å¦å­èŠ‚ç‚¹çš„åˆ¤æ–­å‡½æ•°
-        single: false,               //æ˜¯å¦å•é€‰
+        isLeaf: null,              //ÊÇ·ñ×Ó½ÚµãµÄÅĞ¶Ïº¯Êı
+        single: false,               //ÊÇ·ñµ¥Ñ¡
         onBeforeExpand: function () { },
         onContextmenu: function () { },
         onExpand: function () { },
@@ -48,14 +48,14 @@
         idFieldName: 'id',
         parentIDFieldName: null,
         topParentIDValue: 0,
-        onBeforeAppend: function () { },        //åŠ è½½æ•°æ®å‰äº‹ä»¶ï¼Œå¯ä»¥é€šè¿‡return falseå–æ¶ˆæ“ä½œ
-        onAppend: function () { },             //åŠ è½½æ•°æ®æ—¶äº‹ä»¶ï¼Œå¯¹æ•°æ®è¿›è¡Œé¢„å¤„ç†ä»¥å
-        onAfterAppend: function () { },         //åŠ è½½æ•°æ®å®Œäº‹ä»¶
-        slide: true,          //æ˜¯å¦ä»¥åŠ¨ç”»çš„å½¢å¼æ˜¾ç¤º
+        onBeforeAppend: function () { },        //¼ÓÔØÊı¾İÇ°ÊÂ¼ş£¬¿ÉÒÔÍ¨¹ıreturn falseÈ¡Ïû²Ù×÷
+        onAppend: function () { },             //¼ÓÔØÊı¾İÊ±ÊÂ¼ş£¬¶ÔÊı¾İ½øĞĞÔ¤´¦ÀíÒÔºó
+        onAfterAppend: function () { },         //¼ÓÔØÊı¾İÍêÊÂ¼ş
+        slide: true,          //ÊÇ·ñÒÔ¶¯»­µÄĞÎÊ½ÏÔÊ¾
         iconFieldName: 'icon',
-        nodeDraggable: false,             //æ˜¯å¦å…è®¸æ‹–æ‹½
+        nodeDraggable: false,             //ÊÇ·ñÔÊĞíÍÏ×§
         nodeDraggingRender: null,
-        btnClickToToggleOnly: true     //æ˜¯å¦ç‚¹å‡»å±•å¼€/æ”¶ç¼© æŒ‰é’®æ—¶æ‰æœ‰æ•ˆ
+        btnClickToToggleOnly: true     //ÊÇ·ñµã»÷Õ¹¿ª/ÊÕËõ °´Å¥Ê±²ÅÓĞĞ§
     };
 
     $.ligerui.controls.Tree = function (element, options)
@@ -108,13 +108,13 @@
         {
             return this.data;
         },
-        //æ˜¯å¦åŒ…å«å­èŠ‚ç‚¹
+        //ÊÇ·ñ°üº¬×Ó½Úµã
         hasChildren: function (treenodedata)
         {
             if (this.options.isLeaf) return this.options.isLeaf(treenodedata);
             return treenodedata.children ? true : false;
         },
-        //è·å–çˆ¶èŠ‚ç‚¹ æ•°æ®
+        //»ñÈ¡¸¸½Úµã Êı¾İ
         getParent: function (treenode, level)
         {
             var g = this;
@@ -124,7 +124,7 @@
             var parentIndex = $(parentTreeNode).attr("treedataindex");
             return g._getDataNodeByTreeDataIndex(parentIndex);
         },
-        //è·å–çˆ¶èŠ‚ç‚¹
+        //»ñÈ¡¸¸½Úµã
         getParentTreeItem: function (treenode, level)
         {
             var g = this;
@@ -171,7 +171,7 @@
             }
             return null;
         },
-        //å‡çº§ä¸ºçˆ¶èŠ‚ç‚¹çº§åˆ«
+        //Éı¼¶Îª¸¸½Úµã¼¶±ğ
         upgrade: function (treeNode)
         {
             var g = this, p = this.options;
@@ -190,7 +190,7 @@
                         .addClass(g._getParentNodeClassName(true));
             });
         },
-        //é™çº§ä¸ºå¶èŠ‚ç‚¹çº§åˆ«
+        //½µ¼¶ÎªÒ¶½Úµã¼¶±ğ
         demotion: function (treeNode)
         {
             var g = this, p = this.options;
@@ -229,7 +229,7 @@
             g.loading.show();
             var ajaxtype = param ? "post" : "get";
             param = param || [];
-            //è¯·æ±‚æœåŠ¡å™¨
+            //ÇëÇó·şÎñÆ÷
             $.ajax({
                 type: ajaxtype,
                 url: url,
@@ -256,14 +256,14 @@
                 }
             });
         },
-        //æ¸…ç©º
+        //Çå¿Õ
         clear: function ()
         {
             var g = this, p = this.options;
             //g.tree.html("");
             $("> li", g.tree).each(function () { g.remove(this); });
         },
-        //@parm [treeNode] domèŠ‚ç‚¹(li)ã€èŠ‚ç‚¹æ•°æ® æˆ–è€…èŠ‚ç‚¹ dataindex
+        //@parm [treeNode] dom½Úµã(li)¡¢½ÚµãÊı¾İ »òÕß½Úµã dataindex
         getNodeDom: function (nodeParm)
         {
             var g = this, p = this.options;
@@ -278,7 +278,7 @@
             }
             return nodeParm;
         },
-        //@parm [treeNode] domèŠ‚ç‚¹(li)ã€èŠ‚ç‚¹æ•°æ® æˆ–è€…èŠ‚ç‚¹ dataindex
+        //@parm [treeNode] dom½Úµã(li)¡¢½ÚµãÊı¾İ »òÕß½Úµã dataindex
         remove: function (treeNode)
         {
             var g = this, p = this.options;
@@ -287,7 +287,7 @@
             var treenodedata = g._getDataNodeByTreeDataIndex(g.data, treedataindex);
             if (treenodedata) g._setTreeDataStatus([treenodedata], 'delete');
             var parentNode = g.getParentTreeItem(treeNode);
-            //å¤é€‰æ¡†å¤„ç†
+            //¸´Ñ¡¿ò´¦Àí
             if (p.checkbox)
             {
                 g._setParentCheckboxStatus($(treeNode));
@@ -301,7 +301,7 @@
             var itmes = $(" > li", ul);
             var treeitemlength = itmes.length;
             if (!treeitemlength) return;
-            //éå†è®¾ç½®å­èŠ‚ç‚¹çš„æ ·å¼
+            //±éÀúÉèÖÃ×Ó½ÚµãµÄÑùÊ½
             itmes.each(function (i, item)
             {
                 if (i == 0 && !$(this).hasClass("l-first"))
@@ -316,7 +316,7 @@
                 g._setTreeItem(this, { isLast: i == treeitemlength - 1 });
             });
         },
-        //@parm [domnode] domèŠ‚ç‚¹(li)ã€èŠ‚ç‚¹æ•°æ® æˆ–è€…èŠ‚ç‚¹ dataindex
+        //@parm [domnode] dom½Úµã(li)¡¢½ÚµãÊı¾İ »òÕß½Úµã dataindex
         update: function (domnode, newnodedata)
         {
             var g = this, p = this.options;
@@ -332,11 +332,11 @@
                 }
             }
         },
-        //å¢åŠ èŠ‚ç‚¹é›†åˆ
-        //@parm [newdata] æ•°æ®é›†åˆ Array
-        //@parm [parentNode] domèŠ‚ç‚¹(li)ã€èŠ‚ç‚¹æ•°æ® æˆ–è€…èŠ‚ç‚¹ dataindex
-        //@parm [nearNode] é™„åŠ åˆ°èŠ‚ç‚¹çš„ä¸Šæ–¹/ä¸‹æ–¹(éå¿…å¡«)
-        //@parm [isAfter] é™„åŠ åˆ°èŠ‚ç‚¹çš„ä¸‹æ–¹(éå¿…å¡«)
+        //Ôö¼Ó½Úµã¼¯ºÏ
+        //@parm [newdata] Êı¾İ¼¯ºÏ Array
+        //@parm [parentNode] dom½Úµã(li)¡¢½ÚµãÊı¾İ »òÕß½Úµã dataindex
+        //@parm [nearNode] ¸½¼Óµ½½ÚµãµÄÉÏ·½/ÏÂ·½(·Ç±ØÌî)
+        //@parm [isAfter] ¸½¼Óµ½½ÚµãµÄÏÂ·½(·Ç±ØÌî)
         append: function (parentNode, newdata, nearNode, isAfter)
         {
             var g = this, p = this.options;
@@ -353,7 +353,7 @@
             }
             g.trigger('append', [parentNode, newdata])
             g._appendData(parentNode, newdata);
-            if (parentNode == null)//å¢åŠ åˆ°æ ¹èŠ‚ç‚¹
+            if (parentNode == null)//Ôö¼Óµ½¸ù½Úµã
             {
                 var gridhtmlarr = g._getTreeHTMLByData(newdata, 1, [], true);
                 gridhtmlarr[gridhtmlarr.length - 1] = gridhtmlarr[0] = "";
@@ -388,7 +388,7 @@
             if (!hasChildren)
             {
                 treeitem.append("<ul class='l-children'></ul>");
-                //è®¾ç½®ä¸ºçˆ¶èŠ‚ç‚¹
+                //ÉèÖÃÎª¸¸½Úµã
                 g.upgrade(parentNode);
             }
             var isLast = [];
@@ -422,7 +422,7 @@
             });
             g.trigger('afterAppend', [parentNode, newdata]);
         },
-        //@parm [nodeParm] domèŠ‚ç‚¹(li)ã€èŠ‚ç‚¹æ•°æ® æˆ–è€…èŠ‚ç‚¹ dataindex
+        //@parm [nodeParm] dom½Úµã(li)¡¢½ÚµãÊı¾İ »òÕß½Úµã dataindex
         cancelSelect: function (nodeParm)
         {
             var g = this, p = this.options;
@@ -437,7 +437,7 @@
                 treeitembody.removeClass("l-selected");
             g.trigger('cancelSelect', [{ data: treenodedata, target: treeitem[0]}]);
         },
-        //é€‰æ‹©èŠ‚ç‚¹(å‚æ•°ï¼šæ¡ä»¶å‡½æ•°ã€DomèŠ‚ç‚¹æˆ–IDå€¼)
+        //Ñ¡Ôñ½Úµã(²ÎÊı£ºÌõ¼şº¯Êı¡¢Dom½Úµã»òIDÖµ)
         selectNode: function (selectNodeParm)
         {
             var g = this, p = this.options;
@@ -507,12 +507,12 @@
             });
             return data;
         },
-        arrayToTree: function (data, id, pid)      //å°†IDã€ParentIDè¿™ç§æ•°æ®æ ¼å¼è½¬æ¢ä¸ºæ ‘æ ¼å¼
+        arrayToTree: function (data, id, pid)      //½«ID¡¢ParentIDÕâÖÖÊı¾İ¸ñÊ½×ª»»ÎªÊ÷¸ñÊ½
         {
             if (!data || !data.length) return [];
-            var targetData = [];                    //å­˜å‚¨æ•°æ®çš„å®¹å™¨(è¿”å›) 
+            var targetData = [];                    //´æ´¢Êı¾İµÄÈİÆ÷(·µ»Ø) 
             var records = {};
-            var itemLength = data.length;           //æ•°æ®é›†åˆçš„ä¸ªæ•°
+            var itemLength = data.length;           //Êı¾İ¼¯ºÏµÄ¸öÊı
             for (var i = 0; i < itemLength; i++)
             {
                 var o = data[i];
@@ -532,7 +532,7 @@
             }
             return targetData;
         },
-        //æ ¹æ®æ•°æ®ç´¢å¼•è·å–æ•°æ®
+        //¸ù¾İÊı¾İË÷Òı»ñÈ¡Êı¾İ
         _getDataNodeByTreeDataIndex: function (data, treedataindex)
         {
             var g = this, p = this.options;
@@ -548,7 +548,7 @@
             }
             return null;
         },
-        //è®¾ç½®æ•°æ®çŠ¶æ€
+        //ÉèÖÃÊı¾İ×´Ì¬
         _setTreeDataStatus: function (data, status)
         {
             var g = this, p = this.options;
@@ -561,7 +561,7 @@
                 }
             });
         },
-        //è®¾ç½®data ç´¢å¼•
+        //ÉèÖÃdata Ë÷Òı
         _addTreeDataIndexToData: function (data)
         {
             var g = this, p = this.options;
@@ -589,7 +589,7 @@
                 });
             }
         },
-        //æ·»åŠ é¡¹åˆ°g.data
+        //Ìí¼ÓÏîµ½g.data
         _appendData: function (treeNode, data)
         {
             var g = this, p = this.options;
@@ -657,7 +657,7 @@
             if (isOpen) nodeclassname += '-open';
             return nodeclassname;
         },
-        //æ ¹æ®dataç”Ÿæˆæœ€ç»ˆå®Œæ•´çš„tree html
+        //¸ù¾İdataÉú³É×îÖÕÍêÕûµÄtree html
         _getTreeHTMLByData: function (data, outlineLevel, isLast, isExpand)
         {
             var g = this, p = this.options;
@@ -682,7 +682,7 @@
                 if (isExpandCurrent)
                     treehtmlarr.push('isexpand=' + o.isexpand + ' ');
                 treehtmlarr.push('outlinelevel=' + outlineLevel + ' ');
-                //å¢åŠ å±æ€§æ”¯æŒ
+                //Ôö¼ÓÊôĞÔÖ§³Ö
                 for (var j = 0; j < g.sysAttribute.length; j++)
                 {
                     if ($(this).attr(g.sysAttribute[j]))
@@ -773,7 +773,7 @@
             return treehtmlarr;
 
         },
-        //æ ¹æ®ç®€æ´çš„htmlè·å–data
+        //¸ù¾İ¼ò½àµÄhtml»ñÈ¡data
         _getDataByTreeHTML: function (treeDom)
         {
             var g = this, p = this.options;
@@ -919,7 +919,7 @@
                 {
                     if (p.autoCheckboxEven)
                     {
-                        //çŠ¶æ€ï¼šæœªé€‰ä¸­
+                        //×´Ì¬£ºÎ´Ñ¡ÖĞ
                         if ($(obj).hasClass("l-checkbox-unchecked"))
                         {
                             $(obj).removeClass("l-checkbox-unchecked").addClass("l-checkbox-checked");
@@ -928,7 +928,7 @@
                                     .addClass("l-checkbox-checked");
                             g.trigger('check', [{ data: treenodedata, target: treeitem[0] }, true]);
                         }
-                        //çŠ¶æ€ï¼šé€‰ä¸­
+                        //×´Ì¬£ºÑ¡ÖĞ
                         else if ($(obj).hasClass("l-checkbox-checked"))
                         {
                             $(obj).removeClass("l-checkbox-checked").addClass("l-checkbox-unchecked");
@@ -937,7 +937,7 @@
                                     .addClass("l-checkbox-unchecked");
                             g.trigger('check', [{ data: treenodedata, target: treeitem[0] }, false]);
                         }
-                        //çŠ¶æ€ï¼šæœªå®Œå…¨é€‰ä¸­
+                        //×´Ì¬£ºÎ´ÍêÈ«Ñ¡ÖĞ
                         else if ($(obj).hasClass("l-checkbox-incomplete"))
                         {
                             $(obj).removeClass("l-checkbox-incomplete").addClass("l-checkbox-checked");
@@ -950,18 +950,18 @@
                     }
                     else
                     {
-                        //çŠ¶æ€ï¼šæœªé€‰ä¸­
+                        //×´Ì¬£ºÎ´Ñ¡ÖĞ
                         if ($(obj).hasClass("l-checkbox-unchecked"))
                         {
                             $(obj).removeClass("l-checkbox-unchecked").addClass("l-checkbox-checked");
-                            //æ˜¯å¦å•é€‰
+                            //ÊÇ·ñµ¥Ñ¡
                             if (p.single)
                             {
                                 $(".l-checkbox", g.tree).not(obj).removeClass("l-checkbox-checked").addClass("l-checkbox-unchecked");
                             }
                             g.trigger('check', [{ data: treenodedata, target: treeitem[0] }, true]);
                         }
-                        //çŠ¶æ€ï¼šé€‰ä¸­
+                        //×´Ì¬£ºÑ¡ÖĞ
                         else if ($(obj).hasClass("l-checkbox-checked"))
                         {
                             $(obj).removeClass("l-checkbox-checked").addClass("l-checkbox-unchecked");
@@ -969,7 +969,7 @@
                         }
                     }
                 }
-                //çŠ¶æ€ï¼šå·²ç»å¼ å¼€
+                //×´Ì¬£ºÒÑ¾­ÕÅ¿ª
                 else if (treeitembtn.hasClass("l-expandable-open") && (!p.btnClickToToggleOnly || clickOnTreeItemBtn))
                 {
                     if (g.trigger('beforeCollapse', [{ data: treenodedata, target: treeitem[0]}]) == false)
@@ -984,7 +984,7 @@
                             .addClass(g._getParentNodeClassName());
                     g.trigger('collapse', [{ data: treenodedata, target: treeitem[0]}]);
                 }
-                //çŠ¶æ€ï¼šæ²¡æœ‰å¼ å¼€
+                //×´Ì¬£ºÃ»ÓĞÕÅ¿ª
                 else if (treeitembtn.hasClass("l-expandable-close") && (!p.btnClickToToggleOnly || clickOnTreeItemBtn))
                 {
                     if (g.trigger('beforeExpand', [{ data: treenodedata, target: treeitem[0]}]) == false)
@@ -1010,7 +1010,7 @@
                 g.trigger('click', [{ data: treenodedata, target: treeitem[0]}]);
             });
 
-            //èŠ‚ç‚¹æ‹–æ‹½æ”¯æŒ
+            //½ÚµãÍÏ×§Ö§³Ö
             if ($.fn.ligerDrag && p.nodeDraggable)
             {
                 g.nodeDroptip = $("<div class='l-drag-nodedroptip' style='display:none'></div>").appendTo('body');
@@ -1187,13 +1187,13 @@
                 });
             }
         },
-        //é€’å½’è®¾ç½®çˆ¶èŠ‚ç‚¹çš„çŠ¶æ€
+        //µİ¹éÉèÖÃ¸¸½ÚµãµÄ×´Ì¬
         _setParentCheckboxStatus: function (treeitem)
         {
             var g = this, p = this.options;
-            //å½“å‰åŒçº§åˆ«æˆ–ä½çº§åˆ«çš„èŠ‚ç‚¹æ˜¯å¦éƒ½é€‰ä¸­äº†
+            //µ±Ç°Í¬¼¶±ğ»òµÍ¼¶±ğµÄ½ÚµãÊÇ·ñ¶¼Ñ¡ÖĞÁË
             var isCheckedComplete = $(".l-checkbox-unchecked", treeitem.parent()).length == 0;
-            //å½“å‰åŒçº§åˆ«æˆ–ä½çº§åˆ«çš„èŠ‚ç‚¹æ˜¯å¦éƒ½æ²¡æœ‰é€‰ä¸­
+            //µ±Ç°Í¬¼¶±ğ»òµÍ¼¶±ğµÄ½ÚµãÊÇ·ñ¶¼Ã»ÓĞÑ¡ÖĞ
             var isCheckedNull = $(".l-checkbox-checked", treeitem.parent()).length == 0;
             if (isCheckedComplete)
             {

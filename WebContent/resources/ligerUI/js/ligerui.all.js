@@ -846,7 +846,8 @@
         }
     };
 
-})(jQuery);/**
+})(jQuery);
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -13514,7 +13515,7 @@
             g.nodes = g.nodes || [];
             if ($.inArray(data, g.nodes) == -1)
                 g.nodes.push(data);
-            if (data.children!=undefined&&data.children)
+            if (data.children)
             {
                 $(data.children).each(function (i, item)
                 {
@@ -13607,7 +13608,7 @@
                 var isLastCurrent = i == data.length - 1;
                 var isExpandCurrent = true;
                 var o = data[i];
-                if (o.isexpand!=undefined&&o.isexpand == false || o.isexpand == "false") isExpandCurrent = false;
+                if (o.isexpand == false || o.isexpand == "false") isExpandCurrent = false;
 
                 treehtmlarr.push('<li ');
                 if (o.treedataindex != undefined)

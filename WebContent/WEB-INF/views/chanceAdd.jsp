@@ -28,7 +28,11 @@
         {
             $("form").ligerForm();
         }); 
+        
+    
     </script>
+    
+   
     <style type="text/css">
         .l-table-edit {}
         .l-table-edit-td{ padding:4px;}
@@ -39,7 +43,7 @@
 </head>
 <body style="padding:10px">
 
-    <form:form name="form1" method="post" action="/crm/chance/doChance" id="form1" modelAttribute="chance">
+    <form:form name="form1" method="post" action="/crm/chance/doChance"  id="form1" modelAttribute="chance">
 <div>
 </div>
         <table cellpadding="0" cellspacing="0" class="l-table-edit" >

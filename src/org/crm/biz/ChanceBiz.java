@@ -18,4 +18,8 @@ public class ChanceBiz {
 	public List<Chance> list(){
 		return chanceDao.list();
 	}
+	
+	public boolean del(int chanceId){
+		return chanceDao.del(chanceId);
+	}
 }

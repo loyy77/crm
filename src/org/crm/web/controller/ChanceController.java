@@ -19,7 +19,6 @@ import org.springframework.web.context.request.WebRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 @Controller
 @SessionAttributes("user")
 public class ChanceController {
@@ -30,9 +29,9 @@ public class ChanceController {
 	@ModelAttribute("chance")
 	public Chance createChance(@ModelAttribute("user") Users user) {
 		Chance chance = new Chance();
-		
+
 		chance.setCreateId(user);
-		Users u=new Users();
+		Users u = new Users();
 		u.setUserId(99999);
 		chance.setAssignId(u);
 		return chance;
@@ -46,8 +45,9 @@ public class ChanceController {
 	 * @return
 	 */
 	@RequestMapping("/chance/doChance")
-	public String proccessChanceSubmit( Chance chance,@ModelAttribute("user") Users user) {
-		Users u =new Users();
+	public String proccessChanceSubmit(Chance chance,
+			@ModelAttribute("user") Users user) {
+		Users u = new Users();
 		u.setUserId(99999);
 		chance.setAssignId(u);
 		chance.setCreateId(user);
@@ -83,6 +83,21 @@ public class ChanceController {
 	}
 
 	/**
+	 * 删除一条销售机会信息
+	 * 
+	 * @return
+	 */
+	
+	@RequestMapping("/chance/doChanceDel")
+	public String doChanceDel(int chanceId) {
+		
+		if(this.chanceBiz.del(chanceId)){
+			return "redirect:/chance/toList";
+		}
+		return "redirect:/chance/toList";
+	}
+
+	/**
 	 * 转到chanceList.jsp
 	 * 
 	 * @return
@@ -102,17 +117,16 @@ public class ChanceController {
 	 * @return
 	 */
 	@RequestMapping("/chance/toChanceAdd")
-	public String toSalesOpptyManage(WebRequest request,@ModelAttribute("user") Users user,
-			Model model, Chance chance) {
+	public String toSalesOpptyManage(WebRequest request,
+			@ModelAttribute("user") Users user, Model model, Chance chance) {
 		System.out.println("SalesOpptyManage........");
 
-	
 		log.info(user.getLoginName());
 		Chance chan = new Chance();
 		chan.setCreateDate(new Utils().getNowDate());
 		chan.setAssignDate(chan.getCreateDate());
 		chan.setCreateId(user);
-		Users u=new Users();
+		Users u = new Users();
 		u.setUserId(99999);
 		chan.setAssignId(u);
 		model.addAttribute("chance", chan);

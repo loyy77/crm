@@ -10,13 +10,13 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" >
 <title></title>
 
  <link href="<c:url value="/resources/ligerUI/skins/Aqua/css/ligerui-all.css" />" rel="stylesheet" type="text/css" ></link>
 <%--  <link href="<c:url value="/resources/ligerUI/skins/Gray/css/all.css" />" rel="stylesheet" type="text/css" ></link> --%>
 <script src="<c:url value="/js/jquery-1.3.2.min.js" />" type="text/javascript"></script>
-<script src="<c:url value="/resources/ligerUI/js/ligerui.all.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/ligerUI/js/ligerui.min.js"/>" type="text/javascript" charset="gbk"></script>
 <script src="<c:url value="/ligerUI/js/plugins/ligerTree.js"/>" type="text/javascript" ></script>
 <script src="<c:url value="/resources/treedata.js" />"	type="text/javascript"></script>
 
@@ -158,7 +158,7 @@
 <div id="topmenu" class="l-topmenu">
     <div class="l-topmenu-logo">客户关系管理系统</div>
     <div class="l-topmenu-welcome">
-    	<span class="l-link3">当前登录用户：${user.loginName }<?span>
+    	<span class="l-link3">当前登录用户：${user.loginName }</span>
         <a href="index.aspx" class="l-link2">服务器版本</a>
         <span class="space">|</span>
         <a href="https://me.alipay.com/daomi" class="l-link2" target="_blank">捐赠</a> 
@@ -172,8 +172,6 @@
     	</div> 
         <div position="left"  title="" id="accordion1"> 
                   	<ul id="tree1"></ul>
-       	  
-                   
         </div>
         <div position="center" id="framecenter" style="color:black;"> 
             <div tabid="home" title="我的主页" style="height:300px" >

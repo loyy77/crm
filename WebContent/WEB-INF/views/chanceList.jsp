@@ -5,6 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" >
     <title></title>
     <link href="<c:url value="/ligerUI/skins/Aqua/css/ligerui-all.css"/>" rel="stylesheet" type="text/css" />
     <link href="<c:url value="/ligerUI/skins/ligerui-icons.css"/>" rel="stylesheet" type="text/css" />
@@ -15,7 +16,7 @@
     <script src="<c:url value="/ligerUI/js/plugins/ligerTextBox.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/ligerUI/js/plugins/ligerCheckBox.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/ligerUI/js/plugins/ligerComboBox.js"/>" type="text/javascript"></script>
-    <script src="<c:url value="/ligerUI/js/plugins/ligerGrid.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/ligerUI/js/plugins/ligerGrid.js"/>"  type="text/javascript" charset="gbk></script>
     <script src="<c:url value="/ligerUI/js/plugins/ligerDateEditor.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/ligerUI/js/plugins/ligerSpinner.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/ligerUI/js/plugins/ligerToolBar.js"/>" type="text/javascript"></script>
@@ -45,14 +46,42 @@
     </script>
     
     <script type="text/javascript">
+    function getSelected()
+    {
+        var manager = $("#maingrid").ligerGetGridManager();
+        var row = manager.getSelectedRow();
+        if (!row) { alert('请选择行'); return; }
+        return row.id;
+       // alert(JSON.stringify(row));
+    }
+
+    
+    	//每个按钮响应的事件
 	  function itemclick(item)
         {
 		  if(item.text=="增加"){
-      			window.location.href="../chance/toChanceAdd";
+			  
+			  window.location.href="../chance/toChanceAdd";
+			// var m= $.ligerDialog.open({ height: 420,width:550,url: '../chance/toChanceAdd' });
+      			//m.target="home";
+      			
+      			
+      			
       	  }else if(item.text=="修改"){
       		  	window.location.href="../chance.toChanceModify";
       	  }else if(item.text=="删除"){
-      		  window.location.href="../chance.doChanceDel";
+      		var chanceId=getSelected();
+      		//alert(chanceId);
+      		
+      		$.ligerDialog.confirm("确定删除编号为:"+chanceId+"的记录吗？",function (r) {
+      			if(r){
+      				window.location.href="../chance/doChanceDel?chanceId="+chanceId;
+      			}
+      		});
+
+      	
+
+      	
       	  }
         }
         $(function ()
@@ -77,6 +106,9 @@
   <div id="maingrid" style="margin-top:0px"></div> <br />
   <div style="display:none;">
   <!-- g data total ttt -->
+  
+
+  
 </div>
 </body>
 </html>

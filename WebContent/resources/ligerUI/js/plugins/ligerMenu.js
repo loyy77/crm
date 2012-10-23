@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -44,9 +44,9 @@
         {
             var g = this, p = this.options;
             g.menuItemCount = 0;
-            //å…¨éƒ¨èœå•
+            //È«²¿²Ëµ¥
             g.menus = {};
-            //é¡¶çº§èœå•
+            //¶¥¼¶²Ëµ¥
             g.menu = g.createMenu();
             g.element = g.menu[0];
             g.menu.css({ top: p.top, left: p.left, width: p.width });
@@ -252,7 +252,7 @@
             return menu;
         }
     });
-    //æ—§å†™æ³•ä¿ç•™
+    //¾ÉĞ´·¨±£Áô
     $.ligerui.controls.Menu.prototype.setEnable = $.ligerui.controls.Menu.prototype.setEnabled;
     $.ligerui.controls.Menu.prototype.setDisable = $.ligerui.controls.Menu.prototype.setDisabled;
 
