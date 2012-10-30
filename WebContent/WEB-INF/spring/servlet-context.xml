@@ -48,7 +48,19 @@ http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	</bean>
 -->
 	<!-- Resolves view names to protected .jsp resources within the /WEB-INF/views directory -->
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+		<mvc:mapping path="/*"/>
+	<!-- 	//org.crm.web.interceptor.UsersInterceptor -->
+			<bean class="org.crm.web.interceptor.UsersInterceptor" ></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	
+	<!-- 视图解析 -->
+		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>

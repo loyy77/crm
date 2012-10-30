@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @RequestMapping("/login")
 @SessionAttributes("user")
 public class UsersController {
+	
+	public  static  String CURRENT_USER="user";
 	@Autowired
 	private UsersBiz usersBiz;
 
@@ -40,7 +42,7 @@ public class UsersController {
 				user.getLoginPass());
 		if (null!=curruser&&curruser.getUserId() > 0
 				&& curruser.getLoginName().trim().length() > 1) {
-			model.addAttribute("user", curruser);
+			model.addAttribute(CURRENT_USER, curruser);
 			
 			//session.setAttribute("user", curruser);
 			return "main";
