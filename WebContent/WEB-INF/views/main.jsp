@@ -97,41 +97,48 @@
                 btnClickToToggleOnly:false, 
                 attribute: ['nodename', 'url'],
                 data: [
-                       { text: '节点1', children: [
-                                                 { text: '销售机会管理',url:'chance/toList' },
-                                                 { text: '节点1.2' },
-                                                 { text: '节点1.3', children: [
-                                                      { text: '节点1.3.1' },
-                                                      { text: '节点1.3.2' }
-                                                 ]
-                                                 },
-                                                 { text: '节点1.4' }
-                                              ]
-                                             },
-                                             { text: '节点2' },
-                                             { text: '节点3' },
-                                             { text: '节点4' }
-                                         ],
-                         onSelect: function (node)
-                         {
-                             if (!node.data.url) return;
-                             var tabid = $(node.target).attr("tabid");
-                             if (!tabid)
-                             {
-                                 tabid = new Date().getTime();
-                                 $(node.target).attr("tabid", tabid)
-                             } 
-                             f_addTab(tabid, node.data.text, node.data.url);
-                         }
-              
-            });
-            
-            tab = $("#framecenter").ligerGetTabManager();
-          //  accordion = $("#accordion1").ligerGetAccordionManager();
-            tree = $("#tree1").ligerGetTreeManager();
-            $("#pageloading").hide();
-        });
-    </script>
+                       { text: '营销管理',
+				children : [ {
+					text : '销售机会管理',
+					url : 'chance/toList'
+				}, {
+					text : '节点1.2'
+				}, {
+					text : '节点1.3',
+					children : [ {
+						text : '节点1.3.1'
+					}, {
+						text : '节点1.3.2'
+					} ]
+				}, {
+					text : '节点1.4'
+				} ]
+			}, {
+				text : '节点2'
+			}, {
+				text : '节点3'
+			}, {
+				text : '节点4'
+			} ],
+			onSelect : function(node) {
+				if (!node.data.url)
+					return;
+				var tabid = $(node.target).attr("tabid");
+				if (!tabid) {
+					tabid = new Date().getTime();
+					$(node.target).attr("tabid", tabid)
+				}
+				f_addTab(tabid, node.data.text, node.data.url);
+			}
+
+		});
+
+		tab = $("#framecenter").ligerGetTabManager();
+		//  accordion = $("#accordion1").ligerGetAccordionManager();
+		tree = $("#tree1").ligerGetTreeManager();
+		$("#pageloading").hide();
+	});
+</script>
 <style type="text/css"> 
     body,html{height:100%;}
     body{ padding:0px; margin:0;   overflow:hidden;}  

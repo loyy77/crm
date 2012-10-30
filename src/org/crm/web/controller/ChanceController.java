@@ -25,7 +25,11 @@ public class ChanceController {
 	Logger log = Logger.getLogger(ChanceController.class);
 	@Autowired
 	private ChanceBiz chanceBiz;
-
+/**
+ * 创建一个销售机会
+ * @param user
+ * @return
+ */
 	@ModelAttribute("chance")
 	public Chance createChance(@ModelAttribute("user") Users user) {
 		Chance chance = new Chance();
