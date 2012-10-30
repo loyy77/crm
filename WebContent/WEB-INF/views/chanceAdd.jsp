@@ -23,13 +23,14 @@
     <script src="/crm/resources/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
     <script src="/crm/resources/jquery-validation/messages_cn.js" type="text/javascript"></script>
 
-    <script type="text/javascript">
-        $(function ()
+    <script type="text/javascript">    
+  //  document.form1.attributes["action"].value  = "../chance/doChanceModify";
+       /*  $(function ()
         {
             $("form").ligerForm();
             alert("form");
         }); 
-        
+         */
     </script>
     
     <style type="text/css">
@@ -42,7 +43,7 @@
 </head>
 <body style="padding:10px">
 <input id="op" type="hidden" value="${op}"/>
-    <form:form name="form1" method="post" action="/crm/chance/doChance"  id="form1" modelAttribute="chance">
+    <form:form name="form1" id="form1" method="post" action="/crm/chance/doChance" modelAttribute="chance">
 <div>
 </div>
         <table cellpadding="0" cellspacing="0" class="l-table-edit" >
@@ -111,20 +112,27 @@
 		alert("op.val():"+$("#op").val());
 
   
-	  $(function(){
+	 
 		  var op=$("#op").val();
-			 
+			
+			$("#form1").attr("action","../chance/doChanceModify");
+			
 			if(op=="update"){
 				 $("#Button1").val("±£´æÐÞ¸Ä");
 				// alert($("#form1").attr('action','../chance/doChanceModify'));
 				 //alert("form.action:"+$("#form1").attr("action").val());
 				
 				
-				$("#form1").attr('action','../chance/doChanceModify');
-				alert($("#form1").attr('action').val());
+				$("#form1").attr("action","../chance/doChanceModify");
+				
+				
+				var act=document.getElementById("form1").attributes['action'];
+				//act.value="../chance/doChanceModify";
+				
+				alert(act.value);
 			}  
 		  
-	  });
+			//alert($("#form1").attr('action').val());
 	
 
  
