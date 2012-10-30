@@ -68,7 +68,10 @@
       			
       			
       	  }else if(item.text=="ÐÞ¸Ä"){
-      		  	window.location.href="../chance.toChanceModify";
+      		  
+      		  var chanceId=getSelected();
+      		  if(!chanceId)return;
+      		  	window.location.href="../chance/toChanceModify?chanceId="+chanceId;
       	  }else if(item.text=="É¾³ý"){
       		var chanceId=getSelected();
       		//alert(chanceId);

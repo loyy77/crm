@@ -27,12 +27,11 @@
         $(function ()
         {
             $("form").ligerForm();
+            alert("form");
         }); 
         
-    
     </script>
     
-   
     <style type="text/css">
         .l-table-edit {}
         .l-table-edit-td{ padding:4px;}
@@ -42,14 +41,14 @@
 
 </head>
 <body style="padding:10px">
-
+<input id="op" type="hidden" value="${op}"/>
     <form:form name="form1" method="post" action="/crm/chance/doChance"  id="form1" modelAttribute="chance">
 <div>
 </div>
         <table cellpadding="0" cellspacing="0" class="l-table-edit" >
             <tr>
                 <td align="right" class="l-table-edit-td">编号：</td>
-                <td align="left" class="l-table-edit-td"><form:input path="id" name="id" type="text" id="id" ltype="text" /></td>
+                <td align="left" class="l-table-edit-td"><form:input readonly="true" path="id" name="id" type="text" id="id" ltype="text" /></td>
                 <td align="left">机会来源：</td>
                 <td align="left"><form:input path="source" name="source" type="text" id="source" ltype="text" /></td>
             </tr>
@@ -104,5 +103,31 @@
     <!--  数据统计代码 --></div>
 </body>
 
-  
+
 </html>
+
+ <script type="text/javascript">
+
+		alert("op.val():"+$("#op").val());
+
+  
+	  $(function(){
+		  var op=$("#op").val();
+			 
+			if(op=="update"){
+				 $("#Button1").val("保存修改");
+				// alert($("#form1").attr('action','../chance/doChanceModify'));
+				 //alert("form.action:"+$("#form1").attr("action").val());
+				
+				
+				$("#form1").attr('action','../chance/doChanceModify');
+				alert($("#form1").attr('action').val());
+			}  
+		  
+	  });
+	
+
+ 
+
+  </script>
+

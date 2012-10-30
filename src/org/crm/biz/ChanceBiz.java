@@ -22,4 +22,8 @@ public class ChanceBiz {
 	public boolean del(int chanceId){
 		return chanceDao.del(chanceId);
 	}
+	
+	public Chance get(int id){
+		return chanceDao.get(id);
+	}
 }

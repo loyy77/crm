@@ -96,6 +96,16 @@ public class ChanceController {
 		}
 		return "redirect:/chance/toList";
 	}
+	/**
+	 * 执行修改销售机会
+	 * @param chance
+	 * @return
+	 */
+	@RequestMapping("/chance/doChanceModify")
+	public String doChanceModify(Chance chance){
+		log.info("执行销售修改！");
+		return "redirect:/chance/toList";
+	}
 
 	/**
 	 * 转到chanceList.jsp
@@ -130,6 +140,19 @@ public class ChanceController {
 		u.setUserId(99999);
 		chan.setAssignId(u);
 		model.addAttribute("chance", chan);
+		return "chanceAdd";
+	}
+	/**
+	 * 转到修改销售机会信息的页面
+	 * @param chanceId
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/chance/toChanceModify")
+	public String toChanceModify(int chanceId,Model model){
+		Chance chance=chanceBiz.get(chanceId);
+		model.addAttribute("chance", chance);
+		model.addAttribute("op", "update");
 		return "chanceAdd";
 	}
 }

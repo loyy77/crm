@@ -1,7 +1,5 @@
 package org.crm.entity;
 
-import java.util.Date;
-
 public class Chance {
 	private int id;
 	private String source;

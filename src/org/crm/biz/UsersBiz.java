@@ -4,12 +4,13 @@ import javax.annotation.Resource;
 
 import org.crm.dao.UsersDao;
 import org.crm.entity.Users;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UsersBiz {
 
-	@Resource
+	@Autowired
 	private UsersDao usersDao;
 
 	public Users login(String loginName, String loginPass) {

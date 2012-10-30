@@ -21,9 +21,9 @@
 		<property name="dataSource">
 			<ref bean="dataSource" />
 		</property>
-	</bean>
+	</bean> 
 	
-	<bean id="usersDao" class="org.crm.dao.UsersDao" >
+<!-- 	<bean id="usersDao" class="org.crm.dao.UsersDao" >
 		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
-	</bean>
+	</bean> -->
 </beans>
