@@ -26,7 +26,6 @@ public class ChanceController {
 	@Autowired
 	private ChanceBiz chanceBiz;
 /**
- * 创建一个销售机会
  * @param user
  * @return
  */
@@ -42,7 +41,6 @@ public class ChanceController {
 	}
 
 	/**
-	 * 添加一个销售机会
 	 * 
 	 * @param request
 	 * @param chance
@@ -60,7 +58,6 @@ public class ChanceController {
 	}
 
 	/**
-	 * 处理拉取所有销售机会的请求，ajax请求
 	 * 
 	 * @param model
 	 * @return
@@ -87,7 +84,6 @@ public class ChanceController {
 	}
 
 	/**
-	 * 删除一条销售机会信息
 	 * 
 	 * @return
 	 */
@@ -101,13 +97,12 @@ public class ChanceController {
 		return "redirect:/chance/toList";
 	}
 	/**
-	 * 执行修改销售机会
 	 * @param chance
 	 * @return
 	 */
 	@RequestMapping("/chance/doChanceModify")
 	public String doChanceModify(Chance chance){
-		log.debug("执行销售修改！");
+		//log.debug("");
 		if(!chanceBiz.udpate(chance)){
 			return "error";
 		}
@@ -125,8 +120,6 @@ public class ChanceController {
 	}
 
 	/**
-	 * 转到销售机会管理(添加机会）页面
-	 * 
 	 * @param request
 	 * @param user
 	 * @param model
@@ -150,8 +143,6 @@ public class ChanceController {
 		return "chanceAdd";
 	}
 	/**
-	 * 转到修改销售机会信息的页面
-	 * @param chanceId
 	 * @param model
 	 * @return
 	 */

@@ -15,18 +15,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class ChanceDaoImpl implements ChanceDao {
 
-	private int REMOVED = 1; // 状态被标记为删除的销售机会
-
+	private int REMOVED = 1;
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	@Autowired
-	private UsersDao usersDao;
+	private UsersDao usersDao;    
 
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	/*
+	/* 
 	 * (non-Javadoc)
 	 * 
 	 * @see org.crm.dao.impl.ChanceDao#add(org.crm.entity.Chance)
@@ -129,7 +128,6 @@ public class ChanceDaoImpl implements ChanceDao {
 	@Override
 	public boolean update(Chance chance) {
 
-		// 机会来源、客户名称、成功机率、概要、联系人、联系人电话、机会描述进行编辑。
 		String sql = "update chance set source=?,customerName=?,rate=?,title=?,linkMan=?,linkPhone=?,description=? where id=?";
 
 		int rst = this.jdbcTemplate.update(sql, chance.getSource(),

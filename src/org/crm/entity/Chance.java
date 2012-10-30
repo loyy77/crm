@@ -9,9 +9,9 @@ public class Chance {
 	private String linkMan;
 	private String linkPhone;
 	private String description;
-	private Users createId;//创建人
+	private Users createId;//
 	private String createDate;
-	private Users assignId;//指派给
+	private Users assignId;//
 	private String assignDate;
 	private int state;
 

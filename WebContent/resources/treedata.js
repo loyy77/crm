@@ -1,32 +1,32 @@
 var indexdata = 
 [
-    { text: 'è¥é”€ç®¡ç†',isexpand:false, children: [ 
-		{url:"chance/toList",text:"è¥é”€æœºä¼šç®¡ç†"},
-		{url:"demos/base/drag.htm",text:"å®¢æˆ·å¼€å‘è®¡åˆ’"}
+    { text: 'ÓªÏú¹ÜÀí',isexpand:false, children: [ 
+		{url:"chance/toList",text:"ÓªÏú»ú»á¹ÜÀí"},
+		{url:"demos/base/drag.htm",text:"¿Í»§¿ª·¢¼Æ»®"}
 	]
     },
-    { text: 'å®¢æˆ·ç®¡ç†', isexpand: false, children: [
-		{ url: "demos/filter/filter.htm", text: "å®¢æˆ·ä¿¡æ¯ç®¡ç†" },
-		{ url: "demos/filter/filterwin.htm", text: "å®¢æˆ·æµå¤±ç®¡ç†" }
+    { text: '¿Í»§¹ÜÀí', isexpand: false, children: [
+		{ url: "demos/filter/filter.htm", text: "¿Í»§ĞÅÏ¢¹ÜÀí" },
+		{ url: "demos/filter/filterwin.htm", text: "¿Í»§Á÷Ê§¹ÜÀí" }
 	]
     }, 
-	{ text: 'æœåŠ¡ç®¡ç†',isexpand:false, children: [ 
-		{url:"demos/dialog/dialogAll.htm",text:"æœåŠ¡åˆ›å»º"},
-		{url:"demos/dialog/dialogTarget.htm",text:"æœåŠ¡åˆ†é…"},
-		{url:"demos/dialog/dialogUrl.htm",text:"æœåŠ¡å¤„ç†"}, 
-		{url:"demos/dialog/tip.htm",text:"æœåŠ¡åé¦ˆ"}, 
-		{url:"demos/dialog/window.htm",text:"æœåŠ¡å½’æ¡£"}
+	{ text: '·şÎñ¹ÜÀí',isexpand:false, children: [ 
+		{url:"demos/dialog/dialogAll.htm",text:"·şÎñ´´½¨"},
+		{url:"demos/dialog/dialogTarget.htm",text:"·şÎñ·ÖÅä"},
+		{url:"demos/dialog/dialogUrl.htm",text:"·şÎñ´¦Àí"}, 
+		{url:"demos/dialog/tip.htm",text:"·şÎñ·´À¡"}, 
+		{url:"demos/dialog/window.htm",text:"·şÎñ¹éµµ"}
 	]},
-	{ text: 'ç»Ÿè®¡æŠ¥è¡¨',isexpand:false, children: [  
-		{url:"demos/menu/evenmenu.htm",text:"å®¢æˆ·è´¡çŒ®åˆ†æ"},
-		{url:"demos/menu/menubar.htm",text:"å®¢æˆ·æ„æˆåˆ†æ"}, 
-		{url:"demos/menu/mulmenu.htm",text:"å®¢æˆ·æœåŠ¡åˆ†æ"},
-		{url:"demos/menu/mulmenu.htm",text:"å®¢æˆ·æµå¤±åˆ†æ"}
+	{ text: 'Í³¼Æ±¨±í',isexpand:false, children: [  
+		{url:"demos/menu/evenmenu.htm",text:"¿Í»§¹±Ï×·ÖÎö"},
+		{url:"demos/menu/menubar.htm",text:"¿Í»§¹¹³É·ÖÎö"}, 
+		{url:"demos/menu/mulmenu.htm",text:"¿Í»§·şÎñ·ÖÎö"},
+		{url:"demos/menu/mulmenu.htm",text:"¿Í»§Á÷Ê§·ÖÎö"}
 	]},
-	{ text: 'åŸºç¡€æ•°æ®',isexpand:false, children: [  
-		{url:"demos/comboBox/comboBoxSelect.htm",text:"æ•°æ®å­—å…¸ç®¡ç†"},
-		{url:"demos/comboBox/comboBoxSingle.htm",text:"æŸ¥è¯¢äº§å“ä¿¡æ¯"},
-		{url:"demos/comboBox/comboBoxSingleCheckBox.htm",text:"æŸ¥è¯¢åº“å­˜"},
+	{ text: '»ù´¡Êı¾İ',isexpand:false, children: [  
+		{url:"demos/comboBox/comboBoxSelect.htm",text:"Êı¾İ×Öµä¹ÜÀí"},
+		{url:"demos/comboBox/comboBoxSingle.htm",text:"²éÑ¯²úÆ·ĞÅÏ¢"},
+		{url:"demos/comboBox/comboBoxSingleCheckBox.htm",text:"²éÑ¯¿â´æ"},
 		
 	]}
 	
@@ -35,19 +35,19 @@ var indexdata =
 
 var indexdata2 =
 [
-    { isexpand: "true", text: "è¡¨æ ¼", children: [
-        { isexpand: "true", text: "å¯æ’åº", children: [
-		    { url: "dotnetdemos/grid/sortable/client.aspx", text: "å®¢æˆ·ç«¯" },
-            { url: "dotnetdemos/grid/sortable/server.aspx", text: "æœåŠ¡å™¨" }
+    { isexpand: "true", text: "±í¸ñ", children: [
+        { isexpand: "true", text: "¿ÉÅÅĞò", children: [
+		    { url: "dotnetdemos/grid/sortable/client.aspx", text: "¿Í»§¶Ë" },
+            { url: "dotnetdemos/grid/sortable/server.aspx", text: "·şÎñÆ÷" }
 	    ]
         },
-        { isexpand: "true", text: "å¯åˆ†é¡µ", children: [
-		    { url: "dotnetdemos/grid/pager/client.aspx", text: "å®¢æˆ·ç«¯" },
-            { url: "dotnetdemos/grid/pager/server.aspx", text: "æœåŠ¡å™¨" }
+        { isexpand: "true", text: "¿É·ÖÒ³", children: [
+		    { url: "dotnetdemos/grid/pager/client.aspx", text: "¿Í»§¶Ë" },
+            { url: "dotnetdemos/grid/pager/server.aspx", text: "·şÎñÆ÷" }
 	    ]
         },
-        { isexpand: "true", text: "æ ‘è¡¨æ ¼", children: [
-		    { url: "dotnetdemos/grid/treegrid/tree.aspx", text: "æ ‘è¡¨æ ¼" } 
+        { isexpand: "true", text: "Ê÷±í¸ñ", children: [
+		    { url: "dotnetdemos/grid/treegrid/tree.aspx", text: "Ê÷±í¸ñ" } 
 	    ]
         }
     ]
