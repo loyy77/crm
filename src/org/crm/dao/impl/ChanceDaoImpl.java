@@ -108,6 +108,17 @@ public class ChanceDaoImpl implements ChanceDao {
 		
 	}
 
+	@Override
+	public boolean update(Chance chance) {
+		
+		//机会来源、客户名称、成功机率、概要、联系人、联系人电话、机会描述进行编辑。
+		String sql="update chance set source=?,customerName=?,rate=?,title=?,linkMan=?,linkPhone=?,description=? where id=?";
+		
+		int rst=this.jdbcTemplate.update(sql, chance.getSource(),chance.getCustomerName(),chance.getRate(),chance.getTitle(),chance.getLinkMan(),chance.getLinkPhone(),chance.getDescription(),chance.getId());
+		if(rst==1)return true;
+		return false;
+	}
+
 }
 @Component
 class ChanceMapper implements RowMapper<Object> {

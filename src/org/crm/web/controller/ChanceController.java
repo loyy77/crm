@@ -103,7 +103,10 @@ public class ChanceController {
 	 */
 	@RequestMapping("/chance/doChanceModify")
 	public String doChanceModify(Chance chance){
-		log.info("执行销售修改！");
+		log.debug("执行销售修改！");
+		if(!chanceBiz.udpate(chance)){
+			return "error";
+		}
 		return "redirect:/chance/toList";
 	}
 

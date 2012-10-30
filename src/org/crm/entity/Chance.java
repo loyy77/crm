@@ -129,4 +129,16 @@ public class Chance {
 		this.state = state;
 	}
 
+	@Override
+	public String toString() {
+		return "Chance [id=" + id + ", source=" + source + ", customerName="
+				+ customerName + ", rate=" + rate + ", title=" + title
+				+ ", linkMan=" + linkMan + ", linkPhone=" + linkPhone
+				+ ", description=" + description + ", createId=" + createId
+				+ ", createDate=" + createDate + ", assignId=" + assignId
+				+ ", assignDate=" + assignDate + ", state=" + state + "]";
+	}
+	
+	
+
 }

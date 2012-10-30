@@ -26,4 +26,8 @@ public class ChanceBiz {
 	public Chance get(int id){
 		return chanceDao.get(id);
 	}
+	
+	public boolean udpate(Chance chance){
+		return chanceDao.update(chance);
+	}
 }

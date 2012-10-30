@@ -109,31 +109,24 @@
 
  <script type="text/javascript">
 
-		alert("op.val():"+$("#op").val());
-
+	//	alert("op.val():"+$("#op").val());
   
 	 
-		  var op=$("#op").val();
-			
-			$("#form1").attr("action","../chance/doChanceModify");
+		 	 var op=$("#op").val();
+			//$("#form1").attr("action","../chance/doChanceModify");
 			
 			if(op=="update"){
 				 $("#Button1").val("±£´æÐÞ¸Ä");
-				// alert($("#form1").attr('action','../chance/doChanceModify'));
-				 //alert("form.action:"+$("#form1").attr("action").val());
-				
-				
+					
 				$("#form1").attr("action","../chance/doChanceModify");
 				
 				
-				var act=document.getElementById("form1").attributes['action'];
+				//var act=document.getElementById("form1").attributes['action'];
 				//act.value="../chance/doChanceModify";
-				
-				alert(act.value);
+				//alert(act.value);
 			}  
 		  
-			//alert($("#form1").attr('action').val());
-	
+			
 
  
 

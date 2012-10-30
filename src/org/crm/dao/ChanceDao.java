@@ -41,5 +41,8 @@ public interface ChanceDao {
 	 * @return
 	 */
 	public abstract Chance get(int id);
+	
+	
+	public abstract boolean update(Chance chance);
 
 }
