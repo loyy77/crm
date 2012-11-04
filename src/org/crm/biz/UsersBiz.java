@@ -1,7 +1,5 @@
 package org.crm.biz;
 
-import javax.annotation.Resource;
-
 import org.crm.dao.UsersDao;
 import org.crm.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;

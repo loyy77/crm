@@ -30,4 +30,12 @@ public class ChanceBiz {
 	public boolean udpate(Chance chance){
 		return chanceDao.update(chance);
 	}
+	
+	public int getTotalCount(){
+		return chanceDao.getTotalCount();
+	}
+	
+	public List<Chance> list(int page,int pageSize){
+		return chanceDao.list(page, pageSize);
+	}
 }

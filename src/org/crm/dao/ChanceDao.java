@@ -20,6 +20,8 @@ public interface ChanceDao {
 	 * @return
 	 */
 	public abstract List<Chance> list();
+	
+	public abstract List<Chance> list(int page,int pageSize);
 
 	/**
 	 * 删除一个机会（不是直接执行物理删除，只是改个标记）
@@ -44,5 +46,10 @@ public interface ChanceDao {
 	
 	
 	public abstract boolean update(Chance chance);
+	/**
+	 *获得总记录数
+	 * @return
+	 */
+	public abstract int getTotalCount();
 
 }

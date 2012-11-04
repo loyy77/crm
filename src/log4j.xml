@@ -35,6 +35,9 @@
 	<logger name="org.springframework.web">
 		<level value="debug" />
 	</logger>
+	<logger name="org.crm.web">
+		<level value="info"/>
+	</logger>
 
 	<!-- Root Logger -->
 	<root>

@@ -139,6 +139,50 @@ public class ChanceDaoImpl implements ChanceDao {
 		return false;
 	}
 
+	@Override
+	public int getTotalCount() {
+		String sql="select count(*) from Chance where state !=1";
+		return jdbcTemplate.queryForInt(sql);
+	}
+
+/**
+ * 分页查询(存储过程）
+ */
+	@Override
+	public List<Chance> list(int page, int pageSize) {
+		int start=(page-1)*pageSize;
+		int end=pageSize;
+			String sql="select * from chance  where state !=1 limit ?,?";
+		
+		//String sql="call crm.proc_pager(?,?)";
+		//jdbcTemplate.call(, declaredParameters)
+		return this.jdbcTemplate.query(sql, new Object[]{start,end},new RowMapper<Chance>() {
+
+				@Override
+				public Chance mapRow(ResultSet rs, int arg1)
+						throws SQLException {
+					Chance chance = new Chance();
+					chance.setAssignDate(rs.getString("assignDate"));
+					chance.setAssignId(usersDao.getById(rs
+							.getInt("assignId")));//
+					chance.setCreateDate(rs.getString("createDate"));
+					chance.setCreateId(usersDao.getById(rs
+							.getInt("createId")));//
+					chance.setCustomerName(rs.getString("customerName"));
+					chance.setDescription(rs.getString("description"));
+					chance.setId(rs.getInt("id"));
+					chance.setLinkMan(rs.getString("linkMan"));
+					chance.setLinkPhone(rs.getString("linkPhone"));
+					chance.setRate(rs.getFloat("rate"));
+					chance.setSource(rs.getString("source"));
+					chance.setState(rs.getInt("state"));
+					chance.setTitle(rs.getString("title"));
+					return chance;
+				}
+			});
+//		return null;
+	}
+
 }
 
 @Component

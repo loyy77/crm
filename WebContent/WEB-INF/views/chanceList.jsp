@@ -37,7 +37,10 @@
 			{ display: '联系人', name: 'linkMan', minWidth: 140 }, 
 			{ display: '联系电话', name: 'linkPhone', minWidth: 140 },  
 			{ display: '创建日期', name: 'createDate', minWidth: 140 } 
-			],dataAction: 'server',      
+			],dataAction: 'server',
+				usePager:true,      
+				pageSizeOptions: [5, 10, 15, 20,30,50], 		
+				pageSize:10,		
                 url:"../chance/list",
                 width: '99%'
             });   

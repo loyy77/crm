@@ -64,21 +64,26 @@ public class ChanceController {
 	 */
 	@RequestMapping("/chance/list")
 	public @ResponseBody
-	String proccessList(Model model) {
-		List list = chanceBiz.list();
+	String proccessList(Model model,String page,String pagesize) {
+		
+		log.info("分页信息:"+page+","+pagesize);
+		if(null==page){page="1";}
+		if(null==pagesize){pagesize="5";}
+		List<Chance> list = chanceBiz.list(Integer.valueOf(page),Integer.valueOf(pagesize));
 		ObjectMapper map = new ObjectMapper();
 		String rst = "";
 		try {
-			rst = map.writeValueAsString(list);
+			rst = map.writeValueAsString(list);//转换为JSON
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
 		log.info(rst);
-
+		int totalCount=chanceBiz.getTotalCount();//所有记录数
 		StringBuilder sb = new StringBuilder();
-		sb.append("{      \"Rows\":");
+		sb.append("{\"Rows\":");
 		sb.append(rst);
-		sb.append(",\"Total\":12}");
+		sb.append(",\"Total\":");
+		sb.append(totalCount+"}");//追加所有记录数到json
 		rst = sb.toString();
 		return rst;
 	}
