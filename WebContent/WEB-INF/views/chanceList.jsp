@@ -20,8 +20,8 @@
     <script src="<c:url value="/ligerUI/js/plugins/ligerDateEditor.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/ligerUI/js/plugins/ligerSpinner.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/ligerUI/js/plugins/ligerToolBar.js"/>" type="text/javascript"></script>
-
-
+ 
+       
     <script type="text/javascript">
 
    
@@ -67,9 +67,6 @@
 			  window.location.href="../chance/toChanceAdd";
 			// var m= $.ligerDialog.open({ height: 420,width:550,url: '../chance/toChanceAdd' });
       			//m.target="home";
-      			
-      			
-      			
       	  }else if(item.text=="ÐÞ¸Ä"){
       		  
       		  var chanceId=getSelected();
@@ -85,9 +82,6 @@
       			}
       		});
 
-      	
-
-      	
       	  }
         }
         $(function ()
@@ -99,7 +93,7 @@
                 { line:true },
                 { text: 'É¾³ý', click: itemclick }
             ]
-            });
+            });  
         });
 
 </script>

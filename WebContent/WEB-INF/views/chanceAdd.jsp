@@ -23,16 +23,6 @@
     <script src="/crm/resources/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
     <script src="/crm/resources/jquery-validation/messages_cn.js" type="text/javascript"></script>
 
-    <script type="text/javascript">    
-  //  document.form1.attributes["action"].value  = "../chance/doChanceModify";
-       /*  $(function ()
-        {
-            $("form").ligerForm();
-            alert("form");
-        }); 
-         */
-    </script>
-    
     <style type="text/css">
         .l-table-edit {}
         .l-table-edit-td{ padding:4px;}
@@ -108,27 +98,14 @@
 </html>
 
  <script type="text/javascript">
-
-	//	alert("op.val():"+$("#op").val());
-  
 	 
 		 	 var op=$("#op").val();
-			//$("#form1").attr("action","../chance/doChanceModify");
 			
 			if(op=="update"){
 				 $("#Button1").val("±£´æÐÞ¸Ä");
 					
 				$("#form1").attr("action","../chance/doChanceModify");
-				
-				
-				//var act=document.getElementById("form1").attributes['action'];
-				//act.value="../chance/doChanceModify";
-				//alert(act.value);
 			}  
-		  
-			
-
- 
 
   </script>
 

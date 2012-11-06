@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.WebRequest;
-
+  
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -27,12 +27,11 @@ public class ChanceController {
 	private ChanceBiz chanceBiz;
 /**
  * @param user
- * @return
+ * @return  
  */
 	@ModelAttribute("chance")
 	public Chance createChance(@ModelAttribute("user") Users user) {
 		Chance chance = new Chance();
-
 		chance.setCreateId(user);
 		Users u = new Users();
 		u.setUserId(99999);
@@ -66,24 +65,25 @@ public class ChanceController {
 	public @ResponseBody
 	String proccessList(Model model,String page,String pagesize) {
 		
-		log.info("鍒嗛〉淇℃伅:"+page+","+pagesize);
+		log.info("分页信息:"+page+","+pagesize);
 		if(null==page){page="1";}
 		if(null==pagesize){pagesize="5";}
 		List<Chance> list = chanceBiz.list(Integer.valueOf(page),Integer.valueOf(pagesize));
 		ObjectMapper map = new ObjectMapper();
 		String rst = "";
 		try {
-			rst = map.writeValueAsString(list);//杞崲涓篔SON
+			rst = map.writeValueAsString(list);
 		} catch (JsonProcessingException e) {
+			log.error("List到JSON转换出错");
 			e.printStackTrace();
 		}
 		log.info(rst);
-		int totalCount=chanceBiz.getTotalCount();//鎵�鏈夎褰曟暟
+		int totalCount=chanceBiz.getTotalCount();
 		StringBuilder sb = new StringBuilder();
 		sb.append("{\"Rows\":");
 		sb.append(rst);
 		sb.append(",\"Total\":");
-		sb.append(totalCount+"}");//杩藉姞鎵�鏈夎褰曟暟鍒癹son
+		sb.append(totalCount+"}");  
 		rst = sb.toString();
 		return rst;
 	}
@@ -97,7 +97,7 @@ public class ChanceController {
 	public String doChanceDel(int chanceId) {
 		
 		if(this.chanceBiz.del(chanceId)){
-			return "redirect:/chance/toList";
+			return "redirect:/chance/toList";  
 		}
 		return "redirect:/chance/toList";
 	}
@@ -140,7 +140,7 @@ public class ChanceController {
 		Chance chan = new Chance();
 		chan.setCreateDate(new Utils().getNowDate());
 		chan.setAssignDate(chan.getCreateDate());
-		chan.setCreateId(user);
+		chan.setCreateId(user); 
 		Users u = new Users();
 		u.setUserId(99999);
 		chan.setAssignId(u);
