@@ -37,7 +37,7 @@ public class ChanceDaoImpl implements ChanceDao {
 				chance.getCustomerName(), chance.getRate(), chance.getTitle(),
 				chance.getLinkMan(), chance.getLinkPhone(),
 				chance.getDescription(), chance.getCreateId().getUserId(),
-				chance.getCreateDate(), 99999, chance.getAssignDate(),
+				chance.getCreateDate(), null, chance.getAssignDate(),
 				chance.getState());
 		if (rst == 1)
 			return true;
@@ -141,13 +141,14 @@ public class ChanceDaoImpl implements ChanceDao {
 
 	@Override
 	public int getTotalCount() {
-		String sql="select count(*) from Chance where state !=1";
+		String sql="select count(*) from chance where state !=1";
 		return jdbcTemplate.queryForInt(sql);
 	}
 
 /**
- * 分页查询(存储过程）
- */
+ * Proccess Paging 
+ *  
+ *  */
 	@Override
 	public List<Chance> list(int page, int pageSize) {
 		int start=(page-1)*pageSize;
@@ -184,7 +185,11 @@ public class ChanceDaoImpl implements ChanceDao {
 	}
 
 }
-
+/**
+ * Entity Class Chance Mapper Object (all attribute)
+ * @author lishixi
+ *
+ */
 @Component
 class ChanceMapper implements RowMapper<Object> {
 
@@ -212,7 +217,7 @@ class ChanceMapper implements RowMapper<Object> {
 	}
 
 }
-
+//Chance of Entity Class Mapper Object (simple version)
 class ChanceMapperSimple implements RowMapper<Chance> {
 
 	@Override
