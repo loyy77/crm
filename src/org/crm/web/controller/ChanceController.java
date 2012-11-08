@@ -33,9 +33,9 @@ public class ChanceController {
 	public Chance createChance(@ModelAttribute("user") Users user) {
 		Chance chance = new Chance();
 		chance.setCreateId(user);
-		Users u = new Users();
-		u.setUserId(99999);
-		chance.setAssignId(u);
+		//Users u = new Users();
+		//u.setUserId(99999);s
+		chance.setAssignId(null);
 		return chance;
 	}
 
@@ -48,9 +48,9 @@ public class ChanceController {
 	@RequestMapping("/chance/doChance")
 	public String proccessChanceSubmit(Chance chance,
 			@ModelAttribute("user") Users user) {
-		Users u = new Users();
-		u.setUserId(99999);
-		chance.setAssignId(u);
+		//Users u = new Users();
+	////	u.setUserId(99999);
+		chance.setAssignId(null);
 		chance.setCreateId(user);
 		chanceBiz.add(chance);
 		return "redirect:/chance/toList";

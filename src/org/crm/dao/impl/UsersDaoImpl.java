@@ -7,6 +7,7 @@ import java.util.List;
 import org.crm.dao.UsersDao;
 import org.crm.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -71,7 +72,29 @@ public class UsersDaoImpl implements UsersDao {
 	 */
 	@Override
 	public Users getById(int userId){
-		return this.jdbcTemplate.queryForObject("select * from users where userid=?",new Object[]{userId},new UsersMapper());
+		Users u=null;
+		try{
+			u=this.jdbcTemplate.queryForObject("select * from users where userid=?",new Object[]{userId},new RowMapper<Users>() {
+
+				@Override
+				public Users mapRow(ResultSet rs, int arg1) throws SQLException {
+					Users user = new Users();
+
+					user.setUserId(rs.getInt("userId"));
+					user.setLoginName(rs.getString("loginname"));
+					user.setLoginPass(rs.getString("loginpass"));
+					user.setTrueName(rs.getString("truename"));
+					user.setRoleId(rs.getInt("roleId"));
+					user.setFlag(rs.getBoolean("flag"));
+
+					return user;
+				}
+			});
+		}catch(EmptyResultDataAccessException ex){return null;}
+		
+		
+		
+		return u;
 	}
 
 	/* (non-Javadoc)
