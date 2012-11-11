@@ -4,7 +4,7 @@ public class Chance {
 	private int id;
 	private String source;
 	private String customerName;
-	private float rate;
+	private int rate;
 	private String title;
 	private String linkMan;
 	private String linkPhone;
@@ -45,13 +45,11 @@ public class Chance {
 		this.source = source;
 	}
 
-	public float getRate() {
+	public int getRate() {
 		return rate;
 	}
 
-	public void setRate(float rate) {
-		this.rate = rate;
-	}
+
 
 	public String getTitle() {
 		return title;
@@ -79,6 +77,10 @@ public class Chance {
 
 	public String getDescription() {
 		return description;
+	}
+
+	public void setRate(int rate) {
+		this.rate = rate;
 	}
 
 	public void setDescription(String description) {

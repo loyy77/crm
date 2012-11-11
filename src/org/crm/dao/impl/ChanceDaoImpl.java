@@ -115,7 +115,7 @@ public class ChanceDaoImpl implements ChanceDao {
 						chance.setId(rs.getInt("id"));
 						chance.setLinkMan(rs.getString("linkMan"));
 						chance.setLinkPhone(rs.getString("linkPhone"));
-						chance.setRate(rs.getFloat("rate"));
+						chance.setRate(rs.getInt("rate"));
 						chance.setSource(rs.getString("source"));
 						chance.setState(rs.getInt("state"));
 						chance.setTitle(rs.getString("title"));
@@ -174,7 +174,7 @@ public class ChanceDaoImpl implements ChanceDao {
 					chance.setId(rs.getInt("id"));
 					chance.setLinkMan(rs.getString("linkMan"));
 					chance.setLinkPhone(rs.getString("linkPhone"));
-					chance.setRate(rs.getFloat("rate"));
+						chance.setRate(rs.getInt("rate"));
 					chance.setSource(rs.getString("source"));
 					chance.setState(rs.getInt("state"));
 					chance.setTitle(rs.getString("title"));
@@ -209,7 +209,7 @@ class ChanceMapper implements RowMapper<Object> {
 		chance.setId(rs.getInt("id"));
 		chance.setLinkMan(rs.getString("linkMan"));
 		chance.setLinkPhone(rs.getString("linkPhone"));
-		chance.setRate(rs.getFloat("rate"));
+		chance.setRate(rs.getInt("rate"));
 		chance.setSource(rs.getString("source"));
 		chance.setState(rs.getInt("state"));
 		chance.setTitle(rs.getString("title"));
