@@ -47,7 +47,8 @@ public class UsersDaoImpl implements UsersDao {
 	 */
 	@Override
 	public List<Users> findAll() {
-		return jdbcTemplate.queryForList("select * from users", Users.class);
+		return jdbcTemplate.query("select * from users",
+				new UsersMapper());
 	}
 
 	/* (non-Javadoc)

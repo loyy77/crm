@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.crm.biz.ChanceBiz;
+import org.crm.biz.UsersBiz;
+import org.crm.common.Constant;
 import org.crm.common.Utils;
 import org.crm.entity.Chance;
 import org.crm.entity.Users;
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.WebRequest;
-  
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -25,16 +27,19 @@ public class ChanceController {
 	Logger log = Logger.getLogger(ChanceController.class);
 	@Autowired
 	private ChanceBiz chanceBiz;
-/**
- * @param user
- * @return  
- */
+	@Autowired
+	private UsersBiz usersBiz;
+
+	/**
+	 * @param user
+	 * @return
+	 */
 	@ModelAttribute("chance")
 	public Chance createChance(@ModelAttribute("user") Users user) {
 		Chance chance = new Chance();
 		chance.setCreateId(user);
-		//Users u = new Users();
-		//u.setUserId(99999);s
+		// Users u = new Users();
+		// u.setUserId(99999);s
 		chance.setAssignId(null);
 		return chance;
 	}
@@ -48,8 +53,8 @@ public class ChanceController {
 	@RequestMapping("/chance/doChance")
 	public String proccessChanceSubmit(Chance chance,
 			@ModelAttribute("user") Users user) {
-		//Users u = new Users();
-	////	u.setUserId(99999);
+		// Users u = new Users();
+		// // u.setUserId(99999);
 		chance.setAssignId(null);
 		chance.setCreateId(user);
 		chanceBiz.add(chance);
@@ -63,12 +68,17 @@ public class ChanceController {
 	 */
 	@RequestMapping("/chance/list")
 	public @ResponseBody
-	String proccessList(Model model,String page,String pagesize) {
-		
-		log.info("分页信息:"+page+","+pagesize);
-		if(null==page){page="1";}
-		if(null==pagesize){pagesize="5";}
-		List<Chance> list = chanceBiz.list(Integer.valueOf(page),Integer.valueOf(pagesize));
+	String proccessList(Model model, String page, String pagesize) {
+
+		log.info("分页信息:" + page + "," + pagesize);
+		if (null == page) {
+			page = "1";
+		}
+		if (null == pagesize) {
+			pagesize = "5";
+		}
+		List<Chance> list = chanceBiz.list(Integer.valueOf(page),
+				Integer.valueOf(pagesize));
 		ObjectMapper map = new ObjectMapper();
 		String rst = "";
 		try {
@@ -78,12 +88,12 @@ public class ChanceController {
 			e.printStackTrace();
 		}
 		log.info(rst);
-		int totalCount=chanceBiz.getTotalCount();
+		int totalCount = chanceBiz.getTotalCount();
 		StringBuilder sb = new StringBuilder();
 		sb.append("{\"Rows\":");
 		sb.append(rst);
 		sb.append(",\"Total\":");
-		sb.append(totalCount+"}");  
+		sb.append(totalCount + "}");
 		rst = sb.toString();
 		return rst;
 	}
@@ -92,26 +102,49 @@ public class ChanceController {
 	 * 
 	 * @return
 	 */
-	
+
 	@RequestMapping("/chance/doChanceDel")
-	public String doChanceDel(int chanceId) {
-		
-		if(this.chanceBiz.del(chanceId)){
-			return "redirect:/chance/toList";  
+	public String doChanceDel(int chanceId, Model model) {
+
+		if (this.chanceBiz.del(chanceId)) {
+			model.addAttribute("result", "success");
+			return this.toList(model);
 		}
+
 		return "redirect:/chance/toList";
 	}
+
 	/**
 	 * @param chance
 	 * @return
 	 */
 	@RequestMapping("/chance/doChanceModify")
-	public String doChanceModify(Chance chance){
-		//log.debug("");
-		if(!chanceBiz.udpate(chance)){
-			return "error";
+	public String doChanceModify(Users user, Chance chance, Model model) {
+
+		log.debug("执行修改销售机会");
+		if (user.getRoleId() == 1 || user.getRoleId() == 2) {
+			if (chanceBiz.udpate(chance)) {
+			model.addAttribute("result", "success");
+			return this.toList(model);
+			}
+
 		}
-		return "redirect:/chance/toList";
+		log.debug("出错，执行修改销售机会");
+		return "error";
+	}
+
+	@RequestMapping("/chance/doChanceAssign")
+	public String doChanceAssign(Users user, Chance chance, Model model) {
+
+		log.debug("开始执行指派销售人员操作");
+		if (user.getRoleId() == Constant.ROLE_ADMIN
+				|| user.getRoleId() == Constant.ROLE_SALES_SUPERVISOR) {
+			chance.setAssignDate(new Utils().getNowDate());
+			if (chanceBiz.assign(chance)) {
+				return this.toList(model);
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -120,7 +153,8 @@ public class ChanceController {
 	 * @return
 	 */
 	@RequestMapping("/chance/toList")
-	public String toList() {
+	public String toList(Model model) {
+
 		return "chanceList";
 	}
 
@@ -134,28 +168,50 @@ public class ChanceController {
 	@RequestMapping("/chance/toChanceAdd")
 	public String toSalesOpptyManage(WebRequest request,
 			@ModelAttribute("user") Users user, Model model, Chance chance) {
-		System.out.println("SalesOpptyManage........");
+		log.debug("转到销售机会添加页面");
 
 		log.info(user.getLoginName());
 		Chance chan = new Chance();
 		chan.setCreateDate(new Utils().getNowDate());
 		chan.setAssignDate(chan.getCreateDate());
-		chan.setCreateId(user); 
+		chan.setCreateId(user);
 		Users u = new Users();
 		u.setUserId(99999);
 		chan.setAssignId(u);
 		model.addAttribute("chance", chan);
+		model.addAttribute("assignList", usersBiz.list());
 		return "chanceAdd";
 	}
+
 	/**
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping("/chance/toChanceModify")
-	public String toChanceModify(int chanceId,Model model){
-		Chance chance=chanceBiz.get(chanceId);
+	public String toChanceModify(int chanceId, Model model) {
+		log.debug("转到销售机会修改页面");
+		Chance chance = chanceBiz.get(chanceId);
 		model.addAttribute("chance", chance);
 		model.addAttribute("op", "update");
+		model.addAttribute("assignList", usersBiz.list());
+		return "chanceAdd";
+	}
+
+	/**
+	 * 转到指派页面
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/chance/toChanceAssign")
+	public String toChanceAssign(int chanceId, Model model) {
+		log.debug("转到给销售机会指派销售人员页面");
+		Chance chance = chanceBiz.get(chanceId);
+		model.addAttribute("chance", chance);
+		model.addAttribute("op", "assign");
+		// int id = chance.getAssignId().getUserId();
+		model.addAttribute("assignList", usersBiz.list());
+
 		return "chanceAdd";
 	}
 }

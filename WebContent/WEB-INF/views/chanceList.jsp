@@ -36,7 +36,8 @@
 			{ display: '概要', name: 'title', minWidth: 150,align:'left' },  
 			{ display: '联系人', name: 'linkMan', minWidth: 140 }, 
 			{ display: '联系电话', name: 'linkPhone', minWidth: 140 },  
-			{ display: '创建日期', name: 'createDate', minWidth: 140 } 
+			{ display: '创建日期', name: 'createDate', minWidth: 140 },
+			{ display: '指定人',name:'assignId',minWidth:140,hide:1} 
 			],dataAction: 'server',
 				usePager:true,      
 				pageSizeOptions: [5, 10, 15, 20,30,50], 		
@@ -57,11 +58,20 @@
         return row.id;
        // alert(JSON.stringify(row));
     }
+    function getAssignId(){
+    	  var manager = $("#maingrid").ligerGetGridManager();
+          var row = manager.getSelectedRow();
+          if (!row) { alert('请选择行'); return; }
+          return row.assignId;
+    }
+    
 
     
     	//每个按钮响应的事件
 	  function itemclick(item)
         {
+			var flag=true;
+    		
 		  if(item.text=="增加"){
 			  
 			  window.location.href="../chance/toChanceAdd";
@@ -73,43 +83,93 @@
       		  if(!chanceId)return;
       		  	window.location.href="../chance/toChanceModify?chanceId="+chanceId;
       	  }else if(item.text=="删除"){
-      		var chanceId=getSelected();
-      		//alert(chanceId);
+      		  var userId=$("#userId").val();
+      		  var assignId=getAssignId();
+      		  
+      		  //userId==2||userID==3
+      		  if(userId==assignId){
+      			var chanceId=getSelected();
+          		//alert(chanceId);
+          		
+          		$.ligerDialog.confirm("确定删除编号为:"+chanceId+"的记录吗？",function (r) {
+          			if(r){
+          				window.location.href="../chance/doChanceDel?chanceId="+chanceId;
+          			}
+          		});
+      		  }else{
+      			$.ligerDialog.alert('您不是该销售机会的创建者，不能执行删除操作。');
+      		  }
+      		  
       		
-      		$.ligerDialog.confirm("确定删除编号为:"+chanceId+"的记录吗？",function (r) {
-      			if(r){
-      				window.location.href="../chance/doChanceDel?chanceId="+chanceId;
-      			}
-      		});
 
+      	  }else if(item.text=='指派'){
+      		  if(flag){
+      			  var chanceId=getSelected();
+          		  if(!chanceId)return;
+          		  	window.location.href="../chance/toChanceAssign?chanceId="+chanceId;
+      			  
+      		  }
+      		
       	  }
         }
         $(function ()
-        {
+       {
             $("#toptoolbar").ligerToolBar({ items: [
-                { text: '增加', click: itemclick , icon:'add'},
+                { id:1,text: '增加', click: itemclick , icon:'add'},
                 { line:true },
-                { text: '修改', click: itemclick },
+                { id:2,text: '修改', click: itemclick },
                 { line:true },
-                { text: '删除', click: itemclick }
+                { id:3,text: '删除', click: itemclick },
+                { line:true},
+                { id:4,text: '指派', click : itemclick}
+           
             ]
-            });  
+            }); 
+            
+            
+            var userId=$("#userId").val();
+    		  if(userId==2||userId==3){
+    			  
+    			 /*  $("#toptoolbar").ligerToolBar({ items: [
+                      { text: '增加', click: itemclick , icon:'add'},
+                      { line:true },
+                      { text: '修改', click: itemclick },
+                      { line:true },
+                      { text: '删除', click: itemclick }
+                  ]
+                  }); */
+    		  };
         });
 
 </script>
 </head>
 <body  style="padding:0px">  
+<input type="hidden" id="result" value="${result}" />
  <div class="l-clear"></div>
  <!-- 工具条 ，该工具条包含 增加、修改、删除  -->
   <div id="toptoolbar" style="width:99%"></div>  
  <!-- 表格，数据展示的主要区域 -->
   <div id="maingrid" style="margin-top:0px"></div> <br />
   <div style="display:none;">
-  <!-- g data total ttt -->
-  
+ 
 
   
 </div>
 </body>
 </html>
+ <!-- g data total ttt -->
+  <script type="text/javascript">
+  $().ready(function(){
+		
+  			var result=$("#result").val();
+  			//alert(result);
+  			if(result=='success'){
+  				$.ligerDialog.success('操作成功！');
+  			}
+  		
+  	});
+	  
 
+//  alert("win");
+  
+  </script>

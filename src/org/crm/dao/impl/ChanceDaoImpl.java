@@ -36,7 +36,9 @@ public class ChanceDaoImpl implements ChanceDao {
 		int rst = jdbcTemplate.update(sql, chance.getSource(),
 				chance.getCustomerName(), chance.getRate(), chance.getTitle(),
 				chance.getLinkMan(), chance.getLinkPhone(),
-				chance.getDescription(), chance.getCreateId().getUserId(),
+ chance.getDescription(),
+				null == chance.getCreateId() ? null : chance
+						.getCreateId().getUserId(),
 				chance.getCreateDate(), null, chance.getAssignDate(),
 				chance.getState());
 		if (rst == 1)
@@ -182,6 +184,20 @@ public class ChanceDaoImpl implements ChanceDao {
 				}
 			});
 //		return null;
+	}
+
+	@Override
+	public boolean assign(Chance chance) {
+		
+		String sql="update chance set assignId=?,assignDate=? where id=?";
+		int rst = jdbcTemplate.update(sql, new Object[] {
+				chance.getAssignId().getUserId(), chance.getAssignDate(),
+				chance.getId() });
+		if(rst==1){
+			return true;
+		}
+		
+		return false;
 	}
 
 }

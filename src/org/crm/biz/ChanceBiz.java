@@ -38,4 +38,8 @@ public class ChanceBiz {
 	public List<Chance> list(int page,int pageSize){
 		return chanceDao.list(page, pageSize);
 	}
+
+	public boolean assign(Chance chance) {
+		return chanceDao.assign(chance);
+	}
 }

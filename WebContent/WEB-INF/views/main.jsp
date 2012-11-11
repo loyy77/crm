@@ -165,7 +165,7 @@
 <div id="topmenu" class="l-topmenu">
     <div class="l-topmenu-logo">客户关系管理系统</div>
     <div class="l-topmenu-welcome">
-    	<span class="l-link3">当前登录用户：${user.trueName }</span>
+    	<span class="l-link3">当前登录用户：${user.trueName }<input type="hidden" id="userId" value="${user.userId}" /></span>
         <a href="index.aspx" class="l-link2">服务器版本</a>
         <span class="space">|</span>
         <a href="https://me.alipay.com/daomi" class="l-link2" target="_blank">捐赠</a> 

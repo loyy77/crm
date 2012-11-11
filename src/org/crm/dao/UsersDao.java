@@ -7,31 +7,31 @@ import org.crm.entity.Users;
 public interface UsersDao {
 
 	/**
-	 * ����û�
+	 * 锟斤拷锟斤拷没锟� *
 	 * 
 	 * @param user
 	 */
 	public abstract void add(Users user);
 
 	/**
-	 * �����û���Ϣ���ɸ��µ������У���¼���룬��ʵ�����ɫ��ţ���ǣ�
+	 * 锟斤拷锟斤拷锟矫伙拷锟斤拷息锟斤拷锟缴革拷锟铰碉拷锟斤拷锟斤拷锟叫ｏ拷锟斤拷录锟斤拷锟诫，锟斤拷实锟斤拷锟斤拷锟缴拷锟脚ｏ拷锟斤拷牵锟� *
 	 * 
 	 * @param user
 	 */
 	public abstract void update(Users user);
 
 	/**
-	 * ��ѯ�����û�
+	 * 锟斤拷询锟斤拷锟斤拷锟矫伙拷
 	 * 
-	 * @return �����û����б�
+	 * @return 锟斤拷锟斤拷锟矫伙拷锟斤拷锟叫憋拷
 	 */
 	public abstract List<Users> findAll();
 
 	/**
-	 * ͨ���û��ı�Ų�ѯ
+	 * 通锟斤拷锟矫伙拷锟侥憋拷挪锟窖� *
 	 * 
 	 * @param
-	 * @return ͨ��Id��ѯ�õ����û�����
+	 * @return 通锟斤拷Id锟斤拷询锟矫碉拷锟斤拷锟矫伙拷锟斤拷锟斤拷
 	 */
 	public abstract Users getByNameAndPassword(String loginName,
 			String loginPass);
@@ -39,7 +39,7 @@ public interface UsersDao {
 	public abstract Users getById(int userId);
 
 	/**
-	 * ͨ���û���¼����������û���Id
+	 * 通锟斤拷锟矫伙拷锟斤拷录锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷没锟斤拷锟絀d
 	 */
 	public abstract boolean checkUserIsExist(String loginname, String loginpass);
 

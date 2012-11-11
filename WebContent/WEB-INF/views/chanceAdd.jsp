@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=gbk"
     pageEncoding="gbk"%>
 <%@ taglib prefix="form"  uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head><title>
@@ -30,6 +31,19 @@
     </style>
   
 <script type="text/javascript">
+
+function currentTime(){
+	var d = new Date(),str = '';
+	 str += d.getFullYear()+'-';
+	 str  += d.getMonth() + 1+'-';
+	 str  += d.getDate()+' ';
+	 str += d.getHours()+':'; 
+	 str  += d.getMinutes()+':'; 
+	str+= d.getSeconds(); 
+	return str;
+	}
+
+
 $().ready(function(){
 	$("#form1").validate();
 	$("input[type='text']").attr("class","required");//("required");
@@ -39,12 +53,32 @@ $().ready(function(){
 	//Tip
 	$("#id").ligerTip();
 	$("#rate").ligerTip();
+	$("#assignId.userId").ligerTip();
 	
+	});
+	
+	//定时刷新指派日期
+	
+	
+	var assignDate=$("#assignDate");
+	//var assignDate=$("#t2");
+	var btn=$("#Button1");
+	var id=window.setInterval(function(){
+		//alert(currentTime());
+		//alert(assignDate.val());
+		assignDate.val(currentTime());
+	},1000);
+	btn.click(function(){
+		if(btn.val()=='保存指派'){
+			 window.clearInterval(id);
+		}
 	});
 
 </script>
 </head>
 <body style="padding:10px">
+
+<div id="tt"></div>
 <input id="op" type="hidden" value="${op}"/>
     <form:form name="form1" id="form1" method="post" action="/crm/chance/doChance" modelAttribute="chance">
 <div>
@@ -58,15 +92,15 @@ $().ready(function(){
             </tr>
             <tr>
                 <td  align="right" class="l-table-edit-td" valign="top">客户名称：</td>
-                 <td align="left" class="l-table-edit-td" ><form:input path="customerName"  name="customerName" type="text" id="customerName" ltype="text" />
+                 <td align="left" class="l-table-edit-td" ><form:input path="customerName"  name="customerName" type="text" id="customerName" ltype="text" />*
                  </td><td align="left">成功几率：</td> 
-                  <td align="left"><form:input path="rate" name="rate" type="text" id="rate" ltype="text" title="0-100之间的整数"/></td>
+                  <td align="left"><form:input path="rate" name="rate" type="text" id="rate" ltype="text" title="0-100之间的整数"/>*</td>
             </tr>   
             
             <tr>
                 <td align="right"  valign="top"  >概要：</td>
                 <td align="left" class="l-table-edit-td" colspan="3">
-                  <form:input path="title" name="title" type="text" id="title" ltype="text"  style="width:400px;"/>
+                  <form:input path="title" name="title" type="text" id="title" ltype="text"  style="width:400px;"/>*
                 </td>
             </tr>  
                  
@@ -82,21 +116,34 @@ $().ready(function(){
                 <td align="right" class="l-table-edit-td">机会描述：</td>
                 <td align="left" class="l-table-edit-td" colspan="3"> 
              <%--    <form:textarea path="description"  /> --%>
-                <form:textarea path="description" cols="100" rows="4" class="l-textarea" style="width:400px"/>
+                <form:textarea path="description" cols="90" rows="4" class="l-textarea" style="width:400px"/>
                 </td>
             </tr>
            <tr>
                 <td align="right" class="l-table-edit-td">创建人：</td>
-                <td align="left" class="l-table-edit-td"><form:input value="${user.loginName }" name="createId.loginName" type="text" id="createId" ltype="text" readonly="true" path="createId.loginName" /></td>
+                <td align="left" class="l-table-edit-td"><form:input value="${user.loginName }" name="createId.loginName" type="text" id="createId" ltype="text" readonly="true" path="createId.loginName" />*</td>
                 <td align="left">创建日期：</td>
-                <td align="left"><form:input path="createDate" name="assignDate" type="text" id="assignDate" readonly="true" ltype="text" /></td>
+                <td align="left"><form:input path="createDate" name="assignDate" type="text" id="assignDate" readonly="true" ltype="text" />*</td>
             </tr>
           
          <tr>
                 <td align="right" class="l-table-edit-td">指派给：</td>
-                <td align="left" class="l-table-edit-td"><form:input path="assignId.loginName" name="assignId.loginName" type="text" id="assignId" readonly="true" ltype="text" /></td>
+                <td align="left" class="l-table-edit-td">
+               <%--  <form:input path="assignId.trueName" name="assignId.loginName" type="text" id="assignId" readonly="true" ltype="text" /> --%>
+                	<!-- itemValue="${trueName}" itemLabel="${id}" -->  
+			
+                	<select id="assignId.userId" name="assignId.userId" title="在这里指派">
+                <option value="">未指派</option>
+					<c:forEach var="u" items="${assignList }">
+							
+							<option <c:if test="${chance.assignId.userId==u.userId }">selected="selected"</c:if> value="${u.userId }">${u.trueName }</option>
+					</c:forEach>
+                	
+                	</select>
+                
+                </td>
                 <td align="left">指派日期：</td>
-                <td align="left"><form:input path="assignDate" name="assignDate" type="text" id="assignDate" readonly="true" ltype="text" /></td>
+                <td align="left"><form:input path="assignDate" readonly="true"  name="assignDate" type="text" id="assignDate" ltype="text" title="插入自动生成" /></td>
             </tr>
         </table>
  <br />
@@ -105,6 +152,8 @@ $().ready(function(){
     </form:form>
     <div style="display:none">
     <!--  数据统计代码 --></div>
+    <input type="hidden" id="result" name="${result }"/>
+    
 </body>
 
 
@@ -115,10 +164,22 @@ $().ready(function(){
 		 	 var op=$("#op").val();
 			
 			if(op=="update"){
-				 $("#Button1").val("保存修改");
-					
+				$("#Button1").val("保存修改");
 				$("#form1").attr("action","../chance/doChanceModify");
-			}  
-
+			}else if(op=='assign'){
+				
+				$("input[type='text']").attr("readonly","true"); 
+				$("input[type='text']").attr("disabled","true");
+				$("textarea").attr("disabled","true");
+				$("#Button1").val("保存指派");
+				$("#form1").attr("action","../chance/doChanceAssign");
+				
+			}
+		
+			/* var result=$("#result").val();
+			if(result=="success"){
+				alert("修改成功！");
+			}
+ */
   </script>
 
