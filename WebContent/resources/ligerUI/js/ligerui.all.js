@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -10,38 +10,38 @@
 {
 
 
-    //ligerui ç»§æ‰¿æ–¹æ³•
+    //ligerui ¼Ì³Ğ·½·¨
     Function.prototype.ligerExtend = function (parent, overrides)
     {
         if (typeof parent != 'function') return this;
-        //ä¿å­˜å¯¹çˆ¶ç±»çš„å¼•ç”¨
+        //±£´æ¶Ô¸¸ÀàµÄÒıÓÃ
         this.base = parent.prototype;
         this.base.constructor = parent;
-        //ç»§æ‰¿
+        //¼Ì³Ğ
         var f = function () { };
         f.prototype = parent.prototype;
         this.prototype = new f();
         this.prototype.constructor = this;
-        //é™„åŠ å±æ€§æ–¹æ³•
+        //¸½¼ÓÊôĞÔ·½·¨
         if (overrides) $.extend(this.prototype, overrides);
     };
-    //å»¶æ—¶åŠ è½½
+    //ÑÓÊ±¼ÓÔØ
     Function.prototype.ligerDefer = function (o, defer, args)
     {
         var fn = this;
         return setTimeout(function () { fn.apply(o, args || []); }, defer);
     };
 
-    // æ ¸å¿ƒå¯¹è±¡
+    // ºËĞÄ¶ÔÏó
     window.liger = $.ligerui = {
         version: 'V1.1.9',
         managerCount: 0,
-        //ç»„ä»¶ç®¡ç†å™¨æ± 
+        //×é¼ş¹ÜÀíÆ÷³Ø
         managers: {},
         managerIdPrev: 'ligerui',
-        //é”™è¯¯æç¤º
+        //´íÎóÌáÊ¾
         error: {
-            managerIsExist: 'ç®¡ç†å™¨idå·²ç»å­˜åœ¨'
+            managerIsExist: '¹ÜÀíÆ÷idÒÑ¾­´æÔÚ'
         },
         getId: function (prev)
         {
@@ -75,9 +75,9 @@
                 delete $.ligerui.managers[arg.id];
             }
         },
-        //è·å–ligeruiå¯¹è±¡
-        //1,ä¼ å…¥ligerui ID
-        //2,ä¼ å…¥Dom Object Array(jQuery)
+        //»ñÈ¡ligerui¶ÔÏó
+        //1,´«Èëligerui ID
+        //2,´«ÈëDom Object Array(jQuery)
         get: function (arg, idAttrName)
         {
             idAttrName = idAttrName || "ligeruiid";
@@ -92,7 +92,7 @@
             }
             return null;
         },
-        //æ ¹æ®ç±»å‹æŸ¥æ‰¾æŸä¸€ä¸ªå¯¹è±¡
+        //¸ù¾İÀàĞÍ²éÕÒÄ³Ò»¸ö¶ÔÏó
         find: function (type)
         {
             var arr = [];
@@ -123,11 +123,11 @@
             }
             return arr;
         },
-        //$.fn.liger{Plugin} å’Œ $.fn.ligerGet{Plugin}Manager
-        //ä¼šè°ƒç”¨è¿™ä¸ªæ–¹æ³•,å¹¶ä¼ å…¥ä½œç”¨åŸŸ(this)
-        //@parm [plugin]  æ’ä»¶å
-        //@parm [args] å‚æ•°(æ•°ç»„)
-        //@parm [ext] æ‰©å±•å‚æ•°,å®šä¹‰å‘½åç©ºé—´æˆ–è€…idå±æ€§å
+        //$.fn.liger{Plugin} ºÍ $.fn.ligerGet{Plugin}Manager
+        //»áµ÷ÓÃÕâ¸ö·½·¨,²¢´«Èë×÷ÓÃÓò(this)
+        //@parm [plugin]  ²å¼şÃû
+        //@parm [args] ²ÎÊı(Êı×é)
+        //@parm [ext] À©Õ¹²ÎÊı,¶¨ÒåÃüÃû¿Õ¼ä»òÕßidÊôĞÔÃû
         run: function (plugin, args, ext)
         {
             if (!plugin) return;
@@ -137,8 +137,8 @@
                 controlNamespace: 'controls',
                 idAttrName: 'ligeruiid',
                 isStatic: false,
-                hasElement: true,           //æ˜¯å¦æ‹¥æœ‰elementä¸»ä½“(æ¯”å¦‚dragã€resizableç­‰è¾…åŠ©æ€§æ’ä»¶å°±ä¸æ‹¥æœ‰)
-                propertyToElemnt: null      //é“¾æ¥åˆ°elementçš„å±æ€§å
+                hasElement: true,           //ÊÇ·ñÓµÓĞelementÖ÷Ìå(±ÈÈçdrag¡¢resizableµÈ¸¨ÖúĞÔ²å¼ş¾Í²»ÓµÓĞ)
+                propertyToElemnt: null      //Á´½Óµ½elementµÄÊôĞÔÃû
             }, ext || {});
             plugin = plugin.replace(/^ligerGet/, '');
             plugin = plugin.replace(/^liger/, '');
@@ -167,11 +167,11 @@
                 {
                     var manager = $.ligerui.get(this[ext.idAttrName] || $(this).attr(ext.idAttrName));
                     if (manager && args.length > 0) manager.set(args[0]);
-                    //å·²ç»æ‰§è¡Œè¿‡ 
+                    //ÒÑ¾­Ö´ĞĞ¹ı 
                     return;
                 }
                 if (args.length >= 1 && typeof args[0] == 'string') return;
-                //åªè¦ç¬¬ä¸€ä¸ªå‚æ•°ä¸æ˜¯stringç±»å‹,éƒ½æ‰§è¡Œç»„ä»¶çš„å®ä¾‹åŒ–å·¥ä½œ
+                //Ö»ÒªµÚÒ»¸ö²ÎÊı²»ÊÇstringÀàĞÍ,¶¼Ö´ĞĞ×é¼şµÄÊµÀı»¯¹¤×÷
                 var options = args.length > 0 ? args[0] : null;
                 var p = $.extend({}, $[ext.defaultsNamespace][plugin] || {}
                 , $[ext.defaultsNamespace][plugin + 'String'] || {}, options || {});
@@ -202,7 +202,7 @@
                 else
                 {
                     var method = args[0];
-                    if (!manager[method]) return; //ä¸å­˜åœ¨è¿™ä¸ªæ–¹æ³•
+                    if (!manager[method]) return; //²»´æÔÚÕâ¸ö·½·¨
                     var parms = Array.apply(null, args);
                     parms.shift();
                     return manager[method].apply(manager, parms);  //manager method
@@ -211,35 +211,35 @@
             return null;
         },
 
-        //æ‰©å±•
-        //1,é»˜è®¤å‚æ•°     
-        //2,æœ¬åœ°åŒ–æ‰©å±• 
+        //À©Õ¹
+        //1,Ä¬ÈÏ²ÎÊı     
+        //2,±¾µØ»¯À©Õ¹ 
         defaults: {},
-        //3,æ–¹æ³•æ¥å£æ‰©å±•
+        //3,·½·¨½Ó¿ÚÀ©Õ¹
         methods: {},
-        //å‘½åç©ºé—´
-        //æ ¸å¿ƒæ§ä»¶,å°è£…äº†ä¸€äº›å¸¸ç”¨æ–¹æ³•
+        //ÃüÃû¿Õ¼ä
+        //ºËĞÄ¿Ø¼ş,·â×°ÁËÒ»Ğ©³£ÓÃ·½·¨
         core: {},
-        //å‘½åç©ºé—´
-        //ç»„ä»¶çš„é›†åˆ
+        //ÃüÃû¿Õ¼ä
+        //×é¼şµÄ¼¯ºÏ
         controls: {},
-        //plugin æ’ä»¶çš„é›†åˆ
+        //plugin ²å¼şµÄ¼¯ºÏ
         plugins: {}
     };
 
 
-    //æ‰©å±•å¯¹è±¡
+    //À©Õ¹¶ÔÏó
     $.ligerDefaults = {};
 
-    //æ‰©å±•å¯¹è±¡
+    //À©Õ¹¶ÔÏó
     $.ligerMethos = {};
 
-    //å…³è”èµ·æ¥
+    //¹ØÁªÆğÀ´
     $.ligerui.defaults = $.ligerDefaults;
     $.ligerui.methods = $.ligerMethos;
 
-    //è·å–ligeruiå¯¹è±¡
-    //@parm [plugin]  æ’ä»¶å,å¯ä¸ºç©º
+    //»ñÈ¡ligerui¶ÔÏó
+    //@parm [plugin]  ²å¼şÃû,¿ÉÎª¿Õ
     $.fn.liger = function (plugin)
     {
         if (plugin)
@@ -253,16 +253,16 @@
     };
 
 
-    //ç»„ä»¶åŸºç±»
-    //1,å®Œæˆå®šä¹‰å‚æ•°å¤„ç†æ–¹æ³•å’Œå‚æ•°å±æ€§åˆå§‹åŒ–çš„å·¥ä½œ
-    //2,å®Œæˆå®šä¹‰äº‹ä»¶å¤„ç†æ–¹æ³•å’Œäº‹ä»¶å±æ€§åˆå§‹åŒ–çš„å·¥ä½œ
+    //×é¼ş»ùÀà
+    //1,Íê³É¶¨Òå²ÎÊı´¦Àí·½·¨ºÍ²ÎÊıÊôĞÔ³õÊ¼»¯µÄ¹¤×÷
+    //2,Íê³É¶¨ÒåÊÂ¼ş´¦Àí·½·¨ºÍÊÂ¼şÊôĞÔ³õÊ¼»¯µÄ¹¤×÷
     $.ligerui.core.Component = function (options)
     {
-        //äº‹ä»¶å®¹å™¨
+        //ÊÂ¼şÈİÆ÷
         this.events = this.events || {};
-        //é…ç½®å‚æ•°
+        //ÅäÖÃ²ÎÊı
         this.options = options || {};
-        //å­ç»„ä»¶é›†åˆç´¢å¼•
+        //×Ó×é¼ş¼¯ºÏË÷Òı
         this.children = {};
     };
     $.extend($.ligerui.core.Component.prototype, {
@@ -275,9 +275,9 @@
             return 'ligerui';
         },
 
-        //è®¾ç½®å±æ€§
-        // arg å±æ€§å    value å±æ€§å€¼ 
-        // arg å±æ€§/å€¼   value æ˜¯å¦åªè®¾ç½®äº‹ä»¶
+        //ÉèÖÃÊôĞÔ
+        // arg ÊôĞÔÃû    value ÊôĞÔÖµ 
+        // arg ÊôĞÔ/Öµ   value ÊÇ·ñÖ»ÉèÖÃÊÂ¼ş
         set: function (arg, value)
         {
             if (!arg) return;
@@ -312,7 +312,7 @@
                 return;
             }
             var name = arg;
-            //äº‹ä»¶å‚æ•°
+            //ÊÂ¼ş²ÎÊı
             if (name.indexOf('on') == 0)
             {
                 if (typeof value == 'function')
@@ -330,7 +330,7 @@
             this.trigger('propertychanged', arg, value);
         },
 
-        //è·å–å±æ€§
+        //»ñÈ¡ÊôĞÔ
         get: function (name)
         {
             var pn = '_get' + name.substr(0, 1).toUpperCase() + name.substr(1);
@@ -349,8 +349,8 @@
             return false;
         },
 
-        //è§¦å‘äº‹ä»¶
-        //data (å¯é€‰) Array(å¯é€‰)ä¼ é€’ç»™äº‹ä»¶å¤„ç†å‡½æ•°çš„é™„åŠ å‚æ•°
+        //´¥·¢ÊÂ¼ş
+        //data (¿ÉÑ¡) Array(¿ÉÑ¡)´«µİ¸øÊÂ¼ş´¦Àíº¯ÊıµÄ¸½¼Ó²ÎÊı
         trigger: function (arg, data)
         {
             var name = arg.toLowerCase();
@@ -369,7 +369,7 @@
             }
         },
 
-        //ç»‘å®šäº‹ä»¶
+        //°ó¶¨ÊÂ¼ş
         bind: function (arg, handler, context)
         {
             if (typeof arg == 'object')
@@ -388,7 +388,7 @@
             this.events[name] = event;
         },
 
-        //å–æ¶ˆç»‘å®š
+        //È¡Ïû°ó¶¨
         unbind: function (arg, handler)
         {
             if (!arg)
@@ -422,11 +422,11 @@
     });
 
 
-    //ç•Œé¢ç»„ä»¶åŸºç±», 
-    //1,å®Œæˆç•Œé¢åˆå§‹åŒ–:è®¾ç½®ç»„ä»¶idå¹¶å­˜å…¥ç»„ä»¶ç®¡ç†å™¨æ± ,åˆå§‹åŒ–å‚æ•°
-    //2,æ¸²æŸ“çš„å·¥ä½œ,ç»†èŠ‚äº¤ç»™å­ç±»å®ç°
-    //@parm [element] ç»„ä»¶å¯¹åº”çš„dom elementå¯¹è±¡
-    //@parm [options] ç»„ä»¶çš„å‚æ•°
+    //½çÃæ×é¼ş»ùÀà, 
+    //1,Íê³É½çÃæ³õÊ¼»¯:ÉèÖÃ×é¼şid²¢´æÈë×é¼ş¹ÜÀíÆ÷³Ø,³õÊ¼»¯²ÎÊı
+    //2,äÖÈ¾µÄ¹¤×÷,Ï¸½Ú½»¸ø×ÓÀàÊµÏÖ
+    //@parm [element] ×é¼ş¶ÔÓ¦µÄdom element¶ÔÏó
+    //@parm [options] ×é¼şµÄ²ÎÊı
     $.ligerui.core.UIComponent = function (element, options)
     {
         $.ligerui.core.UIComponent.base.constructor.call(this, options);
@@ -445,7 +445,7 @@
         {
             return '$.ligerui.core.UIComponent';
         },
-        //æ‰©å±•æ–¹æ³•
+        //À©Õ¹·½·¨
         _extendMethods: function ()
         {
 
@@ -461,12 +461,12 @@
             {
                 this.id = this.options.id || this.element.id || $.ligerui.getId(this.__idPrev());
             }
-            //å­˜å…¥ç®¡ç†å™¨æ± 
+            //´æÈë¹ÜÀíÆ÷³Ø
             $.ligerui.add(this);
 
             if (!this.element) return;
 
-            //è¯»å–attræ–¹æ³•,å¹¶åŠ è½½åˆ°å‚æ•°,æ¯”å¦‚['url']
+            //¶ÁÈ¡attr·½·¨,²¢¼ÓÔØµ½²ÎÊı,±ÈÈç['url']
             var attributes = this.attr();
             if (attributes && attributes instanceof Array)
             {
@@ -476,7 +476,7 @@
                     this.options[name] = $(this.element).attr(name);
                 }
             }
-            //è¯»å–ligeruiè¿™ä¸ªå±æ€§ï¼Œå¹¶åŠ è½½åˆ°å‚æ•°ï¼Œæ¯”å¦‚ ligerui = "width:120,heigth:100"
+            //¶ÁÈ¡ligeruiÕâ¸öÊôĞÔ£¬²¢¼ÓÔØµ½²ÎÊı£¬±ÈÈç ligerui = "width:120,heigth:100"
             var p = this.options;
             if ($(this.element).attr("ligerui"))
             {
@@ -490,7 +490,7 @@
                 catch (e) { }
             }
         },
-        //é¢„æ¸²æŸ“,å¯ä»¥ç”¨äºç»§æ‰¿æ‰©å±•
+        //Ô¤äÖÈ¾,¿ÉÒÔÓÃÓÚ¼Ì³ĞÀ©Õ¹
         _preRender: function ()
         {
 
@@ -506,7 +506,7 @@
                 $(this.element).attr("ligeruiid", this.id);
             }
         },
-        //è¿”å›è¦è½¬æ¢æˆligeruiå‚æ•°çš„å±æ€§,æ¯”å¦‚['url']
+        //·µ»ØÒª×ª»»³Éligerui²ÎÊıµÄÊôĞÔ,±ÈÈç['url']
         attr: function ()
         {
             return [];
@@ -520,7 +520,7 @@
     });
 
 
-    //è¡¨å•æ§ä»¶åŸºç±»
+    //±íµ¥¿Ø¼ş»ùÀà
     $.ligerui.controls.Input = function (element, options)
     {
         $.ligerui.controls.Input.base.constructor.call(this, element, options);
@@ -557,12 +557,12 @@
         }
     });
 
-    //å…¨å±€çª—å£å¯¹è±¡
+    //È«¾Ö´°¿Ú¶ÔÏó
     $.ligerui.win = {
-        //é¡¶ç«¯æ˜¾ç¤º
+        //¶¥¶ËÏÔÊ¾
         top: false,
 
-        //é®ç½©
+        //ÕÚÕÖ
         mask: function (win)
         {
             function setHeight()
@@ -582,7 +582,7 @@
             this.masking = true;
         },
 
-        //å–æ¶ˆé®ç½©
+        //È¡ÏûÕÚÕÖ
         unmask: function (win)
         {
             var jwins = $("body > .l-dialog:visible,body > .l-window:visible");
@@ -590,12 +590,12 @@
             {
                 var winid = jwins.eq(i).attr("ligeruiid");
                 if (win && win.id == winid) continue;
-                //è·å–ligeruiå¯¹è±¡
+                //»ñÈ¡ligerui¶ÔÏó
                 var winmanager = $.ligerui.get(winid);
                 if (!winmanager) continue;
-                //æ˜¯å¦æ¨¡æ€çª—å£
+                //ÊÇ·ñÄ£Ì¬´°¿Ú
                 var modal = winmanager.get('modal');
-                //å¦‚æœå­˜åœ¨å…¶ä»–æ¨¡æ€çª—å£ï¼Œé‚£ä¹ˆä¸ä¼šå–æ¶ˆé®ç½©
+                //Èç¹û´æÔÚÆäËûÄ£Ì¬´°¿Ú£¬ÄÇÃ´²»»áÈ¡ÏûÕÚÕÖ
                 if (modal) return;
             }
             if (this.windowMask)
@@ -603,7 +603,7 @@
             this.masking = false;
         },
 
-        //æ˜¾ç¤ºä»»åŠ¡æ 
+        //ÏÔÊ¾ÈÎÎñÀ¸
         createTaskbar: function ()
         {
             if (!this.taskbar)
@@ -618,7 +618,7 @@
             return this.taskbar;
         },
 
-        //å…³é—­ä»»åŠ¡æ 
+        //¹Ø±ÕÈÎÎñÀ¸
         removeTaskbar: function ()
         {
             var self = this;
@@ -644,7 +644,7 @@
             }
         },
 
-        //è·å–ä»»åŠ¡
+        //»ñÈ¡ÈÎÎñ
         getTask: function (win)
         {
             var self = this;
@@ -654,7 +654,7 @@
         },
 
 
-        //å¢åŠ ä»»åŠ¡
+        //Ôö¼ÓÈÎÎñ
         addTask: function (win)
         {
             var self = this;
@@ -691,7 +691,7 @@
             return false;
         },
 
-        //ç§»é™¤ä»»åŠ¡
+        //ÒÆ³ıÈÎÎñ
         removeTask: function (win)
         {
             var self = this;
@@ -708,7 +708,7 @@
             }
         },
 
-        //å‰ç«¯æ˜¾ç¤º
+        //Ç°¶ËÏÔÊ¾
         setFront: function (win)
         {
             var wins = $.ligerui.find($.ligerui.core.Win);
@@ -729,7 +729,7 @@
     };
 
 
-    //çª—å£åŸºç±» windowã€dialog
+    //´°¿Ú»ùÀà window¡¢dialog
     $.ligerui.core.Win = function (element, options)
     {
         $.ligerui.core.Win.base.constructor.call(this, element, options);
@@ -871,7 +871,7 @@
         height: null,
         speed: "normal",
         changeHeightOnResize: false,
-        heightDiff: 0 // é«˜åº¦è¡¥å·®  
+        heightDiff: 0 // ¸ß¶È²¹²î  
     };
     $.ligerMethos.Accordion = {};
 
@@ -1030,7 +1030,8 @@
     });
 
 
-})(jQuery);ï»¿/**
+})(jQuery);
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -1126,7 +1127,9 @@
 
 
 
-})(jQuery);ï»¿/**
+})(jQuery);
+
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -1250,7 +1253,9 @@
             }
         }
     });
-})(jQuery);ï»¿/**
+})(jQuery);
+
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -1272,37 +1277,37 @@
     };
 
     $.ligerDefaults.ComboBox = {
-        resize: true,           //æ˜¯å¦è°ƒæ•´å¤§å°
-        isMultiSelect: false,   //æ˜¯å¦å¤šé€‰
-        isShowCheckBox: false,  //æ˜¯å¦é€‰æ‹©å¤é€‰æ¡†
-        columns: false,       //è¡¨æ ¼çŠ¶æ€
-        selectBoxWidth: false, //å®½åº¦
-        selectBoxHeight: false, //é«˜åº¦
-        onBeforeSelect: false, //é€‰æ‹©å‰äº‹ä»¶
-        onSelected: null, //é€‰æ‹©å€¼äº‹ä»¶ 
+        resize: true,           //ÊÇ·ñµ÷Õû´óĞ¡
+        isMultiSelect: false,   //ÊÇ·ñ¶àÑ¡
+        isShowCheckBox: false,  //ÊÇ·ñÑ¡Ôñ¸´Ñ¡¿ò
+        columns: false,       //±í¸ñ×´Ì¬
+        selectBoxWidth: false, //¿í¶È
+        selectBoxHeight: false, //¸ß¶È
+        onBeforeSelect: false, //Ñ¡ÔñÇ°ÊÂ¼ş
+        onSelected: null, //Ñ¡ÔñÖµÊÂ¼ş 
         initValue: null,
         initText: null,
         valueField: 'id',
         textField: 'text',
         valueFieldID: null,
-        slide: true,           //æ˜¯å¦ä»¥åŠ¨ç”»çš„å½¢å¼æ˜¾ç¤º
+        slide: true,           //ÊÇ·ñÒÔ¶¯»­µÄĞÎÊ½ÏÔÊ¾
         split: ";",
         data: null,
-        tree: null,            //ä¸‹æ‹‰æ¡†ä»¥æ ‘çš„å½¢å¼æ˜¾ç¤ºï¼Œtreeçš„å‚æ•°è·ŸLigerTreeçš„å‚æ•°ä¸€è‡´ 
-        treeLeafOnly: true,   //æ˜¯å¦åªé€‰æ‹©å¶å­
-        grid: null,              //è¡¨æ ¼
+        tree: null,            //ÏÂÀ­¿òÒÔÊ÷µÄĞÎÊ½ÏÔÊ¾£¬treeµÄ²ÎÊı¸úLigerTreeµÄ²ÎÊıÒ»ÖÂ 
+        treeLeafOnly: true,   //ÊÇ·ñÖ»Ñ¡ÔñÒ¶×Ó
+        grid: null,              //±í¸ñ
         onStartResize: null,
         onEndResize: null,
         hideOnLoseFocus: true,
-        url: null,              //æ•°æ®æºURL(éœ€è¿”å›JSON)
+        url: null,              //Êı¾İÔ´URL(Ğè·µ»ØJSON)
         onSuccess: null,
         onError: null,
-        onBeforeOpen: null,      //æ‰“å¼€ä¸‹æ‹‰æ¡†å‰äº‹ä»¶ï¼Œå¯ä»¥é€šè¿‡return falseæ¥é˜»æ­¢ç»§ç»­æ“ä½œï¼Œåˆ©ç”¨è¿™ä¸ªå‚æ•°å¯ä»¥ç”¨æ¥è°ƒç”¨å…¶ä»–å‡½æ•°ï¼Œæ¯”å¦‚æ‰“å¼€ä¸€ä¸ªæ–°çª—å£æ¥é€‰æ‹©å€¼
-        render: null,            //æ–‡æœ¬æ¡†æ˜¾ç¤ºhtmlå‡½æ•°
-        absolute: true         //é€‰æ‹©æ¡†æ˜¯å¦åœ¨é™„åŠ åˆ°body,å¹¶ç»å¯¹å®šä½
+        onBeforeOpen: null,      //´ò¿ªÏÂÀ­¿òÇ°ÊÂ¼ş£¬¿ÉÒÔÍ¨¹ıreturn falseÀ´×èÖ¹¼ÌĞø²Ù×÷£¬ÀûÓÃÕâ¸ö²ÎÊı¿ÉÒÔÓÃÀ´µ÷ÓÃÆäËûº¯Êı£¬±ÈÈç´ò¿ªÒ»¸öĞÂ´°¿ÚÀ´Ñ¡ÔñÖµ
+        render: null,            //ÎÄ±¾¿òÏÔÊ¾htmlº¯Êı
+        absolute: true         //Ñ¡Ôñ¿òÊÇ·ñÔÚ¸½¼Óµ½body,²¢¾ø¶Ô¶¨Î»
     };
 
-    //æ‰©å±•æ–¹æ³•
+    //À©Õ¹·½·¨
     $.ligerMethos.ComboBox = $.ligerMethos.ComboBox || {};
 
 
@@ -1340,8 +1345,8 @@
             g.select = null;
             g.textFieldID = "";
             g.valueFieldID = "";
-            g.valueField = null; //éšè—åŸŸ(ä¿å­˜å€¼)
-            //æ–‡æœ¬æ¡†åˆå§‹åŒ–
+            g.valueField = null; //Òş²ØÓò(±£´æÖµ)
+            //ÎÄ±¾¿ò³õÊ¼»¯
             if (this.element.tagName.toLowerCase() == "input")
             {
                 this.element.readOnly = true;
@@ -1359,11 +1364,11 @@
                 g.inputText.attr("id", g.textFieldID).insertAfter($(this.element));
             } else
             {
-                //ä¸æ”¯æŒå…¶ä»–ç±»å‹
+                //²»Ö§³ÖÆäËûÀàĞÍ
                 return;
             }
             if (g.inputText[0].name == undefined) g.inputText[0].name = g.textFieldID;
-            //éšè—åŸŸåˆå§‹åŒ–
+            //Òş²ØÓò³õÊ¼»¯
             g.valueField = null;
             if (p.valueFieldID)
             {
@@ -1377,16 +1382,16 @@
                 g.valueField[0].id = g.valueField[0].name = g.textFieldID + "_val";
             }
             if (g.valueField[0].name == undefined) g.valueField[0].name = g.valueField[0].id;
-            //å¼€å…³
+            //¿ª¹Ø
             g.link = $('<div class="l-trigger"><div class="l-trigger-icon"></div></div>');
-            //ä¸‹æ‹‰æ¡†
+            //ÏÂÀ­¿ò
             g.selectBox = $('<div class="l-box-select"><div class="l-box-select-inner"><table cellpadding="0" cellspacing="0" border="0" class="l-box-select-table"></table></div></div>');
             g.selectBox.table = $("table:first", g.selectBox);
-            //å¤–å±‚
+            //Íâ²ã
             g.wrapper = g.inputText.wrap('<div class="l-text l-text-combobox"></div>').parent();
             g.wrapper.append('<div class="l-text-l"></div><div class="l-text-r"></div>');
             g.wrapper.append(g.link);
-            //æ·»åŠ ä¸ªåŒ…è£¹ï¼Œ
+            //Ìí¼Ó¸ö°ü¹ü£¬
             g.textwrapper = g.wrapper.wrap('<div class="l-text-wrapper"></div>').parent();
 
             if (p.absolute)
@@ -1404,7 +1409,7 @@
                 p.isShowCheckBox = false;
                 $("table", g.selectBox).addClass("l-table-nocheckbox");
             }
-            //å¼€å…³ äº‹ä»¶
+            //¿ª¹Ø ÊÂ¼ş
             g.link.hover(function ()
             {
                 if (p.disabled) return;
@@ -1464,12 +1469,12 @@
             {
                 g.selectBox.height(p.selectBoxHeight);
             }
-            //ä¸‹æ‹‰æ¡†å†…å®¹åˆå§‹åŒ–
+            //ÏÂÀ­¿òÄÚÈİ³õÊ¼»¯
             g.bulidContent();
 
             g.set(p);
 
-            //ä¸‹æ‹‰æ¡†å®½åº¦ã€é«˜åº¦åˆå§‹åŒ–
+            //ÏÂÀ­¿ò¿í¶È¡¢¸ß¶È³õÊ¼»¯
             if (p.selectBoxWidth)
             {
                 g.selectBox.width(p.selectBoxWidth);
@@ -1488,7 +1493,7 @@
         },
         _setDisabled: function (value)
         {
-            //ç¦ç”¨æ ·å¼
+            //½ûÓÃÑùÊ½
             if (value)
             {
                 this.wrapper.addClass('l-text-disabled');
@@ -1554,7 +1559,7 @@
         },
         _setResize: function (resize)
         {
-            //è°ƒæ•´å¤§å°æ”¯æŒ
+            //µ÷Õû´óĞ¡Ö§³Ö
             if (resize && $.fn.ligerResizable)
             {
                 var g = this;
@@ -1573,7 +1578,7 @@
                 g.selectBox.append("<div class='l-btn-nw-drop'></div>");
             }
         },
-        //æŸ¥æ‰¾Text,é€‚ç”¨å¤šé€‰å’Œå•é€‰
+        //²éÕÒText,ÊÊÓÃ¶àÑ¡ºÍµ¥Ñ¡
         findTextByValue: function (value)
         {
             var g = this, p = this.options;
@@ -1600,7 +1605,7 @@
             if (texts.length > 0) texts = texts.substr(0, texts.length - 1);
             return texts;
         },
-        //æŸ¥æ‰¾Value,é€‚ç”¨å¤šé€‰å’Œå•é€‰
+        //²éÕÒValue,ÊÊÓÃ¶àÑ¡ºÍµ¥Ñ¡
         findValueByText: function (text)
         {
             var g = this, p = this.options;
@@ -1806,7 +1811,7 @@
                     g.selectBox.table.append(tr);
                 }
             }
-            //è‡ªå®šä¹‰å¤é€‰æ¡†æ”¯æŒ
+            //×Ô¶¨Òå¸´Ñ¡¿òÖ§³Ö
             if (p.isShowCheckBox && $.fn.ligerCheckBox)
             {
                 $("table input:checkbox", g.selectBox).ligerCheckBox();
@@ -1851,10 +1856,10 @@
                 $(this).removeClass("l-over");
             });
             g._addClickEven();
-            //é€‰æ‹©é¡¹åˆå§‹åŒ–
+            //Ñ¡ÔñÏî³õÊ¼»¯
             g._dataInit();
         },
-        //æ ‘
+        //Ê÷
         setTree: function (tree)
         {
             var g = this, p = this.options;
@@ -1919,7 +1924,7 @@
                 g._changeValue(value, text);
             }
         },
-        //è¡¨æ ¼
+        //±í¸ñ
         setGrid: function (grid)
         {
             var g = this, p = this.options;
@@ -1985,7 +1990,7 @@
         },
         getValue: function ()
         {
-            //è·å–å€¼
+            //»ñÈ¡Öµ
             return this._getValue();
         },
         updateStyle: function ()
@@ -2001,7 +2006,7 @@
             {
                 g._changeValue(p.initValue, p.initText);
             }
-            //æ ¹æ®å€¼æ¥åˆå§‹åŒ–
+            //¸ù¾İÖµÀ´³õÊ¼»¯
             if (p.initValue != null)
             {
                 value = p.initValue;
@@ -2016,7 +2021,7 @@
                     g._changeValue(value, text);
                 }
             }
-            //æ ¹æ®æ–‡æœ¬æ¥åˆå§‹åŒ– 
+            //¸ù¾İÎÄ±¾À´³õÊ¼»¯ 
             else if (p.initText != null)
             {
                 value = g.findValueByText(p.initText);
@@ -2072,7 +2077,7 @@
                 });
             }
         },
-        //è®¾ç½®å€¼åˆ° æ–‡æœ¬æ¡†å’Œéšè—åŸŸ
+        //ÉèÖÃÖµµ½ ÎÄ±¾¿òºÍÒş²ØÓò
         _changeValue: function (newValue, newText)
         {
             var g = this, p = this.options;
@@ -2090,7 +2095,7 @@
             g.inputText.trigger("change").focus();
             g.trigger('selected', [newValue, newText]);
         },
-        //æ›´æ–°é€‰ä¸­çš„å€¼(å¤é€‰æ¡†)
+        //¸üĞÂÑ¡ÖĞµÄÖµ(¸´Ñ¡¿ò)
         _checkboxUpdateValue: function ()
         {
             var g = this, p = this.options;
@@ -2117,7 +2122,7 @@
         _addClickEven: function ()
         {
             var g = this, p = this.options;
-            //é€‰é¡¹ç‚¹å‡»
+            //Ñ¡Ïîµã»÷
             $(".l-table-nocheckbox td", g.selectBox).click(function ()
             {
                 var value = $(this).attr("value");
@@ -2226,11 +2231,12 @@
     });
 
     $.ligerui.controls.ComboBox.prototype.setValue = $.ligerui.controls.ComboBox.prototype.selectValue;
-    //è®¾ç½®æ–‡æœ¬æ¡†å’Œéšè—æ§ä»¶çš„å€¼
+    //ÉèÖÃÎÄ±¾¿òºÍÒş²Ø¿Ø¼şµÄÖµ
     $.ligerui.controls.ComboBox.prototype.setInputValue = $.ligerui.controls.ComboBox.prototype._changeValue;
     
 
-})(jQuery);ï»¿/**
+})(jQuery);
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -2254,13 +2260,13 @@
         format: "yyyy-MM-dd hh:mm",
         showTime: false,
         onChangeDate: false,
-        absolute: true  //é€‰æ‹©æ¡†æ˜¯å¦åœ¨é™„åŠ åˆ°body,å¹¶ç»å¯¹å®šä½
+        absolute: true  //Ñ¡Ôñ¿òÊÇ·ñÔÚ¸½¼Óµ½body,²¢¾ø¶Ô¶¨Î»
     };
     $.ligerDefaults.DateEditorString = {
-        dayMessage: ["æ—¥", "ä¸€", "äºŒ", "ä¸‰", "å››", "äº”", "å…­"],
-        monthMessage: ["ä¸€æœˆ", "äºŒæœˆ", "ä¸‰æœˆ", "å››æœˆ", "äº”æœˆ", "å…­æœˆ", "ä¸ƒæœˆ", "å…«æœˆ", "ä¹æœˆ", "åæœˆ", "åä¸€æœˆ", "åäºŒæœˆ"],
-        todayMessage: "ä»Šå¤©",
-        closeMessage: "å…³é—­"
+        dayMessage: ["ÈÕ", "Ò»", "¶ş", "Èı", "ËÄ", "Îå", "Áù"],
+        monthMessage: ["Ò»ÔÂ", "¶şÔÂ", "ÈıÔÂ", "ËÄÔÂ", "ÎåÔÂ", "ÁùÔÂ", "ÆßÔÂ", "°ËÔÂ", "¾ÅÔÂ", "Ê®ÔÂ", "Ê®Ò»ÔÂ", "Ê®¶şÔÂ"],
+        todayMessage: "½ñÌì",
+        closeMessage: "¹Ø±Õ"
     };
     $.ligerMethos.DateEditor = {};
 
@@ -2295,7 +2301,7 @@
             g.text = g.inputText.wrap('<div class="l-text l-text-date"></div>').parent();
             g.text.append('<div class="l-text-l"></div><div class="l-text-r"></div>');
             g.text.append(g.link);
-            //æ·»åŠ ä¸ªåŒ…è£¹ï¼Œ
+            //Ìí¼Ó¸ö°ü¹ü£¬
             g.textwrapper = g.text.wrap('<div class="l-text-wrapper"></div>').parent();
             var dateeditorHTML = "";
             dateeditorHTML += "<div class='l-box-dateeditor' style='display:none'>";
@@ -2359,13 +2365,13 @@
             var nowDate = new Date();
             g.now = {
                 year: nowDate.getFullYear(),
-                month: nowDate.getMonth() + 1, //æ³¨æ„è¿™é‡Œ
+                month: nowDate.getMonth() + 1, //×¢ÒâÕâÀï
                 day: nowDate.getDay(),
                 date: nowDate.getDate(),
                 hour: nowDate.getHours(),
                 minute: nowDate.getMinutes()
             };
-            //å½“å‰çš„æ—¶é—´
+            //µ±Ç°µÄÊ±¼ä
             g.currentDate = {
                 year: nowDate.getFullYear(),
                 month: nowDate.getMonth() + 1,
@@ -2374,28 +2380,28 @@
                 hour: nowDate.getHours(),
                 minute: nowDate.getMinutes()
             };
-            //é€‰æ‹©çš„æ—¶é—´
+            //Ñ¡ÔñµÄÊ±¼ä
             g.selectedDate = null;
-            //ä½¿ç”¨çš„æ—¶é—´
+            //Ê¹ÓÃµÄÊ±¼ä
             g.usedDate = null;
 
 
 
-            //åˆå§‹åŒ–æ•°æ®
-            //è®¾ç½®å‘¨æ—¥è‡³å‘¨å…­
+            //³õÊ¼»¯Êı¾İ
+            //ÉèÖÃÖÜÈÕÖÁÖÜÁù
             $("td", g.body.thead).each(function (i, td)
             {
                 $(td).html(p.dayMessage[i]);
             });
-            //è®¾ç½®ä¸€æœˆåˆ°åä¸€äºŒæœˆ
+            //ÉèÖÃÒ»ÔÂµ½Ê®Ò»¶şÔÂ
             $("li", g.body.monthselector).each(function (i, li)
             {
                 $(li).html(p.monthMessage[i]);
             });
-            //è®¾ç½®æŒ‰é’®
+            //ÉèÖÃ°´Å¥
             g.buttons.btnToday.html(p.todayMessage);
             g.buttons.btnClose.html(p.closeMessage);
-            //è®¾ç½®æ—¶é—´
+            //ÉèÖÃÊ±¼ä
             if (p.showTime)
             {
                 g.toolbar.time.show();
@@ -2413,9 +2419,9 @@
                     $(this).html(str);
                 });
             }
-            //è®¾ç½®ä¸»ä½“
+            //ÉèÖÃÖ÷Ìå
             g.bulidContent();
-            //åˆå§‹åŒ–   
+            //³õÊ¼»¯   
             if (g.inputText.val() != "")
                 g.onTextChange();
             /**************
@@ -2451,13 +2457,13 @@
                 g.bulidContent();
                 g.toggleDateEditor(g.dateeditor.is(":visible"));
             });
-            //ä¸å¯ç”¨å±æ€§æ—¶å¤„ç†
+            //²»¿ÉÓÃÊôĞÔÊ±´¦Àí
             if (p.disabled)
             {
                 g.inputText.attr("readonly", "readonly");
                 g.text.addClass('l-text-disabled');
             }
-            //åˆå§‹å€¼
+            //³õÊ¼Öµ
             if (p.initValue)
             {
                 g.inputText.val(p.initValue);
@@ -2466,7 +2472,7 @@
             {
                 g.toggleDateEditor(true);
             });
-            //æ—¥æœŸ ç‚¹å‡»
+            //ÈÕÆÚ µã»÷
             $("td", g.body.tbody).hover(function ()
             {
                 if ($(this).hasClass("l-box-dateeditor-today")) return;
@@ -2519,7 +2525,7 @@
             {
                 $(this).removeClass("l-box-dateeditor-header-btn-over");
             });
-            //é€‰æ‹©å¹´ä»½
+            //Ñ¡ÔñÄê·İ
             g.buttons.btnYear.click(function ()
             {
                 //build year list
@@ -2573,7 +2579,7 @@
                 g.bulidContent();
             });
 
-            //é€‰æ‹©å°æ—¶
+            //Ñ¡ÔñĞ¡Ê±
             g.toolbar.time.hour.click(function ()
             {
                 $("li", g.body.hourselector).each(function (i, item)
@@ -2597,7 +2603,7 @@
                 g.body.hourselector.slideToggle();
                 g.bulidContent();
             });
-            //é€‰æ‹©åˆ†é’Ÿ
+            //Ñ¡Ôñ·ÖÖÓ
             g.toolbar.time.minute.click(function ()
             {
                 $("li", g.body.minuteselector).each(function (i, item)
@@ -2630,7 +2636,7 @@
                 g.bulidContent();
             });
 
-            //ä¸Šä¸ªæœˆ
+            //ÉÏ¸öÔÂ
             g.buttons.btnPrevMonth.click(function ()
             {
                 if (--g.currentDate.month == 0)
@@ -2640,7 +2646,7 @@
                 }
                 g.bulidContent();
             });
-            //ä¸‹ä¸ªæœˆ
+            //ÏÂ¸öÔÂ
             g.buttons.btnNextMonth.click(function ()
             {
                 if (++g.currentDate.month == 13)
@@ -2650,19 +2656,19 @@
                 }
                 g.bulidContent();
             });
-            //ä¸Šä¸€å¹´
+            //ÉÏÒ»Äê
             g.buttons.btnPrevYear.click(function ()
             {
                 g.currentDate.year--;
                 g.bulidContent();
             });
-            //ä¸‹ä¸€å¹´
+            //ÏÂÒ»Äê
             g.buttons.btnNextYear.click(function ()
             {
                 g.currentDate.year++;
                 g.bulidContent();
             });
-            //ä»Šå¤©
+            //½ñÌì
             g.buttons.btnToday.click(function ()
             {
                 g.currentDate = {
@@ -2680,7 +2686,7 @@
                 g.showDate();
                 g.dateeditor.slideToggle("fast");
             });
-            //æ–‡æœ¬æ¡†
+            //ÎÄ±¾¿ò
             g.inputText.change(function ()
             {
                 g.onTextChange();
@@ -2698,7 +2704,7 @@
             {
                 g.text.removeClass("l-text-over");
             });
-            //LEABEL æ”¯æŒ
+            //LEABEL Ö§³Ö
             if (p.label)
             {
                 g.labelwrapper = g.textwrapper.wrap('<div class="l-labeltext"></div>').parent();
@@ -2734,9 +2740,9 @@
         bulidContent: function ()
         {
             var g = this, p = this.options;
-            //å½“å‰æœˆç¬¬ä¸€å¤©æ˜ŸæœŸ
+            //µ±Ç°ÔÂµÚÒ»ÌìĞÇÆÚ
             var thismonthFirstDay = new Date(g.currentDate.year, g.currentDate.month - 1, 1).getDay();
-            //å½“å‰æœˆå¤©æ•°
+            //µ±Ç°ÔÂÌìÊı
             var nextMonth = g.currentDate.month;
             var nextYear = g.currentDate.year;
             if (++nextMonth == 13)
@@ -2745,7 +2751,7 @@
                 nextYear++;
             }
             var monthDayNum = new Date(nextYear, nextMonth - 1, 0).getDate();
-            //å½“å‰ä¸Šä¸ªæœˆå¤©æ•°
+            //µ±Ç°ÉÏ¸öÔÂÌìÊı
             var prevMonthDayNum = new Date(g.currentDate.year, g.currentDate.month - 1, 0).getDate();
 
             g.buttons.btnMonth.html(p.monthMessage[g.currentDate.month - 1]);
@@ -2924,7 +2930,7 @@
             }
             if (!p.showTime && !g.isDateTime(val))
             {
-                //æ¢å¤
+                //»Ö¸´
                 if (!g.usedDate)
                 {
                     g.inputText.val("");
@@ -2935,7 +2941,7 @@
             }
             else if (p.showTime && !g.isLongDateTime(val))
             {
-                //æ¢å¤
+                //»Ö¸´
                 if (!g.usedDate)
                 {
                     g.inputText.val("");
@@ -2950,7 +2956,7 @@
                 var formatVal = g.getFormatDate(new Date(val));
                 if (formatVal == null)
                 {
-                    //æ¢å¤
+                    //»Ö¸´
                     if (!g.usedDate)
                     {
                         g.inputText.val("");
@@ -2959,10 +2965,10 @@
                         g.inputText.val(g.getFormatDate(g.usedDate));
                     }
                 }
-                g.usedDate = new Date(val); //è®°å½•
+                g.usedDate = new Date(val); //¼ÇÂ¼
                 g.selectedDate = {
                     year: g.usedDate.getFullYear(),
-                    month: g.usedDate.getMonth() + 1, //æ³¨æ„è¿™é‡Œ
+                    month: g.usedDate.getMonth() + 1, //×¢ÒâÕâÀï
                     day: g.usedDate.getDay(),
                     date: g.usedDate.getDate(),
                     hour: g.usedDate.getHours(),
@@ -2970,7 +2976,7 @@
                 };
                 g.currentDate = {
                     year: g.usedDate.getFullYear(),
-                    month: g.usedDate.getMonth() + 1, //æ³¨æ„è¿™é‡Œ
+                    month: g.usedDate.getMonth() + 1, //×¢ÒâÕâÀï
                     day: g.usedDate.getDay(),
                     date: g.usedDate.getDate(),
                     hour: g.usedDate.getHours(),
@@ -3040,7 +3046,8 @@
     });
 
 
-})(jQuery);ï»¿/**
+})(jQuery);
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -3053,7 +3060,7 @@
 {
     var l = $.ligerui;
 
-    //å…¨å±€äº‹ä»¶
+    //È«¾ÖÊÂ¼ş
     $(".l-dialog-btn").live('mouseover', function ()
     {
         $(this).addClass("l-dialog-btn-over");
@@ -3075,7 +3082,7 @@
         return l.run.call(null, "ligerDialog", arguments, { isStatic: true });
     };
 
-    //dialog å›¾ç‰‡æ–‡ä»¶å¤¹çš„è·¯å¾„ é¢„åŠ è½½
+    //dialog Í¼Æ¬ÎÄ¼ş¼ĞµÄÂ·¾¶ Ô¤¼ÓÔØ
     $.ligerui.DialogImagePath = "../../lib/ligerUI/skins/Aqua/images/win/";
 
     function prevImage(paths)
@@ -3088,44 +3095,44 @@
     //prevImage(['dialog.gif', 'dialog-winbtns.gif', 'dialog-bc.gif', 'dialog-tc.gif']);
 
     $.ligerDefaults.Dialog = {
-        cls: null,       //ç»™dialogé™„åŠ css class
-        id: null,        //ç»™dialogé™„åŠ id
-        buttons: null, //æŒ‰é’®é›†åˆ 
-        isDrag: true,   //æ˜¯å¦æ‹–åŠ¨
-        width: 280,     //å®½åº¦
-        height: null,   //é«˜åº¦ï¼Œé»˜è®¤è‡ªé€‚åº” 
-        content: '',    //å†…å®¹
-        target: null,   //ç›®æ ‡å¯¹è±¡ï¼ŒæŒ‡å®šå®ƒå°†ä»¥appendTo()çš„æ–¹å¼è½½å…¥
-        url: null,      //ç›®æ ‡é¡µurlï¼Œé»˜è®¤ä»¥iframeçš„æ–¹å¼è½½å…¥
-        load: false,     //æ˜¯å¦ä»¥load()çš„æ–¹å¼åŠ è½½ç›®æ ‡é¡µçš„å†…å®¹
+        cls: null,       //¸ødialog¸½¼Ócss class
+        id: null,        //¸ødialog¸½¼Óid
+        buttons: null, //°´Å¥¼¯ºÏ 
+        isDrag: true,   //ÊÇ·ñÍÏ¶¯
+        width: 280,     //¿í¶È
+        height: null,   //¸ß¶È£¬Ä¬ÈÏ×ÔÊÊÓ¦ 
+        content: '',    //ÄÚÈİ
+        target: null,   //Ä¿±ê¶ÔÏó£¬Ö¸¶¨Ëü½«ÒÔappendTo()µÄ·½Ê½ÔØÈë
+        url: null,      //Ä¿±êÒ³url£¬Ä¬ÈÏÒÔiframeµÄ·½Ê½ÔØÈë
+        load: false,     //ÊÇ·ñÒÔload()µÄ·½Ê½¼ÓÔØÄ¿±êÒ³µÄÄÚÈİ
         onLoaded: null,
-        type: 'none',   //ç±»å‹ warnã€successã€errorã€question
-        left: null,     //ä½ç½®left
-        top: null,      //ä½ç½®top
-        modal: true,    //æ˜¯å¦æ¨¡æ€å¯¹è¯æ¡†
-        name: null,     //åˆ›å»ºiframeæ—¶ ä½œä¸ºiframeçš„nameå’Œid 
-        isResize: false, // æ˜¯å¦è°ƒæ•´å¤§å°
-        allowClose: true, //å…è®¸å…³é—­
+        type: 'none',   //ÀàĞÍ warn¡¢success¡¢error¡¢question
+        left: null,     //Î»ÖÃleft
+        top: null,      //Î»ÖÃtop
+        modal: true,    //ÊÇ·ñÄ£Ì¬¶Ô»°¿ò
+        name: null,     //´´½¨iframeÊ± ×÷ÎªiframeµÄnameºÍid 
+        isResize: false, // ÊÇ·ñµ÷Õû´óĞ¡
+        allowClose: true, //ÔÊĞí¹Ø±Õ
         opener: null,
-        timeParmName: null,  //æ˜¯å¦ç»™URLåé¢åŠ ä¸Šå€¼ä¸ºnew Date().getTime()çš„å‚æ•°ï¼Œå¦‚æœéœ€è¦æŒ‡å®šä¸€ä¸ªå‚æ•°åå³å¯
-        closeWhenEnter: null, //å›è½¦æ—¶æ˜¯å¦å…³é—­dialog
-        isHidden: true,        //å…³é—­å¯¹è¯æ¡†æ—¶æ˜¯å¦åªæ˜¯éšè—ï¼Œè¿˜æ˜¯é”€æ¯å¯¹è¯æ¡†
-        show: true,          //åˆå§‹åŒ–æ—¶æ˜¯å¦é©¬ä¸Šæ˜¾ç¤º
-        title: 'æç¤º',        //å¤´éƒ¨ 
-        showMax: false,                             //æ˜¯å¦æ˜¾ç¤ºæœ€å¤§åŒ–æŒ‰é’® 
-        showToggle: false,                          //æ˜¯å¦æ˜¾ç¤ºæ”¶ç¼©çª—å£æŒ‰é’®
-        showMin: false,                             //æ˜¯å¦æ˜¾ç¤ºæœ€å°åŒ–æŒ‰é’®
-        slide: $.browser.msie ? false : true,        //æ˜¯å¦ä»¥åŠ¨ç”»çš„å½¢å¼æ˜¾ç¤º 
-        fixedType: null,            //åœ¨å›ºå®šçš„ä½ç½®æ˜¾ç¤º, å¯ä»¥è®¾ç½®çš„å€¼æœ‰n, e, s, w, ne, se, sw, nw
-        showType: null             //æ˜¾ç¤ºç±»å‹,å¯ä»¥è®¾ç½®ä¸ºslide(å›ºå®šæ˜¾ç¤ºæ—¶æœ‰æ•ˆ)
+        timeParmName: null,  //ÊÇ·ñ¸øURLºóÃæ¼ÓÉÏÖµÎªnew Date().getTime()µÄ²ÎÊı£¬Èç¹ûĞèÒªÖ¸¶¨Ò»¸ö²ÎÊıÃû¼´¿É
+        closeWhenEnter: null, //»Ø³µÊ±ÊÇ·ñ¹Ø±Õdialog
+        isHidden: true,        //¹Ø±Õ¶Ô»°¿òÊ±ÊÇ·ñÖ»ÊÇÒş²Ø£¬»¹ÊÇÏú»Ù¶Ô»°¿ò
+        show: true,          //³õÊ¼»¯Ê±ÊÇ·ñÂíÉÏÏÔÊ¾
+        title: 'ÌáÊ¾',        //Í·²¿ 
+        showMax: false,                             //ÊÇ·ñÏÔÊ¾×î´ó»¯°´Å¥ 
+        showToggle: false,                          //ÊÇ·ñÏÔÊ¾ÊÕËõ´°¿Ú°´Å¥
+        showMin: false,                             //ÊÇ·ñÏÔÊ¾×îĞ¡»¯°´Å¥
+        slide: $.browser.msie ? false : true,        //ÊÇ·ñÒÔ¶¯»­µÄĞÎÊ½ÏÔÊ¾ 
+        fixedType: null,            //ÔÚ¹Ì¶¨µÄÎ»ÖÃÏÔÊ¾, ¿ÉÒÔÉèÖÃµÄÖµÓĞn, e, s, w, ne, se, sw, nw
+        showType: null             //ÏÔÊ¾ÀàĞÍ,¿ÉÒÔÉèÖÃÎªslide(¹Ì¶¨ÏÔÊ¾Ê±ÓĞĞ§)
     };
     $.ligerDefaults.DialogString = {
-        titleMessage: 'æç¤º',                     //æç¤ºæ–‡æœ¬æ ‡é¢˜
-        ok: 'ç¡®å®š',
-        yes: 'æ˜¯',
-        no: 'å¦',
-        cancel: 'å–æ¶ˆ',
-        waittingMessage: 'æ­£åœ¨ç­‰å¾…ä¸­,è¯·ç¨å€™...'
+        titleMessage: 'ÌáÊ¾',                     //ÌáÊ¾ÎÄ±¾±êÌâ
+        ok: 'È·¶¨',
+        yes: 'ÊÇ',
+        no: '·ñ',
+        cancel: 'È¡Ïû',
+        waittingMessage: 'ÕıÔÚµÈ´ıÖĞ,ÇëÉÔºò...'
     };
 
     $.ligerMethos.Dialog = $.ligerMethos.Dialog || {};
@@ -3171,7 +3178,7 @@
             }
             if (p.cls) g.dialog.addClass(p.cls);
             if (p.id) g.dialog.attr("id", p.id); 
-            //è®¾ç½®é”å®šå±å¹•ã€æ‹–åŠ¨æ”¯æŒ å’Œè®¾ç½®å›¾ç‰‡
+            //ÉèÖÃËø¶¨ÆÁÄ»¡¢ÍÏ¶¯Ö§³Ö ºÍÉèÖÃÍ¼Æ¬
             g.mask();
             if (p.isDrag)
                 g._applyDrag();
@@ -3189,7 +3196,7 @@
                 g.unmask();
                 g.dialog.hide();
             }
-            //è®¾ç½®ä¸»ä½“å†…å®¹
+            //ÉèÖÃÖ÷ÌåÄÚÈİ
             if (p.target)
             {
                 g.dialog.content.prepend(p.target);
@@ -3226,7 +3233,7 @@
                 }
             }
             if (p.opener) g.dialog.opener = p.opener;
-            //è®¾ç½®æŒ‰é’®
+            //ÉèÖÃ°´Å¥
             if (p.buttons)
             {
                 $(p.buttons).each(function (i, item)
@@ -3251,7 +3258,7 @@
                 l.win.setFront(g);
             });
 
-            //è®¾ç½®äº‹ä»¶
+            //ÉèÖÃÊÂ¼ş
             $(".l-dialog-tc .l-dialog-close", g.dialog).click(function ()
             {
                 if (p.isHidden)
@@ -3261,7 +3268,7 @@
             });
             if (!p.fixedType)
             {
-                //ä½ç½®åˆå§‹åŒ–
+                //Î»ÖÃ³õÊ¼»¯
                 var left = 0;
                 var top = 0;
                 var width = p.width || g.dialog.width();
@@ -3319,7 +3326,7 @@
                 g._onReisze();
             }
         },
-        //æœ€å¤§åŒ–
+        //×î´ó»¯
         max: function ()
         {
             var g = this, p = this.options;
@@ -3345,7 +3352,7 @@
             }
         },
 
-        //æ¢å¤
+        //»Ö¸´
         recover: function ()
         {
             var g = this, p = this.options;
@@ -3378,7 +3385,7 @@
             g.maximum = false;
         },
 
-        //æœ€å°åŒ–
+        //×îĞ¡»¯
         min: function ()
         {
             var g = this, p = this.options;
@@ -3435,7 +3442,7 @@
             g.show();
         },
 
-        //å±•å¼€ æ”¶ç¼©
+        //Õ¹¿ª ÊÕËõ
         toggle: function ()
         {
 
@@ -3447,7 +3454,7 @@
                 g.collapse();
         },
 
-        //æ”¶ç¼©
+        //ÊÕËõ
         collapse: function ()
         {
             var g = this, p = this.options;
@@ -3459,7 +3466,7 @@
             if (this.resizable) this.resizable.set({ disabled: true });
         },
 
-        //å±•å¼€
+        //Õ¹¿ª
         extend: function ()
         {
             var g = this, p = this.options;
@@ -3612,7 +3619,7 @@
                 g.wintoggle = null;
             }
         },
-        //æŒ‰ä¸‹å›è½¦
+        //°´ÏÂ»Ø³µ
         enter: function ()
         {
             var g = this, p = this.options;
@@ -3729,7 +3736,7 @@
             {
                 g.dialog.show();
             }
-            //å‰ç«¯æ˜¾ç¤º 
+            //Ç°¶ËÏÔÊ¾ 
             $.ligerui.win.setFront.ligerDefer($.ligerui.win, 100, [g]);
         },
         setUrl: function (url)
@@ -3765,7 +3772,7 @@
                         {
                             var triggers1 = l.find($.ligerui.controls.DateEditor);
                             var triggers2 = l.find($.ligerui.controls.ComboBox);
-                            //æ›´æ–°æ‰€æœ‰ä¸‹æ‹‰é€‰æ‹©æ¡†çš„ä½ç½®
+                            //¸üĞÂËùÓĞÏÂÀ­Ñ¡Ôñ¿òµÄÎ»ÖÃ
                             $($.merge(triggers1, triggers2)).each(function ()
                             {
                                 if (this.updateSelectBoxPosition)
@@ -4078,7 +4085,8 @@
     };
 
 
-})(jQuery);ï»¿/**
+})(jQuery);
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -4113,24 +4121,24 @@
         onDrag: false,
         onStopDrag: false,
         handler: null,
-        //ä»£ç† æ‹–åŠ¨æ—¶çš„ä¸»ä½“,å¯ä»¥æ˜¯'clone'æˆ–è€…æ˜¯å‡½æ•°,æ”¾å›jQuery å¯¹è±¡
+        //´úÀí ÍÏ¶¯Ê±µÄÖ÷Ìå,¿ÉÒÔÊÇ'clone'»òÕßÊÇº¯Êı,·Å»ØjQuery ¶ÔÏó
         proxy: true,
         revert: false,
         animate: true,
         onRevert: null,
         onEndRevert: null,
-        //æ¥æ”¶åŒºåŸŸ jQueryå¯¹è±¡æˆ–è€…jQueryé€‰æ‹©å­—ç¬¦
+        //½ÓÊÕÇøÓò jQuery¶ÔÏó»òÕßjQueryÑ¡Ôñ×Ö·û
         receive: null,
-        //è¿›å…¥åŒºåŸŸ
+        //½øÈëÇøÓò
         onDragEnter: null,
-        //åœ¨åŒºåŸŸç§»åŠ¨
+        //ÔÚÇøÓòÒÆ¶¯
         onDragOver: null,
-        //ç¦»å¼€åŒºåŸŸ
+        //Àë¿ªÇøÓò
         onDragLeave: null,
-        //åœ¨åŒºåŸŸé‡Šæ”¾
+        //ÔÚÇøÓòÊÍ·Å
         onDrop: null,
         disabled: false,
-        proxyX: null,     //ä»£ç†ç›¸å¯¹é¼ æ ‡æŒ‡é’ˆçš„ä½ç½®,å¦‚æœä¸è®¾ç½®åˆ™å¯¹åº”targetçš„left
+        proxyX: null,     //´úÀíÏà¶ÔÊó±êÖ¸ÕëµÄÎ»ÖÃ,Èç¹û²»ÉèÖÃÔò¶ÔÓ¦targetµÄleft
         proxyY: null
     };
 
@@ -4185,7 +4193,7 @@
             if (g.trigger('startDrag', [g.current, e]) == false) return false;
             g.cursor = "move";
             g._createProxy(p.proxy, e);
-            //ä»£ç†æ²¡æœ‰åˆ›å»ºæˆåŠŸ
+            //´úÀíÃ»ÓĞ´´½¨³É¹¦
             if (p.proxy && !g.proxy) return false;
             (g.proxy || g.handler).css('cursor', g.cursor);
             $(document).bind("selectstart.drag", function () { return false; });
@@ -4406,7 +4414,8 @@
 
     });
 
-})(jQuery);ï»¿/**
+})(jQuery);
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -4486,7 +4495,8 @@
         }
     });
 
-})(jQuery);ï»¿/**
+})(jQuery);
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -4507,31 +4517,31 @@
     };
 
     $.ligerDefaults.Filter = {
-        //å­—æ®µåˆ—è¡¨
+        //×Ö¶ÎÁĞ±í
         fields: [],
-        //å­—æ®µç±»å‹ - è¿ç®—ç¬¦ çš„å¯¹åº”å…³ç³»
+        //×Ö¶ÎÀàĞÍ - ÔËËã·û µÄ¶ÔÓ¦¹ØÏµ
         operators: {},
-        //è‡ªå®šä¹‰è¾“å…¥æ¡†(å¦‚ä¸‹æ‹‰æ¡†ã€æ—¥æœŸ)
+        //×Ô¶¨ÒåÊäÈë¿ò(ÈçÏÂÀ­¿ò¡¢ÈÕÆÚ)
         editors: {}
     };
     $.ligerDefaults.FilterString = {
         strings: {
-            "and": "å¹¶ä¸”",
-            "or": "æˆ–è€…",
-            "equal": "ç›¸ç­‰",
-            "notequal": "ä¸ç›¸ç­‰",
-            "startwith": "ä»¥..å¼€å§‹",
-            "endwith": "ä»¥..ç»“æŸ",
-            "like": "ç›¸ä¼¼",
-            "greater": "å¤§äº",
-            "greaterorequal": "å¤§äºæˆ–ç­‰äº",
-            "less": "å°äº",
-            "lessorequal": "å°äºæˆ–ç­‰äº",
-            "in": "åŒ…æ‹¬åœ¨...",
-            "notin": "ä¸åŒ…æ‹¬...",
-            "addgroup": "å¢åŠ åˆ†ç»„",
-            "addrule": "å¢åŠ æ¡ä»¶",
-            "deletegroup": "åˆ é™¤åˆ†ç»„"
+            "and": "²¢ÇÒ",
+            "or": "»òÕß",
+            "equal": "ÏàµÈ",
+            "notequal": "²»ÏàµÈ",
+            "startwith": "ÒÔ..¿ªÊ¼",
+            "endwith": "ÒÔ..½áÊø",
+            "like": "ÏàËÆ",
+            "greater": "´óÓÚ",
+            "greaterorequal": "´óÓÚ»òµÈÓÚ",
+            "less": "Ğ¡ÓÚ",
+            "lessorequal": "Ğ¡ÓÚ»òµÈÓÚ",
+            "in": "°üÀ¨ÔÚ...",
+            "notin": "²»°üÀ¨...",
+            "addgroup": "Ôö¼Ó·Ö×é",
+            "addrule": "Ôö¼ÓÌõ¼ş",
+            "deletegroup": "É¾³ı·Ö×é"
         }
     };
 
@@ -4652,7 +4662,7 @@
         }
     };
 
-    //è¿‡æ»¤å™¨ç»„ä»¶
+    //¹ıÂËÆ÷×é¼ş
     $.ligerui.controls.Filter = function (element, options)
     {
         $.ligerui.controls.Filter.base.constructor.call(this, element, options);
@@ -4677,25 +4687,25 @@
 
             g.set(p);
 
-            //äº‹ä»¶ï¼šå¢åŠ åˆ†ç»„
+            //ÊÂ¼ş£ºÔö¼Ó·Ö×é
             $("#" + g.id + " .addgroup").live('click', function ()
             {
                 var jtable = $(this).parent().parent().parent().parent();
                 g.addGroup(jtable);
             });
-            //äº‹ä»¶ï¼šåˆ é™¤åˆ†ç»„
+            //ÊÂ¼ş£ºÉ¾³ı·Ö×é
             $("#" + g.id + " .deletegroup").live('click', function ()
             {
                 var jtable = $(this).parent().parent().parent().parent();
                 g.deleteGroup(jtable);
             });
-            //äº‹ä»¶ï¼šå¢åŠ æ¡ä»¶
+            //ÊÂ¼ş£ºÔö¼ÓÌõ¼ş
             $("#" + g.id + " .addrule").live('click', function ()
             {
                 var jtable = $(this).parent().parent().parent().parent();
                 g.addRule(jtable);
             });
-            //äº‹ä»¶ï¼šåˆ é™¤æ¡ä»¶
+            //ÊÂ¼ş£ºÉ¾³ıÌõ¼ş
             $("#" + g.id + " .deleterole").live('click', function ()
             {
                 var rulerow = $(this).parent().parent();
@@ -4704,7 +4714,7 @@
 
         },
 
-        //è®¾ç½®å­—æ®µåˆ—è¡¨
+        //ÉèÖÃ×Ö¶ÎÁĞ±í
         _setFields: function (fields)
         {
             var g = this, p = this.options;
@@ -4712,14 +4722,14 @@
             g.group = $(g._bulidGroupTableHtml()).appendTo(g.element);
         },
 
-        //è¾“å…¥æ¡†åˆ—è¡¨
+        //ÊäÈë¿òÁĞ±í
         editors: {},
 
-        //è¾“å…¥æ¡†è®¡ç®—å™¨
+        //ÊäÈë¿ò¼ÆËãÆ÷
         editorCounter: 0,
 
-        //å¢åŠ åˆ†ç»„
-        //@parm [jgroup] jQueryå¯¹è±¡(ä¸»åˆ†ç»„çš„table domå…ƒç´ )
+        //Ôö¼Ó·Ö×é
+        //@parm [jgroup] jQuery¶ÔÏó(Ö÷·Ö×éµÄtable domÔªËØ)
         addGroup: function (jgroup)
         {
             var g = this, p = this.options;
@@ -4735,7 +4745,7 @@
             return row.find("table:first");
         },
 
-        //åˆ é™¤åˆ†ç»„ 
+        //É¾³ı·Ö×é 
         deleteGroup: function (group)
         {
             var g = this, p = this.options;
@@ -4749,7 +4759,7 @@
         },
 
 
-        //åˆ é™¤ç¼–è¾‘å™¨
+        //É¾³ı±à¼­Æ÷
         removeEditor: function (rulerow)
         {
             var g = this, p = this.options;
@@ -4760,9 +4770,9 @@
             $("td.l-filter-value:first", rulerow).html("");
         },
 
-        //è®¾ç½®è§„åˆ™
-        //@parm [group] åˆ†ç»„æ•°æ®
-        //@parm [jgruop] åˆ†ç»„table dom jQueryå¯¹è±¡
+        //ÉèÖÃ¹æÔò
+        //@parm [group] ·Ö×éÊı¾İ
+        //@parm [jgruop] ·Ö×étable dom jQuery¶ÔÏó
         setData: function (group, jgroup)
         {
             var g = this, p = this.options;
@@ -4800,8 +4810,8 @@
             }
         },
 
-        //å¢åŠ ä¸€ä¸ªæ¡ä»¶
-        //@parm [jgroup] åˆ†ç»„çš„jQueryå¯¹è±¡
+        //Ôö¼ÓÒ»¸öÌõ¼ş
+        //@parm [jgroup] ·Ö×éµÄjQuery¶ÔÏó
         addRule: function (jgroup)
         {
             var g = this, p = this.options;
@@ -4811,17 +4821,17 @@
             lastrow.before(rulerow);
             if (p.fields.length)
             {
-                //å¦‚æœç¬¬ä¸€ä¸ªå­—æ®µå¯ç”¨äº†è‡ªå®šä¹‰è¾“å…¥æ¡†
+                //Èç¹ûµÚÒ»¸ö×Ö¶ÎÆôÓÃÁË×Ô¶¨ÒåÊäÈë¿ò
                 g.appendEditor(rulerow, p.fields[0]);
             }
 
-            //äº‹ä»¶ï¼šå­—æ®µåˆ—è¡¨æ”¹å˜æ—¶
+            //ÊÂ¼ş£º×Ö¶ÎÁĞ±í¸Ä±äÊ±
             $("select.fieldsel", rulerow).bind('change', function ()
             {
                 var jopsel = $(this).parent().next().find("select:first");
                 var fieldName = $(this).val();
                 var field = g.getField(fieldName);
-                //å­—æ®µç±»å‹å¤„ç†
+                //×Ö¶ÎÀàĞÍ´¦Àí
                 var fieldType = field.type || "string";
                 var oldFieldtype = rulerow.attr("fieldtype");
                 if (fieldType != oldFieldtype)
@@ -4829,19 +4839,19 @@
                     jopsel.html(g._bulidOpSelectOptionsHtml(fieldType));
                     rulerow.attr("fieldtype", fieldType);
                 }
-                //å½“å‰çš„ç¼–è¾‘å™¨
+                //µ±Ç°µÄ±à¼­Æ÷
                 var editorType = null;
-                //ä¸Šä¸€æ¬¡çš„ç¼–è¾‘å™¨
+                //ÉÏÒ»´ÎµÄ±à¼­Æ÷
                 var oldEditorType = rulerow.attr("editortype");
                 if (g.enabledEditor(field)) editorType = field.editor.type;
                 if (oldEditorType)
                 {
-                    //å¦‚æœå­˜åœ¨æ—§çš„è¾“å…¥æ¡† 
+                    //Èç¹û´æÔÚ¾ÉµÄÊäÈë¿ò 
                     g.removeEditor(rulerow);
                 }
                 if (editorType)
                 {
-                    //å¦‚æœå½“å‰é€‰æ‹©çš„å­—æ®µå®šä¹‰äº†è¾“å…¥æ¡†
+                    //Èç¹ûµ±Ç°Ñ¡ÔñµÄ×Ö¶Î¶¨ÒåÁËÊäÈë¿ò
                     g.appendEditor(rulerow, field);
                 } else
                 {
@@ -4852,7 +4862,7 @@
             return rulerow;
         },
 
-        //åˆ é™¤ä¸€ä¸ªæ¡ä»¶
+        //É¾³ıÒ»¸öÌõ¼ş
         deleteRule: function (rulerow)
         {
             $("select.fieldsel", rulerow).unbind();
@@ -4860,7 +4870,7 @@
             $(rulerow).remove();
         },
 
-        //é™„åŠ ä¸€ä¸ªè¾“å…¥æ¡†
+        //¸½¼ÓÒ»¸öÊäÈë¿ò
         appendEditor: function (rulerow, field)
         {
             var g = this, p = this.options;
@@ -4873,7 +4883,7 @@
             }
         },
 
-        //è·å–åˆ†ç»„æ•°æ®
+        //»ñÈ¡·Ö×éÊı¾İ
         getData: function (group)
         {
             var g = this, p = this.options;
@@ -4926,7 +4936,7 @@
             return $(".valtxt:first", rulerow).val();
         },
 
-        //åˆ¤æ–­æŸå­—æ®µæ˜¯å¦å¯ç”¨è‡ªå®šä¹‰çš„è¾“å…¥æ¡†  
+        //ÅĞ¶ÏÄ³×Ö¶ÎÊÇ·ñÆôÓÃ×Ô¶¨ÒåµÄÊäÈë¿ò  
         enabledEditor: function (field)
         {
             var g = this, p = this.options;
@@ -4934,7 +4944,7 @@
             return (field.editor.type in p.editors);
         },
 
-        //æ ¹æ®fieldName è·å– å­—æ®µ
+        //¸ù¾İfieldName »ñÈ¡ ×Ö¶Î
         getField: function (fieldname)
         {
             var g = this, p = this.options;
@@ -4946,7 +4956,7 @@
             return null;
         },
 
-        //è·å–ä¸€ä¸ªåˆ†ç»„çš„html
+        //»ñÈ¡Ò»¸ö·Ö×éµÄhtml
         _bulidGroupTableHtml: function (altering, allowDelete)
         {
             var g = this, p = this.options;
@@ -4975,7 +4985,7 @@
             return tableHtmlArr.join('');
         },
 
-        //è·å–å­—æ®µå€¼è§„åˆ™çš„html
+        //»ñÈ¡×Ö¶ÎÖµ¹æÔòµÄhtml
         _bulidRuleRowHtml: function (fields)
         {
             var g = this, p = this.options;
@@ -5011,7 +5021,7 @@
             return rowHtmlArr.join('');
         },
 
-        //è·å–ä¸€ä¸ªè¿ç®—ç¬¦é€‰æ‹©æ¡†çš„html
+        //»ñÈ¡Ò»¸öÔËËã·ûÑ¡Ôñ¿òµÄhtml
         _bulidOpSelectOptionsHtml: function (fieldType)
         {
             var g = this, p = this.options;
@@ -5030,14 +5040,8 @@
 
     });
 
-})(jQuery);ï»¿/**
-* jQuery ligerUI 1.1.9
-* 
-* http://ligerui.com
-*  
-* Author daomi 2012 [ gd_star@163.com ] 
-* 
-*/
+})(jQuery);
+
 (function ($)
 {
     $.fn.ligerForm = function ()
@@ -5047,32 +5051,32 @@
 
     $.ligerDefaults = $.ligerDefaults || {};
     $.ligerDefaults.Form = {
-        //æ§ä»¶å®½åº¦
+        //¿Ø¼ş¿í¶È
         inputWidth: 180,
-        //æ ‡ç­¾å®½åº¦
+        //±êÇ©¿í¶È
         labelWidth: 90,
-        //é—´éš”å®½åº¦
+        //¼ä¸ô¿í¶È
         space: 40,
-        rightToken: 'ï¼š',
-        //æ ‡ç­¾å¯¹é½æ–¹å¼
+        rightToken: '£º',
+        //±êÇ©¶ÔÆë·½Ê½
         labelAlign: 'left',
-        //æ§ä»¶å¯¹é½æ–¹å¼
+        //¿Ø¼ş¶ÔÆë·½Ê½
         align: 'left',
-        //å­—æ®µ
+        //×Ö¶Î
         fields: [],
-        //åˆ›å»ºçš„è¡¨å•å…ƒç´ æ˜¯å¦é™„åŠ ID
+        //´´½¨µÄ±íµ¥ÔªËØÊÇ·ñ¸½¼ÓID
         appendID: true,
-        //ç”Ÿæˆè¡¨å•å…ƒç´ IDçš„å‰ç¼€
+        //Éú³É±íµ¥ÔªËØIDµÄÇ°×º
         prefixID: "",
-        //jsonè§£æå‡½æ•°
+        //json½âÎöº¯Êı
         toJSON: $.ligerui.toJSON
     };
 
-    //@description é»˜è®¤è¡¨å•ç¼–è¾‘å™¨æ„é€ å™¨æ‰©å±•(å¦‚æœåˆ›å»ºçš„è¡¨å•æ•ˆæœä¸æ»¡æ„ å»ºè®®é‡è½½)
-    //@param {jinput} è¡¨å•å…ƒç´ jQueryå¯¹è±¡ æ¯”å¦‚inputã€selectã€textarea 
+    //@description Ä¬ÈÏ±íµ¥±à¼­Æ÷¹¹ÔìÆ÷À©Õ¹(Èç¹û´´½¨µÄ±íµ¥Ğ§¹û²»ÂúÒâ ½¨ÒéÖØÔØ)
+    //@param {jinput} ±íµ¥ÔªËØjQuery¶ÔÏó ±ÈÈçinput¡¢select¡¢textarea 
     $.ligerDefaults.Form.editorBulider = function (jinput)
     {
-        //è¿™é‡Œthiså°±æ˜¯formçš„ligeruiå¯¹è±¡
+        //ÕâÀïthis¾ÍÊÇformµÄligerui¶ÔÏó
         var g = this, p = this.options;
         var inputOptions = {};
         if (p.inputWidth) inputOptions.width = p.inputWidth;
@@ -5122,7 +5126,7 @@
         }
     }
 
-    //è¡¨å•ç»„ä»¶
+    //±íµ¥×é¼ş
     $.ligerui.controls.Form = function (element, options)
     {
         $.ligerui.controls.Form.base.constructor.call(this, element, options);
@@ -5145,7 +5149,7 @@
         {
             var g = this, p = this.options;
             var jform = $(this.element);
-            //è‡ªåŠ¨åˆ›å»ºè¡¨å•
+            //×Ô¶¯´´½¨±íµ¥
             if (p.fields && p.fields.length)
             {
                 if (!jform.hasClass("l-form"))
@@ -5199,13 +5203,13 @@
                 }
                 jform.append(out.join(''));
             }
-            //ç”Ÿæˆligeruiè¡¨å•æ ·å¼
+            //Éú³Éligerui±íµ¥ÑùÊ½
             $("input,select,textarea", jform).each(function ()
             {
                 p.editorBulider.call(g, $(this));
             });
         },
-        //æ ‡ç­¾éƒ¨åˆ†
+        //±êÇ©²¿·Ö
         _buliderLabelContainer: function (field)
         {
             var g = this, p = this.options;
@@ -5231,7 +5235,7 @@
             out.push('</li>');
             return out.join('');
         },
-        //æ§ä»¶éƒ¨åˆ†
+        //¿Ø¼ş²¿·Ö
         _buliderControlContainer: function (field)
         {
             var g = this, p = this.options;
@@ -5252,7 +5256,7 @@
             out.push('</li>');
             return out.join('');
         },
-        //é—´éš”éƒ¨åˆ†
+        //¼ä¸ô²¿·Ö
         _buliderSpaceContainer: function (field)
         {
             var g = this, p = this.options;
@@ -5328,12 +5332,12 @@
                     out.push(' id="' + name + '" ');
                 }
             }
-            //å‚æ•°
+            //²ÎÊı
             var fieldOptions = $.extend({
                 width: width - 2
             }, field.options || {});
             out.push(" ligerui='" + p.toJSON(fieldOptions) + "' ");
-            //éªŒè¯å‚æ•°
+            //ÑéÖ¤²ÎÊı
             if (field.validate)
             {
                 out.push(" validate='" + p.toJSON(field.validate) + "' ");
@@ -5342,14 +5346,9 @@
             return out.join('');
         }
     });
-})(jQuery);ï»¿/**
-* jQuery ligerUI 1.1.9
-* 
-* http://ligerui.com
-*  
-* Author daomi 2012 [ gd_star@163.com ] 
-* 
-*/
+})(jQuery);
+
+
 
 (function ($)
 {
@@ -5367,130 +5366,130 @@
 
     $.ligerDefaults.Grid = {
         title: null,
-        width: 'auto',                          //å®½åº¦å€¼
-        height: 'auto',                          //å®½åº¦å€¼
-        columnWidth: null,                      //é»˜è®¤åˆ—å®½åº¦
-        resizable: true,                        //tableæ˜¯å¦å¯ä¼¸ç¼©
+        width: 'auto',                          //¿í¶ÈÖµ
+        height: 'auto',                          //¿í¶ÈÖµ
+        columnWidth: null,                      //Ä¬ÈÏÁĞ¿í¶È
+        resizable: true,                        //tableÊÇ·ñ¿ÉÉìËõ
         url: false,                             //ajax url
-        usePager: true,                         //æ˜¯å¦åˆ†é¡µ
-        page: 1,                                //é»˜è®¤å½“å‰é¡µ 
-        pageSize: 10,                           //æ¯é¡µé»˜è®¤çš„ç»“æœæ•°
-        pageSizeOptions: [10, 20, 30, 40, 50],  //å¯é€‰æ‹©è®¾å®šçš„æ¯é¡µç»“æœæ•°
-        parms: [],                         //æäº¤åˆ°æœåŠ¡å™¨çš„å‚æ•°
-        columns: [],                          //æ•°æ®æº
-        minColToggle: 1,                        //æœ€å°æ˜¾ç¤ºçš„åˆ—
-        dataType: 'server',                     //æ•°æ®æºï¼šæœ¬åœ°(local)æˆ–(server),æœ¬åœ°æ˜¯å°†è¯»å–p.dataã€‚ä¸éœ€è¦é…ç½®ï¼Œå–å†³äºè®¾ç½®äº†dataæˆ–æ˜¯url
-        dataAction: 'server',                    //æäº¤æ•°æ®çš„æ–¹å¼ï¼šæœ¬åœ°(local)æˆ–(server),é€‰æ‹©æœ¬åœ°æ–¹å¼æ—¶å°†åœ¨å®¢æœç«¯åˆ†é¡µã€æ’åºã€‚ 
-        showTableToggleBtn: false,              //æ˜¯å¦æ˜¾ç¤º'æ˜¾ç¤ºéšè—Grid'æŒ‰é’® 
-        switchPageSizeApplyComboBox: false,     //åˆ‡æ¢æ¯é¡µè®°å½•æ•°æ˜¯å¦åº”ç”¨ligerComboBox
-        allowAdjustColWidth: true,              //æ˜¯å¦å…è®¸è°ƒæ•´åˆ—å®½     
-        checkbox: false,                         //æ˜¯å¦æ˜¾ç¤ºå¤é€‰æ¡†
-        allowHideColumn: true,                 //æ˜¯å¦æ˜¾ç¤º'åˆ‡æ¢åˆ—å±‚'æŒ‰é’®
-        enabledEdit: false,                      //æ˜¯å¦å…è®¸ç¼–è¾‘
-        isScroll: true,                         //æ˜¯å¦æ»šåŠ¨
-        onDragCol: null,                       //æ‹–åŠ¨åˆ—äº‹ä»¶
-        onToggleCol: null,                     //åˆ‡æ¢åˆ—äº‹ä»¶
-        onChangeSort: null,                    //æ”¹å˜æ’åºäº‹ä»¶
-        onSuccess: null,                       //æˆåŠŸè·å–æœåŠ¡å™¨æ•°æ®çš„äº‹ä»¶
-        onDblClickRow: null,                     //åŒå‡»è¡Œäº‹ä»¶
-        onSelectRow: null,                    //é€‰æ‹©è¡Œäº‹ä»¶
-        onUnSelectRow: null,                   //å–æ¶ˆé€‰æ‹©è¡Œäº‹ä»¶
-        onBeforeCheckRow: null,                 //é€‰æ‹©å‰äº‹ä»¶ï¼Œå¯ä»¥é€šè¿‡return falseé˜»æ­¢æ“ä½œ(å¤é€‰æ¡†)
-        onCheckRow: null,                    //é€‰æ‹©äº‹ä»¶(å¤é€‰æ¡†) 
-        onBeforeCheckAllRow: null,              //é€‰æ‹©å‰äº‹ä»¶ï¼Œå¯ä»¥é€šè¿‡return falseé˜»æ­¢æ“ä½œ(å¤é€‰æ¡† å…¨é€‰/å…¨ä¸é€‰)
-        onCheckAllRow: null,                    //é€‰æ‹©äº‹ä»¶(å¤é€‰æ¡† å…¨é€‰/å…¨ä¸é€‰)
-        onBeforeShowData: null,                  //æ˜¾ç¤ºæ•°æ®å‰äº‹ä»¶ï¼Œå¯ä»¥é€šè¿‡reutrn falseé˜»æ­¢æ“ä½œ
-        onAfterShowData: null,                 //æ˜¾ç¤ºå®Œæ•°æ®äº‹ä»¶
-        onError: null,                         //é”™è¯¯äº‹ä»¶
-        onSubmit: null,                         //æäº¤å‰äº‹ä»¶
-        dateFormat: 'yyyy-MM-dd',              //é»˜è®¤æ—¶é—´æ˜¾ç¤ºæ ¼å¼
-        InWindow: true,                        //æ˜¯å¦ä»¥çª—å£çš„é«˜åº¦ä¸ºå‡† heightè®¾ç½®ä¸ºç™¾åˆ†æ¯”æ—¶å¯ç”¨
-        statusName: '__status',                    //çŠ¶æ€å
-        method: 'post',                         //æäº¤æ–¹å¼
+        usePager: true,                         //ÊÇ·ñ·ÖÒ³
+        page: 1,                                //Ä¬ÈÏµ±Ç°Ò³ 
+        pageSize: 10,                           //Ã¿Ò³Ä¬ÈÏµÄ½á¹ûÊı
+        pageSizeOptions: [10, 20, 30, 40, 50],  //¿ÉÑ¡ÔñÉè¶¨µÄÃ¿Ò³½á¹ûÊı
+        parms: [],                         //Ìá½»µ½·şÎñÆ÷µÄ²ÎÊı
+        columns: [],                          //Êı¾İÔ´
+        minColToggle: 1,                        //×îĞ¡ÏÔÊ¾µÄÁĞ
+        dataType: 'server',                     //Êı¾İÔ´£º±¾µØ(local)»ò(server),±¾µØÊÇ½«¶ÁÈ¡p.data¡£²»ĞèÒªÅäÖÃ£¬È¡¾öÓÚÉèÖÃÁËdata»òÊÇurl
+        dataAction: 'server',                    //Ìá½»Êı¾İµÄ·½Ê½£º±¾µØ(local)»ò(server),Ñ¡Ôñ±¾µØ·½Ê½Ê±½«ÔÚ¿Í·ş¶Ë·ÖÒ³¡¢ÅÅĞò¡£ 
+        showTableToggleBtn: false,              //ÊÇ·ñÏÔÊ¾'ÏÔÊ¾Òş²ØGrid'°´Å¥ 
+        switchPageSizeApplyComboBox: false,     //ÇĞ»»Ã¿Ò³¼ÇÂ¼ÊıÊÇ·ñÓ¦ÓÃligerComboBox
+        allowAdjustColWidth: true,              //ÊÇ·ñÔÊĞíµ÷ÕûÁĞ¿í     
+        checkbox: false,                         //ÊÇ·ñÏÔÊ¾¸´Ñ¡¿ò
+        allowHideColumn: true,                 //ÊÇ·ñÏÔÊ¾'ÇĞ»»ÁĞ²ã'°´Å¥
+        enabledEdit: false,                      //ÊÇ·ñÔÊĞí±à¼­
+        isScroll: true,                         //ÊÇ·ñ¹ö¶¯
+        onDragCol: null,                       //ÍÏ¶¯ÁĞÊÂ¼ş
+        onToggleCol: null,                     //ÇĞ»»ÁĞÊÂ¼ş
+        onChangeSort: null,                    //¸Ä±äÅÅĞòÊÂ¼ş
+        onSuccess: null,                       //³É¹¦»ñÈ¡·şÎñÆ÷Êı¾İµÄÊÂ¼ş
+        onDblClickRow: null,                     //Ë«»÷ĞĞÊÂ¼ş
+        onSelectRow: null,                    //Ñ¡ÔñĞĞÊÂ¼ş
+        onUnSelectRow: null,                   //È¡ÏûÑ¡ÔñĞĞÊÂ¼ş
+        onBeforeCheckRow: null,                 //Ñ¡ÔñÇ°ÊÂ¼ş£¬¿ÉÒÔÍ¨¹ıreturn false×èÖ¹²Ù×÷(¸´Ñ¡¿ò)
+        onCheckRow: null,                    //Ñ¡ÔñÊÂ¼ş(¸´Ñ¡¿ò) 
+        onBeforeCheckAllRow: null,              //Ñ¡ÔñÇ°ÊÂ¼ş£¬¿ÉÒÔÍ¨¹ıreturn false×èÖ¹²Ù×÷(¸´Ñ¡¿ò È«Ñ¡/È«²»Ñ¡)
+        onCheckAllRow: null,                    //Ñ¡ÔñÊÂ¼ş(¸´Ñ¡¿ò È«Ñ¡/È«²»Ñ¡)
+        onBeforeShowData: null,                  //ÏÔÊ¾Êı¾İÇ°ÊÂ¼ş£¬¿ÉÒÔÍ¨¹ıreutrn false×èÖ¹²Ù×÷
+        onAfterShowData: null,                 //ÏÔÊ¾ÍêÊı¾İÊÂ¼ş
+        onError: null,                         //´íÎóÊÂ¼ş
+        onSubmit: null,                         //Ìá½»Ç°ÊÂ¼ş
+        dateFormat: 'yyyy-MM-dd',              //Ä¬ÈÏÊ±¼äÏÔÊ¾¸ñÊ½
+        InWindow: true,                        //ÊÇ·ñÒÔ´°¿ÚµÄ¸ß¶ÈÎª×¼ heightÉèÖÃÎª°Ù·Ö±ÈÊ±¿ÉÓÃ
+        statusName: '__status',                    //×´Ì¬Ãû
+        method: 'post',                         //Ìá½»·½Ê½
         async: true,
-        fixedCellHeight: true,                       //æ˜¯å¦å›ºå®šå•å…ƒæ ¼çš„é«˜åº¦
-        heightDiff: 0,                         //é«˜åº¦è¡¥å·®,å½“è®¾ç½®height:100%æ—¶ï¼Œå¯èƒ½ä¼šæœ‰é«˜åº¦çš„è¯¯å·®ï¼Œå¯ä»¥é€šè¿‡è¿™ä¸ªå±æ€§è°ƒæ•´
-        cssClass: null,                    //ç±»å
-        root: 'Rows',                       //æ•°æ®æºå­—æ®µå
-        record: 'Total',                     //æ•°æ®æºè®°å½•æ•°å­—æ®µå
-        pageParmName: 'page',               //é¡µç´¢å¼•å‚æ•°åï¼Œ(æäº¤ç»™æœåŠ¡å™¨)
-        pagesizeParmName: 'pagesize',        //é¡µè®°å½•æ•°å‚æ•°åï¼Œ(æäº¤ç»™æœåŠ¡å™¨)
-        sortnameParmName: 'sortname',        //é¡µæ’åºåˆ—å(æäº¤ç»™æœåŠ¡å™¨)
-        sortorderParmName: 'sortorder',      //é¡µæ’åºæ–¹å‘(æäº¤ç»™æœåŠ¡å™¨)
-        onReload: null,                    //åˆ·æ–°äº‹ä»¶ï¼Œå¯ä»¥é€šè¿‡return falseæ¥é˜»æ­¢æ“ä½œ
-        onToFirst: null,                     //ç¬¬ä¸€é¡µï¼Œå¯ä»¥é€šè¿‡return falseæ¥é˜»æ­¢æ“ä½œ
-        onToPrev: null,                      //ä¸Šä¸€é¡µï¼Œå¯ä»¥é€šè¿‡return falseæ¥é˜»æ­¢æ“ä½œ
-        onToNext: null,                      //ä¸‹ä¸€é¡µï¼Œå¯ä»¥é€šè¿‡return falseæ¥é˜»æ­¢æ“ä½œ
-        onToLast: null,                      //æœ€åä¸€é¡µï¼Œå¯ä»¥é€šè¿‡return falseæ¥é˜»æ­¢æ“ä½œ
-        allowUnSelectRow: false,           //æ˜¯å¦å…è®¸åé€‰è¡Œ 
-        alternatingRow: true,           //å¥‡å¶è¡Œæ•ˆæœ
+        fixedCellHeight: true,                       //ÊÇ·ñ¹Ì¶¨µ¥Ôª¸ñµÄ¸ß¶È
+        heightDiff: 0,                         //¸ß¶È²¹²î,µ±ÉèÖÃheight:100%Ê±£¬¿ÉÄÜ»áÓĞ¸ß¶ÈµÄÎó²î£¬¿ÉÒÔÍ¨¹ıÕâ¸öÊôĞÔµ÷Õû
+        cssClass: null,                    //ÀàÃû
+        root: 'Rows',                       //Êı¾İÔ´×Ö¶ÎÃû
+        record: 'Total',                     //Êı¾İÔ´¼ÇÂ¼Êı×Ö¶ÎÃû
+        pageParmName: 'page',               //Ò³Ë÷Òı²ÎÊıÃû£¬(Ìá½»¸ø·şÎñÆ÷)
+        pagesizeParmName: 'pagesize',        //Ò³¼ÇÂ¼Êı²ÎÊıÃû£¬(Ìá½»¸ø·şÎñÆ÷)
+        sortnameParmName: 'sortname',        //Ò³ÅÅĞòÁĞÃû(Ìá½»¸ø·şÎñÆ÷)
+        sortorderParmName: 'sortorder',      //Ò³ÅÅĞò·½Ïò(Ìá½»¸ø·şÎñÆ÷)
+        onReload: null,                    //Ë¢ĞÂÊÂ¼ş£¬¿ÉÒÔÍ¨¹ıreturn falseÀ´×èÖ¹²Ù×÷
+        onToFirst: null,                     //µÚÒ»Ò³£¬¿ÉÒÔÍ¨¹ıreturn falseÀ´×èÖ¹²Ù×÷
+        onToPrev: null,                      //ÉÏÒ»Ò³£¬¿ÉÒÔÍ¨¹ıreturn falseÀ´×èÖ¹²Ù×÷
+        onToNext: null,                      //ÏÂÒ»Ò³£¬¿ÉÒÔÍ¨¹ıreturn falseÀ´×èÖ¹²Ù×÷
+        onToLast: null,                      //×îºóÒ»Ò³£¬¿ÉÒÔÍ¨¹ıreturn falseÀ´×èÖ¹²Ù×÷
+        allowUnSelectRow: false,           //ÊÇ·ñÔÊĞí·´Ñ¡ĞĞ 
+        alternatingRow: true,           //ÆæÅ¼ĞĞĞ§¹û
         mouseoverRowCssClass: 'l-grid-row-over',
-        enabledSort: true,                      //æ˜¯å¦å…è®¸æ’åº
-        rowAttrRender: null,                  //è¡Œè‡ªå®šä¹‰å±æ€§æ¸²æŸ“å™¨(åŒ…æ‹¬styleï¼Œä¹Ÿå¯ä»¥å®šä¹‰)
-        groupColumnName: null,                 //åˆ†ç»„ - åˆ—å
-        groupColumnDisplay: 'åˆ†ç»„',             //åˆ†ç»„ - åˆ—æ˜¾ç¤ºåå­—
-        groupRender: null,                     //åˆ†ç»„ - æ¸²æŸ“å™¨
-        totalRender: null,                       //ç»Ÿè®¡è¡Œ(å…¨éƒ¨æ•°æ®)
-        delayLoad: false,                        //åˆå§‹åŒ–æ—¶æ˜¯å¦ä¸åŠ è½½
-        where: null,                           //æ•°æ®è¿‡æ»¤æŸ¥è¯¢å‡½æ•°,(å‚æ•°ä¸€ data itemï¼Œå‚æ•°äºŒ data item index)
-        selectRowButtonOnly: false,            //å¤é€‰æ¡†æ¨¡å¼æ—¶ï¼Œæ˜¯å¦åªå…è®¸ç‚¹å‡»å¤é€‰æ¡†æ‰èƒ½é€‰æ‹©è¡Œ
-        onAfterAddRow: null,                     //å¢åŠ è¡Œåäº‹ä»¶
-        onBeforeEdit: null,                      //ç¼–è¾‘å‰äº‹ä»¶
-        onBeforeSubmitEdit: null,               //éªŒè¯ç¼–è¾‘å™¨ç»“æœæ˜¯å¦é€šè¿‡
-        onAfterEdit: null,                       //ç»“æŸç¼–è¾‘åäº‹ä»¶
-        onLoading: null,                        //åŠ è½½æ—¶å‡½æ•°
-        onLoaded: null,                          //åŠ è½½å®Œå‡½æ•°
-        onContextmenu: null,                   //å³å‡»äº‹ä»¶
-        whenRClickToSelect: false,                //å³å‡»è¡Œæ—¶æ˜¯å¦é€‰ä¸­
-        contentType: null,                     //Ajax contentTypeå‚æ•°
-        checkboxColWidth: 27,                  //å¤é€‰æ¡†åˆ—å®½åº¦
-        detailColWidth: 29,                     //æ˜ç»†åˆ—å®½åº¦
-        clickToEdit: true,                      //æ˜¯å¦ç‚¹å‡»å•å…ƒæ ¼çš„æ—¶å€™å°±ç¼–è¾‘
-        detailToEdit: false,                     //æ˜¯å¦ç‚¹å‡»æ˜ç»†çš„æ—¶å€™è¿›å…¥ç¼–è¾‘
+        enabledSort: true,                      //ÊÇ·ñÔÊĞíÅÅĞò
+        rowAttrRender: null,                  //ĞĞ×Ô¶¨ÒåÊôĞÔäÖÈ¾Æ÷(°üÀ¨style£¬Ò²¿ÉÒÔ¶¨Òå)
+        groupColumnName: null,                 //·Ö×é - ÁĞÃû
+        groupColumnDisplay: '·Ö×é',             //·Ö×é - ÁĞÏÔÊ¾Ãû×Ö
+        groupRender: null,                     //·Ö×é - äÖÈ¾Æ÷
+        totalRender: null,                       //Í³¼ÆĞĞ(È«²¿Êı¾İ)
+        delayLoad: false,                        //³õÊ¼»¯Ê±ÊÇ·ñ²»¼ÓÔØ
+        where: null,                           //Êı¾İ¹ıÂË²éÑ¯º¯Êı,(²ÎÊıÒ» data item£¬²ÎÊı¶ş data item index)
+        selectRowButtonOnly: false,            //¸´Ñ¡¿òÄ£Ê½Ê±£¬ÊÇ·ñÖ»ÔÊĞíµã»÷¸´Ñ¡¿ò²ÅÄÜÑ¡ÔñĞĞ
+        onAfterAddRow: null,                     //Ôö¼ÓĞĞºóÊÂ¼ş
+        onBeforeEdit: null,                      //±à¼­Ç°ÊÂ¼ş
+        onBeforeSubmitEdit: null,               //ÑéÖ¤±à¼­Æ÷½á¹ûÊÇ·ñÍ¨¹ı
+        onAfterEdit: null,                       //½áÊø±à¼­ºóÊÂ¼ş
+        onLoading: null,                        //¼ÓÔØÊ±º¯Êı
+        onLoaded: null,                          //¼ÓÔØÍêº¯Êı
+        onContextmenu: null,                   //ÓÒ»÷ÊÂ¼ş
+        whenRClickToSelect: false,                //ÓÒ»÷ĞĞÊ±ÊÇ·ñÑ¡ÖĞ
+        contentType: null,                     //Ajax contentType²ÎÊı
+        checkboxColWidth: 27,                  //¸´Ñ¡¿òÁĞ¿í¶È
+        detailColWidth: 29,                     //Ã÷Ï¸ÁĞ¿í¶È
+        clickToEdit: true,                      //ÊÇ·ñµã»÷µ¥Ôª¸ñµÄÊ±ºò¾Í±à¼­
+        detailToEdit: false,                     //ÊÇ·ñµã»÷Ã÷Ï¸µÄÊ±ºò½øÈë±à¼­
         onEndEdit: null,
         minColumnWidth: 80,
-        tree: null,                            //treeGridæ¨¡å¼
-        isChecked: null,                       //å¤é€‰æ¡† åˆå§‹åŒ–å‡½æ•°
-        frozen: true,                          //æ˜¯å¦å›ºå®šåˆ—
-        frozenDetail: false,                    //æ˜ç»†æŒ‰é’®æ˜¯å¦åœ¨å›ºå®šåˆ—ä¸­
-        frozenCheckbox: true,                  //å¤é€‰æ¡†æŒ‰é’®æ˜¯å¦åœ¨å›ºå®šåˆ—ä¸­
+        tree: null,                            //treeGridÄ£Ê½
+        isChecked: null,                       //¸´Ñ¡¿ò ³õÊ¼»¯º¯Êı
+        frozen: true,                          //ÊÇ·ñ¹Ì¶¨ÁĞ
+        frozenDetail: false,                    //Ã÷Ï¸°´Å¥ÊÇ·ñÔÚ¹Ì¶¨ÁĞÖĞ
+        frozenCheckbox: true,                  //¸´Ñ¡¿ò°´Å¥ÊÇ·ñÔÚ¹Ì¶¨ÁĞÖĞ
         detailHeight: 260,
-        rownumbers: false,                         //æ˜¯å¦æ˜¾ç¤ºè¡Œåºå·
-        frozenRownumbers: true,                  //è¡Œåºå·æ˜¯å¦åœ¨å›ºå®šåˆ—ä¸­
+        rownumbers: false,                         //ÊÇ·ñÏÔÊ¾ĞĞĞòºÅ
+        frozenRownumbers: true,                  //ĞĞĞòºÅÊÇ·ñÔÚ¹Ì¶¨ÁĞÖĞ
         rownumbersColWidth: 26,
-        colDraggable: false,                       //æ˜¯å¦å…è®¸è¡¨å¤´æ‹–æ‹½
-        rowDraggable: false,                         //æ˜¯å¦å…è®¸è¡Œæ‹–æ‹½
+        colDraggable: false,                       //ÊÇ·ñÔÊĞí±íÍ·ÍÏ×§
+        rowDraggable: false,                         //ÊÇ·ñÔÊĞíĞĞÍÏ×§
         rowDraggingRender: null,
-        autoCheckChildren: true,                  //æ˜¯å¦è‡ªåŠ¨é€‰ä¸­å­èŠ‚ç‚¹
-        onRowDragDrop: null,                    //è¡Œæ‹–æ‹½äº‹ä»¶
-        rowHeight: 22,                           //è¡Œé»˜è®¤çš„é«˜åº¦
-        headerRowHeight: 23,                    //è¡¨å¤´è¡Œçš„é«˜åº¦
-        toolbar: null,                           //å·¥å…·æ¡,å‚æ•°åŒ ligerToolbarçš„
-        headerImg: null                        //è¡¨æ ¼å¤´éƒ¨å›¾æ ‡
+        autoCheckChildren: true,                  //ÊÇ·ñ×Ô¶¯Ñ¡ÖĞ×Ó½Úµã
+        onRowDragDrop: null,                    //ĞĞÍÏ×§ÊÂ¼ş
+        rowHeight: 22,                           //ĞĞÄ¬ÈÏµÄ¸ß¶È
+        headerRowHeight: 23,                    //±íÍ·ĞĞµÄ¸ß¶È
+        toolbar: null,                           //¹¤¾ßÌõ,²ÎÊıÍ¬ ligerToolbarµÄ
+        headerImg: null                        //±í¸ñÍ·²¿Í¼±ê
     };
     $.ligerDefaults.GridString = {
-        errorMessage: 'å‘ç”Ÿé”™è¯¯',
-        pageStatMessage: 'æ˜¾ç¤ºä»{from}åˆ°{to}ï¼Œæ€» {total} æ¡ ã€‚æ¯é¡µæ˜¾ç¤ºï¼š{pagesize}',
+        errorMessage: '·¢Éú´íÎó',
+        pageStatMessage: 'ÏÔÊ¾´Ó{from}µ½{to}£¬×Ü {total} Ìõ ¡£Ã¿Ò³ÏÔÊ¾£º{pagesize}',
         pageTextMessage: 'Page',
-        loadingMessage: 'åŠ è½½ä¸­...',
-        findTextMessage: 'æŸ¥æ‰¾',
-        noRecordMessage: 'æ²¡æœ‰ç¬¦åˆæ¡ä»¶çš„è®°å½•å­˜åœ¨',
-        isContinueByDataChanged: 'æ•°æ®å·²ç»æ”¹å˜,å¦‚æœç»§ç»­å°†ä¸¢å¤±æ•°æ®,æ˜¯å¦ç»§ç»­?',
-        cancelMessage: 'å–æ¶ˆ',
-        saveMessage: 'ä¿å­˜',
-        applyMessage: 'åº”ç”¨',
-        draggingMessage: '{count}è¡Œ'
+        loadingMessage: '¼ÓÔØÖĞ...',
+        findTextMessage: '²éÕÒ',
+        noRecordMessage: 'Ã»ÓĞ·ûºÏÌõ¼şµÄ¼ÇÂ¼´æÔÚ',
+        isContinueByDataChanged: 'Êı¾İÒÑ¾­¸Ä±ä,Èç¹û¼ÌĞø½«¶ªÊ§Êı¾İ,ÊÇ·ñ¼ÌĞø?',
+        cancelMessage: 'È¡Ïû',
+        saveMessage: '±£´æ',
+        applyMessage: 'Ó¦ÓÃ',
+        draggingMessage: '{count}ĞĞ'
     };
-    //æ¥å£æ–¹æ³•æ‰©å±•
+    //½Ó¿Ú·½·¨À©Õ¹
     $.ligerMethos.Grid = $.ligerMethos.Grid || {};
 
-    //æ’åºå™¨æ‰©å±•
+    //ÅÅĞòÆ÷À©Õ¹
     $.ligerDefaults.Grid.sorters = $.ligerDefaults.Grid.sorters || {};
 
-    //æ ¼å¼åŒ–å™¨æ‰©å±•
+    //¸ñÊ½»¯Æ÷À©Õ¹
     $.ligerDefaults.Grid.formatters = $.ligerDefaults.Grid.formatters || {};
 
-    //ç¼–è¾‘å™¨æ‰©å±•
+    //±à¼­Æ÷À©Õ¹
     $.ligerDefaults.Grid.editors = $.ligerDefaults.Grid.editors || {};
 
 
@@ -5817,7 +5816,7 @@
                     }
                 };
             }
-            if (p.tree)//å¯ç”¨åˆ†é¡µæ¨¡å¼
+            if (p.tree)//ÆôÓÃ·ÖÒ³Ä£Ê½
             {
                 p.tree.childrenName = p.tree.childrenName || "children";
                 p.tree.isParent = p.tree.isParent || function (rowData)
@@ -5894,41 +5893,41 @@
             gridhtmlarr.push("            </div>");
             gridhtmlarr.push("         </div>");
             g.grid.html(gridhtmlarr.join(''));
-            //å¤´éƒ¨
+            //Í·²¿
             g.header = $(".l-panel-header:first", g.grid);
-            //ä¸»ä½“
+            //Ö÷Ìå
             g.body = $(".l-panel-body:first", g.grid);
-            //åº•éƒ¨å·¥å…·æ¡         
+            //µ×²¿¹¤¾ßÌõ         
             g.toolbar = $(".l-panel-bar:first", g.grid);
-            //æ˜¾ç¤º/éšè—åˆ—      
+            //ÏÔÊ¾/Òş²ØÁĞ      
             g.popup = $(".l-grid-popup:first", g.grid);
-            //åŠ è½½ä¸­
+            //¼ÓÔØÖĞ
             g.gridloading = $(".l-grid-loading:first", g.grid);
-            //è°ƒæ•´åˆ—å®½å±‚ 
+            //µ÷ÕûÁĞ¿í²ã 
             g.draggingline = $(".l-grid-dragging-line", g.grid);
-            //é¡¶éƒ¨å·¥å…·æ 
+            //¶¥²¿¹¤¾ßÀ¸
             g.topbar = $(".l-panel-topbar:first", g.grid);
 
             g.gridview = $(".l-grid:first", g.grid);
             g.gridview.attr("id", g.id + "grid");
             g.gridview1 = $(".l-grid1:first", g.gridview);
             g.gridview2 = $(".l-grid2:first", g.gridview);
-            //è¡¨å¤´     
+            //±íÍ·     
             g.gridheader = $(".l-grid-header:first", g.gridview2);
-            //è¡¨ä¸»ä½“     
+            //±íÖ÷Ìå     
             g.gridbody = $(".l-grid-body:first", g.gridview2);
 
             //frozen
             g.f = {};
-            //è¡¨å¤´     
+            //±íÍ·     
             g.f.gridheader = $(".l-grid-header:first", g.gridview1);
-            //è¡¨ä¸»ä½“     
+            //±íÖ÷Ìå     
             g.f.gridbody = $(".l-grid-body:first", g.gridview1);
 
             g.currentData = null;
             g.changedCells = {};
-            g.editors = {};                 //å¤šç¼–è¾‘å™¨åŒæ—¶å­˜åœ¨
-            g.editor = { editing: false };  //å•ç¼–è¾‘å™¨,é…ç½®clickToEdit
+            g.editors = {};                 //¶à±à¼­Æ÷Í¬Ê±´æÔÚ
+            g.editor = { editing: false };  //µ¥±à¼­Æ÷,ÅäÖÃclickToEdit
             if (p.height == "auto")
             {
                 g.bind("SysGridHeightChanged", function ()
@@ -6036,7 +6035,7 @@
         {
             this.loadData(this.options.data);
         },
-        //åˆ·æ–°æ•°æ®
+        //Ë¢ĞÂÊı¾İ
         loadData: function (loadDataParm)
         {
             var g = this, p = this.options;
@@ -6058,7 +6057,7 @@
                 p.dataType = "local";
                 p.data = loadDataParm;
             }
-            //å‚æ•°åˆå§‹åŒ–
+            //²ÎÊı³õÊ¼»¯
             if (!p.newPage) p.newPage = 1;
             if (p.dataAction == "server")
             {
@@ -6211,9 +6210,9 @@
             return editorInput;
         },
         /*
-        @description ä½¿ä¸€è¡Œè¿›å…¥ç¼–è¾‘çŠ¶æ€
-        @param  {rowParm} rowindexæˆ–è€…rowdata
-        @param {containerBulider} ç¼–è¾‘å™¨å¡«å……å±‚æ„é€ å™¨
+        @description Ê¹Ò»ĞĞ½øÈë±à¼­×´Ì¬
+        @param  {rowParm} rowindex»òÕßrowdata
+        @param {containerBulider} ±à¼­Æ÷Ìî³ä²ã¹¹ÔìÆ÷
         */
         beginEdit: function (rowParm, containerBulider)
         {
@@ -6349,12 +6348,12 @@
         {
             return this._setHeight(h);
         },
-        //æ˜¯å¦å¯ç”¨å¤é€‰æ¡†åˆ—
+        //ÊÇ·ñÆôÓÃ¸´Ñ¡¿òÁĞ
         enabledCheckbox: function ()
         {
             return this.options.checkbox ? true : false;
         },
-        //æ˜¯å¦å›ºå®šåˆ—
+        //ÊÇ·ñ¹Ì¶¨ÁĞ
         enabledFrozen: function ()
         {
             var g = this, p = this.options;
@@ -6372,19 +6371,19 @@
             this._setFrozen(false);
             return false;
         },
-        //æ˜¯å¦å¯ç”¨æ˜ç»†ç¼–è¾‘
+        //ÊÇ·ñÆôÓÃÃ÷Ï¸±à¼­
         enabledDetailEdit: function ()
         {
             if (!this.enabledDetail()) return false;
             return this.options.detailToEdit ? true : false;
         },
-        //æ˜¯å¦å¯ç”¨æ˜ç»†åˆ—
+        //ÊÇ·ñÆôÓÃÃ÷Ï¸ÁĞ
         enabledDetail: function ()
         {
             if (this.options.detail && this.options.detail.onShowDetail) return true;
             return false;
         },
-        //æ˜¯å¦å¯ç”¨åˆ†ç»„
+        //ÊÇ·ñÆôÓÃ·Ö×é
         enabledGroup: function ()
         {
             return this.options.groupColumnName ? true : false;
@@ -6455,9 +6454,9 @@
             g._removeSelected(rowdata);
         },
         /*
-        @param  {arg} column indexã€column nameã€columnã€å•å…ƒæ ¼
-        @param  {value} å€¼
-        @param  {rowParm} rowindexæˆ–è€…rowdata
+        @param  {arg} column index¡¢column name¡¢column¡¢µ¥Ôª¸ñ
+        @param  {value} Öµ
+        @param  {rowParm} rowindex»òÕßrowdata
         */
         updateCell: function (arg, value, rowParm)
         {
@@ -6563,7 +6562,7 @@
             g.records[o['__id']] = o;
             return o;
         },
-        //å°†åŸå§‹çš„æ•°æ®è½¬æ¢æˆé€‚åˆ gridçš„è¡Œæ•°æ® 
+        //½«Ô­Ê¼µÄÊı¾İ×ª»»³ÉÊÊºÏ gridµÄĞĞÊı¾İ 
         _getRows: function (data)
         {
             var g = this, p = this.options;
@@ -6664,7 +6663,7 @@
             rowdata = rowdata || {};
             g._addData(rowdata, parentRowData, neardata, isBefore);
             g.reRender();
-            //æ ‡è¯†çŠ¶æ€
+            //±êÊ¶×´Ì¬
             rowdata[p.statusName] = 'add';
             if (p.tree)
             {
@@ -6689,7 +6688,7 @@
         {
             var g = this, p = this.options;
             var rowdata = g.getRow(rowDom);
-            //æ ‡è¯†çŠ¶æ€
+            //±êÊ¶×´Ì¬
             g.isDataChanged = true;
             $.extend(rowdata, newRowData || {});
             if (rowdata[p.statusName] != 'add')
@@ -6764,7 +6763,7 @@
             }
             return data;
         },
-        //æ ¼å¼åŒ–æ•°æ®
+        //¸ñÊ½»¯Êı¾İ
         formatRecord: function (o, removeStatus)
         {
             delete o['__id'];
@@ -6827,7 +6826,7 @@
             }
             return null;
         },
-        //æ˜¯å¦åŒ…å«æ±‡æ€»
+        //ÊÇ·ñ°üº¬»ã×Ü
         isTotalSummary: function ()
         {
             var g = this, p = this.options;
@@ -6837,8 +6836,8 @@
             }
             return false;
         },
-        //æ ¹æ®å±‚æ¬¡è·å–åˆ—é›†åˆ
-        //å¦‚æœcolumnLevelä¸ºç©ºï¼Œè·å–å¶èŠ‚ç‚¹é›†åˆ
+        //¸ù¾İ²ã´Î»ñÈ¡ÁĞ¼¯ºÏ
+        //Èç¹ûcolumnLevelÎª¿Õ£¬»ñÈ¡Ò¶½Úµã¼¯ºÏ
         getColumns: function (columnLevel)
         {
             var g = this, p = this.options;
@@ -6857,7 +6856,7 @@
             }
             return columns;
         },
-        //æ”¹å˜æ’åº
+        //¸Ä±äÅÅĞò
         changeSort: function (columnName, sortOrder)
         {
             var g = this, p = this.options;
@@ -6890,7 +6889,7 @@
                 g.loadData(p.where);
             }
         },
-        //æ”¹å˜åˆ†é¡µ
+        //¸Ä±ä·ÖÒ³
         changePage: function (ctype)
         {
             var g = this, p = this.options;
@@ -7029,7 +7028,7 @@
             {
                 return g.rows[parseInt(rowParm)];
             }
-            else if (typeof (rowParm) == "object" && rowParm.nodeType == 1 && !rowParm['__id']) //domå¯¹è±¡
+            else if (typeof (rowParm) == "object" && rowParm.nodeType == 1 && !rowParm['__id']) //dom¶ÔÏó
             {
                 return g._getRowByDomId(rowParm.id);
             }
@@ -7038,11 +7037,11 @@
         _setColumnVisible: function (column, hide)
         {
             var g = this, p = this.options;
-            if (!hide)  //æ˜¾ç¤º
+            if (!hide)  //ÏÔÊ¾
             {
                 column._hide = false;
                 document.getElementById(column['__domid']).style.display = "";
-                //åˆ¤æ–­åˆ†ç»„åˆ—æ˜¯å¦éšè—,å¦‚æœéšè—äº†åˆ™æ˜¾ç¤ºå‡ºæ¥
+                //ÅĞ¶Ï·Ö×éÁĞÊÇ·ñÒş²Ø,Èç¹ûÒş²ØÁËÔòÏÔÊ¾³öÀ´
                 if (column['__pid'] != -1)
                 {
                     var pcol = g._columns[column['__pid']];
@@ -7053,11 +7052,11 @@
                     }
                 }
             }
-            else //éšè—
+            else //Òş²Ø
             {
                 column._hide = true;
                 document.getElementById(column['__domid']).style.display = "none";
-                //åˆ¤æ–­åŒåˆ†ç»„çš„åˆ—æ˜¯å¦éƒ½éšè—,å¦‚æœæ˜¯åˆ™éšè—åˆ†ç»„åˆ—
+                //ÅĞ¶ÏÍ¬·Ö×éµÄÁĞÊÇ·ñ¶¼Òş²Ø,Èç¹ûÊÇÔòÒş²Ø·Ö×éÁĞ
                 if (column['__pid'] != -1)
                 {
                     var hideall = true;
@@ -7079,7 +7078,7 @@
                 }
             }
         },
-        //æ˜¾ç¤ºéšè—åˆ—
+        //ÏÔÊ¾Òş²ØÁĞ
         toggleCol: function (columnparm, visible, toggleByPopup)
         {
             var g = this, p = this.options;
@@ -7125,7 +7124,7 @@
                 if (tobj) cells.push(tobj);
             }
             var colwidth = column._width;
-            //æ˜¾ç¤ºåˆ—
+            //ÏÔÊ¾ÁĞ
             if (visible && column._hide)
             {
                 if (column.frozen)
@@ -7135,7 +7134,7 @@
                 g._setColumnVisible(column, false);
                 $(cells).show();
             }
-            //éšè—åˆ—
+            //Òş²ØÁĞ
             else if (!visible && !column._hide)
             {
                 if (column.frozen)
@@ -7169,7 +7168,7 @@
                 });
             }
         },
-        //è®¾ç½®åˆ—å®½
+        //ÉèÖÃÁĞ¿í
         setColumnWidth: function (columnparm, newwidth)
         {
             var g = this, p = this.options;
@@ -7244,7 +7243,7 @@
 
             g.trigger('afterChangeColumnWidth', [column, newwidth]);
         },
-        //æ”¹å˜åˆ—è¡¨å¤´å†…å®¹
+        //¸Ä±äÁĞ±íÍ·ÄÚÈİ
         changeHeaderText: function (columnparm, headerText)
         {
             var g = this, p = this.options;
@@ -7282,7 +7281,7 @@
                 $(':checkbox[columnindex=' + columnindex + "]", g.popup).parent().next().html(headerText);
             }
         },
-        //æ”¹å˜åˆ—çš„ä½ç½®
+        //¸Ä±äÁĞµÄÎ»ÖÃ
         changeCol: function (from, to, isAfter)
         {
             var g = this, p = this.options;
@@ -7472,10 +7471,10 @@
                 listdata.push(rowdata);
             }
         },
-        //ç§»åŠ¨æ•°æ®(æ ‘)
-        //@parm [parentdata] é™„åŠ åˆ°å“ªä¸€ä¸ªèŠ‚ç‚¹ä¸‹çº§
-        //@parm [neardata] é™„åŠ åˆ°å“ªä¸€ä¸ªèŠ‚ç‚¹çš„ä¸Šæ–¹/ä¸‹æ–¹
-        //@parm [isBefore] æ˜¯å¦é™„åŠ åˆ°ä¸Šæ–¹
+        //ÒÆ¶¯Êı¾İ(Ê÷)
+        //@parm [parentdata] ¸½¼Óµ½ÄÄÒ»¸ö½ÚµãÏÂ¼¶
+        //@parm [neardata] ¸½¼Óµ½ÄÄÒ»¸ö½ÚµãµÄÉÏ·½/ÏÂ·½
+        //@parm [isBefore] ÊÇ·ñ¸½¼Óµ½ÉÏ·½
         _appendData: function (rowdata, parentdata, neardata, isBefore)
         {
             var g = this, p = this.options;
@@ -7576,13 +7575,13 @@
             var linkbtn = $(".l-grid-tree-link:first", targetRowObj);
             var opening = true;
             g.collapsedRows = g.collapsedRows || [];
-            if (linkbtn.hasClass("l-grid-tree-link-close")) //æ”¶ç¼©
+            if (linkbtn.hasClass("l-grid-tree-link-close")) //ÊÕËõ
             {
                 linkbtn.removeClass("l-grid-tree-link-close").addClass("l-grid-tree-link-open");
                 indexInCollapsedRows = $.inArray(rowdata, g.collapsedRows);
                 if (indexInCollapsedRows != -1) g.collapsedRows.splice(indexInCollapsedRows, 1);
             }
-            else //æŠ˜å 
+            else //ÕÛµş
             {
                 opening = false;
                 linkbtn.addClass("l-grid-tree-link-close").removeClass("l-grid-tree-link-open");
@@ -7611,25 +7610,25 @@
         {
             var g = this;
             g._clearGrid();
-            //åˆ›å»ºå¤´éƒ¨
+            //´´½¨Í·²¿
             g._initBuildHeader();
-            //å®½åº¦é«˜åº¦åˆå§‹åŒ–
+            //¿í¶È¸ß¶È³õÊ¼»¯
             g._initHeight();
-            //åˆ›å»ºåº•éƒ¨å·¥å…·æ¡
+            //´´½¨µ×²¿¹¤¾ßÌõ
             g._initFootbar();
-            //åˆ›å»ºåˆ†é¡µ
+            //´´½¨·ÖÒ³
             g._buildPager();
-            //åˆ›å»ºäº‹ä»¶
+            //´´½¨ÊÂ¼ş
             g._setEvent();
         },
         _setColumns: function (columns)
         {
             var g = this;
-            //åˆå§‹åŒ–åˆ—
+            //³õÊ¼»¯ÁĞ
             g._initColumns();
-            //åˆ›å»ºè¡¨å¤´
+            //´´½¨±íÍ·
             g._initBuildGridHeader();
-            //åˆ›å»º æ˜¾ç¤º/éšè— åˆ— åˆ—è¡¨
+            //´´½¨ ÏÔÊ¾/Òş²Ø ÁĞ ÁĞ±í
             g._initBuildPopup();
         },
         _initBuildHeader: function ()
@@ -7667,7 +7666,7 @@
         _initColumns: function ()
         {
             var g = this, p = this.options;
-            g._columns = {};             //å…¨éƒ¨åˆ—çš„ä¿¡æ¯  
+            g._columns = {};             //È«²¿ÁĞµÄĞÅÏ¢  
             g._columnCount = 0;
             g._columnLeafCount = 0;
             g._columnMaxLevel = 1;
@@ -7680,7 +7679,7 @@
                         delete column[props[i]];
                 }
             }
-            //è®¾ç½®idã€pidã€levelã€leafï¼Œè¿”å›å¶èŠ‚ç‚¹æ•°,å¦‚æœæ˜¯å¶èŠ‚ç‚¹ï¼Œè¿”å›1
+            //ÉèÖÃid¡¢pid¡¢level¡¢leaf£¬·µ»ØÒ¶½ÚµãÊı,Èç¹ûÊÇÒ¶½Úµã£¬·µ»Ø1
             function setColumn(column, level, pid, previd)
             {
                 removeProp(column, ['__id', '__pid', '__previd', '__nextid', '__domid', '__leaf', '__leafindex', '__level', '__colSpan', '__rowSpan']);
@@ -7711,7 +7710,7 @@
                 return leafcount;
             }
             var lastid = -1;
-            //è¡Œåºå·
+            //ĞĞĞòºÅ
             if (p.rownumbers)
             {
                 var frozenRownumbers = g.enabledGroup() ? false : p.frozen && p.frozenRownumbers;
@@ -7719,7 +7718,7 @@
                 setColumn(col, 1, -1, lastid);
                 lastid = col['__id'];
             }
-            //æ˜ç»†åˆ—
+            //Ã÷Ï¸ÁĞ
             if (g.enabledDetail())
             {
                 var frozenDetail = g.enabledGroup() ? false : p.frozen && p.frozenDetail;
@@ -7727,7 +7726,7 @@
                 setColumn(col, 1, -1, lastid);
                 lastid = col['__id'];
             }
-            //å¤é€‰æ¡†åˆ—
+            //¸´Ñ¡¿òÁĞ
             if (g.enabledCheckbox())
             {
                 var frozenCheckbox = g.enabledGroup() ? false : p.frozen && p.frozenCheckbox;
@@ -7741,7 +7740,7 @@
                 setColumn(col, 1, -1, lastid);
                 lastid = col['__id'];
             }
-            //è®¾ç½®colSpanå’ŒrowSpan
+            //ÉèÖÃcolSpanºÍrowSpan
             for (var id in g._columns)
             {
                 var col = g._columns[id];
@@ -7754,7 +7753,7 @@
                     col['__rowSpan'] = g._columnMaxLevel - col['__level'] + 1;
                 }
             }
-            //å¶çº§åˆ«åˆ—çš„ä¿¡æ¯  
+            //Ò¶¼¶±ğÁĞµÄĞÅÏ¢  
             g.columns = g.getColumns();
             $(g.columns).each(function (i, column)
             {
@@ -7895,8 +7894,8 @@
             $("tbody:first", g.f.gridheader).html("");
             for (var level = 1; level <= g._columnMaxLevel; level++)
             {
-                var columns = g.getColumns(level);           //è·å–levelå±‚æ¬¡çš„åˆ—é›†åˆ
-                var islast = level == g._columnMaxLevel;     //æ˜¯å¦æœ€æœ«çº§
+                var columns = g.getColumns(level);           //»ñÈ¡level²ã´ÎµÄÁĞ¼¯ºÏ
+                var islast = level == g._columnMaxLevel;     //ÊÇ·ñ×îÄ©¼¶
                 var tr = $("<tr class='l-grid-hd-row'></tr>");
                 var trf = $("<tr class='l-grid-hd-row'></tr>");
                 if (!islast) tr.add(trf).addClass("l-grid-hd-mul");
@@ -7951,7 +7950,7 @@
                     }
                 });
             }
-            //è¡¨å¤´ - æ˜¾ç¤º/éšè—'åˆ—æ§åˆ¶'æŒ‰é’®äº‹ä»¶
+            //±íÍ· - ÏÔÊ¾/Òş²Ø'ÁĞ¿ØÖÆ'°´Å¥ÊÂ¼ş
             if (p.allowHideColumn)
             {
                 $('tr', g.popup).hover(function ()
@@ -7995,7 +7994,7 @@
             var g = this, p = this.options;
             if (p.usePager)
             {
-                //åˆ›å»ºåº•éƒ¨å·¥å…·æ¡ - é€‰æ‹©æ¯é¡µæ˜¾ç¤ºè®°å½•æ•°
+                //´´½¨µ×²¿¹¤¾ßÌõ - Ñ¡ÔñÃ¿Ò³ÏÔÊ¾¼ÇÂ¼Êı
                 var optStr = "";
                 var selectedIndex = -1;
                 $(p.pageSizeOptions).each(function (i, item)
@@ -8049,27 +8048,27 @@
                     rowobj = rowobj.add(g.getRowObj(g.rows[i], true));
                 rowobj.unbind();
             }
-            //æ¸…ç©ºæ•°æ®
+            //Çå¿ÕÊı¾İ
             g.gridbody.html("");
             g.f.gridbody.html("");
             g.recordNumber = 0;
             g.records = {};
             g.rows = [];
-            //æ¸…ç©ºé€‰æ‹©çš„è¡Œ
+            //Çå¿ÕÑ¡ÔñµÄĞĞ
             g.selected = [];
             g.totalNumber = 0;
-            //ç¼–è¾‘å™¨è®¡ç®—å™¨
+            //±à¼­Æ÷¼ÆËãÆ÷
             g.editorcounter = 0;
         },
         _fillGridBody: function (data, frozen)
         {
             var g = this, p = this.options;
-            //åŠ è½½æ•°æ® 
+            //¼ÓÔØÊı¾İ 
             var gridhtmlarr = ['<div class="l-grid-body-inner"><table class="l-grid-body-table" cellpadding=0 cellspacing=0><tbody>'];
-            if (g.enabledGroup()) //å¯ç”¨åˆ†ç»„æ¨¡å¼
+            if (g.enabledGroup()) //ÆôÓÃ·Ö×éÄ£Ê½
             {
-                var groups = []; //åˆ†ç»„åˆ—åæ•°ç»„
-                var groupsdata = []; //åˆ‡æˆå‡ å—åçš„æ•°æ®
+                var groups = []; //·Ö×éÁĞÃûÊı×é
+                var groupsdata = []; //ÇĞ³É¼¸¿éºóµÄÊı¾İ
                 g.groups = groupsdata;
                 for (var rowparm in data)
                 {
@@ -8107,7 +8106,7 @@
                     gridhtmlarr.push('</tr>');
 
                     gridhtmlarr.push(g._getHtmlFromData(item, frozen));
-                    //æ±‡æ€»
+                    //»ã×Ü
                     if (g.isTotalSummary())
                         gridhtmlarr.push(g._getTotalSummaryHtml(item, "l-grid-totalsummary-group", frozen));
                 });
@@ -8118,10 +8117,10 @@
             }
             gridhtmlarr.push('</tbody></table></div>');
             (frozen ? g.f.gridbody : g.gridbody).html(gridhtmlarr.join(''));
-            //åˆ†ç»„æ—¶ä¸éœ€è¦            
+            //·Ö×éÊ±²»ĞèÒª            
             if (!g.enabledGroup())
             {
-                //åˆ›å»ºæ±‡æ€»è¡Œ
+                //´´½¨»ã×ÜĞĞ
                 g._bulidTotalSummary(frozen);
             }
             $("> div:first", g.gridbody).width(g.gridtablewidth);
@@ -8133,7 +8132,7 @@
             var data = g.currentData[p.root];
             if (p.usePager)
             {
-                //æ›´æ–°æ€»è®°å½•æ•°
+                //¸üĞÂ×Ü¼ÇÂ¼Êı
                 if (p.dataAction == "server" && g.data && g.data[p.record])
                     p.total = g.data[p.record];
                 else if (g.filteredData && g.filteredData[p.root])
@@ -8148,10 +8147,10 @@
                 if (!p.page) p.page = 1;
                 p.pageCount = Math.ceil(p.total / p.pageSize);
                 if (!p.pageCount) p.pageCount = 1;
-                //æ›´æ–°åˆ†é¡µ
+                //¸üĞÂ·ÖÒ³
                 g._buildPager();
             }
-            //åŠ è½½ä¸­
+            //¼ÓÔØÖĞ
             $('.l-bar-btnloading:first', g.toolbar).removeClass('l-bar-btnloading');
             if (g.trigger('beforeShowData', [g.currentData]) == false) return;
             g._clearGrid();
@@ -8241,7 +8240,7 @@
                     if (frozen != column.frozen) return;
                     gridhtmlarr.push('<td');
                     gridhtmlarr.push(' id="' + g._getCellDomId(item, this) + '"');
-                    //å¦‚æœæ˜¯è¡Œåºå·(ç³»ç»Ÿåˆ—)
+                    //Èç¹ûÊÇĞĞĞòºÅ(ÏµÍ³ÁĞ)
                     if (this.isrownumber)
                     {
                         gridhtmlarr.push(' class="l-grid-row-cell l-grid-row-cell-rownumbers" style="width:' + this.width + 'px"><div class="l-grid-row-cell-inner"');
@@ -8250,7 +8249,7 @@
                         gridhtmlarr.push('>' + (parseInt(item['__index']) + 1) + '</div></td>');
                         return;
                     }
-                    //å¦‚æœæ˜¯å¤é€‰æ¡†(ç³»ç»Ÿåˆ—)
+                    //Èç¹ûÊÇ¸´Ñ¡¿ò(ÏµÍ³ÁĞ)
                     if (this.ischeckbox)
                     {
                         gridhtmlarr.push(' class="l-grid-row-cell l-grid-row-cell-checkbox" style="width:' + this.width + 'px"><div class="l-grid-row-cell-inner"');
@@ -8259,7 +8258,7 @@
                         gridhtmlarr.push('><span class="l-grid-row-cell-btn-checkbox"></span></div></td>');
                         return;
                     }
-                    //å¦‚æœæ˜¯æ˜ç»†åˆ—(ç³»ç»Ÿåˆ—)
+                    //Èç¹ûÊÇÃ÷Ï¸ÁĞ(ÏµÍ³ÁĞ)
                     else if (this.isdetail)
                     {
                         gridhtmlarr.push(' class="l-grid-row-cell l-grid-row-cell-detail" style="width:' + this.width + 'px"><div class="l-grid-row-cell-inner"');
@@ -8429,7 +8428,7 @@
             }
             return data;
         },
-        //æ¯”è¾ƒæŸä¸€åˆ—ä¸¤ä¸ªæ•°æ®
+        //±È½ÏÄ³Ò»ÁĞÁ½¸öÊı¾İ
         _compareData: function (data1, data2, columnName, columnType)
         {
             var g = this, p = this.options;
@@ -8506,19 +8505,19 @@
             $(g.columns).each(function (columnindex, column)
             {
                 if (this.frozen != frozen) return;
-                //å¦‚æœæ˜¯è¡Œåºå·(ç³»ç»Ÿåˆ—)
+                //Èç¹ûÊÇĞĞĞòºÅ(ÏµÍ³ÁĞ)
                 if (this.isrownumber)
                 {
                     totalsummaryArr.push('<td class="l-grid-totalsummary-cell l-grid-totalsummary-cell-rownumbers" style="width:' + this.width + 'px"><div>&nbsp;</div></td>');
                     return;
                 }
-                //å¦‚æœæ˜¯å¤é€‰æ¡†(ç³»ç»Ÿåˆ—)
+                //Èç¹ûÊÇ¸´Ñ¡¿ò(ÏµÍ³ÁĞ)
                 if (this.ischeckbox)
                 {
                     totalsummaryArr.push('<td class="l-grid-totalsummary-cell l-grid-totalsummary-cell-checkbox" style="width:' + this.width + 'px"><div>&nbsp;</div></td>');
                     return;
                 }
-                //å¦‚æœæ˜¯æ˜ç»†åˆ—(ç³»ç»Ÿåˆ—)
+                //Èç¹ûÊÇÃ÷Ï¸ÁĞ(ÏµÍ³ÁĞ)
                 else if (this.isdetail)
                 {
                     totalsummaryArr.push('<td class="l-grid-totalsummary-cell l-grid-totalsummary-cell-detail" style="width:' + this.width + 'px"><div>&nbsp;</div></td>');
@@ -8648,10 +8647,10 @@
                 grid: fn("l-panel"),
                 indetail: indetail,
                 frozen: fn(g.gridview1[0]) ? true : false,
-                header: fn("l-panel-header"), //æ ‡é¢˜
-                gridheader: fn("l-grid-header"), //è¡¨æ ¼å¤´ 
+                header: fn("l-panel-header"), //±êÌâ
+                gridheader: fn("l-grid-header"), //±í¸ñÍ· 
                 gridbody: fn("l-grid-body"),
-                total: fn("l-panel-bar-total"), //æ€»æ±‡æ€» 
+                total: fn("l-panel-bar-total"), //×Ü»ã×Ü 
                 popup: fn("l-grid-popup"),
                 toolbar: fn("l-panel-bar")
             };
@@ -8735,7 +8734,7 @@
             {
                 delete g.ctrlKey;
             });
-            //è¡¨ä½“ - æ»šåŠ¨è”åŠ¨äº‹ä»¶ 
+            //±íÌå - ¹ö¶¯Áª¶¯ÊÂ¼ş 
             g.gridbody.bind('scroll.grid', function ()
             {
                 var scrollLeft = g.gridbody.scrollLeft();
@@ -8747,7 +8746,7 @@
                 g.endEdit();
                 g.trigger('SysGridHeightChanged');
             });
-            //å·¥å…·æ¡ - åˆ‡æ¢æ¯é¡µè®°å½•æ•°äº‹ä»¶
+            //¹¤¾ßÌõ - ÇĞ»»Ã¿Ò³¼ÇÂ¼ÊıÊÂ¼ş
             $('select', g.toolbar).change(function ()
             {
                 if (g.isDataChanged && !confirm(p.isContinueByDataChanged))
@@ -8756,7 +8755,7 @@
                 p.pageSize = this.value;
                 g.loadData(p.where);
             });
-            //å·¥å…·æ¡ - åˆ‡æ¢å½“å‰é¡µäº‹ä»¶
+            //¹¤¾ßÌõ - ÇĞ»»µ±Ç°Ò³ÊÂ¼ş
             $('span.pcontrol :text', g.toolbar).blur(function (e)
             {
                 g.changePage('input');
@@ -8768,7 +8767,7 @@
             {
                 $(this).removeClass("l-bar-button-over");
             });
-            //åˆ—æ‹–æ‹½æ”¯æŒ
+            //ÁĞÍÏ×§Ö§³Ö
             if ($.fn.ligerDrag && p.colDraggable)
             {
                 g.colDroptip = $("<div class='l-drag-coldroptip' style='display:none'><div class='l-drop-move-up'></div><div class='l-drop-move-down'></div></div>").appendTo('body');
@@ -8894,7 +8893,7 @@
                     }
                 });
             }
-            //è¡Œæ‹–æ‹½æ”¯æŒ
+            //ĞĞÍÏ×§Ö§³Ö
             if ($.fn.ligerDrag && p.rowDraggable)
             {
                 g.rowDroptip = $("<div class='l-drag-rowdroptip' style='display:none'></div>").appendTo('body');
@@ -9174,7 +9173,7 @@
                     g.popup.hide();
                 }
             }
-            if (src.checkboxall) //å¤é€‰æ¡†å…¨é€‰
+            if (src.checkboxall) //¸´Ñ¡¿òÈ«Ñ¡
             {
                 var row = $(src.hrow);
                 var uncheck = row.hasClass("l-checked");
@@ -9197,7 +9196,7 @@
                 }
                 g.trigger('checkAllRow', [!uncheck, g.element]);
             }
-            else if (src.hcelltext) //æ’åº
+            else if (src.hcelltext) //ÅÅĞò
             {
                 var hcell = $(src.hcelltext).parent().parent();
                 if (!p.enabledSort || !src.column) return;
@@ -9229,7 +9228,7 @@
                 }
                 $(".l-grid-hd-cell-sort", g.gridheader).add($(".l-grid-hd-cell-sort", g.f.gridheader)).not($(".l-grid-hd-cell-sort:first", hcell)).remove();
             }
-            //æ˜ç»†
+            //Ã÷Ï¸
             else if (src.detailbtn && p.detail)
             {
                 var item = src.data;
@@ -9318,7 +9317,7 @@
                     if (opening)
                     {
                         currentRow.show();
-                        //å¦‚æœæ˜¯æ˜ç»†å±•å¼€çš„è¡Œï¼Œå¹¶ä¸”ä¹‹å‰çš„çŠ¶æ€å·²ç»æ˜¯å…³é—­çš„ï¼Œéšè—ä¹‹
+                        //Èç¹ûÊÇÃ÷Ï¸Õ¹¿ªµÄĞĞ£¬²¢ÇÒÖ®Ç°µÄ×´Ì¬ÒÑ¾­ÊÇ¹Ø±ÕµÄ£¬Òş²ØÖ®
                         if (currentRow.hasClass("l-grid-detailpanel") && !currentRow.prev().find("td.l-grid-row-cell-detail:first span.l-grid-row-cell-detailbtn:first").hasClass("l-open"))
                         {
                             currentRow.hide();
@@ -9332,14 +9331,14 @@
                 }
                 g.trigger('SysGridHeightChanged');
             }
-            //æ ‘ - ä¼¸å±•/æ”¶ç¼©èŠ‚ç‚¹
+            //Ê÷ - ÉìÕ¹/ÊÕËõ½Úµã
             else if (src.treelink)
             {
                 g.toggle(src.data);
             }
-            else if (src.row && g.enabledCheckbox()) //å¤é€‰æ¡†é€‰æ‹©è¡Œ
+            else if (src.row && g.enabledCheckbox()) //¸´Ñ¡¿òÑ¡ÔñĞĞ
             {
-                //å¤é€‰æ¡†
+                //¸´Ñ¡¿ò
                 var selectRowButtonOnly = p.selectRowButtonOnly ? true : false;
                 if (p.enabledEdit) selectRowButtonOnly = true;
                 if (src.checkbox || !selectRowButtonOnly)
@@ -9372,7 +9371,7 @@
                     g._applyEditor(src.cell);
                 }
 
-                //é€‰æ‹©è¡Œ
+                //Ñ¡ÔñĞĞ
                 if ($(src.row).hasClass("l-selected"))
                 {
                     if (!p.allowUnSelectRow)
@@ -9426,7 +9425,7 @@
             var rowid = rowdata['__id'];
             var rowobj = g.getRowObj(rowid);
             var rowobj1 = g.getRowObj(rowid, true);
-            if (!g.enabledCheckbox() && !g.ctrlKey) //å•é€‰
+            if (!g.enabledCheckbox() && !g.ctrlKey) //µ¥Ñ¡
             {
                 for (var i in g.selected)
                 {
@@ -9526,14 +9525,8 @@
     $.ligerui.controls.Grid.prototype.getCheckedRowObjs = $.ligerui.controls.Grid.prototype.getSelectedRowObjs;
     $.ligerui.controls.Grid.prototype.setOptions = $.ligerui.controls.Grid.prototype.set;
 
-})(jQuery);ï»¿/**
-* jQuery ligerUI 1.1.9
-* 
-* http://ligerui.com
-*  
-* Author daomi 2012 [ gd_star@163.com ] 
-* 
-*/
+})(jQuery);
+
 (function ($)
 {
     $.fn.ligerLayout = function (options)
@@ -9553,22 +9546,22 @@
         leftWidth: 110,
         centerWidth: 300,
         rightWidth: 170,
-        InWindow: true,     //æ˜¯å¦ä»¥çª—å£çš„é«˜åº¦ä¸ºå‡† heightè®¾ç½®ä¸ºç™¾åˆ†æ¯”æ—¶å¯ç”¨
-        heightDiff: 0,     //é«˜åº¦è¡¥å·®
-        height: '100%',      //é«˜åº¦
+        InWindow: true,     //ÊÇ·ñÒÔ´°¿ÚµÄ¸ß¶ÈÎª×¼ heightÉèÖÃÎª°Ù·Ö±ÈÊ±¿ÉÓÃ
+        heightDiff: 0,     //¸ß¶È²¹²î
+        height: '100%',      //¸ß¶È
         onHeightChanged: null,
-        isLeftCollapse: false,      //åˆå§‹åŒ–æ—¶ å·¦è¾¹æ˜¯å¦éšè—
-        isRightCollapse: false,     //åˆå§‹åŒ–æ—¶ å³è¾¹æ˜¯å¦éšè—
-        allowLeftCollapse: true,      //æ˜¯å¦å…è®¸ å·¦è¾¹å¯ä»¥éšè—
-        allowRightCollapse: true,     //æ˜¯å¦å…è®¸ å³è¾¹å¯ä»¥éšè—
-        allowLeftResize: true,      //æ˜¯å¦å…è®¸ å·¦è¾¹å¯ä»¥è°ƒæ•´å¤§å°
-        allowRightResize: true,     //æ˜¯å¦å…è®¸ å³è¾¹å¯ä»¥è°ƒæ•´å¤§å°
-        allowTopResize: true,      //æ˜¯å¦å…è®¸ å¤´éƒ¨å¯ä»¥è°ƒæ•´å¤§å°
-        allowBottomResize: true,     //æ˜¯å¦å…è®¸ åº•éƒ¨å¯ä»¥è°ƒæ•´å¤§å°
-        space: 3, //é—´éš” 
-        onEndResize: null,          //è°ƒæ•´å¤§å°ç»“æŸäº‹ä»¶
-        minLeftWidth: 80,            //è°ƒæ•´å·¦ä¾§å®½åº¦æ—¶çš„æœ€å°å…è®¸å®½åº¦
-        minRightWidth: 80           //è°ƒæ•´å³ä¾§å®½åº¦æ—¶çš„æœ€å°å…è®¸å®½åº¦
+        isLeftCollapse: false,      //³õÊ¼»¯Ê± ×ó±ßÊÇ·ñÒş²Ø
+        isRightCollapse: false,     //³õÊ¼»¯Ê± ÓÒ±ßÊÇ·ñÒş²Ø
+        allowLeftCollapse: true,      //ÊÇ·ñÔÊĞí ×ó±ß¿ÉÒÔÒş²Ø
+        allowRightCollapse: true,     //ÊÇ·ñÔÊĞí ÓÒ±ß¿ÉÒÔÒş²Ø
+        allowLeftResize: true,      //ÊÇ·ñÔÊĞí ×ó±ß¿ÉÒÔµ÷Õû´óĞ¡
+        allowRightResize: true,     //ÊÇ·ñÔÊĞí ÓÒ±ß¿ÉÒÔµ÷Õû´óĞ¡
+        allowTopResize: true,      //ÊÇ·ñÔÊĞí Í·²¿¿ÉÒÔµ÷Õû´óĞ¡
+        allowBottomResize: true,     //ÊÇ·ñÔÊĞí µ×²¿¿ÉÒÔµ÷Õû´óĞ¡
+        space: 3, //¼ä¸ô 
+        onEndResize: null,          //µ÷Õû´óĞ¡½áÊøÊÂ¼ş
+        minLeftWidth: 80,            //µ÷Õû×ó²à¿í¶ÈÊ±µÄ×îĞ¡ÔÊĞí¿í¶È
+        minRightWidth: 80           //µ÷ÕûÓÒ²à¿í¶ÈÊ±µÄ×îĞ¡ÔÊĞí¿í¶È
     };
 
     $.ligerMethos.Layout = {};
@@ -10126,7 +10119,7 @@
             g.layout.lock.width(g.layout.width());
             g.layout.lock.height(g.layout.height());
             g.layout.lock.show();
-            if ($.browser.msie || $.browser.safari) $('body').bind('selectstart', function () { return false; }); // ä¸èƒ½é€‰æ‹©
+            if ($.browser.msie || $.browser.safari) $('body').bind('selectstart', function () { return false; }); // ²»ÄÜÑ¡Ôñ
 
             $(document).bind('mouseup', function ()
             {
@@ -10246,14 +10239,7 @@
         }
     });
 
-})(jQuery);ï»¿/**
-* jQuery ligerUI 1.1.9
-* 
-* http://ligerui.com
-*  
-* Author daomi 2012 [ gd_star@163.com ] 
-* 
-*/
+})(jQuery);
 (function ($)
 {
     $.ligerMenu = function (options)
@@ -10292,9 +10278,9 @@
         {
             var g = this, p = this.options;
             g.menuItemCount = 0;
-            //å…¨éƒ¨èœå•
+            //È«²¿²Ëµ¥
             g.menus = {};
-            //é¡¶çº§èœå•
+            //¶¥¼¶²Ëµ¥
             g.menu = g.createMenu();
             g.element = g.menu[0];
             g.menu.css({ top: p.top, left: p.left, width: p.width });
@@ -10500,20 +10486,14 @@
             return menu;
         }
     });
-    //æ—§å†™æ³•ä¿ç•™
+    //¾ÉĞ´·¨±£Áô
     $.ligerui.controls.Menu.prototype.setEnable = $.ligerui.controls.Menu.prototype.setEnabled;
     $.ligerui.controls.Menu.prototype.setDisable = $.ligerui.controls.Menu.prototype.setDisabled;
 
 
 
-})(jQuery);ï»¿/**
-* jQuery ligerUI 1.1.9
-* 
-* http://ligerui.com
-*  
-* Author daomi 2012 [ gd_star@163.com ] 
-* 
-*/
+})(jQuery);
+
 (function ($)
 {
     $.fn.ligerMenuBar = function (options)
@@ -10604,14 +10584,7 @@
         }
     });
 
-})(jQuery);ï»¿/**
-* jQuery ligerUI 1.1.9
-* 
-* http://ligerui.com
-*  
-* Author daomi 2012 [ gd_star@163.com ] 
-* 
-*/
+})(jQuery);
 (function ($)
 {
 
@@ -10668,7 +10641,7 @@
                 g._removeWindowMask();
                 g.messageBox.remove();
             };
-            //è®¾ç½®å‚æ•°å±æ€§
+            //ÉèÖÃ²ÎÊıÊôĞÔ
             p.width && g.messageBox.width(p.width);
             p.title && $(".l-messagebox-title-inner", g.messageBox).html(p.title);
             p.content && $(".l-messagebox-content", g.messageBox).html(p.content);
@@ -10691,12 +10664,12 @@
                 sumBtnWidth += $(this).width();
             });
             $(".l-messagebox-buttons-inner", g.messageBox).css({ marginLeft: parseInt((boxWidth - sumBtnWidth) * 0.5) });
-            //è®¾ç½®èƒŒæ™¯ã€æ‹–åŠ¨æ”¯æŒ å’Œè®¾ç½®å›¾ç‰‡
+            //ÉèÖÃ±³¾°¡¢ÍÏ¶¯Ö§³Ö ºÍÉèÖÃÍ¼Æ¬
             g._applyWindowMask();
             g._applyDrag();
             g._setImage();
 
-            //ä½ç½®åˆå§‹åŒ–
+            //Î»ÖÃ³õÊ¼»¯
             var left = 0;
             var top = 0;
             var width = p.width || g.messageBox.width();
@@ -10708,7 +10681,7 @@
             if (top < 0) p.top = top = 0;
             g.messageBox.css({ left: left, top: top });
 
-            //è®¾ç½®äº‹ä»¶
+            //ÉèÖÃÊÂ¼ş
             $(".l-messagebox-btn", g.messageBox).hover(function ()
             {
                 $(this).addClass("l-messagebox-btn-over");
@@ -10798,7 +10771,7 @@
         p = {
             title: title,
             content: content,
-            buttons: [{ text: 'ç¡®å®š', onclick: onclick}]
+            buttons: [{ text: 'È·¶¨', onclick: onclick}]
         };
         if (type) p.type = type;
         return $.ligerMessageBox(p);
@@ -10817,7 +10790,7 @@
             type: 'question',
             title: title,
             content: content,
-            buttons: [{ text: 'æ˜¯', onclick: onclick }, { text: 'å¦', onclick: onclick}]
+            buttons: [{ text: 'ÊÇ', onclick: onclick }, { text: '·ñ', onclick: onclick}]
         };
         return $.ligerMessageBox(p);
     };
@@ -10839,14 +10812,7 @@
     };
 
 
-})(jQuery);ï»¿/**
-* jQuery ligerUI 1.1.9
-* 
-* http://ligerui.com
-*  
-* Author daomi 2012 [ gd_star@163.com ] 
-* 
-*/
+})(jQuery);
 
 (function ($)
 {
@@ -11265,14 +11231,8 @@
 
 
 
-})(jQuery);ï»¿/**
-* jQuery ligerUI 1.1.9
-* 
-* http://ligerui.com
-*  
-* Author daomi 2012 [ gd_star@163.com ] 
-* 
-*/
+})(jQuery);
+
 (function ($)
 {
     $.fn.ligerSpinner = function ()
@@ -11285,14 +11245,14 @@
     };
 
     $.ligerDefaults.Spinner = {
-        type: 'float',     //ç±»å‹ float:æµ®ç‚¹æ•° int:æ•´æ•° time:æ—¶é—´
-        isNegative: true, //æ˜¯å¦è´Ÿæ•°
-        decimalplace: 2,   //å°æ•°ä½ type=floatæ—¶èµ·ä½œç”¨
-        step: 0.1,         //æ¯æ¬¡å¢åŠ çš„å€¼
-        interval: 50,      //é—´éš”ï¼Œæ¯«ç§’
-        onChangeValue: false,    //æ”¹å˜å€¼äº‹ä»¶
-        minValue: null,        //æœ€å°å€¼
-        maxValue: null,         //æœ€å¤§å€¼
+        type: 'float',     //ÀàĞÍ float:¸¡µãÊı int:ÕûÊı time:Ê±¼ä
+        isNegative: true, //ÊÇ·ñ¸ºÊı
+        decimalplace: 2,   //Ğ¡ÊıÎ» type=floatÊ±Æğ×÷ÓÃ
+        step: 0.1,         //Ã¿´ÎÔö¼ÓµÄÖµ
+        interval: 50,      //¼ä¸ô£¬ºÁÃë
+        onChangeValue: false,    //¸Ä±äÖµÊÂ¼ş
+        minValue: null,        //×îĞ¡Öµ
+        maxValue: null,         //×î´óÖµ
         disabled: false
     };
 
@@ -11366,13 +11326,13 @@
             {
                 g.wrapper.addClass("l-text-disabled");
             }
-            //åˆå§‹åŒ–
+            //³õÊ¼»¯
             if (!g._isVerify(g.inputText.val()))
             {
                 g.value = g._getDefaultValue();
                 g.inputText.val(g.value);
             }
-            //äº‹ä»¶
+            //ÊÂ¼ş
             g.link.up.hover(function ()
             {
                 if (!p.disabled)
@@ -11642,14 +11602,7 @@
     });
 
 
-})(jQuery);ï»¿/**
-* jQuery ligerUI 1.1.9
-* 
-* http://ligerui.com
-*  
-* Author daomi 2012 [ gd_star@163.com ] 
-* 
-*/
+})(jQuery);
 (function ($)
 {
 
@@ -11665,11 +11618,11 @@
 
     $.ligerDefaults.Tab = {
         height: null,
-        heightDiff: 0, // é«˜åº¦è¡¥å·® 
+        heightDiff: 0, // ¸ß¶È²¹²î 
         changeHeightOnResize: false,
         contextmenu: true,
-        dblClickToClose: false, //æ˜¯å¦åŒå‡»æ—¶å…³é—­
-        dragToMove: false,    //æ˜¯å¦å…è®¸æ‹–åŠ¨æ—¶æ”¹å˜tabé¡¹çš„ä½ç½®
+        dblClickToClose: false, //ÊÇ·ñË«»÷Ê±¹Ø±Õ
+        dragToMove: false,    //ÊÇ·ñÔÊĞíÍÏ¶¯Ê±¸Ä±ätabÏîµÄÎ»ÖÃ
         onBeforeOverrideTabItem: null,
         onAfterOverrideTabItem: null,
         onBeforeRemoveTabItem: null,
@@ -11680,10 +11633,10 @@
         onAfterSelectTabItem: null
     };
     $.ligerDefaults.TabString = {
-        closeMessage: "å…³é—­å½“å‰é¡µ",
-        closeOtherMessage: "å…³é—­å…¶ä»–",
-        closeAllMessage: "å…³é—­æ‰€æœ‰",
-        reloadMessage: "åˆ·æ–°"
+        closeMessage: "¹Ø±Õµ±Ç°Ò³",
+        closeOtherMessage: "¹Ø±ÕÆäËû",
+        closeAllMessage: "¹Ø±ÕËùÓĞ",
+        reloadMessage: "Ë¢ĞÂ"
     };
 
     $.ligerMethos.Tab = {};
@@ -11927,7 +11880,7 @@
         },
         _setDragToMove: function (value)
         {
-            if (!$.fn.ligerDrag) return; //éœ€è¦ligerDragçš„æ”¯æŒ
+            if (!$.fn.ligerDrag) return; //ĞèÒªligerDragµÄÖ§³Ö
             var g = this, p = this.options;
             if (value)
             {
@@ -11955,7 +11908,7 @@
                 to.before(from);
             }
         },
-        //è®¾ç½®tabæŒ‰é’®(å·¦å’Œå³),æ˜¾ç¤ºè¿”å›true,éšè—è¿”å›false
+        //ÉèÖÃtab°´Å¥(×óºÍÓÒ),ÏÔÊ¾·µ»Øtrue,Òş²Ø·µ»Øfalse
         setTabButton: function ()
         {
             var g = this, p = this.options;
@@ -11977,7 +11930,7 @@
                 return false;
             }
         },
-        //è®¾ç½®å·¦å³æŒ‰é’®çš„äº‹ä»¶ æ ‡ç­¾è¶…å‡ºæœ€å¤§å®½åº¦æ—¶ï¼Œå¯å·¦å³æ‹–åŠ¨
+        //ÉèÖÃ×óÓÒ°´Å¥µÄÊÂ¼ş ±êÇ©³¬³ö×î´ó¿í¶ÈÊ±£¬¿É×óÓÒÍÏ¶¯
         setTabButtonEven: function ()
         {
             var g = this, p = this.options;
@@ -12002,12 +11955,12 @@
                 g.moveToNextTabItem();
             });
         },
-        //åˆ‡æ¢åˆ°ä¸Šä¸€ä¸ªtab
+        //ÇĞ»»µ½ÉÏÒ»¸ötab
         moveToPrevTabItem: function ()
         {
             var g = this, p = this.options;
             var btnWitdth = $(".l-tab-links-left", g.tab.links).width();
-            var leftList = new Array(); //è®°å½•æ¯ä¸ªtabçš„left,ç”±å·¦åˆ°å³
+            var leftList = new Array(); //¼ÇÂ¼Ã¿¸ötabµÄleft,ÓÉ×óµ½ÓÒ
             $("li", g.tab.links).each(function (i, item)
             {
                 var currentItemLeft = -1 * btnWitdth;
@@ -12027,7 +11980,7 @@
                 }
             }
         },
-        //åˆ‡æ¢åˆ°ä¸‹ä¸€ä¸ªtab
+        //ÇĞ»»µ½ÏÂÒ»¸ötab
         moveToNextTabItem: function ()
         {
             var g = this, p = this.options;
@@ -12039,7 +11992,7 @@
                 sumwidth += $(this).width() + 2;
             });
             var mainwidth = g.tab.width();
-            var leftList = new Array(); //è®°å½•æ¯ä¸ªtabçš„left,ç”±å³åˆ°å·¦ 
+            var leftList = new Array(); //¼ÇÂ¼Ã¿¸ötabµÄleft,ÓÉÓÒµ½×ó 
             for (var i = tabItems.length - 1; i >= 0; i--)
             {
                 var currentItemLeft = sumwidth - mainwidth + btnWitdth + 2;
@@ -12074,13 +12027,13 @@
             var g = this, p = this.options;
             g.removeTabItem(g.getSelectedTabItemID());
         },
-        //è¦†ç›–é€‰æ‹©çš„tabitem
+        //¸²¸ÇÑ¡ÔñµÄtabitem
         overrideSelectedTabItem: function (options)
         {
             var g = this, p = this.options;
             g.overrideTabItem(g.getSelectedTabItemID(), options);
         },
-        //è¦†ç›–
+        //¸²¸Ç
         overrideTabItem: function (targettabid, options)
         {
             var g = this, p = this.options;
@@ -12094,7 +12047,7 @@
             var text = options.text;
             var showClose = options.showClose;
             var height = options.height;
-            //å¦‚æœå·²ç»å­˜åœ¨
+            //Èç¹ûÒÑ¾­´æÔÚ
             if (g.isTabItemExist(tabid))
             {
                 return;
@@ -12128,7 +12081,7 @@
 
             g.trigger('afterOverrideTabItem', [targettabid]);
         },
-        //é€‰ä¸­tabé¡¹
+        //Ñ¡ÖĞtabÏî
         selectTabItem: function (tabid)
         {
             var g = this, p = this.options;
@@ -12139,7 +12092,7 @@
             $("li[tabid=" + tabid + "]", g.tab.links.ul).addClass("l-selected").siblings().removeClass("l-selected");
             g.trigger('afterSelectTabItem', [tabid]);
         },
-        //ç§»åŠ¨åˆ°æœ€åä¸€ä¸ªtab
+        //ÒÆ¶¯µ½×îºóÒ»¸ötab
         moveToLastTabItem: function ()
         {
             var g = this, p = this.options;
@@ -12155,13 +12108,13 @@
                 g.tab.links.ul.animate({ left: -1 * (sumwidth - mainwidth + btnWitdth + 2) });
             }
         },
-        //åˆ¤æ–­tabæ˜¯å¦å­˜åœ¨
+        //ÅĞ¶ÏtabÊÇ·ñ´æÔÚ
         isTabItemExist: function (tabid)
         {
             var g = this, p = this.options;
             return $("li[tabid=" + tabid + "]", g.tab.links.ul).length > 0;
         },
-        //å¢åŠ ä¸€ä¸ªtab
+        //Ôö¼ÓÒ»¸ötab
         addTabItem: function (options)
         {
             var g = this, p = this.options;
@@ -12174,7 +12127,7 @@
             var text = options.text;
             var showClose = options.showClose;
             var height = options.height;
-            //å¦‚æœå·²ç»å­˜åœ¨
+            //Èç¹ûÒÑ¾­´æÔÚ
             if (g.isTabItemExist(tabid))
             {
                 g.selectTabItem(tabid);
@@ -12229,7 +12182,7 @@
             {
                 g.moveToLastTabItem();
             }
-            //å¢åŠ äº‹ä»¶
+            //Ôö¼ÓÊÂ¼ş
             g._addTabItemEvent(tabitem);
             if (p.dragToMove && $.fn.ligerDrag)
             {
@@ -12249,7 +12202,7 @@
                 var tabid = $(this).attr("tabid");
                 g.selectTabItem(tabid);
             });
-            //å³é”®äº‹ä»¶æ”¯æŒ
+            //ÓÒ¼üÊÂ¼şÖ§³Ö
             g.tab.menu && g._addTabItemContextMenuEven(tabitem);
             $(".l-tab-links-item-close", tabitem).hover(function ()
             {
@@ -12264,7 +12217,7 @@
             });
 
         },
-        //ç§»é™¤tabé¡¹
+        //ÒÆ³ıtabÏî
         removeTabItem: function (tabid)
         {
             var g = this, p = this.options;
@@ -12306,8 +12259,8 @@
             g.getnewidcount = g.getnewidcount || 0;
             return 'tabitem' + (++g.getnewidcount);
         },
-        //notabid è¿‡æ»¤æ‰tabidçš„
-        //noclose è¿‡æ»¤æ‰æ²¡æœ‰å…³é—­æŒ‰é’®çš„
+        //notabid ¹ıÂËµôtabidµÄ
+        //noclose ¹ıÂËµôÃ»ÓĞ¹Ø±Õ°´Å¥µÄ
         getTabidList: function (notabid, noclose)
         {
             var g = this, p = this.options;
@@ -12419,14 +12372,7 @@
 
 
 
-})(jQuery);ï»¿/**
-* jQuery ligerUI 1.1.9
-* 
-* http://ligerui.com
-*  
-* Author daomi 2012 [ gd_star@163.com ] 
-* 
-*/
+})(jQuery);
 (function ($)
 {
     $.fn.ligerTextBox = function ()
@@ -12443,10 +12389,10 @@
         onChangeValue: null,
         width: null,
         disabled: false,
-        value: null,     //åˆå§‹åŒ–å€¼ 
-        nullText: null,   //ä¸èƒ½ä¸ºç©ºæ—¶çš„æç¤º
-        digits: false,     //æ˜¯å¦é™å®šä¸ºæ•°å­—è¾“å…¥æ¡†
-        number: false    //æ˜¯å¦é™å®šä¸ºæµ®ç‚¹æ•°æ ¼å¼è¾“å…¥æ¡†
+        value: null,     //³õÊ¼»¯Öµ 
+        nullText: null,   //²»ÄÜÎª¿ÕÊ±µÄÌáÊ¾
+        digits: false,     //ÊÇ·ñÏŞ¶¨ÎªÊı×ÖÊäÈë¿ò
+        number: false    //ÊÇ·ñÏŞ¶¨Îª¸¡µãÊı¸ñÊ½ÊäÈë¿ò
     };
 
 
@@ -12481,7 +12427,7 @@
         {
             var g = this, p = this.options;
             g.inputText = $(this.element);
-            //å¤–å±‚
+            //Íâ²ã
             g.wrapper = g.inputText.wrap('<div class="l-text"></div>').parent();
             g.wrapper.append('<div class="l-text-l"></div><div class="l-text-r"></div>');
             if (!g.inputText.hasClass("l-text-field"))
@@ -12651,32 +12597,25 @@
             g.checkValue();
         }
     });
-})(jQuery);ï»¿/**
-* jQuery ligerUI 1.1.9
-* 
-* http://ligerui.com
-*  
-* Author daomi 2012 [ gd_star@163.com ] 
-* 
-*/
+})(jQuery);
 
 (function ($)
 {
-    //æ°”æ³¡,å¯ä»¥åœ¨åˆ¶å®šä½ç½®æ˜¾ç¤º
+    //ÆøÅİ,¿ÉÒÔÔÚÖÆ¶¨Î»ÖÃÏÔÊ¾
     $.ligerTip = function (p)
     {
         return $.ligerui.run.call(null, "ligerTip", arguments);
     };
 
-    //åœ¨æŒ‡å®šDom Elementå³ä¾§æ˜¾ç¤ºæ°”æ³¡
-    //targetï¼šå°†ligeruiå¯¹è±¡IDé™„åŠ ä¸Š
+    //ÔÚÖ¸¶¨Dom ElementÓÒ²àÏÔÊ¾ÆøÅİ
+    //target£º½«ligerui¶ÔÏóID¸½¼ÓÉÏ
     $.fn.ligerTip = function (options)
     {
         this.each(function ()
         {
             var p = $.extend({}, $.ligerDefaults.ElementTip, options || {});
             p.target = p.target || this;
-            //å¦‚æœæ˜¯è‡ªåŠ¨æ¨¡å¼ï¼šé¼ æ ‡ç»è¿‡æ—¶æ˜¾ç¤ºï¼Œç§»å¼€æ—¶å…³é—­
+            //Èç¹ûÊÇ×Ô¶¯Ä£Ê½£ºÊó±ê¾­¹ıÊ±ÏÔÊ¾£¬ÒÆ¿ªÊ±¹Ø±Õ
             if (p.auto || options == undefined)
             {
                 if (!p.content)
@@ -12713,7 +12652,7 @@
         });
         return $.ligerui.get(this, 'ligeruitipid');
     };
-    //å…³é—­æŒ‡å®šåœ¨Dom Element(é™„åŠ äº†ligeruiå¯¹è±¡ID,å±æ€§å"ligeruitipid")æ˜¾ç¤ºçš„æ°”æ³¡
+    //¹Ø±ÕÖ¸¶¨ÔÚDom Element(¸½¼ÓÁËligerui¶ÔÏóID,ÊôĞÔÃû"ligeruitipid")ÏÔÊ¾µÄÆøÅİ
     $.fn.ligerHideTip = function (options)
     {
         return this.each(function ()
@@ -12721,7 +12660,7 @@
             var p = options || {};
             if (p.isLabel == undefined)
             {
-                //å¦‚æœæ˜¯lableï¼Œå°†æŸ¥æ‰¾æŒ‡å®šçš„inputï¼Œå¹¶æ‰¾åˆ°ligeruiå¯¹è±¡ID
+                //Èç¹ûÊÇlable£¬½«²éÕÒÖ¸¶¨µÄinput£¬²¢ÕÒµ½ligerui¶ÔÏóID
                 p.isLabel = this.tagName.toLowerCase() == "label" && $(this).attr("for") != null;
             }
             var target = this;
@@ -12749,10 +12688,10 @@
     $.ligerDefaults = $.ligerDefaults || {};
 
 
-    //éšè—æ°”æ³¡
+    //Òş²ØÆøÅİ
     $.ligerDefaults.HideTip = {};
 
-    //æ°”æ³¡
+    //ÆøÅİ
     $.ligerDefaults.Tip = {
         content: null,
         callback: null,
@@ -12760,13 +12699,13 @@
         height: null,
         x: 0,
         y: 0,
-        appendIdTo: null,       //ä¿å­˜IDåˆ°é‚£ä¸€ä¸ªå¯¹è±¡(jQuery)(å¾…ç§»é™¤)
+        appendIdTo: null,       //±£´æIDµ½ÄÇÒ»¸ö¶ÔÏó(jQuery)(´ıÒÆ³ı)
         target: null,
-        auto: null,             //æ˜¯å¦è‡ªåŠ¨æ¨¡å¼ï¼Œå¦‚æœæ˜¯ï¼Œé‚£ä¹ˆï¼šé¼ æ ‡ç»è¿‡æ—¶æ˜¾ç¤ºï¼Œç§»å¼€æ—¶å…³é—­,å¹¶ä¸”å½“contentä¸ºç©ºæ—¶è‡ªåŠ¨è¯»å–attr[title]
-        removeTitle: true        //è‡ªåŠ¨æ¨¡å¼æ—¶ï¼Œé»˜è®¤æ˜¯å¦ç§»é™¤æ‰title
+        auto: null,             //ÊÇ·ñ×Ô¶¯Ä£Ê½£¬Èç¹ûÊÇ£¬ÄÇÃ´£ºÊó±ê¾­¹ıÊ±ÏÔÊ¾£¬ÒÆ¿ªÊ±¹Ø±Õ,²¢ÇÒµ±contentÎª¿ÕÊ±×Ô¶¯¶ÁÈ¡attr[title]
+        removeTitle: true        //×Ô¶¯Ä£Ê½Ê±£¬Ä¬ÈÏÊÇ·ñÒÆ³ıµôtitle
     };
 
-    //åœ¨æŒ‡å®šDom Elementå³ä¾§æ˜¾ç¤ºæ°”æ³¡,é€šè¿‡$.fn.ligerTipè°ƒç”¨
+    //ÔÚÖ¸¶¨Dom ElementÓÒ²àÏÔÊ¾ÆøÅİ,Í¨¹ı$.fn.ligerTipµ÷ÓÃ
     $.ligerDefaults.ElementTip = {
         distanceX: 1,
         distanceY: -3,
@@ -12842,14 +12781,7 @@
             this.tip.remove();
         }
     });
-})(jQuery);ï»¿/**
-* jQuery ligerUI 1.1.9
-* 
-* http://ligerui.com
-*  
-* Author daomi 2012 [ gd_star@163.com ] 
-* 
-*/
+})(jQuery);
 (function ($)
 {
 
@@ -12932,14 +12864,7 @@
             });
         }
     });
-})(jQuery);ï»¿/**
-* jQuery ligerUI 1.1.9
-* 
-* http://ligerui.com
-*  
-* Author daomi 2012 [ gd_star@163.com ] 
-* 
-*/
+})(jQuery);
 (function ($)
 {
     $.fn.ligerTree = function (options)
@@ -12961,11 +12886,11 @@
         childIcon: 'leaf',
         textFieldName: 'text',
         attribute: ['id', 'url'],
-        treeLine: true,            //æ˜¯å¦æ˜¾ç¤ºline
+        treeLine: true,            //ÊÇ·ñÏÔÊ¾line
         nodeWidth: 90,
         statusName: '__status',
-        isLeaf: null,              //æ˜¯å¦å­èŠ‚ç‚¹çš„åˆ¤æ–­å‡½æ•°
-        single: false,               //æ˜¯å¦å•é€‰
+        isLeaf: null,              //ÊÇ·ñ×Ó½ÚµãµÄÅĞ¶Ïº¯Êı
+        single: false,               //ÊÇ·ñµ¥Ñ¡
         onBeforeExpand: function () { },
         onContextmenu: function () { },
         onExpand: function () { },
@@ -12982,14 +12907,14 @@
         idFieldName: 'id',
         parentIDFieldName: null,
         topParentIDValue: 0,
-        onBeforeAppend: function () { },        //åŠ è½½æ•°æ®å‰äº‹ä»¶ï¼Œå¯ä»¥é€šè¿‡return falseå–æ¶ˆæ“ä½œ
-        onAppend: function () { },             //åŠ è½½æ•°æ®æ—¶äº‹ä»¶ï¼Œå¯¹æ•°æ®è¿›è¡Œé¢„å¤„ç†ä»¥å
-        onAfterAppend: function () { },         //åŠ è½½æ•°æ®å®Œäº‹ä»¶
-        slide: true,          //æ˜¯å¦ä»¥åŠ¨ç”»çš„å½¢å¼æ˜¾ç¤º
+        onBeforeAppend: function () { },        //¼ÓÔØÊı¾İÇ°ÊÂ¼ş£¬¿ÉÒÔÍ¨¹ıreturn falseÈ¡Ïû²Ù×÷
+        onAppend: function () { },             //¼ÓÔØÊı¾İÊ±ÊÂ¼ş£¬¶ÔÊı¾İ½øĞĞÔ¤´¦ÀíÒÔºó
+        onAfterAppend: function () { },         //¼ÓÔØÊı¾İÍêÊÂ¼ş
+        slide: true,          //ÊÇ·ñÒÔ¶¯»­µÄĞÎÊ½ÏÔÊ¾
         iconFieldName: 'icon',
-        nodeDraggable: false,             //æ˜¯å¦å…è®¸æ‹–æ‹½
+        nodeDraggable: false,             //ÊÇ·ñÔÊĞíÍÏ×§
         nodeDraggingRender: null,
-        btnClickToToggleOnly: true     //æ˜¯å¦ç‚¹å‡»å±•å¼€/æ”¶ç¼© æŒ‰é’®æ—¶æ‰æœ‰æ•ˆ
+        btnClickToToggleOnly: true     //ÊÇ·ñµã»÷Õ¹¿ª/ÊÕËõ °´Å¥Ê±²ÅÓĞĞ§
     };
 
     $.ligerui.controls.Tree = function (element, options)
@@ -13042,13 +12967,13 @@
         {
             return this.data;
         },
-        //æ˜¯å¦åŒ…å«å­èŠ‚ç‚¹
+        //ÊÇ·ñ°üº¬×Ó½Úµã
         hasChildren: function (treenodedata)
         {
             if (this.options.isLeaf) return this.options.isLeaf(treenodedata);
             return treenodedata.children ? true : false;
         },
-        //è·å–çˆ¶èŠ‚ç‚¹ æ•°æ®
+        //»ñÈ¡¸¸½Úµã Êı¾İ
         getParent: function (treenode, level)
         {
             var g = this;
@@ -13058,7 +12983,7 @@
             var parentIndex = $(parentTreeNode).attr("treedataindex");
             return g._getDataNodeByTreeDataIndex(parentIndex);
         },
-        //è·å–çˆ¶èŠ‚ç‚¹
+        //»ñÈ¡¸¸½Úµã
         getParentTreeItem: function (treenode, level)
         {
             var g = this;
@@ -13105,7 +13030,7 @@
             }
             return null;
         },
-        //å‡çº§ä¸ºçˆ¶èŠ‚ç‚¹çº§åˆ«
+        //Éı¼¶Îª¸¸½Úµã¼¶±ğ
         upgrade: function (treeNode)
         {
             var g = this, p = this.options;
@@ -13124,7 +13049,7 @@
                         .addClass(g._getParentNodeClassName(true));
             });
         },
-        //é™çº§ä¸ºå¶èŠ‚ç‚¹çº§åˆ«
+        //½µ¼¶ÎªÒ¶½Úµã¼¶±ğ
         demotion: function (treeNode)
         {
             var g = this, p = this.options;
@@ -13163,7 +13088,7 @@
             g.loading.show();
             var ajaxtype = param ? "post" : "get";
             param = param || [];
-            //è¯·æ±‚æœåŠ¡å™¨
+            //ÇëÇó·şÎñÆ÷
             $.ajax({
                 type: ajaxtype,
                 url: url,
@@ -13190,14 +13115,14 @@
                 }
             });
         },
-        //æ¸…ç©º
+        //Çå¿Õ
         clear: function ()
         {
             var g = this, p = this.options;
             //g.tree.html("");
             $("> li", g.tree).each(function () { g.remove(this); });
         },
-        //@parm [treeNode] domèŠ‚ç‚¹(li)ã€èŠ‚ç‚¹æ•°æ® æˆ–è€…èŠ‚ç‚¹ dataindex
+        //@parm [treeNode] dom½Úµã(li)¡¢½ÚµãÊı¾İ »òÕß½Úµã dataindex
         getNodeDom: function (nodeParm)
         {
             var g = this, p = this.options;
@@ -13212,7 +13137,7 @@
             }
             return nodeParm;
         },
-        //@parm [treeNode] domèŠ‚ç‚¹(li)ã€èŠ‚ç‚¹æ•°æ® æˆ–è€…èŠ‚ç‚¹ dataindex
+        //@parm [treeNode] dom½Úµã(li)¡¢½ÚµãÊı¾İ »òÕß½Úµã dataindex
         remove: function (treeNode)
         {
             var g = this, p = this.options;
@@ -13221,7 +13146,7 @@
             var treenodedata = g._getDataNodeByTreeDataIndex(g.data, treedataindex);
             if (treenodedata) g._setTreeDataStatus([treenodedata], 'delete');
             var parentNode = g.getParentTreeItem(treeNode);
-            //å¤é€‰æ¡†å¤„ç†
+            //¸´Ñ¡¿ò´¦Àí
             if (p.checkbox)
             {
                 g._setParentCheckboxStatus($(treeNode));
@@ -13235,7 +13160,7 @@
             var itmes = $(" > li", ul);
             var treeitemlength = itmes.length;
             if (!treeitemlength) return;
-            //éå†è®¾ç½®å­èŠ‚ç‚¹çš„æ ·å¼
+            //±éÀúÉèÖÃ×Ó½ÚµãµÄÑùÊ½
             itmes.each(function (i, item)
             {
                 if (i == 0 && !$(this).hasClass("l-first"))
@@ -13250,7 +13175,7 @@
                 g._setTreeItem(this, { isLast: i == treeitemlength - 1 });
             });
         },
-        //@parm [domnode] domèŠ‚ç‚¹(li)ã€èŠ‚ç‚¹æ•°æ® æˆ–è€…èŠ‚ç‚¹ dataindex
+        //@parm [domnode] dom½Úµã(li)¡¢½ÚµãÊı¾İ »òÕß½Úµã dataindex
         update: function (domnode, newnodedata)
         {
             var g = this, p = this.options;
@@ -13266,11 +13191,11 @@
                 }
             }
         },
-        //å¢åŠ èŠ‚ç‚¹é›†åˆ
-        //@parm [newdata] æ•°æ®é›†åˆ Array
-        //@parm [parentNode] domèŠ‚ç‚¹(li)ã€èŠ‚ç‚¹æ•°æ® æˆ–è€…èŠ‚ç‚¹ dataindex
-        //@parm [nearNode] é™„åŠ åˆ°èŠ‚ç‚¹çš„ä¸Šæ–¹/ä¸‹æ–¹(éå¿…å¡«)
-        //@parm [isAfter] é™„åŠ åˆ°èŠ‚ç‚¹çš„ä¸‹æ–¹(éå¿…å¡«)
+        //Ôö¼Ó½Úµã¼¯ºÏ
+        //@parm [newdata] Êı¾İ¼¯ºÏ Array
+        //@parm [parentNode] dom½Úµã(li)¡¢½ÚµãÊı¾İ »òÕß½Úµã dataindex
+        //@parm [nearNode] ¸½¼Óµ½½ÚµãµÄÉÏ·½/ÏÂ·½(·Ç±ØÌî)
+        //@parm [isAfter] ¸½¼Óµ½½ÚµãµÄÏÂ·½(·Ç±ØÌî)
         append: function (parentNode, newdata, nearNode, isAfter)
         {
             var g = this, p = this.options;
@@ -13287,7 +13212,7 @@
             }
             g.trigger('append', [parentNode, newdata])
             g._appendData(parentNode, newdata);
-            if (parentNode == null)//å¢åŠ åˆ°æ ¹èŠ‚ç‚¹
+            if (parentNode == null)//Ôö¼Óµ½¸ù½Úµã
             {
                 var gridhtmlarr = g._getTreeHTMLByData(newdata, 1, [], true);
                 gridhtmlarr[gridhtmlarr.length - 1] = gridhtmlarr[0] = "";
@@ -13322,7 +13247,7 @@
             if (!hasChildren)
             {
                 treeitem.append("<ul class='l-children'></ul>");
-                //è®¾ç½®ä¸ºçˆ¶èŠ‚ç‚¹
+                //ÉèÖÃÎª¸¸½Úµã
                 g.upgrade(parentNode);
             }
             var isLast = [];
@@ -13356,7 +13281,7 @@
             });
             g.trigger('afterAppend', [parentNode, newdata]);
         },
-        //@parm [nodeParm] domèŠ‚ç‚¹(li)ã€èŠ‚ç‚¹æ•°æ® æˆ–è€…èŠ‚ç‚¹ dataindex
+        //@parm [nodeParm] dom½Úµã(li)¡¢½ÚµãÊı¾İ »òÕß½Úµã dataindex
         cancelSelect: function (nodeParm)
         {
             var g = this, p = this.options;
@@ -13371,7 +13296,7 @@
                 treeitembody.removeClass("l-selected");
             g.trigger('cancelSelect', [{ data: treenodedata, target: treeitem[0]}]);
         },
-        //é€‰æ‹©èŠ‚ç‚¹(å‚æ•°ï¼šæ¡ä»¶å‡½æ•°ã€DomèŠ‚ç‚¹æˆ–IDå€¼)
+        //Ñ¡Ôñ½Úµã(²ÎÊı£ºÌõ¼şº¯Êı¡¢Dom½Úµã»òIDÖµ)
         selectNode: function (selectNodeParm)
         {
             var g = this, p = this.options;
@@ -13441,12 +13366,12 @@
             });
             return data;
         },
-        arrayToTree: function (data, id, pid)      //å°†IDã€ParentIDè¿™ç§æ•°æ®æ ¼å¼è½¬æ¢ä¸ºæ ‘æ ¼å¼
+        arrayToTree: function (data, id, pid)      //½«ID¡¢ParentIDÕâÖÖÊı¾İ¸ñÊ½×ª»»ÎªÊ÷¸ñÊ½
         {
             if (!data || !data.length) return [];
-            var targetData = [];                    //å­˜å‚¨æ•°æ®çš„å®¹å™¨(è¿”å›) 
+            var targetData = [];                    //´æ´¢Êı¾İµÄÈİÆ÷(·µ»Ø) 
             var records = {};
-            var itemLength = data.length;           //æ•°æ®é›†åˆçš„ä¸ªæ•°
+            var itemLength = data.length;           //Êı¾İ¼¯ºÏµÄ¸öÊı
             for (var i = 0; i < itemLength; i++)
             {
                 var o = data[i];
@@ -13466,7 +13391,7 @@
             }
             return targetData;
         },
-        //æ ¹æ®æ•°æ®ç´¢å¼•è·å–æ•°æ®
+        //¸ù¾İÊı¾İË÷Òı»ñÈ¡Êı¾İ
         _getDataNodeByTreeDataIndex: function (data, treedataindex)
         {
             var g = this, p = this.options;
@@ -13482,7 +13407,7 @@
             }
             return null;
         },
-        //è®¾ç½®æ•°æ®çŠ¶æ€
+        //ÉèÖÃÊı¾İ×´Ì¬
         _setTreeDataStatus: function (data, status)
         {
             var g = this, p = this.options;
@@ -13495,7 +13420,7 @@
                 }
             });
         },
-        //è®¾ç½®data ç´¢å¼•
+        //ÉèÖÃdata Ë÷Òı
         _addTreeDataIndexToData: function (data)
         {
             var g = this, p = this.options;
@@ -13523,7 +13448,7 @@
                 });
             }
         },
-        //æ·»åŠ é¡¹åˆ°g.data
+        //Ìí¼ÓÏîµ½g.data
         _appendData: function (treeNode, data)
         {
             var g = this, p = this.options;
@@ -13591,7 +13516,7 @@
             if (isOpen) nodeclassname += '-open';
             return nodeclassname;
         },
-        //æ ¹æ®dataç”Ÿæˆæœ€ç»ˆå®Œæ•´çš„tree html
+        //¸ù¾İdataÉú³É×îÖÕÍêÕûµÄtree html
         _getTreeHTMLByData: function (data, outlineLevel, isLast, isExpand)
         {
             var g = this, p = this.options;
@@ -13616,7 +13541,7 @@
                 if (isExpandCurrent)
                     treehtmlarr.push('isexpand=' + o.isexpand + ' ');
                 treehtmlarr.push('outlinelevel=' + outlineLevel + ' ');
-                //å¢åŠ å±æ€§æ”¯æŒ
+                //Ôö¼ÓÊôĞÔÖ§³Ö
                 for (var j = 0; j < g.sysAttribute.length; j++)
                 {
                     if ($(this).attr(g.sysAttribute[j]))
@@ -13707,7 +13632,7 @@
             return treehtmlarr;
 
         },
-        //æ ¹æ®ç®€æ´çš„htmlè·å–data
+        //¸ù¾İ¼ò½àµÄhtml»ñÈ¡data
         _getDataByTreeHTML: function (treeDom)
         {
             var g = this, p = this.options;
@@ -13853,7 +13778,7 @@
                 {
                     if (p.autoCheckboxEven)
                     {
-                        //çŠ¶æ€ï¼šæœªé€‰ä¸­
+                        //×´Ì¬£ºÎ´Ñ¡ÖĞ
                         if ($(obj).hasClass("l-checkbox-unchecked"))
                         {
                             $(obj).removeClass("l-checkbox-unchecked").addClass("l-checkbox-checked");
@@ -13862,7 +13787,7 @@
                                     .addClass("l-checkbox-checked");
                             g.trigger('check', [{ data: treenodedata, target: treeitem[0] }, true]);
                         }
-                        //çŠ¶æ€ï¼šé€‰ä¸­
+                        //×´Ì¬£ºÑ¡ÖĞ
                         else if ($(obj).hasClass("l-checkbox-checked"))
                         {
                             $(obj).removeClass("l-checkbox-checked").addClass("l-checkbox-unchecked");
@@ -13871,7 +13796,7 @@
                                     .addClass("l-checkbox-unchecked");
                             g.trigger('check', [{ data: treenodedata, target: treeitem[0] }, false]);
                         }
-                        //çŠ¶æ€ï¼šæœªå®Œå…¨é€‰ä¸­
+                        //×´Ì¬£ºÎ´ÍêÈ«Ñ¡ÖĞ
                         else if ($(obj).hasClass("l-checkbox-incomplete"))
                         {
                             $(obj).removeClass("l-checkbox-incomplete").addClass("l-checkbox-checked");
@@ -13884,18 +13809,18 @@
                     }
                     else
                     {
-                        //çŠ¶æ€ï¼šæœªé€‰ä¸­
+                        //×´Ì¬£ºÎ´Ñ¡ÖĞ
                         if ($(obj).hasClass("l-checkbox-unchecked"))
                         {
                             $(obj).removeClass("l-checkbox-unchecked").addClass("l-checkbox-checked");
-                            //æ˜¯å¦å•é€‰
+                            //ÊÇ·ñµ¥Ñ¡
                             if (p.single)
                             {
                                 $(".l-checkbox", g.tree).not(obj).removeClass("l-checkbox-checked").addClass("l-checkbox-unchecked");
                             }
                             g.trigger('check', [{ data: treenodedata, target: treeitem[0] }, true]);
                         }
-                        //çŠ¶æ€ï¼šé€‰ä¸­
+                        //×´Ì¬£ºÑ¡ÖĞ
                         else if ($(obj).hasClass("l-checkbox-checked"))
                         {
                             $(obj).removeClass("l-checkbox-checked").addClass("l-checkbox-unchecked");
@@ -13903,7 +13828,7 @@
                         }
                     }
                 }
-                //çŠ¶æ€ï¼šå·²ç»å¼ å¼€
+                //×´Ì¬£ºÒÑ¾­ÕÅ¿ª
                 else if (treeitembtn.hasClass("l-expandable-open") && (!p.btnClickToToggleOnly || clickOnTreeItemBtn))
                 {
                     if (g.trigger('beforeCollapse', [{ data: treenodedata, target: treeitem[0]}]) == false)
@@ -13918,7 +13843,7 @@
                             .addClass(g._getParentNodeClassName());
                     g.trigger('collapse', [{ data: treenodedata, target: treeitem[0]}]);
                 }
-                //çŠ¶æ€ï¼šæ²¡æœ‰å¼ å¼€
+                //×´Ì¬£ºÃ»ÓĞÕÅ¿ª
                 else if (treeitembtn.hasClass("l-expandable-close") && (!p.btnClickToToggleOnly || clickOnTreeItemBtn))
                 {
                     if (g.trigger('beforeExpand', [{ data: treenodedata, target: treeitem[0]}]) == false)
@@ -13944,7 +13869,7 @@
                 g.trigger('click', [{ data: treenodedata, target: treeitem[0]}]);
             });
 
-            //èŠ‚ç‚¹æ‹–æ‹½æ”¯æŒ
+            //½ÚµãÍÏ×§Ö§³Ö
             if ($.fn.ligerDrag && p.nodeDraggable)
             {
                 g.nodeDroptip = $("<div class='l-drag-nodedroptip' style='display:none'></div>").appendTo('body');
@@ -14121,13 +14046,13 @@
                 });
             }
         },
-        //é€’å½’è®¾ç½®çˆ¶èŠ‚ç‚¹çš„çŠ¶æ€
+        //µİ¹éÉèÖÃ¸¸½ÚµãµÄ×´Ì¬
         _setParentCheckboxStatus: function (treeitem)
         {
             var g = this, p = this.options;
-            //å½“å‰åŒçº§åˆ«æˆ–ä½çº§åˆ«çš„èŠ‚ç‚¹æ˜¯å¦éƒ½é€‰ä¸­äº†
+            //µ±Ç°Í¬¼¶±ğ»òµÍ¼¶±ğµÄ½ÚµãÊÇ·ñ¶¼Ñ¡ÖĞÁË
             var isCheckedComplete = $(".l-checkbox-unchecked", treeitem.parent()).length == 0;
-            //å½“å‰åŒçº§åˆ«æˆ–ä½çº§åˆ«çš„èŠ‚ç‚¹æ˜¯å¦éƒ½æ²¡æœ‰é€‰ä¸­
+            //µ±Ç°Í¬¼¶±ğ»òµÍ¼¶±ğµÄ½ÚµãÊÇ·ñ¶¼Ã»ÓĞÑ¡ÖĞ
             var isCheckedNull = $(".l-checkbox-checked", treeitem.parent()).length == 0;
             if (isCheckedComplete)
             {
@@ -14153,14 +14078,8 @@
     });
 
 
-})(jQuery);ï»¿/**
-* jQuery ligerUI 1.1.9
-* 
-* http://ligerui.com
-*  
-* Author daomi 2012 [ gd_star@163.com ] 
-* 
-*/
+})(jQuery);
+
 (function ($)
 {
 
@@ -14186,7 +14105,7 @@
         title: 'window',
         load: false,
         onLoaded: null,
-        modal: false     //æ˜¯å¦æ¨¡æ€çª—å£
+        modal: false     //ÊÇ·ñÄ£Ì¬´°¿Ú
     };
 
     $.ligerMethos.Window = {};
@@ -14257,7 +14176,7 @@
             $('body').append(g.window);
 
             g.set({ width: p.width, height: p.height });
-            //ä½ç½®åˆå§‹åŒ–
+            //Î»ÖÃ³õÊ¼»¯
             var left = 0;
             var top = 0;
             if (p.left != null) left = p.left;
@@ -14277,7 +14196,7 @@
 
             g._saveStatus();
 
-            //æ‹–åŠ¨æ”¯æŒ
+            //ÍÏ¶¯Ö§³Ö
             if ($.fn.ligerDrag)
             {
                 g.draggable = g.window.drag = g.window.ligerDrag({ handler: '.l-window-header-inner', onStartDrag: function ()
@@ -14289,7 +14208,7 @@
                 }, animate: false
                 });
             }
-            //æ”¹å˜å¤§å°æ”¯æŒ
+            //¸Ä±ä´óĞ¡Ö§³Ö
             if ($.fn.ligerResizable)
             {
                 g.resizeable = g.window.resizable = g.window.ligerResizable({
@@ -14321,7 +14240,7 @@
                 });
                 g.window.append("<div class='l-btn-nw-drop'></div>");
             }
-            //è®¾ç½®äº‹ä»¶ 
+            //ÉèÖÃÊÂ¼ş 
             $(".l-window-toggle", g.window).click(function ()
             {
                 if ($(this).hasClass("l-window-toggle-close"))

@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -18,14 +18,14 @@
     };
 
     $.ligerDefaults.Spinner = {
-        type: 'float',     //ç±»å‹ float:æµ®ç‚¹æ•° int:æ•´æ•° time:æ—¶é—´
-        isNegative: true, //æ˜¯å¦è´Ÿæ•°
-        decimalplace: 2,   //å°æ•°ä½ type=floatæ—¶èµ·ä½œç”¨
-        step: 0.1,         //æ¯æ¬¡å¢åŠ çš„å€¼
-        interval: 50,      //é—´éš”ï¼Œæ¯«ç§’
-        onChangeValue: false,    //æ”¹å˜å€¼äº‹ä»¶
-        minValue: null,        //æœ€å°å€¼
-        maxValue: null,         //æœ€å¤§å€¼
+        type: 'float',     //ÀàĞÍ float:¸¡µãÊı int:ÕûÊı time:Ê±¼ä
+        isNegative: true, //ÊÇ·ñ¸ºÊı
+        decimalplace: 2,   //Ğ¡ÊıÎ» type=floatÊ±Æğ×÷ÓÃ
+        step: 0.1,         //Ã¿´ÎÔö¼ÓµÄÖµ
+        interval: 50,      //¼ä¸ô£¬ºÁÃë
+        onChangeValue: false,    //¸Ä±äÖµÊÂ¼ş
+        minValue: null,        //×îĞ¡Öµ
+        maxValue: null,         //×î´óÖµ
         disabled: false
     };
 
@@ -99,13 +99,13 @@
             {
                 g.wrapper.addClass("l-text-disabled");
             }
-            //åˆå§‹åŒ–
+            //³õÊ¼»¯
             if (!g._isVerify(g.inputText.val()))
             {
                 g.value = g._getDefaultValue();
                 g.inputText.val(g.value);
             }
-            //äº‹ä»¶
+            //ÊÂ¼ş
             g.link.up.hover(function ()
             {
                 if (!p.disabled)

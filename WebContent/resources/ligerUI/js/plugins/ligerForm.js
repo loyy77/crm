@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -15,32 +15,32 @@
 
     $.ligerDefaults = $.ligerDefaults || {};
     $.ligerDefaults.Form = {
-        //æ§ä»¶å®½åº¦
+        //¿Ø¼ş¿í¶È
         inputWidth: 180,
-        //æ ‡ç­¾å®½åº¦
+        //±êÇ©¿í¶È
         labelWidth: 90,
-        //é—´éš”å®½åº¦
+        //¼ä¸ô¿í¶È
         space: 40,
-        rightToken: 'ï¼š',
-        //æ ‡ç­¾å¯¹é½æ–¹å¼
+        rightToken: '£º',
+        //±êÇ©¶ÔÆë·½Ê½
         labelAlign: 'left',
-        //æ§ä»¶å¯¹é½æ–¹å¼
+        //¿Ø¼ş¶ÔÆë·½Ê½
         align: 'left',
-        //å­—æ®µ
+        //×Ö¶Î
         fields: [],
-        //åˆ›å»ºçš„è¡¨å•å…ƒç´ æ˜¯å¦é™„åŠ ID
+        //´´½¨µÄ±íµ¥ÔªËØÊÇ·ñ¸½¼ÓID
         appendID: true,
-        //ç”Ÿæˆè¡¨å•å…ƒç´ IDçš„å‰ç¼€
+        //Éú³É±íµ¥ÔªËØIDµÄÇ°×º
         prefixID: "",
-        //jsonè§£æå‡½æ•°
+        //json½âÎöº¯Êı
         toJSON: $.ligerui.toJSON
     };
 
-    //@description é»˜è®¤è¡¨å•ç¼–è¾‘å™¨æ„é€ å™¨æ‰©å±•(å¦‚æœåˆ›å»ºçš„è¡¨å•æ•ˆæœä¸æ»¡æ„ å»ºè®®é‡è½½)
-    //@param {jinput} è¡¨å•å…ƒç´ jQueryå¯¹è±¡ æ¯”å¦‚inputã€selectã€textarea 
+    //@description Ä¬ÈÏ±íµ¥±à¼­Æ÷¹¹ÔìÆ÷À©Õ¹(Èç¹û´´½¨µÄ±íµ¥Ğ§¹û²»ÂúÒâ ½¨ÒéÖØÔØ)
+    //@param {jinput} ±íµ¥ÔªËØjQuery¶ÔÏó ±ÈÈçinput¡¢select¡¢textarea 
     $.ligerDefaults.Form.editorBulider = function (jinput)
     {
-        //è¿™é‡Œthiså°±æ˜¯formçš„ligeruiå¯¹è±¡
+        //ÕâÀïthis¾ÍÊÇformµÄligerui¶ÔÏó
         var g = this, p = this.options;
         var inputOptions = {};
         if (p.inputWidth) inputOptions.width = p.inputWidth;
@@ -90,7 +90,7 @@
         }
     }
 
-    //è¡¨å•ç»„ä»¶
+    //±íµ¥×é¼ş
     $.ligerui.controls.Form = function (element, options)
     {
         $.ligerui.controls.Form.base.constructor.call(this, element, options);
@@ -113,7 +113,7 @@
         {
             var g = this, p = this.options;
             var jform = $(this.element);
-            //è‡ªåŠ¨åˆ›å»ºè¡¨å•
+            //×Ô¶¯´´½¨±íµ¥
             if (p.fields && p.fields.length)
             {
                 if (!jform.hasClass("l-form"))
@@ -167,13 +167,13 @@
                 }
                 jform.append(out.join(''));
             }
-            //ç”Ÿæˆligeruiè¡¨å•æ ·å¼
+            //Éú³Éligerui±íµ¥ÑùÊ½
             $("input,select,textarea", jform).each(function ()
             {
                 p.editorBulider.call(g, $(this));
             });
         },
-        //æ ‡ç­¾éƒ¨åˆ†
+        //±êÇ©²¿·Ö
         _buliderLabelContainer: function (field)
         {
             var g = this, p = this.options;
@@ -199,7 +199,7 @@
             out.push('</li>');
             return out.join('');
         },
-        //æ§ä»¶éƒ¨åˆ†
+        //¿Ø¼ş²¿·Ö
         _buliderControlContainer: function (field)
         {
             var g = this, p = this.options;
@@ -220,7 +220,7 @@
             out.push('</li>');
             return out.join('');
         },
-        //é—´éš”éƒ¨åˆ†
+        //¼ä¸ô²¿·Ö
         _buliderSpaceContainer: function (field)
         {
             var g = this, p = this.options;
@@ -296,12 +296,12 @@
                     out.push(' id="' + name + '" ');
                 }
             }
-            //å‚æ•°
+            //²ÎÊı
             var fieldOptions = $.extend({
                 width: width - 2
             }, field.options || {});
             out.push(" ligerui='" + p.toJSON(fieldOptions) + "' ");
-            //éªŒè¯å‚æ•°
+            //ÑéÖ¤²ÎÊı
             if (field.validate)
             {
                 out.push(" validate='" + p.toJSON(field.validate) + "' ");

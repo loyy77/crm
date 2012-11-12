@@ -19,6 +19,13 @@ public class Plan {
 		this.planResult = planResult;
 	}
 
+	@Override
+	public String toString() {
+		return "Plan [id=" + id + ", chanceId=" + chanceId + ", planDate="
+				+ planDate + ", planTodo=" + planTodo + ", planResult="
+				+ planResult + "]";
+	}
+
 	public Plan() {
 		super();
 		// TODO Auto-generated constructor stub

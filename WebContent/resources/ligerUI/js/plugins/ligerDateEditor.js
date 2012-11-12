@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -22,13 +22,13 @@
         format: "yyyy-MM-dd hh:mm",
         showTime: false,
         onChangeDate: false,
-        absolute: true  //é€‰æ‹©æ¡†æ˜¯å¦åœ¨é™„åŠ åˆ°body,å¹¶ç»å¯¹å®šä½
+        absolute: true  //Ñ¡Ôñ¿òÊÇ·ñÔÚ¸½¼Óµ½body,²¢¾ø¶Ô¶¨Î»
     };
     $.ligerDefaults.DateEditorString = {
-        dayMessage: ["æ—¥", "ä¸€", "äºŒ", "ä¸‰", "å››", "äº”", "å…­"],
-        monthMessage: ["ä¸€æœˆ", "äºŒæœˆ", "ä¸‰æœˆ", "å››æœˆ", "äº”æœˆ", "å…­æœˆ", "ä¸ƒæœˆ", "å…«æœˆ", "ä¹æœˆ", "åæœˆ", "åä¸€æœˆ", "åäºŒæœˆ"],
-        todayMessage: "ä»Šå¤©",
-        closeMessage: "å…³é—­"
+        dayMessage: ["ÈÕ", "Ò»", "¶ş", "Èı", "ËÄ", "Îå", "Áù"],
+        monthMessage: ["Ò»ÔÂ", "¶şÔÂ", "ÈıÔÂ", "ËÄÔÂ", "ÎåÔÂ", "ÁùÔÂ", "ÆßÔÂ", "°ËÔÂ", "¾ÅÔÂ", "Ê®ÔÂ", "Ê®Ò»ÔÂ", "Ê®¶şÔÂ"],
+        todayMessage: "½ñÌì",
+        closeMessage: "¹Ø±Õ"
     };
     $.ligerMethos.DateEditor = {};
 
@@ -63,7 +63,7 @@
             g.text = g.inputText.wrap('<div class="l-text l-text-date"></div>').parent();
             g.text.append('<div class="l-text-l"></div><div class="l-text-r"></div>');
             g.text.append(g.link);
-            //æ·»åŠ ä¸ªåŒ…è£¹ï¼Œ
+            //Ìí¼Ó¸ö°ü¹ü£¬
             g.textwrapper = g.text.wrap('<div class="l-text-wrapper"></div>').parent();
             var dateeditorHTML = "";
             dateeditorHTML += "<div class='l-box-dateeditor' style='display:none'>";
@@ -127,13 +127,13 @@
             var nowDate = new Date();
             g.now = {
                 year: nowDate.getFullYear(),
-                month: nowDate.getMonth() + 1, //æ³¨æ„è¿™é‡Œ
+                month: nowDate.getMonth() + 1, //×¢ÒâÕâÀï
                 day: nowDate.getDay(),
                 date: nowDate.getDate(),
                 hour: nowDate.getHours(),
                 minute: nowDate.getMinutes()
             };
-            //å½“å‰çš„æ—¶é—´
+            //µ±Ç°µÄÊ±¼ä
             g.currentDate = {
                 year: nowDate.getFullYear(),
                 month: nowDate.getMonth() + 1,
@@ -142,28 +142,28 @@
                 hour: nowDate.getHours(),
                 minute: nowDate.getMinutes()
             };
-            //é€‰æ‹©çš„æ—¶é—´
+            //Ñ¡ÔñµÄÊ±¼ä
             g.selectedDate = null;
-            //ä½¿ç”¨çš„æ—¶é—´
+            //Ê¹ÓÃµÄÊ±¼ä
             g.usedDate = null;
 
 
 
-            //åˆå§‹åŒ–æ•°æ®
-            //è®¾ç½®å‘¨æ—¥è‡³å‘¨å…­
+            //³õÊ¼»¯Êı¾İ
+            //ÉèÖÃÖÜÈÕÖÁÖÜÁù
             $("td", g.body.thead).each(function (i, td)
             {
                 $(td).html(p.dayMessage[i]);
             });
-            //è®¾ç½®ä¸€æœˆåˆ°åä¸€äºŒæœˆ
+            //ÉèÖÃÒ»ÔÂµ½Ê®Ò»¶şÔÂ
             $("li", g.body.monthselector).each(function (i, li)
             {
                 $(li).html(p.monthMessage[i]);
             });
-            //è®¾ç½®æŒ‰é’®
+            //ÉèÖÃ°´Å¥
             g.buttons.btnToday.html(p.todayMessage);
             g.buttons.btnClose.html(p.closeMessage);
-            //è®¾ç½®æ—¶é—´
+            //ÉèÖÃÊ±¼ä
             if (p.showTime)
             {
                 g.toolbar.time.show();
@@ -181,9 +181,9 @@
                     $(this).html(str);
                 });
             }
-            //è®¾ç½®ä¸»ä½“
+            //ÉèÖÃÖ÷Ìå
             g.bulidContent();
-            //åˆå§‹åŒ–   
+            //³õÊ¼»¯   
             if (g.inputText.val() != "")
                 g.onTextChange();
             /**************
@@ -219,13 +219,13 @@
                 g.bulidContent();
                 g.toggleDateEditor(g.dateeditor.is(":visible"));
             });
-            //ä¸å¯ç”¨å±æ€§æ—¶å¤„ç†
+            //²»¿ÉÓÃÊôĞÔÊ±´¦Àí
             if (p.disabled)
             {
                 g.inputText.attr("readonly", "readonly");
                 g.text.addClass('l-text-disabled');
             }
-            //åˆå§‹å€¼
+            //³õÊ¼Öµ
             if (p.initValue)
             {
                 g.inputText.val(p.initValue);
@@ -234,7 +234,7 @@
             {
                 g.toggleDateEditor(true);
             });
-            //æ—¥æœŸ ç‚¹å‡»
+            //ÈÕÆÚ µã»÷
             $("td", g.body.tbody).hover(function ()
             {
                 if ($(this).hasClass("l-box-dateeditor-today")) return;
@@ -287,7 +287,7 @@
             {
                 $(this).removeClass("l-box-dateeditor-header-btn-over");
             });
-            //é€‰æ‹©å¹´ä»½
+            //Ñ¡ÔñÄê·İ
             g.buttons.btnYear.click(function ()
             {
                 //build year list
@@ -341,7 +341,7 @@
                 g.bulidContent();
             });
 
-            //é€‰æ‹©å°æ—¶
+            //Ñ¡ÔñĞ¡Ê±
             g.toolbar.time.hour.click(function ()
             {
                 $("li", g.body.hourselector).each(function (i, item)
@@ -365,7 +365,7 @@
                 g.body.hourselector.slideToggle();
                 g.bulidContent();
             });
-            //é€‰æ‹©åˆ†é’Ÿ
+            //Ñ¡Ôñ·ÖÖÓ
             g.toolbar.time.minute.click(function ()
             {
                 $("li", g.body.minuteselector).each(function (i, item)
@@ -398,7 +398,7 @@
                 g.bulidContent();
             });
 
-            //ä¸Šä¸ªæœˆ
+            //ÉÏ¸öÔÂ
             g.buttons.btnPrevMonth.click(function ()
             {
                 if (--g.currentDate.month == 0)
@@ -408,7 +408,7 @@
                 }
                 g.bulidContent();
             });
-            //ä¸‹ä¸ªæœˆ
+            //ÏÂ¸öÔÂ
             g.buttons.btnNextMonth.click(function ()
             {
                 if (++g.currentDate.month == 13)
@@ -418,19 +418,19 @@
                 }
                 g.bulidContent();
             });
-            //ä¸Šä¸€å¹´
+            //ÉÏÒ»Äê
             g.buttons.btnPrevYear.click(function ()
             {
                 g.currentDate.year--;
                 g.bulidContent();
             });
-            //ä¸‹ä¸€å¹´
+            //ÏÂÒ»Äê
             g.buttons.btnNextYear.click(function ()
             {
                 g.currentDate.year++;
                 g.bulidContent();
             });
-            //ä»Šå¤©
+            //½ñÌì
             g.buttons.btnToday.click(function ()
             {
                 g.currentDate = {
@@ -448,7 +448,7 @@
                 g.showDate();
                 g.dateeditor.slideToggle("fast");
             });
-            //æ–‡æœ¬æ¡†
+            //ÎÄ±¾¿ò
             g.inputText.change(function ()
             {
                 g.onTextChange();
@@ -466,7 +466,7 @@
             {
                 g.text.removeClass("l-text-over");
             });
-            //LEABEL æ”¯æŒ
+            //LEABEL Ö§³Ö
             if (p.label)
             {
                 g.labelwrapper = g.textwrapper.wrap('<div class="l-labeltext"></div>').parent();
@@ -502,9 +502,9 @@
         bulidContent: function ()
         {
             var g = this, p = this.options;
-            //å½“å‰æœˆç¬¬ä¸€å¤©æ˜ŸæœŸ
+            //µ±Ç°ÔÂµÚÒ»ÌìĞÇÆÚ
             var thismonthFirstDay = new Date(g.currentDate.year, g.currentDate.month - 1, 1).getDay();
-            //å½“å‰æœˆå¤©æ•°
+            //µ±Ç°ÔÂÌìÊı
             var nextMonth = g.currentDate.month;
             var nextYear = g.currentDate.year;
             if (++nextMonth == 13)
@@ -513,7 +513,7 @@
                 nextYear++;
             }
             var monthDayNum = new Date(nextYear, nextMonth - 1, 0).getDate();
-            //å½“å‰ä¸Šä¸ªæœˆå¤©æ•°
+            //µ±Ç°ÉÏ¸öÔÂÌìÊı
             var prevMonthDayNum = new Date(g.currentDate.year, g.currentDate.month - 1, 0).getDate();
 
             g.buttons.btnMonth.html(p.monthMessage[g.currentDate.month - 1]);
@@ -692,7 +692,7 @@
             }
             if (!p.showTime && !g.isDateTime(val))
             {
-                //æ¢å¤
+                //»Ö¸´
                 if (!g.usedDate)
                 {
                     g.inputText.val("");
@@ -703,7 +703,7 @@
             }
             else if (p.showTime && !g.isLongDateTime(val))
             {
-                //æ¢å¤
+                //»Ö¸´
                 if (!g.usedDate)
                 {
                     g.inputText.val("");
@@ -718,7 +718,7 @@
                 var formatVal = g.getFormatDate(new Date(val));
                 if (formatVal == null)
                 {
-                    //æ¢å¤
+                    //»Ö¸´
                     if (!g.usedDate)
                     {
                         g.inputText.val("");
@@ -727,10 +727,10 @@
                         g.inputText.val(g.getFormatDate(g.usedDate));
                     }
                 }
-                g.usedDate = new Date(val); //è®°å½•
+                g.usedDate = new Date(val); //¼ÇÂ¼
                 g.selectedDate = {
                     year: g.usedDate.getFullYear(),
-                    month: g.usedDate.getMonth() + 1, //æ³¨æ„è¿™é‡Œ
+                    month: g.usedDate.getMonth() + 1, //×¢ÒâÕâÀï
                     day: g.usedDate.getDay(),
                     date: g.usedDate.getDate(),
                     hour: g.usedDate.getHours(),
@@ -738,7 +738,7 @@
                 };
                 g.currentDate = {
                     year: g.usedDate.getFullYear(),
-                    month: g.usedDate.getMonth() + 1, //æ³¨æ„è¿™é‡Œ
+                    month: g.usedDate.getMonth() + 1, //×¢ÒâÕâÀï
                     day: g.usedDate.getDay(),
                     date: g.usedDate.getDate(),
                     hour: g.usedDate.getHours(),

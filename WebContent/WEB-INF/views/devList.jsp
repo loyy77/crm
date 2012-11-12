@@ -51,6 +51,8 @@
     </script>
     
     <script type="text/javascript">
+    
+    //返回选中行的编号
     function getSelected()
     {
         var manager = $("#maingrid").ligerGetGridManager();
@@ -73,10 +75,11 @@
         {
 			var flag=true;
     		
-		  if(item.text=="增加"){
-			  
-			  window.location.href="../chance/toChanceAdd";
-			// var m= $.ligerDialog.open({ height: 420,width:550,url: '../chance/toChanceAdd' });
+		  if(item.id==1){//制定计划
+			 var chanceId= getSelected();
+		  if(!chanceId)return;
+			  window.location.href="../plan/toDevAdd?chanceId="+chanceId;
+				// var m= $.ligerDialog.open({ height: 420,width:550,url: '../chance/toChanceAdd' });
       			//m.target="home";
       	  }else if(item.text=="修改"){
       		  
@@ -116,7 +119,7 @@
         $(function ()
        {
             $("#toptoolbar").ligerToolBar({ items: [
-                { id:1,text: '定制计划', click: itemclick , icon:'add'},
+                { id:1,text: '制定计划', click: itemclick , icon:'add'},
                 { line:true },
                 { id:2,text: '执行计划', click: itemclick },
                 { line:true },

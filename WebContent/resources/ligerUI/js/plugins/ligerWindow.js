@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -31,7 +31,7 @@
         title: 'window',
         load: false,
         onLoaded: null,
-        modal: false     //æ˜¯å¦æ¨¡æ€çª—å£
+        modal: false     //ÊÇ·ñÄ£Ì¬´°¿Ú
     };
 
     $.ligerMethos.Window = {};
@@ -102,7 +102,7 @@
             $('body').append(g.window);
 
             g.set({ width: p.width, height: p.height });
-            //ä½ç½®åˆå§‹åŒ–
+            //Î»ÖÃ³õÊ¼»¯
             var left = 0;
             var top = 0;
             if (p.left != null) left = p.left;
@@ -122,7 +122,7 @@
 
             g._saveStatus();
 
-            //æ‹–åŠ¨æ”¯æŒ
+            //ÍÏ¶¯Ö§³Ö
             if ($.fn.ligerDrag)
             {
                 g.draggable = g.window.drag = g.window.ligerDrag({ handler: '.l-window-header-inner', onStartDrag: function ()
@@ -134,7 +134,7 @@
                 }, animate: false
                 });
             }
-            //æ”¹å˜å¤§å°æ”¯æŒ
+            //¸Ä±ä´óĞ¡Ö§³Ö
             if ($.fn.ligerResizable)
             {
                 g.resizeable = g.window.resizable = g.window.ligerResizable({
@@ -166,7 +166,7 @@
                 });
                 g.window.append("<div class='l-btn-nw-drop'></div>");
             }
-            //è®¾ç½®äº‹ä»¶ 
+            //ÉèÖÃÊÂ¼ş 
             $(".l-window-toggle", g.window).click(function ()
             {
                 if ($(this).hasClass("l-window-toggle-close"))

@@ -1,4 +1,4 @@
-﻿/* 按钮 */
+/* ��ť */
 .l-button{line-height:25px;height:25px;background:url('../images/ui/button1.gif') repeat-x; position:relative; margin-top:8px; margin-bottom:8px;color:#2C69A2; width:120px; cursor:pointer; border:none; color:#2C69A2; border-left:1px solid #BFCFE1; border-right:1px solid #BFCFE1;border-bottom:1px solid #BFCFE1;}
 .l-button-l,.l-button-r{ width:2px;height:25px;background:url('../images/ui/button1.gif') no-repeat; position:absolute; }
 .l-button-l{ left:0px; background-position:0px -25px;}

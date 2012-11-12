@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * jQuery ligerUI 1.1.9
 * 
 * http://ligerui.com
@@ -20,37 +20,37 @@
     };
 
     $.ligerDefaults.ComboBox = {
-        resize: true,           //æ˜¯å¦è°ƒæ•´å¤§å°
-        isMultiSelect: false,   //æ˜¯å¦å¤šé€‰
-        isShowCheckBox: false,  //æ˜¯å¦é€‰æ‹©å¤é€‰æ¡†
-        columns: false,       //è¡¨æ ¼çŠ¶æ€
-        selectBoxWidth: false, //å®½åº¦
-        selectBoxHeight: false, //é«˜åº¦
-        onBeforeSelect: false, //é€‰æ‹©å‰äº‹ä»¶
-        onSelected: null, //é€‰æ‹©å€¼äº‹ä»¶ 
+        resize: true,           //ÊÇ·ñµ÷Õû´óĞ¡
+        isMultiSelect: false,   //ÊÇ·ñ¶àÑ¡
+        isShowCheckBox: false,  //ÊÇ·ñÑ¡Ôñ¸´Ñ¡¿ò
+        columns: false,       //±í¸ñ×´Ì¬
+        selectBoxWidth: false, //¿í¶È
+        selectBoxHeight: false, //¸ß¶È
+        onBeforeSelect: false, //Ñ¡ÔñÇ°ÊÂ¼ş
+        onSelected: null, //Ñ¡ÔñÖµÊÂ¼ş 
         initValue: null,
         initText: null,
         valueField: 'id',
         textField: 'text',
         valueFieldID: null,
-        slide: true,           //æ˜¯å¦ä»¥åŠ¨ç”»çš„å½¢å¼æ˜¾ç¤º
+        slide: true,           //ÊÇ·ñÒÔ¶¯»­µÄĞÎÊ½ÏÔÊ¾
         split: ";",
         data: null,
-        tree: null,            //ä¸‹æ‹‰æ¡†ä»¥æ ‘çš„å½¢å¼æ˜¾ç¤ºï¼Œtreeçš„å‚æ•°è·ŸLigerTreeçš„å‚æ•°ä¸€è‡´ 
-        treeLeafOnly: true,   //æ˜¯å¦åªé€‰æ‹©å¶å­
-        grid: null,              //è¡¨æ ¼
+        tree: null,            //ÏÂÀ­¿òÒÔÊ÷µÄĞÎÊ½ÏÔÊ¾£¬treeµÄ²ÎÊı¸úLigerTreeµÄ²ÎÊıÒ»ÖÂ 
+        treeLeafOnly: true,   //ÊÇ·ñÖ»Ñ¡ÔñÒ¶×Ó
+        grid: null,              //±í¸ñ
         onStartResize: null,
         onEndResize: null,
         hideOnLoseFocus: true,
-        url: null,              //æ•°æ®æºURL(éœ€è¿”å›JSON)
+        url: null,              //Êı¾İÔ´URL(Ğè·µ»ØJSON)
         onSuccess: null,
         onError: null,
-        onBeforeOpen: null,      //æ‰“å¼€ä¸‹æ‹‰æ¡†å‰äº‹ä»¶ï¼Œå¯ä»¥é€šè¿‡return falseæ¥é˜»æ­¢ç»§ç»­æ“ä½œï¼Œåˆ©ç”¨è¿™ä¸ªå‚æ•°å¯ä»¥ç”¨æ¥è°ƒç”¨å…¶ä»–å‡½æ•°ï¼Œæ¯”å¦‚æ‰“å¼€ä¸€ä¸ªæ–°çª—å£æ¥é€‰æ‹©å€¼
-        render: null,            //æ–‡æœ¬æ¡†æ˜¾ç¤ºhtmlå‡½æ•°
-        absolute: true         //é€‰æ‹©æ¡†æ˜¯å¦åœ¨é™„åŠ åˆ°body,å¹¶ç»å¯¹å®šä½
+        onBeforeOpen: null,      //´ò¿ªÏÂÀ­¿òÇ°ÊÂ¼ş£¬¿ÉÒÔÍ¨¹ıreturn falseÀ´×èÖ¹¼ÌĞø²Ù×÷£¬ÀûÓÃÕâ¸ö²ÎÊı¿ÉÒÔÓÃÀ´µ÷ÓÃÆäËûº¯Êı£¬±ÈÈç´ò¿ªÒ»¸öĞÂ´°¿ÚÀ´Ñ¡ÔñÖµ
+        render: null,            //ÎÄ±¾¿òÏÔÊ¾htmlº¯Êı
+        absolute: true         //Ñ¡Ôñ¿òÊÇ·ñÔÚ¸½¼Óµ½body,²¢¾ø¶Ô¶¨Î»
     };
 
-    //æ‰©å±•æ–¹æ³•
+    //À©Õ¹·½·¨
     $.ligerMethos.ComboBox = $.ligerMethos.ComboBox || {};
 
 
@@ -88,8 +88,8 @@
             g.select = null;
             g.textFieldID = "";
             g.valueFieldID = "";
-            g.valueField = null; //éšè—åŸŸ(ä¿å­˜å€¼)
-            //æ–‡æœ¬æ¡†åˆå§‹åŒ–
+            g.valueField = null; //Òş²ØÓò(±£´æÖµ)
+            //ÎÄ±¾¿ò³õÊ¼»¯
             if (this.element.tagName.toLowerCase() == "input")
             {
                 this.element.readOnly = true;
@@ -107,11 +107,11 @@
                 g.inputText.attr("id", g.textFieldID).insertAfter($(this.element));
             } else
             {
-                //ä¸æ”¯æŒå…¶ä»–ç±»å‹
+                //²»Ö§³ÖÆäËûÀàĞÍ
                 return;
             }
             if (g.inputText[0].name == undefined) g.inputText[0].name = g.textFieldID;
-            //éšè—åŸŸåˆå§‹åŒ–
+            //Òş²ØÓò³õÊ¼»¯
             g.valueField = null;
             if (p.valueFieldID)
             {
@@ -125,16 +125,16 @@
                 g.valueField[0].id = g.valueField[0].name = g.textFieldID + "_val";
             }
             if (g.valueField[0].name == undefined) g.valueField[0].name = g.valueField[0].id;
-            //å¼€å…³
+            //¿ª¹Ø
             g.link = $('<div class="l-trigger"><div class="l-trigger-icon"></div></div>');
-            //ä¸‹æ‹‰æ¡†
+            //ÏÂÀ­¿ò
             g.selectBox = $('<div class="l-box-select"><div class="l-box-select-inner"><table cellpadding="0" cellspacing="0" border="0" class="l-box-select-table"></table></div></div>');
             g.selectBox.table = $("table:first", g.selectBox);
-            //å¤–å±‚
+            //Íâ²ã
             g.wrapper = g.inputText.wrap('<div class="l-text l-text-combobox"></div>').parent();
             g.wrapper.append('<div class="l-text-l"></div><div class="l-text-r"></div>');
             g.wrapper.append(g.link);
-            //æ·»åŠ ä¸ªåŒ…è£¹ï¼Œ
+            //Ìí¼Ó¸ö°ü¹ü£¬
             g.textwrapper = g.wrapper.wrap('<div class="l-text-wrapper"></div>').parent();
 
             if (p.absolute)
@@ -152,7 +152,7 @@
                 p.isShowCheckBox = false;
                 $("table", g.selectBox).addClass("l-table-nocheckbox");
             }
-            //å¼€å…³ äº‹ä»¶
+            //¿ª¹Ø ÊÂ¼ş
             g.link.hover(function ()
             {
                 if (p.disabled) return;
@@ -212,12 +212,12 @@
             {
                 g.selectBox.height(p.selectBoxHeight);
             }
-            //ä¸‹æ‹‰æ¡†å†…å®¹åˆå§‹åŒ–
+            //ÏÂÀ­¿òÄÚÈİ³õÊ¼»¯
             g.bulidContent();
 
             g.set(p);
 
-            //ä¸‹æ‹‰æ¡†å®½åº¦ã€é«˜åº¦åˆå§‹åŒ–
+            //ÏÂÀ­¿ò¿í¶È¡¢¸ß¶È³õÊ¼»¯
             if (p.selectBoxWidth)
             {
                 g.selectBox.width(p.selectBoxWidth);
@@ -236,7 +236,7 @@
         },
         _setDisabled: function (value)
         {
-            //ç¦ç”¨æ ·å¼
+            //½ûÓÃÑùÊ½
             if (value)
             {
                 this.wrapper.addClass('l-text-disabled');
@@ -302,7 +302,7 @@
         },
         _setResize: function (resize)
         {
-            //è°ƒæ•´å¤§å°æ”¯æŒ
+            //µ÷Õû´óĞ¡Ö§³Ö
             if (resize && $.fn.ligerResizable)
             {
                 var g = this;
@@ -321,7 +321,7 @@
                 g.selectBox.append("<div class='l-btn-nw-drop'></div>");
             }
         },
-        //æŸ¥æ‰¾Text,é€‚ç”¨å¤šé€‰å’Œå•é€‰
+        //²éÕÒText,ÊÊÓÃ¶àÑ¡ºÍµ¥Ñ¡
         findTextByValue: function (value)
         {
             var g = this, p = this.options;
@@ -348,7 +348,7 @@
             if (texts.length > 0) texts = texts.substr(0, texts.length - 1);
             return texts;
         },
-        //æŸ¥æ‰¾Value,é€‚ç”¨å¤šé€‰å’Œå•é€‰
+        //²éÕÒValue,ÊÊÓÃ¶àÑ¡ºÍµ¥Ñ¡
         findValueByText: function (text)
         {
             var g = this, p = this.options;
@@ -554,7 +554,7 @@
                     g.selectBox.table.append(tr);
                 }
             }
-            //è‡ªå®šä¹‰å¤é€‰æ¡†æ”¯æŒ
+            //×Ô¶¨Òå¸´Ñ¡¿òÖ§³Ö
             if (p.isShowCheckBox && $.fn.ligerCheckBox)
             {
                 $("table input:checkbox", g.selectBox).ligerCheckBox();
@@ -599,10 +599,10 @@
                 $(this).removeClass("l-over");
             });
             g._addClickEven();
-            //é€‰æ‹©é¡¹åˆå§‹åŒ–
+            //Ñ¡ÔñÏî³õÊ¼»¯
             g._dataInit();
         },
-        //æ ‘
+        //Ê÷
         setTree: function (tree)
         {
             var g = this, p = this.options;
@@ -667,7 +667,7 @@
                 g._changeValue(value, text);
             }
         },
-        //è¡¨æ ¼
+        //±í¸ñ
         setGrid: function (grid)
         {
             var g = this, p = this.options;
@@ -733,7 +733,7 @@
         },
         getValue: function ()
         {
-            //è·å–å€¼
+            //»ñÈ¡Öµ
             return this._getValue();
         },
         updateStyle: function ()
@@ -749,7 +749,7 @@
             {
                 g._changeValue(p.initValue, p.initText);
             }
-            //æ ¹æ®å€¼æ¥åˆå§‹åŒ–
+            //¸ù¾İÖµÀ´³õÊ¼»¯
             if (p.initValue != null)
             {
                 value = p.initValue;
@@ -764,7 +764,7 @@
                     g._changeValue(value, text);
                 }
             }
-            //æ ¹æ®æ–‡æœ¬æ¥åˆå§‹åŒ– 
+            //¸ù¾İÎÄ±¾À´³õÊ¼»¯ 
             else if (p.initText != null)
             {
                 value = g.findValueByText(p.initText);
@@ -820,7 +820,7 @@
                 });
             }
         },
-        //è®¾ç½®å€¼åˆ° æ–‡æœ¬æ¡†å’Œéšè—åŸŸ
+        //ÉèÖÃÖµµ½ ÎÄ±¾¿òºÍÒş²ØÓò
         _changeValue: function (newValue, newText)
         {
             var g = this, p = this.options;
@@ -838,7 +838,7 @@
             g.inputText.trigger("change").focus();
             g.trigger('selected', [newValue, newText]);
         },
-        //æ›´æ–°é€‰ä¸­çš„å€¼(å¤é€‰æ¡†)
+        //¸üĞÂÑ¡ÖĞµÄÖµ(¸´Ñ¡¿ò)
         _checkboxUpdateValue: function ()
         {
             var g = this, p = this.options;
@@ -865,7 +865,7 @@
         _addClickEven: function ()
         {
             var g = this, p = this.options;
-            //é€‰é¡¹ç‚¹å‡»
+            //Ñ¡Ïîµã»÷
             $(".l-table-nocheckbox td", g.selectBox).click(function ()
             {
                 var value = $(this).attr("value");
@@ -974,7 +974,7 @@
     });
 
     $.ligerui.controls.ComboBox.prototype.setValue = $.ligerui.controls.ComboBox.prototype.selectValue;
-    //è®¾ç½®æ–‡æœ¬æ¡†å’Œéšè—æ§ä»¶çš„å€¼
+    //ÉèÖÃÎÄ±¾¿òºÍÒş²Ø¿Ø¼şµÄÖµ
     $.ligerui.controls.ComboBox.prototype.setInputValue = $.ligerui.controls.ComboBox.prototype._changeValue;
     
 

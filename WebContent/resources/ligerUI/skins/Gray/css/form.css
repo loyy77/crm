@@ -1,210 +1,354 @@
-﻿
-.l-hidden{ display:none;}
-/* -------------
-   * 多行文本框颜色 *
-* ------------- */  
-.l-textarea{border:1px solid #D0D0D0; margin-left:0px;outline:none; background:#FFFFFF url('../images/ui/input.gif') repeat-x top;}
- .l-textarea:hover{border-color:#777777;}
-.l-textarea-invalid,.l-textarea:focus{ border-color:#777777;}
-.l-textarea-invalid{border-color:#FF7777; background:#FFEEEE url(../../Aqua/images/common/invalid-line.gif) repeat-x bottom;}
-.l-textarea-invalid:hover,.l-textarea-invalid:focus{border-color:#FF7777;}
-/* -------------
-   * 文本框/下拉框/日期框/调整器 *
-* ------------- */
+/**
+* jQuery ligerUI 1.1.9
+* 
+* http://ligerui.com
+*  
+* Author daomi 2012 [ gd_star@163.com ] 
+* 
+*/
+(function ($)
+{
 
-/* 文本框、下来框、日期框、调整器都使用到这个 */
-.l-text
-{
-    position:relative; background:#FFFFFF url('../images/ui/input.gif') repeat-x top;
-    border:1px solid #D0D0D0; height:20px; line-height:20px;
-    width:130px; 
-}
-/* 文本框得到焦点的样式*/
-.l-text-focus
-{
-    border-color:#777777;
-}
+    var l = $.ligerui;
 
-.l-text-invalid {
-background: #FEE url(../../Aqua/images/common/invalid-line.gif) repeat-x 50% 100%;
-border-color: #F77;
-}
-/*只读时文本框*/
-.l-text-disabled
-{
-    border-color:#DADADA;
-    background:#FFFFFF url('../images/ui/inputdisabled.gif') repeat-x top;
-} 
-.l-text-disabled .l-text-field{
-	background:none; color:#E9E5ED;
-}
-/* 编辑状态 */
-.l-text-editing
-{
-     
-}
+    l.windowCount = 0;
 
-/* 表单文本框 input:text */
-.l-text-field
-{
-    position:absolute; top:0px; left:0px; background:#FFFFFF url('../images/ui/input.gif') repeat-x top;
-    width:110px; height:18px; line-height:18px;
-    border:0; margin:0; outline:none; color:#333333; 
-}
-/* 表单文本框 内容为空时 */
-.l-text-field-null
-{ color:#C1C1C1;
-}
-/* 下拉框/日期/调整器 右侧那个可点击的区域 分别是普通、经过、按住状态 */
-.l-trigger,.l-trigger-hover,.l-trigger-pressed
-{
-    top:0px;right:0px;
-    width:16px;height:100%; 
-}
-.l-trigger
-{ 
-    border:0px;border-left:1px solid #B9B9B9; 
-    background:#D1D1D1 url('../images/ui/trigger.gif') repeat-x 0px 0px;
-}
-.l-trigger-hover
-{
-    border:0px;border-left:1px solid #B9B9B9; 
-    background:#CCCCCC url('../images/ui/trigger.gif') repeat-x 0px -20px;
-}
-.l-trigger-pressed
-{
-    border:0px;border-left:1px solid #B9B9B9; 
-    background:#C8C8C8 url('../images/ui/trigger.gif') repeat-x 0px -40px;
+    $.ligerWindow = function (options)
+    {
+        return l.run.call(null, "ligerWindow", arguments, { isStatic: true });
+    };
 
-}
-/* 下拉框/日期 右侧那个可点击的区域里面的图标 */
-.l-trigger-icon
-{	width:100%;
-	height:100%;
-    background:url('../images/ui/icon-down.gif') no-repeat 50% 50%;
-}
-/* -------------
-  * 调整器 *
-* ------------- */
-.l-spinner-up .l-spinner-icon,.l-spinner-down .l-spinner-icon{overflow: hidden;position: absolute;left: 0px;top: 50%;margin-top: -3px;width: 100%;height: 6px;background: no-repeat center top;}
-.l-spinner-down-over,.l-spinner-up-over{background:#CCCCCC url('../images/ui/trigger.gif') repeat-x 0px -20px;}
-.l-spinner-up .l-spinner-icon{background-image: url(../images/ui/icon-up.gif);}
-.l-spinner-down .l-spinner-icon{background-image: url(../images/ui/icon-down.gif);}
-.l-spinner-up,.l-spinner-down {width: 100%;height: 50%;overflow: hidden;display: block;position: absolute;left: 0px;top: 0px;}
-.l-spinner-down{top: 50%;}
-.l-spinner-split{overflow: hidden;width: 13px;height: 1px;position: absolute;left: 1px;top: 50%;z-index: 10;background: #B5B8C8;   }
+    $.ligerWindow.show = function (p)
+    {
+        return $.ligerWindow(p);
+    };
 
-/* -------------
-   * 验证 *
-* ------------- */
-.l-verify-star { color:Red;}
+    $.ligerDefaults.Window = {
+        showClose: true,
+        showMax: true,
+        showToggle: true,
+        showMin: true,
+        title: 'window',
+        load: false,
+        onLoaded: null,
+        modal: false     //�Ƿ�ģ̬����
+    };
 
-/* -------------
-  * 下拉框 *
-* ------------- */
-.l-box-select-grid{border-bottom:1px solid #A3C0E8;border-right:1px solid #A3C0E8;}
-.l-box-select-grid thead td,.l-box-select-grid tr.l-table-headerow td{ 
-background:#F0F0F0; 
-}
-.l-box-select-grid td{padding:0;margin:0;height:22px; line-height:22px; border-left:1px solid #A3C0E8;border-top:1px solid #A3C0E8; }
- 
-.l-box-select
-{
-    display:none;
-    position:absolute; padding:0px;  
-    border:1px solid #D0D0D0; background:white;
-    width:130px; height:120px;
-    margin-top:1px;
-    z-index:9300; font-size:12px; line-height:18px;
-}
-.l-box-select-absolute
-{
-    margin-top:0px;
-}
-.l-box-select-inner{ margin:0; padding:0; width:100%;overflow:auto; height:100%;color:#333;}
-.l-box-select-inner .l-box-select-table{margin:0; padding:0; width:100%; }
-.l-box-select .l-table-nocheckbox td:hover,.l-box-select .l-table-nocheckbox td.l-over{ background-color:#E7EDF8; cursor:pointer;}
-.l-box-select .l-table-nocheckbox td.l-selected{ background-color:#DFE8F6;}
-.l-box-select .l-box-select-table td{ padding:2px; text-align:left;} 
-/* -------------
-    * 复选框 *
-* ------------- */
- 
-/* -------------
-    * 单选框 *
-* ------------- */
- 
-/* -----------------------
-   *   日期控件 *
-* ----------------------- */
-.l-box-dateeditor {
-background: white;
-border: 1px solid #6681B0;
-}
- .l-box-dateeditor-header
-{
-     background:#173167;   
-}
-.l-box-dateeditor-header-text a {
-color:White;
-cursor: pointer;
-text-decoration: none;
-}
+    $.ligerMethos.Window = {};
+
+    l.controls.Window = function (options)
+    {
+        l.controls.Window.base.constructor.call(this, null, options);
+    };
+    l.controls.Window.ligerExtend(l.core.Win, {
+        __getType: function ()
+        {
+            return 'Window';
+        },
+        __idPrev: function ()
+        {
+            return 'Window';
+        },
+        _extendMethods: function ()
+        {
+            return $.ligerMethos.Window;
+        },
+        _render: function ()
+        {
+            var g = this, p = this.options;
+            g.window = $('<div class="l-window"><div class="l-window-header"><div class="l-window-header-buttons"><div class="l-window-toggle"></div><div class="l-window-max"></div><div class="l-window-close"></div><div class="l-clear"></div></div><div class="l-window-header-inner"></div></div><div class="l-window-content"></div></div>');
+            g.element = g.window[0];
+            g.window.content = $(".l-window-content", g.window);
+            g.window.header = $(".l-window-header", g.window);
+            g.window.buttons = $(".l-window-header-buttons:first", g.window);
+            if (p.url)
+            {
+                if (p.load)
+                {
+                    g.window.content.load(p.url, function ()
+                    {
+                        g.trigger('loaded');
+                    });
+                    g.window.content.addClass("l-window-content-scroll");
+                }
+                else
+                {
+                    var iframe = $("<iframe frameborder='0' src='" + p.url + "'></iframe>");
+                    var framename = "ligeruiwindow" + l.windowCount++;
+                    if (p.name) framename = p.name;
+                    iframe.attr("name", framename).attr("id", framename);
+                    p.framename = framename;
+                    iframe.appendTo(g.window.content);
+                    g.iframe = iframe;
+                }
+            }
+            else if (p.content)
+            {
+                var content = $("<div>" + p.content + "</div>");
+                content.appendTo(g.window.content);
+            }
+            else if (p.target)
+            {
+                g.window.content.append(p.target);
+                p.target.show();
+            }
 
 
 
-.l-box-dateeditor-header-btn
-{
-     background-image: url(../images/ui/dateeditor-btn.gif); background-repeat:no-repeat;
-}
-.l-box-dateeditor-header-btn-over
-{ 
-    background-image: url(../images/ui/dateeditor-btn-over.gif);
-}
-.l-box-dateeditor-header-btn
-{
-     top:4px;width:15px; height:15px;position:absolute; cursor:pointer;
-}
-.l-box-dateeditor-header-btn span
-{
-     width:100%; height:100%; display:block; position:absolute; top:0px; left:0px;
-}
-.l-box-dateeditor-header-prevmonth{left:24px; background-position:-15px 0px; }
-.l-box-dateeditor-header-prevmonth span{background:none;}
-.l-box-dateeditor-header-nextmonth{background-position:-30px 0px;}
-.l-box-dateeditor-header-nextmonth span{background: none;}
+            this.mask();
 
-.l-box-dateeditor-header-prevyear{left:4px; background-position:0px 0px;}
-.l-box-dateeditor-header-prevyear span{background:none;}
-.l-box-dateeditor-header-nextyear{ right:4px;background-position:-45px 0px;}
-.l-box-dateeditor-header-nextyear span{background:none;}
- 
+            g.active();
 
-.l-box-dateeditor-body {
-border:none; 
-}
-.l-box-dateeditor-body thead td {
-border-bottom: 1px solid #9AB3D5; background:#C1D4EB url(../images/ui/dateeditor-thead.gif) repeat-x top;
-}
-.l-box-dateeditor-body tbody td.l-box-dateeditor-today
-{background-color: #CCE3FE; }
-.l-box-dateeditor-body tbody td.l-box-dateeditor-over,.l-box-dateeditor-body tbody td.l-box-dateeditor-selected
- { background-color: #DDECFE; }
+            $('body').append(g.window);
 
-.l-box-dateeditor-monthselector li:hover,.l-box-dateeditor-monthselector li.l-selected,.l-box-dateeditor-monthselector li.l-over,.l-box-dateeditor-yearselector li:hover,.l-box-dateeditor-yearselector li.l-selected,.l-box-dateeditor-yearselector li.l-over,.l-box-dateeditor-hourselector li:hover,.l-box-dateeditor-hourselector li.l-selected,.l-box-dateeditor-hourselector li.l-over,.l-box-dateeditor-minuteselector li:hover,.l-box-dateeditor-minuteselector li.l-selected,.l-box-dateeditor-minuteselector li.l-over
-{background-color: #DDECFE;border: solid 1px #8DB2E3;}
+            g.set({ width: p.width, height: p.height });
+            //λ�ó�ʼ��
+            var left = 0;
+            var top = 0;
+            if (p.left != null) left = p.left;
+            else p.left = left = 0.5 * ($(window).width() - g.window.width());
+            if (p.top != null) top = p.top;
+            else p.top = top = 0.5 * ($(window).height() - g.window.height()) + $(window).scrollTop() - 10;
+            if (left < 0) p.left = left = 0;
+            if (top < 0) p.top = top = 0;
 
 
-.l-box-dateeditor-toolbar {
-background:#C1D4EB url(../images/ui/dateeditor-bar.gif) repeat-x top;
-height: 31px; border-top:1px solid #9AB3D5;
-padding-left: 10px;
-position: relative;
-text-align: right;
-width: 100%;
-}
- 
-/* -----------------------
-   *   验证 *
-* ----------------------- */
- 
+            g.set(p);
+
+            p.framename && $(">iframe", g.window.content).attr('name', p.framename);
+            if (!p.showToggle) $(".l-window-toggle", g.window).remove();
+            if (!p.showMax) $(".l-window-max", g.window).remove();
+            if (!p.showClose) $(".l-window-close", g.window).remove();
+
+            g._saveStatus();
+
+            //�϶�֧��
+            if ($.fn.ligerDrag)
+            {
+                g.draggable = g.window.drag = g.window.ligerDrag({ handler: '.l-window-header-inner', onStartDrag: function ()
+                {
+                    g.active();
+                }, onStopDrag: function ()
+                {
+                    g._saveStatus();
+                }, animate: false
+                });
+            }
+            //�ı��С֧��
+            if ($.fn.ligerResizable)
+            {
+                g.resizeable = g.window.resizable = g.window.ligerResizable({
+                    onStartResize: function ()
+                    {
+                        g.active();
+                        $(".l-window-max", g.window).removeClass("l-window-regain");
+                    },
+                    onStopResize: function (current, e)
+                    {
+                        var top = 0;
+                        var left = 0;
+                        if (!isNaN(parseInt(g.window.css('top'))))
+                            top = parseInt(g.window.css('top'));
+                        if (!isNaN(parseInt(g.window.css('left'))))
+                            left = parseInt(g.window.css('left'));
+                        if (current.diffTop)
+                            g.window.css({ top: top + current.diffTop });
+                        if (current.diffLeft)
+                            g.window.css({ left: left + current.diffLeft });
+                        if (current.newWidth)
+                            g.window.width(current.newWidth);
+                        if (current.newHeight)
+                            g.window.content.height(current.newHeight - 28);
+
+                        g._saveStatus();
+                        return false;
+                    }
+                });
+                g.window.append("<div class='l-btn-nw-drop'></div>");
+            }
+            //�����¼� 
+            $(".l-window-toggle", g.window).click(function ()
+            {
+                if ($(this).hasClass("l-window-toggle-close"))
+                {
+                    g.collapsed = false;
+                    $(this).removeClass("l-window-toggle-close");
+                } else
+                {
+                    g.collapsed = true;
+                    $(this).addClass("l-window-toggle-close");
+                }
+                g.window.content.slideToggle();
+            }).hover(function ()
+            {
+                if (g.window.drag)
+                    g.window.drag.set('disabled', true);
+            }, function ()
+            {
+                if (g.window.drag)
+                    g.window.drag.set('disabled', false);
+            });
+            $(".l-window-close", g.window).click(function ()
+            {
+                if (g.trigger('close') == false) return false;
+                g.window.hide();
+                l.win.removeTask(g);
+            }).hover(function ()
+            {
+                if (g.window.drag)
+                    g.window.drag.set('disabled', true);
+            }, function ()
+            {
+                if (g.window.drag)
+                    g.window.drag.set('disabled', false);
+            });
+            $(".l-window-max", g.window).click(function ()
+            {
+                if ($(this).hasClass("l-window-regain"))
+                {
+                    if (g.trigger('regain') == false) return false;
+                    g.window.width(g._width).css({ left: g._left, top: g._top });
+                    g.window.content.height(g._height - 28);
+                    $(this).removeClass("l-window-regain");
+                }
+                else
+                {
+                    if (g.trigger('max') == false) return false;
+                    g.window.width($(window).width() - 2).css({ left: 0, top: 0 });
+                    g.window.content.height($(window).height() - 28).show();
+                    $(this).addClass("l-window-regain");
+                }
+            });
+        },
+        _saveStatus: function ()
+        {
+            var g = this;
+            g._width = g.window.width();
+            g._height = g.window.height();
+            var top = 0;
+            var left = 0;
+            if (!isNaN(parseInt(g.window.css('top'))))
+                top = parseInt(g.window.css('top'));
+            if (!isNaN(parseInt(g.window.css('left'))))
+                left = parseInt(g.window.css('left'));
+            g._top = top;
+            g._left = left;
+        },
+        min: function ()
+        {
+            this.window.hide();
+            this.minimize = true;
+            this.actived = false;
+        },
+        _setShowMin: function (value)
+        {
+            var g = this, p = this.options;
+            if (value)
+            {
+                if (!g.winmin)
+                {
+                    g.winmin = $('<div class="l-window-min"></div>').prependTo(g.window.buttons)
+                    .click(function ()
+                    {
+                        g.min();
+                    });
+                    l.win.addTask(g);
+                }
+            }
+            else if (g.winmin)
+            {
+                g.winmin.remove();
+                g.winmin = null;
+            }
+        },
+        _setLeft: function (value)
+        {
+            if (value != null)
+                this.window.css({ left: value });
+        },
+        _setTop: function (value)
+        {
+            if (value != null)
+                this.window.css({ top: value });
+        },
+        _setWidth: function (value)
+        {
+            if (value > 0)
+                this.window.width(value);
+        },
+        _setHeight: function (value)
+        {
+            if (value > 28)
+                this.window.content.height(value - 28);
+        },
+        _setTitle: function (value)
+        {
+            if (value)
+                $(".l-window-header-inner", this.window.header).html(value);
+        },
+        _setUrl: function (url)
+        {
+            var g = this, p = this.options;
+            p.url = url;
+            if (p.load)
+            {
+                g.window.content.html("").load(p.url, function ()
+                {
+                    if (g.trigger('loaded') == false) return false;
+                });
+            }
+            else if (g.jiframe)
+            {
+                g.jiframe.attr("src", p.url);
+            }
+        },
+        hide: function ()
+        {
+            var g = this, p = this.options;
+            this.unmask();
+            this.window.hide();
+        },
+        show: function ()
+        {
+            var g = this, p = this.options;
+            this.mask();
+            this.window.show();
+        },
+        remove: function ()
+        {
+            var g = this, p = this.options;
+            this.unmask();
+            this.window.remove();
+        },
+        active: function ()
+        {
+            var g = this, p = this.options;
+            if (g.minimize)
+            {
+                var width = g._width, height = g._height, left = g._left, top = g._top;
+                if (g.maximum)
+                {
+                    width = $(window).width();
+                    height = $(window).height();
+                    left = top = 0;
+                    if (l.win.taskbar)
+                    {
+                        height -= l.win.taskbar.outerHeight();
+                        if (l.win.top) top += l.win.taskbar.outerHeight();
+                    }
+                }
+                g.set({ width: width, height: height, left: left, top: top });
+            }
+            g.actived = true;
+            g.minimize = false;
+            l.win.setFront(g);
+            g.show();
+            l.win.setFront(this);
+        },
+        setUrl: function (url)
+        {
+            return _setUrl(url);
+        }
+    });
+
+})(jQuery);
