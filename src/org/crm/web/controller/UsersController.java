@@ -1,6 +1,8 @@
 package org.crm.web.controller;
 
+import org.apache.log4j.Logger;
 import org.crm.biz.UsersBiz;
+import org.crm.common.Constant;
 import org.crm.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,8 +18,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @RequestMapping("/login")
 @SessionAttributes("user")
 public class UsersController {
-	
-	public  static  String CURRENT_USER="user";
+	Logger log = Logger.getLogger(UsersController.class);
+
 	@Autowired
 	private UsersBiz usersBiz;
 
@@ -32,36 +34,48 @@ public class UsersController {
 
 	}
 
-	//@RequestMapping("/login")
-	@RequestMapping(method=RequestMethod.POST)
+	/**
+	 * 
+	 * @param user
+	 * @param result
+	 * @param model
+	 * @return
+	 */
+	// @RequestMapping("/login")
+	@RequestMapping(method = RequestMethod.POST)
 	public String proccessSubmit(Users user, BindingResult result, Model model) {
-
-		System.out.println("login..");
+		log.debug("用户登录");
 
 		Users curruser = usersBiz.login(user.getLoginName(),
 				user.getLoginPass());
-		if (null!=curruser&&curruser.getUserId() > 0
+		if (null != curruser && curruser.getUserId() > 0
 				&& curruser.getLoginName().trim().length() > 1) {
-			model.addAttribute(CURRENT_USER, curruser);
-			
-			//session.setAttribute("user", curruser);
+			model.addAttribute(Constant.CURRENT_USER, curruser);
+			log.debug("登入成功,");
+
 			return "main";
 		}
-	
+
 		return "login";
 
 	}
+
+	/**
+	 * 
+	 * 
+	 */
 	@RequestMapping("/login1")
-	public @ResponseBody String ajaxLogin(Users user,Model model){
+	public @ResponseBody
+	String ajaxLogin(Users user, Model model) {
 		Users curruser = usersBiz.login(user.getLoginName(),
 				user.getLoginPass());
-		if (null!=curruser&&curruser.getUserId() > 0
+		if (null != curruser && curruser.getUserId() > 0
 				&& curruser.getLoginName().trim().length() > 1) {
 			model.addAttribute("user", curruser);
 			return "true";
-		}else {
+		} else {
 			return "false";
 		}
-		//return null;
+		// return null;
 	}
 }

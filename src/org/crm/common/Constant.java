@@ -5,7 +5,7 @@ package org.crm.common;
  * @author lishixi
  * 
  */
-public final class Constant {
+public interface Constant {
 	/**
 	 * 管理员 <br/> {@value}
 	 * 
@@ -35,4 +35,8 @@ public final class Constant {
 	 * @category 权限-角色
 	 */
 	public static final int ROLE_SUPER_ADMIN = 4;
+	/**
+	 * 当前登录用户的标识 * {@value}
+	 */
+	public static String CURRENT_USER = "user";
 }
