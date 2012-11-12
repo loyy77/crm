@@ -31,6 +31,8 @@ public class ChanceController {
 	private UsersBiz usersBiz;
 
 	/**
+	 * 创建销售机会
+	 * 
 	 * @param user
 	 * @return
 	 */
@@ -38,8 +40,6 @@ public class ChanceController {
 	public Chance createChance(@ModelAttribute("user") Users user) {
 		Chance chance = new Chance();
 		chance.setCreateId(user);
-		// Users u = new Users();
-		// u.setUserId(99999);s
 		chance.setAssignId(null);
 		return chance;
 	}
@@ -119,19 +119,21 @@ public class ChanceController {
 	 * @return
 	 */
 	@RequestMapping("/chance/doChanceModify")
-	public String doChanceModify(@ModelAttribute("user") Users user, Chance chance, Model model) {
+	public String doChanceModify(@ModelAttribute("user") Users user,
+			Chance chance, Model model) {
 
 		log.debug("执行修改销售机会");
-		
-		log.debug("user:"+user);
-		int roleId=user.getRoleId();
-		//管理员和销售主管
-		if (roleId == Constant.ROLE_ADMIN || roleId == Constant.ROLE_SALES_SUPERVISOR) {
-			
+
+		log.debug("user:" + user);
+		int roleId = user.getRoleId();
+		// 管理员和销售主管
+		if (roleId == Constant.ROLE_ADMIN
+				|| roleId == Constant.ROLE_SALES_SUPERVISOR) {
+
 			if (chanceBiz.udpate(chance)) {
 				log.debug("设置result==success");
-			model.addAttribute("result", "success");
-			return this.toList(model);
+				model.addAttribute("result", "success");
+				return this.toList(model);
 			}
 
 		}
@@ -147,6 +149,7 @@ public class ChanceController {
 				|| user.getRoleId() == Constant.ROLE_SALES_SUPERVISOR) {
 			chance.setAssignDate(new Utils().getNowDate());
 			if (chanceBiz.assign(chance)) {
+
 				return this.toList(model);
 			}
 		}
@@ -194,7 +197,7 @@ public class ChanceController {
 	 * @return
 	 */
 	@RequestMapping("/chance/toChanceModify")
-	public String toChanceModify(int chanceId, Model model,Users user) {
+	public String toChanceModify(int chanceId, Model model, Users user) {
 		log.debug("转到销售机会修改页面");
 		log.debug(user);
 		Chance chance = chanceBiz.get(chanceId);
@@ -220,5 +223,19 @@ public class ChanceController {
 		model.addAttribute("assignList", usersBiz.list());
 
 		return "chanceAdd";
+	}
+
+	// #####客户开发计划
+	@RequestMapping("/chance/toDevList")
+	public String toDevList() {
+
+		return "devList";
+	}
+
+	@RequestMapping("/chance/doDevList")
+	public @ResponseBody
+	String doDevList(Model model, String page, String pagesize) {
+		log.debug("开始获取销售机会列表..");
+		return this.proccessList(model, page, pagesize);
 	}
 }

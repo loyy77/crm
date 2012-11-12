@@ -102,7 +102,8 @@
 					text : '销售机会管理',
 					url : 'chance/toList'
 				}, {
-					text : '节点1.2'
+					text : '客户开发计划',
+					url :  'chance/toDevList'
 				}, {
 					text : '节点1.3',
 					children : [ {

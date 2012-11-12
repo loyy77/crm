@@ -36,7 +36,26 @@ public interface Constant {
 	 */
 	public static final int ROLE_SUPER_ADMIN = 4;
 	/**
-	 * 当前登录用户的标识 * {@value}
+	 * 当前登录用户的标识 <br/> {@value}
 	 */
 	public static String CURRENT_USER = "user";
+	/**
+	 * 销售机会状态，未指派
+	 * 
+	 * @category 销售机会 <br/> {@value}
+	 */
+	public static final int CHANCE_UNASSIGN = 1;
+	/**
+	 * 销售机会状态，已指派("开发中") *
+	 * 
+	 * @category 销售机会 <br/> {@value}
+	 */
+	public static final int CHANCE_ASSIGN = 2;
+	/**
+	 * 销售机会状态，标记已删除
+	 * 
+	 * @category 销售机会 <br/> {@value}
+	 */
+	public static final int CHANCE_REMOVED = 0;
+
 }
