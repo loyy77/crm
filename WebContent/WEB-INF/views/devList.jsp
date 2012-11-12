@@ -130,15 +130,7 @@
             
             var userId=$("#userId").val();
     		  if(userId==2||userId==3){
-    			  
-    			 /*  $("#toptoolbar").ligerToolBar({ items: [
-                      { text: 'Ôö¼Ó', click: itemclick , icon:'add'},
-                      { line:true },
-                      { text: 'ÐÞ¸Ä', click: itemclick },
-                      { line:true },
-                      { text: 'É¾³ý', click: itemclick }
-                  ]
-                  }); */
+    			
     		  };
         });
 
