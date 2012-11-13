@@ -9,8 +9,9 @@
     <link href="/crm/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" /> 
     <link href="/crm/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" /> 
     <script src="/crm/js/jquery-1.3.2.min.js" type="text/javascript"></script>
-    <script src="/crm/ligerUI/js/core/base.js" type="text/javascript"></script>
-    <script src="/crm/ligerUI/js/plugins/ligerForm.js" type="text/javascript"></script>
+    <script src="/crm/ligerUI/js/ligerui.min.js" type="text/javascript"></script>
+<!--      <script src="/crm/ligerUI/js/core/base.js" type="text/javascript"></script>  -->
+  <!--   <script src="/crm/ligerUI/js/plugins/ligerForm.js" type="text/javascript"></script>
     <script src="/crm/ligerUI/js/plugins/ligerDateEditor.js" type="text/javascript"></script>
     <script src="/crm/ligerUI/js/plugins/ligerComboBox.js" type="text/javascript"></script>
     <script src="/crm/ligerUI/js/plugins/ligerCheckBox.js" type="text/javascript"></script>
@@ -20,8 +21,10 @@
     <script src="/crm/ligerUI/js/plugins/ligerSpinner.js" type="text/javascript"></script>
     <script src="/crm/ligerUI/js/plugins/ligerTextBox.js" type="text/javascript"></script> 
     <script src="/crm/ligerUI/js/plugins/ligerTip.js" type="text/javascript"></script>
+-->
+
     <script src="/crm/resources/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
-    <script src="/crm/resources/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
+    <script src="/crm/resources/jquery-validation/jquery.metadata.js" type="text/javascript"></script> 
     <script src="/crm/resources/jquery-validation/messages_cn.js" type="text/javascript"></script>
 
     <style type="text/css">
@@ -49,6 +52,9 @@ $().ready(function(){
 	$("input[type='text']").attr("class","required");//("required");
 	$("#rate").attr("class","{range:[0,100]}");
 	$("#assignId").attr("class","");
+	//给文本框加样式
+	$("input[type=text]").addClass("l-text");
+	
 	
 	//Tip
 	$("#id").ligerTip();
@@ -98,9 +104,9 @@ $().ready(function(){
             </tr>   
             
             <tr>
-                <td align="right"  valign="top"  >概要：</td>
+                <td align="right" class="l-table-edit-td"   valign="top"  >概要：</td>
                 <td align="left" class="l-table-edit-td" colspan="3">
-                  <form:input path="title" name="title" type="text" id="title" ltype="text"  style="width:400px;"/>*
+                  <form:input path="title" name="title" type="text" id="title" ltype="text" />*
                 </td>
             </tr>  
                  
@@ -115,8 +121,8 @@ $().ready(function(){
               <tr>
                 <td align="right" class="l-table-edit-td">机会描述：</td>
                 <td align="left" class="l-table-edit-td" colspan="3"> 
-             <%--    <form:textarea path="description"  /> --%>
-                <form:textarea path="description" cols="90" rows="4" class="l-textarea" style="width:400px"/>
+             <%--    <form:textarea path="description"   /> --%>
+                <form:textarea path="description" cols="90" rows="4" cssClass="l-textarea" />
                 </td>
             </tr>
            <tr>
@@ -132,8 +138,8 @@ $().ready(function(){
                <%--  <form:input path="assignId.trueName" name="assignId.loginName" type="text" id="assignId" readonly="true" ltype="text" /> --%>
                 	<!-- itemValue="${trueName}" itemLabel="${id}" -->  
 			
-                	<select id="assignId.userId" name="assignId.userId" title="在这里指派">
-                <option value="">未指派</option>
+                	<select id="assignId.userId" name="assignId.userId" title="在这里指派" class="l-text">
+                <option value="0">未指派</option>
 					<c:forEach var="u" items="${assignList }">
 							
 							<option <c:if test="${chance.assignId.userId==u.userId }">selected="selected"</c:if> value="${u.userId }">${u.trueName }</option>
@@ -175,7 +181,11 @@ $().ready(function(){
 				$("#form1").attr("action","../chance/doChanceAssign");
 				
 			}
-		
+			
+			//给文本框加样式
+		$("input[type=text]").addClass("l-text");
+			$("#title").css({width:"340px"});
+			$("#description").css({width:"340px"});
 			/* var result=$("#result").val();
 			if(result=="success"){
 				alert("修改成功！");

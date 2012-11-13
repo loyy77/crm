@@ -110,7 +110,7 @@ public class PlanDaoImpl implements PlanDao {
 								Plan p = new Plan();
 								p.setId(rs.getInt("id"));
 								p.setChanceId(rs.getInt("chanceId"));
-								p.setPlanDate(rs.getDate("planDate"));
+								p.setPlanDate(rs.getString("planDate"));
 								p.setPlanResult(rs.getString("planResult"));
 								p.setPlanTodo(rs.getString("planTodo"));
 
@@ -152,7 +152,7 @@ public class PlanDaoImpl implements PlanDao {
 						Plan p = new Plan();
 						p.setId(rs.getInt("id"));
 						p.setChanceId(rs.getInt("chanceId"));
-						p.setPlanDate(rs.getDate("planDate"));
+						p.setPlanDate(rs.getString("planDate"));
 						p.setPlanResult(rs.getString("planResult"));
 						p.setPlanTodo(rs.getString("planTodo"));
 

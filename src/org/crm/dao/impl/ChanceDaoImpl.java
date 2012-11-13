@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class ChanceDaoImpl implements ChanceDao {
 
-	private int REMOVED = 0;
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	@Autowired
@@ -39,7 +38,7 @@ public class ChanceDaoImpl implements ChanceDao {
 				.getLinkMan(), chance.getLinkPhone(), chance.getDescription(),
 				null == chance.getCreateId() ? null : chance.getCreateId()
 						.getUserId(), chance.getCreateDate(), null, chance
-						.getAssignDate(), chance.getState());
+						.getAssignDate(), Constant.CHANCE_UNASSIGN);
 		if (rst == 1)
 			return true;
 		return false;
@@ -67,12 +66,13 @@ public class ChanceDaoImpl implements ChanceDao {
 	public List<Chance> list(int page, int pageSize) {
 		int start = (page - 1) * pageSize;
 		int end = pageSize;
-		String sql = "select * from chance  where state !=? limit ?,?";
+		String sql = "select * from chance  where state !=? and state !=? limit ?,?";
 
 		// String sql="call crm.proc_pager(?,?)";
 		// jdbcTemplate.call(, declaredParameters)
-		return this.jdbcTemplate.query(sql, new Object[] {
-				Constant.CHANCE_UNASSIGN, start, end },
+		return this.jdbcTemplate.query(sql,
+				new Object[] { Constant.CHANCE_REMOVED,
+						Constant.CHANCE_UNASSIGN, start, end },
 				new RowMapper<Chance>() {
 
 					@Override
@@ -108,7 +108,7 @@ public class ChanceDaoImpl implements ChanceDao {
 	@Override
 	public boolean del(int id) {
 		String sql = "update chance  set state = ? where id=?";
-		int rst = this.jdbcTemplate.update(sql, REMOVED, id);
+		int rst = this.jdbcTemplate.update(sql, Constant.CHANCE_REMOVED, id);
 		if (rst == 1) {
 			return true;
 
@@ -117,15 +117,16 @@ public class ChanceDaoImpl implements ChanceDao {
 	}
 
 	/*
-	 * (non-Javadoc)
+	 * (non-Javadoc) 只能更新未指派的销售机会
 	 * 
 	 * @see org.crm.dao.impl.ChanceDao#update(int, int)
 	 */
 	@Override
 	public boolean update(int chanceId, int assignId) {
-
-		String sql = "update chance set assginId=? where id=? and state != 1 ";
-		if (this.jdbcTemplate.update(sql, assignId, chanceId) == 1) {
+		//
+		String sql = "update chance set assginId=? where id=? and state != ? ";
+		if (this.jdbcTemplate.update(sql, assignId, chanceId,
+				Constant.CHANCE_UNASSIGN) == 1) {
 			return true;
 		}
 

@@ -36,6 +36,7 @@
   
 <script type="text/javascript">
 var chanceId;
+var planDate;
 function currentTime(){
 	var d = new Date(),str = '';
 	 str += d.getFullYear()+'-';
@@ -46,6 +47,8 @@ function currentTime(){
 	//str+= d.getSeconds(); 
 	return str;
 	}
+	
+	
 
 
 $().ready(function(){
@@ -73,7 +76,7 @@ $().ready(function(){
 		       // alert(JSON.stringify(row));
 		    }
 		
-		 $("#planDate").ligerDateEditor({ labelWidth: 80, labelAlign: 'right', initValue: currentTime() });
+		planDate= $("#planDate").ligerDateEditor({ labelWidth: 80, labelAlign: 'right', initValue: currentTime() });
 
 		 
 	      	
@@ -132,7 +135,7 @@ $().ready(function(){
         		//alert("修改成功！");
         		//$.ligerDialog.success('修改成功');
         		 $.ligerDialog.tip({ title: '提示信息', content: '修改成功！' });
-
+	
         		});
         	
         	
@@ -147,19 +150,58 @@ $().ready(function(){
 		 
 		     
 }
-//删除信息
-	  function delrow(rowid,planId){
-		if(confirm('确定删除？')){
-		  
-			$.post("../plan/del",{'id':planId},function(){
-				$.ligerDialog.tip({title:'提示信息',content:'删除成功'});				
-				manager.deleteRow(rowid);
-		});
+		//删除信息
+	  	function delrow(rowid,planId){
+	  /* 		$.ligerDialog.confirm('提示内容', function (yes)
+                    {
+                        alert(yes);
+                    }); */
+
+	  		 $.ligerDialog.confirm("确定删除？",function(yes){
+	  			$.post("../plan/del",{'id':planId},function(){
+					$.ligerDialog.tip({title:'提示信息',content:'删除成功'});				
+					manager.deleteRow(rowid);
+				}); 
+				 
+	  			
+	  		 });	
+		}
 	
-		  
-		  }}
 	  
-	  
+	  //添加行
+		function addNewRow(chanceId)
+        {
+		
+			var planDate=$("#planDate").val();
+			var planTodo=$("#planTodo").val();
+		
+			
+			$.post("../plan/add",{'planDate':planDate,'planTodo':planTodo,'chanceId':chanceId},function(data){
+				if(data=="success"){	
+					$.ligerDialog.tip({title:"操作提示",content:'添加成功！'});
+					//alert("add.success");
+		           var manager = $("#maingrid").ligerGetGridManager();
+					var row = manager.getSelectedRow();
+		            //参数1:rowdata(非必填)
+		            //参数2:插入的位置 Row Data 
+		            //参数3:之前或者之后(非必填)
+		            manager.addRow({ 
+		                planDate: planDate,
+		                planTodo: planTodo,
+		               //	planId:row.id
+		            }, row);
+		          
+		          
+		            manager.loadData();
+		         //  manager.loadServerData();
+		            alert(data);
+					}else{
+					alert("失败");
+				}
+			
+			});
+			//, document.getElementById("chkbefore").checked
+        }
 	
 </script>
 </head>
@@ -239,20 +281,20 @@ $().ready(function(){
        	
        	<div id="maingrid" style="margin-top:20px"></div> 
        	<!-- 添加新的计划 -->
-       	<table cellpadding="10" width="800px" >
+       	<table cellpadding="10" width="800px" border="0" >
        		
-       		 <tr><td colspan=4><hr class="grouphr2"/></td></tr>
+       		 <tr><td colspan=5><hr class="grouphr2"/></td></tr>
       
        	<tr>
-       <td>日期</td>
+       <td>*日期</td>
        	<td width="200px">
-       		<input type="text" class="l-text" id="planDate" name="planDate" ></input>*</td>
-       	<td width="60px">计划项：</td>
+       		<input type="text" class="l-text" id="planDate" name="planDate" class="required"></input></td>
+       	<td width="60px">*计划项：</td>
        	<td>      
-       	 	<input type="text" class="l-text" style="width:220px" id="planTodo" name="palnTodo" size=30></input>*</td>
+       	 	<input type="text" class="l-text" style="width:290px" id="planTodo" name="palnTodo"  class="required"></input><td><input type="button" value="保存" onclick="javascript:addNewRow(${chance.id})"  id="btnAddRow" class="l-button" style="width:80px;height:28px;"/></td></td>
        	</tr>
        	
-       	<tr ><td colspan=4 align="right" style="line-height: 23px;padding-top: 20px"><input type="button" value="保存" class="l-button" style="width:80px;height:30px;"/></td></tr>
+       
        	</table>
 
        

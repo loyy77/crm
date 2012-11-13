@@ -107,6 +107,7 @@ public class ChanceController {
 	public String doChanceDel(int chanceId, Model model) {
 
 		if (this.chanceBiz.del(chanceId)) {
+			log.debug("删除销售机会，ID：" + chanceId);
 			model.addAttribute("result", "success");
 			return this.toList(model);
 		}

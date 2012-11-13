@@ -1,15 +1,14 @@
 package org.crm.entity;
 
-import java.util.Date;
 
 public class Plan {
 	private int id;
 	private int chanceId;
-	private Date planDate;
+	private String planDate;
 	private String planTodo;
 	private String planResult;
 
-	public Plan(int id, int chanceId, Date planDate, String planTodo,
+	public Plan(int id, int chanceId, String planDate, String planTodo,
 			String planResult) {
 		super();
 		this.id = id;
@@ -47,11 +46,11 @@ public class Plan {
 		this.chanceId = chanceId;
 	}
 
-	public Date getPlanDate() {
+	public String getPlanDate() {
 		return planDate;
 	}
 
-	public void setPlanDate(Date planDate) {
+	public void setPlanDate(String planDate) {
 		this.planDate = planDate;
 	}
 

@@ -108,7 +108,9 @@ public class PlanController {
 	@RequestMapping(value = "/plan/add")
 	public @ResponseBody
 	String doAddPlan(Plan plan) {
+		log.debug(plan);
 		String msg = "fail";
+
 		if (planBiz.add(plan)) {
 			msg = "success";
 			log.debug("Ìí¼Ó³É¹¦");

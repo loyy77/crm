@@ -26,6 +26,7 @@ public class UsersInterceptor implements HandlerInterceptor {
 		HttpSession session = req.getSession();
 		Users user = (Users) session.getAttribute(Constant.CURRENT_USER);
 		if (null == user) {
+
 			modelAndView.setViewName("redirect:/login");
 		}
 	}
