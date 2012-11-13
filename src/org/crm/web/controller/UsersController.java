@@ -15,23 +15,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@RequestMapping("/login")
-@SessionAttributes("user")
+
+@SessionAttributes(Constant.CURRENT_USER)
 public class UsersController {
 	Logger log = Logger.getLogger(UsersController.class);
 
 	@Autowired
 	private UsersBiz usersBiz;
 
-	@ModelAttribute("user")
-	public Users createUsers() {
 
-		return new Users();
-	}
-
-	@RequestMapping(method = RequestMethod.GET)
-	public void doGet() {
-
+	
+	@RequestMapping(value="/user/toLogin")
+	public String toLogin(){
+		return "login";
 	}
 
 	/**
@@ -42,8 +38,8 @@ public class UsersController {
 	 * @return
 	 */
 	// @RequestMapping("/login")
-	@RequestMapping(method = RequestMethod.POST)
-	public String proccessSubmit(Users user, BindingResult result, Model model) {
+	@RequestMapping(value="/user/login")
+	public String proccessSubmit( Users user, BindingResult result, Model model) {
 		log.debug("ÓÃ»§µÇÂ¼");
 
 		Users curruser = usersBiz.login(user.getLoginName(),

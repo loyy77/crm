@@ -2,6 +2,8 @@ package org.crm.web.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.crm.biz.ChanceBiz;
 import org.crm.biz.UsersBiz;
@@ -20,6 +22,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.tracing.dtrace.Attributes;
 
 @Controller
 @SessionAttributes("user")
@@ -143,18 +146,27 @@ public class ChanceController {
 	}
 
 	@RequestMapping("/chance/doChanceAssign")
-	public String doChanceAssign(Users user, Chance chance, Model model) {
+	public String doChanceAssign(HttpSession session, Users user,
+			String chanceId, Chance chance, Model model) {
 
 		log.debug("开始执行指派销售人员操作");
+		user = (Users) session.getAttribute(Constant.CURRENT_USER);
+		chance.setId(Integer.valueOf(chanceId));
 		if (user.getRoleId() == Constant.ROLE_ADMIN
 				|| user.getRoleId() == Constant.ROLE_SALES_SUPERVISOR) {
 			chance.setAssignDate(new Utils().getNowDate());
 			if (chanceBiz.assign(chance)) {
 
+				log.debug("指派成功");
 				return this.toList(model);
+			} else {
+				log.debug("指派失败");
 			}
+		} else {
+			log.debug("用户不是管理员或销售主管，不能进行此项操作." + user.getRoleId());
 		}
-		return null;
+
+		return this.toList(model);
 	}
 
 	/**

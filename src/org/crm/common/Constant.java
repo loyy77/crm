@@ -38,7 +38,7 @@ public interface Constant {
 	/**
 	 * 当前登录用户的标识 <br/> {@value}
 	 */
-	public static String CURRENT_USER = "user";
+	public static String CURRENT_USER = "curruser";
 	/**
 	 * 销售机会状态，未指派
 	 * 
@@ -57,5 +57,7 @@ public interface Constant {
 	 * @category 销售机会 <br/> {@value}
 	 */
 	public static final int CHANCE_REMOVED = 0;
+	
+	public static final String USERS_SESSION_USER="user";
 
 }

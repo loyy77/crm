@@ -2,30 +2,21 @@
     pageEncoding="gbk"%>
 <%@ taglib prefix="form"  uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head><title>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+<base   href="<%=basePath %>"><title>
 </title>
-    <link href="/crm/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" /> 
-   <!--  <link href="/crm/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />  -->
-    <script src="/crm/js/jquery-1.3.2.min.js" type="text/javascript"></script>
+    <link href="resources/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" /> 
+   <!--  <link href="resources/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />  -->
+    <script src="resources/jquery/jquery-1.3.2.min.js" type="text/javascript"></script>
     
-  <script src="/crm/ligerUI/js/ligerui.min.js" type="text/javascript"></script>
- <!--    <script src="/crm/ligerUI/js/core/base.js" type="text/javascript"></script>
-    <script src="/crm/ligerUI/js/plugins/ligerForm.js" type="text/javascript"></script>
-    <script src="/crm/ligerUI/js/plugins/ligerDateEditor.js" type="text/javascript"></script>
-    <script src="/crm/ligerUI/js/plugins/ligerComboBox.js" type="text/javascript"></script>
-    <script src="/crm/ligerUI/js/plugins/ligerCheckBox.js" type="text/javascript"></script>
-    <script src="/crm/ligerUI/js/plugins/ligerButton.js" type="text/javascript"></script>
-    <script src="/crm/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
-    <script src="/crm/ligerUI/js/plugins/ligerRadio.js" type="text/javascript"></script>
-    <script src="/crm/ligerUI/js/plugins/ligerSpinner.js" type="text/javascript"></script>
-    <script src="/crm/ligerUI/js/plugins/ligerTextBox.js" type="text/javascript"></script> 
-    <script src="/crm/ligerUI/js/plugins/ligerTip.js" type="text/javascript"></script>
-    <script src="/crm/resources/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
-    <script src="/crm/resources/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
-    <script src="/crm/resources/jquery-validation/messages_cn.js" type="text/javascript"></script>
- -->
+  <script src="resources/ligerUI/js/ligerui.min.js" type="text/javascript"></script>
+
     <style type="text/css">
     	.grouphr{height:1px;border:none;border-top:1px solid #B0E0E6;}
     	.grouphr2{height:1px;border:none;border-top:1px dashed #B0E0E6;padding:5px;}
@@ -131,7 +122,7 @@ $().ready(function(){
         			
         		return};
         	
-        	$.post("../plan/doUpdatePlan",{'id':planId,'planTodo':encodeURI(planTodo)},function(){
+        	$.post("plan/doUpdatePlan",{'id':planId,'planTodo':encodeURI(planTodo)},function(){
         		//alert("修改成功！");
         		//$.ligerDialog.success('修改成功');
         		 $.ligerDialog.tip({ title: '提示信息', content: '修改成功！' });
@@ -141,7 +132,7 @@ $().ready(function(){
         	
         },
         dataAction: 'server',
-        url:"../plan/planList?chanceId="+chanceId,
+        url:"plan/planList?chanceId="+chanceId,
         width: '99%',
 		usePager:false
 		});   
@@ -158,7 +149,7 @@ $().ready(function(){
                     }); */
 
 	  		 $.ligerDialog.confirm("确定删除？",function(yes){
-	  			$.post("../plan/del",{'id':planId},function(){
+	  			$.post("plan/del",{'id':planId},function(){
 					$.ligerDialog.tip({title:'提示信息',content:'删除成功'});				
 					manager.deleteRow(rowid);
 				}); 
@@ -176,7 +167,7 @@ $().ready(function(){
 			var planTodo=$("#planTodo").val();
 		
 			
-			$.post("../plan/add",{'planDate':planDate,'planTodo':planTodo,'chanceId':chanceId},function(data){
+			$.post("plan/add",{'planDate':planDate,'planTodo':planTodo,'chanceId':chanceId},function(data){
 				if(data=="success"){	
 					$.ligerDialog.tip({title:"操作提示",content:'添加成功！'});
 					//alert("add.success");
@@ -194,7 +185,7 @@ $().ready(function(){
 		          
 		            manager.loadData();
 		         //  manager.loadServerData();
-		            alert(data);
+		           // alert(data);
 					}else{
 					alert("失败");
 				}
@@ -214,7 +205,7 @@ $().ready(function(){
 </div>
 
 	
-		<img alt="分组图标" src="/crm/ligerUI/skins/icons/communication.gif"/>&nbsp;<b>销售信息</b>
+		<img alt="分组图标" src="resources/ligerUI/skins/icons/communication.gif"/>&nbsp;<b>销售信息</b>
 		<hr class="grouphr"/>
         <table cellpadding="0" cellspacing="10" class="l-table-edit" border=0 >
             <tr >
@@ -276,7 +267,7 @@ $().ready(function(){
                 <td align="left">${chance.assignDate }</td>
             </tr>
         </table>
-        <img alt="分组图标" src="/crm/ligerUI/skins/icons/communication.gif"/>&nbsp;<b>开发计划</b>
+        <img alt="分组图标" src="resources/ligerUI/skins/icons/communication.gif"/>&nbsp;<b>开发计划</b>
        	<hr class="grouphr"/>
        	
        	<div id="maingrid" style="margin-top:20px"></div> 

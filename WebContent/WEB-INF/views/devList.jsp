@@ -2,24 +2,29 @@
     pageEncoding="gbk"%>
     
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+<base   href="<%=basePath %>">
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" >
     <title></title>
-    <link href="<c:url value="/ligerUI/skins/Aqua/css/ligerui-all.css"/>" rel="stylesheet" type="text/css" />
-    <link href="<c:url value="/ligerUI/skins/ligerui-icons.css"/>" rel="stylesheet" type="text/css" />
-    <script src="<c:url value="/js/jquery-1.3.2.min.js"/>" type="text/javascript"></script>
+    <link href="<c:url value="/resources/ligerUI/skins/Aqua/css/ligerui-all.css"/>" rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/resources/ligerUI/skins/ligerui-icons.css"/>" rel="stylesheet" type="text/css" />
+    <script src="<c:url value="/resources/jquery/jquery-1.3.2.min.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/resources/json2.js"/>" type="text/javascript"></script>
-    <script src="<c:url value="/ligerUI/js/core/base.js"/>" type="text/javascript"></script>
-    <script src="<c:url value="/ligerUI/js/plugins/ligerDialog.js"/>" type="text/javascript"></script>
-    <script src="<c:url value="/ligerUI/js/plugins/ligerTextBox.js"/>" type="text/javascript"></script>
-    <script src="<c:url value="/ligerUI/js/plugins/ligerCheckBox.js"/>" type="text/javascript"></script>
-    <script src="<c:url value="/ligerUI/js/plugins/ligerComboBox.js"/>" type="text/javascript"></script>
-    <script src="<c:url value="/ligerUI/js/plugins/ligerGrid.js"/>"  type="text/javascript" charset="gbk></script>
-    <script src="<c:url value="/ligerUI/js/plugins/ligerDateEditor.js"/>" type="text/javascript"></script>
-    <script src="<c:url value="/ligerUI/js/plugins/ligerSpinner.js"/>" type="text/javascript"></script>
-    <script src="<c:url value="/ligerUI/js/plugins/ligerToolBar.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/resources/ligerUI/js/core/base.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/resources/ligerUI/js/plugins/ligerDialog.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/resources/ligerUI/js/plugins/ligerTextBox.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/resources/ligerUI/js/plugins/ligerCheckBox.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/resources/ligerUI/js/plugins/ligerComboBox.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/resources/ligerUI/js/plugins/ligerGrid.js"/>"  type="text/javascript" charset="gbk></script>
+    <script src="<c:url value="/resources/ligerUI/js/plugins/ligerDateEditor.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/resources/ligerUI/js/plugins/ligerSpinner.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/resources/ligerUI/js/plugins/ligerToolBar.js"/>" type="text/javascript"></script>
  
        
     <script type="text/javascript">
@@ -43,7 +48,7 @@
 				usePager:true,      
 				pageSizeOptions: [5, 10, 15, 20,30,50], 		
 				pageSize:10,		
-                url:"../chance/doDevList",
+                url:"chance/doDevList",
                 width: '99%'
             });   
         }
@@ -78,14 +83,14 @@
 		  if(item.id==1){//制定计划
 			 var chanceId= getSelected();
 		  if(!chanceId)return;
-			  window.location.href="../plan/toDevAdd?chanceId="+chanceId;
+			  window.location.href="plan/toDevAdd?chanceId="+chanceId;
 				// var m= $.ligerDialog.open({ height: 420,width:550,url: '../chance/toChanceAdd' });
       			//m.target="home";
       	  }else if(item.text=="修改"){
       		  
       		  var chanceId=getSelected();
       		  if(!chanceId)return;
-      		  	window.location.href="../chance/toChanceModify?chanceId="+chanceId;
+      		  	window.location.href="chance/toChanceModify?chanceId="+chanceId;
       	  }else if(item.text=="删除"){
       		  var userId=$("#userId").val();
       		  var assignId=getAssignId();
@@ -97,7 +102,7 @@
           		
           		$.ligerDialog.confirm("确定删除编号为:"+chanceId+"的记录吗？",function (r) {
           			if(r){
-          				window.location.href="../chance/doChanceDel?chanceId="+chanceId;
+          				window.location.href="chance/doChanceDel?chanceId="+chanceId;
           			}
           		});
       		  }else{
@@ -110,7 +115,7 @@
       		  if(flag){
       			  var chanceId=getSelected();
           		  if(!chanceId)return;
-          		  	window.location.href="../chance/toChanceAssign?chanceId="+chanceId;
+          		  	window.location.href="chance/toChanceAssign?chanceId="+chanceId;
       			  
       		  }
       		

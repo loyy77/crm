@@ -2,14 +2,19 @@
     pageEncoding="gbk"%>
 <%@ taglib prefix="form"  uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head><title>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+<base   href="<%=basePath %>"><title>
 </title>
-    <link href="/crm/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" /> 
-    <link href="/crm/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" /> 
-    <script src="/crm/js/jquery-1.3.2.min.js" type="text/javascript"></script>
-    <script src="/crm/ligerUI/js/ligerui.min.js" type="text/javascript"></script>
+    <link href="resources/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" /> 
+  <!--   <link href="resources/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />  -->
+    <script src="resources/jquery/jquery-1.3.2.min.js" type="text/javascript"></script>
+    <script src="resources/ligerUI/js/ligerui.min.js" type="text/javascript"></script>
 <!--      <script src="/crm/ligerUI/js/core/base.js" type="text/javascript"></script>  -->
   <!--   <script src="/crm/ligerUI/js/plugins/ligerForm.js" type="text/javascript"></script>
     <script src="/crm/ligerUI/js/plugins/ligerDateEditor.js" type="text/javascript"></script>
@@ -23,9 +28,9 @@
     <script src="/crm/ligerUI/js/plugins/ligerTip.js" type="text/javascript"></script>
 -->
 
-    <script src="/crm/resources/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
-    <script src="/crm/resources/jquery-validation/jquery.metadata.js" type="text/javascript"></script> 
-    <script src="/crm/resources/jquery-validation/messages_cn.js" type="text/javascript"></script>
+    <script src="resources/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
+    <script src="resources/jquery-validation/jquery.metadata.js" type="text/javascript"></script> 
+    <script src="resources/jquery-validation/messages_cn.js" type="text/javascript"></script>
 
     <style type="text/css">
         .l-table-edit {}
@@ -63,6 +68,7 @@ $().ready(function(){
 	
 	});
 	
+	
 	//定时刷新指派日期
 	
 	
@@ -86,7 +92,7 @@ $().ready(function(){
 
 <div id="tt"></div>
 <input id="op" type="hidden" value="${op}"/>
-    <form:form name="form1" id="form1" method="post" action="/crm/chance/doChance" modelAttribute="chance">
+    <form:form name="form1" id="form1" method="post" action="chance/doChance" modelAttribute="chance">
 <div>
 </div>
         <table cellpadding="0" cellspacing="0" class="l-table-edit" border=0 >
@@ -159,7 +165,7 @@ $().ready(function(){
     <div style="display:none">
     <!--  数据统计代码 --></div>
     <input type="hidden" id="result" name="${result }"/>
-    
+    <input type="hidden" id="chanceId" value="${chance.id }"/>
 </body>
 
 
@@ -171,14 +177,14 @@ $().ready(function(){
 			
 			if(op=="update"){
 				$("#Button1").val("保存修改");
-				$("#form1").attr("action","../chance/doChanceModify");
+				$("#form1").attr("action","chance/doChanceModify");
 			}else if(op=='assign'){
 				
 				$("input[type='text']").attr("readonly","true"); 
 				$("input[type='text']").attr("disabled","true");
 				$("textarea").attr("disabled","true");
 				$("#Button1").val("保存指派");
-				$("#form1").attr("action","../chance/doChanceAssign");
+				$("#form1").attr("action","chance/doChanceAssign?chanceId="+$("#chanceId").val());
 				
 			}
 			

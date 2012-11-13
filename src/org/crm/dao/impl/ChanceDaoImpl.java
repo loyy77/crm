@@ -54,7 +54,7 @@ public class ChanceDaoImpl implements ChanceDao {
 		String sql = "select id,customerName,title,linkMan,linkPhone,createDate from chance where state !=?";
 
 		return jdbcTemplate.query(sql,
-				new Object[] { Constant.CHANCE_UNASSIGN },
+				new Object[] { Constant.CHANCE_REMOVED},
 				new ChanceMapperSimple());
 	}
 
@@ -72,7 +72,7 @@ public class ChanceDaoImpl implements ChanceDao {
 		// jdbcTemplate.call(, declaredParameters)
 		return this.jdbcTemplate.query(sql,
 				new Object[] { Constant.CHANCE_REMOVED,
-						Constant.CHANCE_UNASSIGN, start, end },
+						Constant.CHANCE_REMOVED, start, end },
 				new RowMapper<Chance>() {
 
 					@Override

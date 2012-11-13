@@ -3,10 +3,14 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page language="java" contentType="text/html; charset=gbk"
     pageEncoding="GBK"%>
-
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
 <HEAD>
+<base   href="<%=basePath %>">
 <TITLE>login_</TITLE>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=GBK">
 <script src="resources/jquery/jquery-1.3.2.min.js" type="text/javascript"></script>
@@ -16,11 +20,11 @@
         *{ padding:0; margin:0;}
         body{ text-align:center; background:#4974A4;}
         #login{ width:740px; margin:0 auto; font-size:12px;}
-        #loginlogo{ width:700px; height:100px; overflow:hidden; background:url('images/login/logo.jpg') no-repeat; margin-top:50px;   }
+        #loginlogo{ width:700px; height:100px; overflow:hidden; background:url('/images/login/logo.jpg') no-repeat; margin-top:50px;   }
         #loginpanel{ width:729px; position:relative;height:300px;}
-        .panel-h{ width:729px; height:20px; background:url('images/login/panel-h.gif') no-repeat; position:absolute; top:0px; left:0px; z-index:3;}
-        .panel-f{ width:729px; height:13px; background:url('images/login/panel-f.gif') no-repeat; position:absolute; bottom:0px; left:0px; z-index:3;}
-        .panel-c{ z-index:2;background:url('images/login/panel-c.gif') repeat-y;width:729px; height:300px;}
+        .panel-h{ width:729px; height:20px; background:url('resources/images/login/panel-h.gif') no-repeat; position:absolute; top:0px; left:0px; z-index:3;}
+        .panel-f{ width:729px; height:13px; background:url('resources/images/login/panel-f.gif') no-repeat; position:absolute; bottom:0px; left:0px; z-index:3;}
+        .panel-c{ z-index:2;background:url('resources/images/login/panel-c.gif') repeat-y;width:729px; height:300px;}
         .panel-c-l{ position:absolute; left:60px; top:40px;}
         .panel-c-r{ position:absolute; right:20px; top:50px; width:222px; line-height:200%; text-align:left;}
         .panel-c-l h3{ color:#556A85; margin-bottom:10px;}
@@ -29,7 +33,7 @@
         
         .login-text{ height:24px; left:24px; border:1px solid #e9e9e9; background:#f9f9f9;}
         .login-text-focus{ border:1px solid #E6BF73;}
-        .login-btn{margin-left:50px;width:114px; height:29px; color:#E9FFFF; line-height:29px; background:url('images/login/login-btn.gif') no-repeat; border:none; overflow:hidden; cursor:pointer;}
+        .login-btn{margin-left:50px;width:114px; height:29px; color:#E9FFFF; line-height:29px; background:url('resources/images/login/login-btn.gif') no-repeat; border:none; overflow:hidden; cursor:pointer;}
         #txtUsername,#txtPassword{ width:191px;} 
         #logincopyright{ text-align:center; color:White; margin-top:50px;}
     	.div-msg{color:red;text-align:left;}
@@ -39,7 +43,7 @@
 <BODY BGCOLOR=#FFFFFF LEFTMARGIN=0 TOPMARGIN=0 MARGINWIDTH=0 MARGINHEIGHT=0 style="text-align:center;padding-top:20px;">
 
 
-     <form id="loginf" method="POST" action="login" >
+     <form id="loginf" method="POST" action="user/login" >
   <div id="login">
         <div id="loginlogo"></div>
         <div id="loginpanel">
