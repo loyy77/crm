@@ -15,23 +15,23 @@ public interface ChanceDao {
 	public abstract boolean add(Chance chance);
 
 	/**
-	 * 鎵�湁鏈轰細鐨勫垪琛� *
+	 * 鎵�湁鏈轰細鐨勫垪琛�
 	 * 
 	 * @return
 	 */
 	public abstract List<Chance> list();
-	
-	public abstract List<Chance> list(int page,int pageSize);
+
+	public abstract List<Chance> list(int page, int pageSize);
 
 	/**
-	 * 鍒犻櫎涓�釜鏈轰細锛堜笉鏄洿鎺ユ墽琛岀墿鐞嗗垹闄わ紝鍙槸鏀逛釜鏍囪锛� * @param id
+	 * 鍒犻櫎涓�釜鏈轰細锛堜笉鏄洿鎺ユ墽琛岀墿鐞锛� * @param id
 	 * 
 	 * @return
 	 */
 	public abstract boolean del(int id);
 
 	/**
-	 * 鎸囨淳涓�釜鏈轰細缁欒惀閿�汉鍛� * @param chance
+	 * 鎸囨淳涓�釜鏈轰細缁欒惀閿�汉鍛�* @param chance
 	 * 
 	 * @return
 	 */
@@ -44,17 +44,18 @@ public interface ChanceDao {
 	 * @return
 	 */
 	public abstract Chance get(int id);
-	
-	
+
 	public abstract boolean update(Chance chance);
-	
+
 	/**
-	 * 鑾峰緱鎬昏褰曟暟
+	 * 鑾峰緱鎬昏褰� *
 	 * 
 	 * @return
 	 */
 	public abstract int getTotalCount();
 
 	public abstract boolean assign(Chance chance);
+
+	public abstract boolean updateState(int chanceId, int chanceState);
 
 }

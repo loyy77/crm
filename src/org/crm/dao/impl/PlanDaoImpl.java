@@ -86,6 +86,20 @@ public class PlanDaoImpl implements PlanDao {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param 计划结果
+	 * @param 计划的编号
+	 * @return
+	 */
+	public boolean update(String planResult, int id) {
+		String sql = "update plan set planResult=? where id=?";
+		if (jdbcTemplate.update(sql, new Object[] { planResult, id }) == 1) {
+			return true;
+		}
+		return false;
+	}
+
 	/*
 	 * 通过编号获得一个开发计划对象 (non-Javadoc)
 	 * 

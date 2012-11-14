@@ -27,6 +27,10 @@ public class PlanBiz {
 		return planDao.update(plan);
 	}
 
+	public boolean update(String planResult, int id) {
+		return planDao.update(planResult, id);
+	}
+
 	public boolean delete(int id) {
 		return planDao.del(id);
 	}
@@ -34,4 +38,5 @@ public class PlanBiz {
 	public boolean add(Plan plan) {
 		return planDao.add(plan);
 	}
+
 }

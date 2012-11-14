@@ -59,5 +59,13 @@ public interface Constant {
 	 * @category 销售机会 <br/> {@value}
 	 */
 	public static final int CHANCE_ASSIGN = 2;
+	/**
+	 * 销售机会状态，开发成功
+	 */
+	public static final int CHANCE_DEV_SUCCESS = 3;
+	/**
+	 * 销售机会状态，开发失败
+	 */
+	public static final int CHANCE_DEV_Failure = 4;
 
 }

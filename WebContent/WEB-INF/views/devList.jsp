@@ -90,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		  
       		  var chanceId=getSelected();
       		  if(!chanceId)return;
-      		  	window.location.href="chance/toChanceModify?chanceId="+chanceId;
+      		  	window.location.href="plan/toDevPlan?chanceId="+chanceId;
       	  }else if(item.text=="删除"){
       		  var userId=$("#userId").val();
       		  var assignId=getAssignId();
@@ -145,7 +145,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 </head>
 <body  style="padding:0px">  
-<input type="hidden" id="result" value="${result}" />
+<input type="hidden" id="op" value="${op}" />
  <div class="l-clear"></div>
  <!-- 工具条 ，该工具条包含 增加、修改、删除  -->
   <div id="toptoolbar" style="width:99%"></div>  

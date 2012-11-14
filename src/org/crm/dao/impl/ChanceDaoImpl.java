@@ -54,7 +54,7 @@ public class ChanceDaoImpl implements ChanceDao {
 		String sql = "select id,customerName,title,linkMan,linkPhone,createDate from chance where state !=?";
 
 		return jdbcTemplate.query(sql,
-				new Object[] { Constant.CHANCE_REMOVED},
+				new Object[] { Constant.CHANCE_REMOVED },
 				new ChanceMapperSimple());
 	}
 
@@ -70,9 +70,8 @@ public class ChanceDaoImpl implements ChanceDao {
 
 		// String sql="call crm.proc_pager(?,?)";
 		// jdbcTemplate.call(, declaredParameters)
-		return this.jdbcTemplate.query(sql,
-				new Object[] { Constant.CHANCE_REMOVED,
-						Constant.CHANCE_REMOVED, start, end },
+		return this.jdbcTemplate.query(sql, new Object[] {
+				Constant.CHANCE_REMOVED, Constant.CHANCE_REMOVED, start, end },
 				new RowMapper<Chance>() {
 
 					@Override
@@ -131,6 +130,22 @@ public class ChanceDaoImpl implements ChanceDao {
 		}
 
 		return false;
+	}
+
+	/**
+	 * 只有状态为已指派的销售机会才可以改为状态为开发成功
+	 * 
+	 * @param chanceId
+	 * @return
+	 */
+	public boolean updateState(int chanceId, int chanceState) {
+		String sql = "update chance set state=? where id=? and state=?";
+		if ((this.jdbcTemplate.update(sql, new Object[] { chanceState,
+				chanceId, Constant.CHANCE_ASSIGN })) == 1) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/*

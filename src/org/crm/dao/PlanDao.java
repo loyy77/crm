@@ -29,6 +29,8 @@ public interface PlanDao {
 	 */
 	public abstract boolean update(Plan plan);
 
+	public abstract boolean update(String planResult, int id);
+
 	/*
 	 * 通过编号获得一个开发计划对象 (non-Javadoc)
 	 * 

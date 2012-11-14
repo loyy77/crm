@@ -54,6 +54,7 @@
 <script type="text/javascript">
 var chanceId;
 var planDate;
+var oldplanResult="";
 var g;
 function currentTime(){
 	var d = new Date(),str = '';
@@ -97,74 +98,75 @@ $().ready(function(){
 		planDate= $("#planDate").ligerDateEditor({ labelWidth: 80, labelAlign: 'right', initValue: currentTime() });
 
 		 
-	      	
+	      
 
 	});
 //表格（开发计划列表）
 
-// alert(chanceId);
   $(f_initGrid);
-	   var manager,planId,planTodo;
+
+	   var manager,planId,planTodo,planResult;
 	
 	  function f_initGrid()
-	  { 
+	  { 	
 		     g =  manager = $("#maingrid").ligerGrid({
         columns: [
-        { display: '主键', name: 'id', width: 30, type: 'int',frozen:false,hide:true},
-        { display: '日期', name: 'planDate',width:120
-        },
-        { display: '计划项', width: 500, name: 'planTodo',
-            editor: { type: 'text'},
-        },
-        {display:'计划结果',name:'planResult',editor:{type:'text'},hide:true},
-        { display: '操作', name:'caozuo',isSort: false, width: 100, render: function (rowdata, rowindex, value)
-            {
-           
-               return "<a href='javascript:delrow(" + rowindex + ","+rowdata.id+")'>删除</a> "; 
-          
-        
-        }
-
-        },
-        {
-        	display: '操作',name:'caozuo2', hide:true,isSort: false, width: 100, render: function (rowdata, rowindex, value)
-            {
-           
-               return "<a href='javascript:delrow(" + rowindex + ","+rowdata.id+")'>保存</a> "; 
-          
-        
-        }
-        }
+	        { display: '主键', name: 'id', width: 30, type: 'int',frozen:false,hide:true},
+	        { display: '日期', name: 'planDate',width:120
+	        },
+	        { display: '计划项', width: 500, name: 'planTodo',
+	            editor: { type: 'text'},
+	        },
+	      
+	        { display: '操作', name:'caozuo',isSort: false, width: 100, render: function (rowdata, rowindex, value)
+	            {
+	               return "<a href='javascript:delrow(" + rowindex + ","+rowdata.id+")'>删除</a> "; 
+	        	}
+	        }
         ],
        
         onSelectRow: function (rowdata, rowindex)
         {
-        	
-      
         	planId=rowdata.id;
         	oldplanTodo=rowdata.planTodo;
-        //	alert(rowdata.id);
-        
+        	oldplanResult=rowdata.planResult;
+        	if(oldplanResult==null){oldplanResult="";}
+  
           //  $("#txtrowindex").val(rowindex);
+        },onBeforeEdit:function(e,rowdata,rowindex){
+            var manager = $("#maingrid").ligerGetGridManager();
+			var row = manager.getSelectedRow();
+			if(row==null){
+				$.ligerDialog.warn("请先选择行，被选中的行是浅绿色的。");
+			}
+        	oldplanResult=row.planResult;
         },
-        enabledEdit: true, isScroll: false, rownumbers:false,onAfterEdit:function(rowdata,rowindex){
+        enabledEdit: true, isScroll: false, rownumbers:false,
+        onAfterEdit:function(rowdata,rowindex){
+        	//alert("编辑");
         	//获得grid控件的引用
         	var m=$("#maingrid").ligerGetGridManager();
         	var row = m.getSelectedRow();
         	planTodo=row.planTodo;
-        	//planTodo=m.getUpdated().planTodo;
-      
-        	//alert(planId+","+planTodo);
-        	if(oldplanTodo==planTodo){
-        			
-        		return};
+        	planResult=row.planResult;
+        	if(oldplanTodo!=planTodo){
+        	//		alert("oldplanTodo");
+        		$.post("plan/doUpdatePlan",{'id':planId,'planTodo':encodeURI(planTodo)},function(){
+            		 $.ligerDialog.tip({ title: '提示信息', content: '修改成功！' });
+           		 });
+        	}
         	
-        	$.post("plan/doUpdatePlan",{'id':planId,'planTodo':encodeURI(planTodo)},function(){
-        		//alert("修改成功！");
-        		//$.ligerDialog.success('修改成功');
-        		 $.ligerDialog.tip({ title: '提示信息', content: '修改成功！' });
-	
-        		});
+        	 if(oldplanResult==planResult){
+        		 $.ligerDialog.tip({title:'提示',content:'no change'});
+        	
+        		 $.post("plan/doUpdatePlan",{'id':planId,'planResult':encodeURI(planResult)},function(data){
+        			if(data=="fail"){$.ligerDialog.tip({title:'提示',content:'修改失败！'});}
+        			 $.ligerDialog.tip({title:'提示',content:'修改成功！'});
+        		 });
+        	 }
+        	 
+        	
+        	
         	
         	
         },
@@ -233,7 +235,7 @@ $().ready(function(){
 		//	g.toggleCol('caozuo', false);
 		//	g.toggleCol('caozuo2', true);
 	
-			
+			//重新渲染试图
 			var cols=[
 			          { display: '主键', name: 'id', width: 30, type: 'int',frozen:false,hide:true},
 			          { display: '日期', name: 'planDate',width:120 },
@@ -250,6 +252,8 @@ $().ready(function(){
 			g.reRender();
 			//关闭添加控件
 			$("#tb-add").hide();
+			
+			//设置机会状态
 
 		//  alert("第一步：关闭计划项的可编辑状态/r/n第二步：显示计划结果文本框并显示“保存”按钮")
 	  }
@@ -261,8 +265,9 @@ $().ready(function(){
 	<div id="tt"></div>
 	<input id="op" type="hidden" value="${op}" />
 	<!-- 执行计划的按钮 -->
-	
-	
+		<input type="button" value="执行计划" style="width: 100px; height: 20px;"
+			class="l-button" title="制定好计划后，点击执行计划" onclick="f_doPlan()" />
+
 	<form:form name="form1" id="form1" method="post" action="/crm/plan/add"
 		modelAttribute="plan">
 		<div></div>
@@ -322,38 +327,38 @@ $().ready(function(){
 				<td align="left">${chance.assignDate }</td>
 			</tr>
 		</table>
-		
-		
-		
+
+
+
 		<img alt="分组图标" src="resources/ligerUI/skins/icons/communication.gif" />&nbsp;<b>开发计划</b>
 		<hr class="grouphr" />
-<input  type="button" value="执行计划" style="width:120px;height:30px; " class="l-button" title="制定好计划后，点击执行计划" onclick="f_doPlan()"/> 
-	
+
+
 		<div id="maingrid" style="margin-top: 20px"></div>
 		<!-- 添加新计划的工具条-->
-		<div  id="tb-add">
-		<table cellpadding="10" width="800px" border="0">
+		<div id="tb-add">
+			<table cellpadding="10" width="800px" border="0">
 
-			<tr>
-				<td colspan=5><hr class="grouphr2" /></td>
-			</tr>
+				<tr>
+					<td colspan=5><hr class="grouphr2" /></td>
+				</tr>
 
-			<tr>
-				<td>*日期</td>
-				<td width="200px"><input type="text" class="l-text"
-					id="planDate" name="planDate" class="required"></input></td>
-				<td width="60px">*计划项：</td>
-				<td><input type="text" class="l-text" style="width: 290px"
-					id="planTodo" name="palnTodo" class="required"></input>
-				<td><input type="button" value="保存"
-					onclick="javascript:addNewRow(${chance.id})" id="btnAddRow"
-					class="l-button" style="width: 80px; height: 28px;" /></td>
-				</td>
-			</tr>
+				<tr>
+					<td>*日期</td>
+					<td width="200px"><input type="text" class="l-text"
+						id="planDate" name="planDate" class="required"></input></td>
+					<td width="60px">*计划项：</td>
+					<td><input type="text" class="l-text" style="width: 290px"
+						id="planTodo" name="palnTodo" class="required"></input>
+					<td><input type="button" value="保存"
+						onclick="javascript:addNewRow(${chance.id})" id="btnAddRow"
+						class="l-button" style="width: 80px; height: 28px;" /></td>
+					</td>
+				</tr>
 
 
-		</table>
-</div>
+			</table>
+		</div>
 
 		<br />
 
@@ -362,11 +367,23 @@ $().ready(function(){
 	<div style="display: none">
 		<!--  数据统计代码 -->
 	</div>
-	<input type="hidden" id="result" name="${result }" />
+	${op }
 
 </body>
 
 
 </html>
+
+<script type="text/javascript">
+$().ready(function(){
+	if($("#op").val()=="forward"){
+		
+		$("#tb-add").hide();
+			$(f_doPlan);
+		}
+});
+	
+	
+	</script>
 
 
