@@ -7,6 +7,11 @@ package org.crm.common;
  */
 public interface Constant {
 	/**
+	 * 当前登录用户的标识 <br/> {@value}
+	 */
+	public static String CURRENT_USER = "curruser";
+
+	/**
 	 * 管理员 <br/> {@value}
 	 * 
 	 * @author lishixi
@@ -35,10 +40,13 @@ public interface Constant {
 	 * @category 权限-角色
 	 */
 	public static final int ROLE_SUPER_ADMIN = 4;
+
 	/**
-	 * 当前登录用户的标识 <br/> {@value}
+	 * 销售机会状态，标记已删除
+	 * 
+	 * @category 销售机会 <br/> {@value}
 	 */
-	public static String CURRENT_USER = "curruser";
+	public static final int CHANCE_REMOVED = 0;
 	/**
 	 * 销售机会状态，未指派
 	 * 
@@ -51,13 +59,5 @@ public interface Constant {
 	 * @category 销售机会 <br/> {@value}
 	 */
 	public static final int CHANCE_ASSIGN = 2;
-	/**
-	 * 销售机会状态，标记已删除
-	 * 
-	 * @category 销售机会 <br/> {@value}
-	 */
-	public static final int CHANCE_REMOVED = 0;
-	
-	public static final String USERS_SESSION_USER="user";
 
 }

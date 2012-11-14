@@ -44,9 +44,8 @@ public class UsersInterceptor implements HandlerInterceptor {
 		log.debug(arg2);
 		if (null == user || user.getUserId() == 0) {
 			log.debug("没检测到用户状态，转向登录界面。。");
-
 			// req.getRequestDispatcher("/user/toLogin").forward(req, respon);
-			respon.sendRedirect("/crm/user/toLogin");
+			respon.sendRedirect(req.getContextPath() + "/user/toLogin");
 			return false;
 
 		} else {

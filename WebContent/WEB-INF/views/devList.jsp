@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  window.location.href="plan/toDevAdd?chanceId="+chanceId;
 				// var m= $.ligerDialog.open({ height: 420,width:550,url: '../chance/toChanceAdd' });
       			//m.target="home";
-      	  }else if(item.text=="修改"){
+      	  }else if(item.text=="执行计划"){
       		  
       		  var chanceId=getSelected();
       		  if(!chanceId)return;
@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		  var userId=$("#userId").val();
       		  var assignId=getAssignId();
       		  
-      		  //userId==2||userID==3
+      	
       		  if(userId==assignId){
       			var chanceId=getSelected();
           		//alert(chanceId);
