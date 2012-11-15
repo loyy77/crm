@@ -29,7 +29,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        
     <script type="text/javascript">
 
-   
+   $().ready(function(){
+   if($("#op").val()=="unassign"){
+   	$.ligerDialog.error("您操作的销售机会还没有指派销售人员，缺乏执行计划的条件。");
+   }
+   });
         $(f_initGrid);
         var manager, g;
         function f_initGrid()
@@ -81,33 +85,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var flag=true;
     		
 		  if(item.id==1){//制定计划
+			  
+			  
 			 var chanceId= getSelected();
 		  if(!chanceId)return;
 			  window.location.href="plan/toDevAdd?chanceId="+chanceId;
 				// var m= $.ligerDialog.open({ height: 420,width:550,url: '../chance/toChanceAdd' });
       			//m.target="home";
-      	  }else if(item.text=="执行计划"){
+      	  }else if(item.text=="执行计划"||item.id==2){
       		  
       		  var chanceId=getSelected();
       		  if(!chanceId)return;
       		  	window.location.href="plan/toDevPlan?chanceId="+chanceId;
-      	  }else if(item.text=="删除"){
+      	  }else if(item.id==3){ //开发成功
       		  var userId=$("#userId").val();
       		  var assignId=getAssignId();
       		  
-      	
-      		  if(userId==assignId){
+      			var bb=userId==assignId;
+      		
       			var chanceId=getSelected();
           		//alert(chanceId);
           		
-          		$.ligerDialog.confirm("确定删除编号为:"+chanceId+"的记录吗？",function (r) {
+          		$.ligerDialog.confirm("确定销售机会:"+chanceId+"为开发成功吗？",function (r) {
           			if(r){
-          				window.location.href="chance/doChanceDel?chanceId="+chanceId;
+          				//window.location.href="chance/doDevSuccess?chanceId="+chanceId;
+          				$.post("chance/doDevSuccess",{'chanceId':chanceId},function(data){
+          					if(data=="success"){
+          						$.ligerDialog.success("操作成功！");
+          						//重载数据
+          						var m=$("#maingrid").ligerGetGridManager();
+          						m.loadData();
+          					}else{
+          						$.ligerDialog.error("操作失败！");
+          					}
+          					
+          				});
           			}
           		});
-      		  }else{
-      			$.ligerDialog.alert('您不是该销售机会的创建者，不能执行删除操作。');
-      		  }
+      		 
       		  
       		
 
@@ -121,6 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		
       	  }
         }
+    	//工具条
         $(function ()
        {
             $("#toptoolbar").ligerToolBar({ items: [
@@ -128,18 +144,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 { line:true },
                 { id:2,text: '执行计划', click: itemclick },
                 { line:true },
-                { id:3,text: '开发成功', click: itemclick },
-                { line:true},
-                { id:4,text: '指派', click : itemclick}
+                { id:3,text: '开发成功', click: itemclick }//,
+              //  { line:true},
+             //   { id:4,text: '指派', click : itemclick}
            
             ]
             }); 
             
-            
-            var userId=$("#userId").val();
-    		  if(userId==2||userId==3){
-    			
-    		  };
+           
         });
 
 </script>

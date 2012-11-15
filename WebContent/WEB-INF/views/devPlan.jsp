@@ -71,8 +71,80 @@ function currentTime(){
 
 
 $().ready(function(){
+	//每个按钮响应的事件
+	  function itemclick(item)
+      {
+			var flag=true;
+  		
+		  if(item.id==1){//制定计划
+			  
+			  f_doPlan1();
+			/*  var chanceId= getSelected();
+		 	 if(!chanceId)return;
+			  window.location.href="plan/toDevAdd?chanceId="+chanceId; */
+				// var m= $.ligerDialog.open({ height: 420,width:550,url: '../chance/toChanceAdd' });
+    			//m.target="home";
+    	  }else if(item.text=="执行计划"||item.id==2){
+    		  f_doPlan();
+    		/*   var chanceId=getSelected();
+    		  if(!chanceId)return;
+    		  	window.location.href="plan/toDevPlan?chanceId="+chanceId; */
+    	  }else if(item.id==3){ //开发成功
+    		//  var userId=$("#userId").val();
+    		 // var assignId=getAssignId();
+    		  
+    		//	var bb=userId==assignId;
+    		
+    		//	var chanceId=getSelected();
+    			chanceId=$("#chanceId").val();
+        		  if(!chanceId)return;
+        		
+        		$.ligerDialog.confirm("确定销售机会:"+chanceId+"为开发成功吗？",function (r) {
+        			if(r){
+        				//window.location.href="chance/doDevSuccess?chanceId="+chanceId;
+        				$.post("chance/doDevSuccess",{'chanceId':chanceId},function(data){
+        					if(data=="success"){
+        						$.ligerDialog.success("操作成功！");
+        						//重载数据
+        						var m=$("#maingrid").ligerGetGridManager();
+        						m.loadData();
+        					}else{
+        						$.ligerDialog.error("操作失败！");
+        					}
+        					
+        				});
+        			}
+        		});
+    		 
+    		  
+    		
 
+    	  }else if(item.id==4){//退后
+    		  
+    		  history.back();
+    		  if(flag){
+    			  
+    			/*   var chanceId=getSelected();
+        		  if(!chanceId)return;
+        		  	window.location.href="chance/toChanceAssign?chanceId="+chanceId; */
+    			  
+    		  }
+    		
+    	  }
+      }
 	
+  	//工具条
+	 $("#toptoolbar").ligerToolBar({ items: [
+       { id:1,text: '制定计划', click: itemclick , icon:'add'},
+       { line:true },
+       { id:2,text: '执行计划', click: itemclick },
+       { line:true },
+       { id:3,text: '开发成功', click: itemclick },
+       { line:true},
+       { id:4,text: '返回列表', click : itemclick}
+  
+   ]
+   }); 
 	chanceId=$("#chanceId").val();
 		var planTodo=$("#planTodo");
 	//	planTodo.setDisabled();
@@ -133,13 +205,6 @@ $().ready(function(){
         	if(oldplanResult==null){oldplanResult="";}
   
           //  $("#txtrowindex").val(rowindex);
-        },onBeforeEdit:function(e,rowdata,rowindex){
-            var manager = $("#maingrid").ligerGetGridManager();
-			var row = manager.getSelectedRow();
-			if(row==null){
-				$.ligerDialog.warn("请先选择行，被选中的行是浅绿色的。");
-			}
-        	oldplanResult=row.planResult;
         },
         enabledEdit: true, isScroll: false, rownumbers:false,
         onAfterEdit:function(rowdata,rowindex){
@@ -147,22 +212,21 @@ $().ready(function(){
         	//获得grid控件的引用
         	var m=$("#maingrid").ligerGetGridManager();
         	var row = m.getSelectedRow();
+        	if(row==null){$.ligerDialog.warn("请先选择行，被选中的行是浅绿色的。");}
         	planTodo=row.planTodo;
         	planResult=row.planResult;
         	if(oldplanTodo!=planTodo){
-        	//		alert("oldplanTodo");
         		$.post("plan/doUpdatePlan",{'id':planId,'planTodo':encodeURI(planTodo)},function(){
             		 $.ligerDialog.tip({ title: '提示信息', content: '修改成功！' });
            		 });
         	}
-        	
-        	 if(oldplanResult==planResult){
-        		 $.ligerDialog.tip({title:'提示',content:'no change'});
+        	//当值发生改变才真正修改
+        	 if(oldplanResult!=planResult){
         	
         		 $.post("plan/doUpdatePlan",{'id':planId,'planResult':encodeURI(planResult)},function(data){
-        			if(data=="fail"){$.ligerDialog.tip({title:'提示',content:'修改失败！'});}
-        			 $.ligerDialog.tip({title:'提示',content:'修改成功！'});
-        		 });
+         			if(data=="fail"){$.ligerDialog.tip({title:'提示',content:'修改失败！'});}
+         			 $.ligerDialog.tip({title:'提示',content:'修改成功！'});
+         		 });
         	 }
         	 
         	
@@ -243,7 +307,7 @@ $().ready(function(){
 			          { display:'计划结果',name:'planResult',editor:{type:'text'}},
 			          { display: '操作', name:'caozuo',isSort: false, width: 100, render: function (rowdata, rowindex, value)
 			              {
-			                 return "<a href='javascript:delrow(" + rowindex + ","+rowdata.id+")'>保存</a> "; 
+			                 return "<a href='javascript:savePlanResult(" + rowindex + ","+rowdata.id+")'>保存</a> "; 
 			          	  }
 			          }
 			         ];
@@ -257,16 +321,46 @@ $().ready(function(){
 
 		//  alert("第一步：关闭计划项的可编辑状态/r/n第二步：显示计划结果文本框并显示“保存”按钮")
 	  }
-	
+	  //调整制定计划界面布局
+	  function f_doPlan1(){
+		//重新渲染试图
+			var cols=[
+			          { display: '主键', name: 'id', width: 30, type: 'int',frozen:false,hide:true},
+				        { display: '日期', name: 'planDate',width:120
+				        },
+				        { display: '计划项', width: 500, name: 'planTodo',
+				            editor: { type: 'text'},
+				        },
+				      
+				        { display: '操作', name:'caozuo',isSort: false, width: 100, render: function (rowdata, rowindex, value)
+				            {
+				               return "<a href='javascript:delrow(" + rowindex + ","+rowdata.id+")'>删除</a> "; 
+				        	}
+				        }
+			         ];
+			
+			g.set('columns',cols);
+			g.reRender();
+			//关闭添加控件
+			$("#tb-add").show();
+			
+	  }
+	  
+	  
+		function savePlanResult(rowindex,rowdata){
+			alert(rowindex+","+rowdata);
+		}
+		
+        
 </script>
 </head>
-<body style="padding: 10px">
-
-	<div id="tt"></div>
+<body style="padding: 0px">
 	<input id="op" type="hidden" value="${op}" />
+	 <!-- 工具条 ，该工具条包含 增加、修改、删除  -->
+  <div id="toptoolbar" style="width:99%"></div> 
 	<!-- 执行计划的按钮 -->
-		<input type="button" value="执行计划" style="width: 100px; height: 20px;"
-			class="l-button" title="制定好计划后，点击执行计划" onclick="f_doPlan()" />
+	<!-- 	<input type="button" value="执行计划" style="width: 100px; height: 20px;"
+			class="l-button" title="制定好计划后，点击执行计划" onclick="f_doPlan()" /> -->
 
 	<form:form name="form1" id="form1" method="post" action="/crm/plan/add"
 		modelAttribute="plan">
@@ -381,9 +475,7 @@ $().ready(function(){
 		$("#tb-add").hide();
 			$(f_doPlan);
 		}
-});
-	
-	
-	</script>
+});}
+</script>
 
 

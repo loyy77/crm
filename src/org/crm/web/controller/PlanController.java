@@ -10,6 +10,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.crm.biz.ChanceBiz;
 import org.crm.biz.PlanBiz;
+import org.crm.common.Constant;
+import org.crm.entity.Chance;
 import org.crm.entity.Plan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -141,7 +143,12 @@ public class PlanController {
 	 */
 	@RequestMapping("/plan/toDevPlan")
 	public String toDevPlan(String chanceId, Model model) {
-		model.addAttribute(chanceBiz.get(Integer.valueOf(chanceId)));
+		Chance c = chanceBiz.get(Integer.valueOf(chanceId));
+		if (c.getState() != Constant.CHANCE_ASSIGN) {
+			model.addAttribute("op", "unassign");
+			return "devList";
+		}
+		model.addAttribute(c);
 		model.addAttribute("op", "forward");
 		return "devPlan";
 	}

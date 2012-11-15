@@ -10,6 +10,7 @@ import org.crm.biz.UsersBiz;
 import org.crm.common.Constant;
 import org.crm.common.Utils;
 import org.crm.entity.Chance;
+import org.crm.entity.Linkman;
 import org.crm.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,6 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.tracing.dtrace.Attributes;
 
 @Controller
 @SessionAttributes("user")
@@ -249,6 +249,65 @@ public class ChanceController {
 	public @ResponseBody
 	String doDevList(Model model, String page, String pagesize) {
 		log.debug("开始获取销售机会列表..");
-		return this.proccessList(model, page, pagesize);
+		log.info("分页信息:" + page + "," + pagesize);
+		if (null == page) {
+			page = "1";
+		}
+		if (null == pagesize) {
+			pagesize = "5";
+		}
+		List<Chance> list = chanceBiz.list(Integer.valueOf(page),
+				Integer.valueOf(pagesize), Constant.CHANCE_UNASSIGN);
+		ObjectMapper map = new ObjectMapper();
+		String rst = "";
+		try {
+			rst = map.writeValueAsString(list);
+		} catch (JsonProcessingException e) {
+			log.error("List到JSON转换出错");
+			e.printStackTrace();
+		}
+		log.info(rst);
+		int totalCount = chanceBiz.getTotalCountWithoutUnassgin();
+		StringBuilder sb = new StringBuilder();
+		sb.append("{\"Rows\":");
+		sb.append(rst);
+		sb.append(",\"Total\":");
+		sb.append(totalCount + "}");
+		rst = sb.toString();
+		return rst;
+	}
+
+	/**
+	 * 开发成功
+	 * 
+	 * @param chanceId
+	 * @param linkmanName
+	 * @param linkmanTel
+	 * @param customerName
+	 * @return
+	 */
+	@RequestMapping("/chance/doDevSuccess")
+	public @ResponseBody
+	String devSuccess(String chanceId) {
+		// , String linkmanName, String linkmanTel, String customerName
+		log.debug(chanceId);
+
+		Chance chance = chanceBiz.get(Integer.valueOf(chanceId));
+		if (!chanceBiz.devSuccess(Integer.valueOf(chanceId),
+				new Linkman(chance.getLinkMan(), chance.getLinkPhone()),
+				chance.getCustomerName())) {
+			return "fail";
+		}
+		return "success";
+	}
+
+	/**
+	 * 开发失败
+	 */
+
+	public @ResponseBody
+	String devFail(String chanceId) {
+		return chanceBiz.devFailure(Integer.valueOf(chanceId)) ? "success"
+				: "fail";
 	}
 }

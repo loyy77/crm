@@ -63,15 +63,18 @@ public class ChanceDaoImpl implements ChanceDao {
 	 * 
 	 * */
 	@Override
-	public List<Chance> list(int page, int pageSize) {
+	public List<Chance> list(int page, int pageSize, int state) {
 		int start = (page - 1) * pageSize;
 		int end = pageSize;
+		int withOut = Constant.CHANCE_REMOVED; // 1 ,排除被删除和没有指派的销售任务
 		String sql = "select * from chance  where state !=? and state !=? limit ?,?";
-
+		if (state == Constant.CHANCE_UNASSIGN) {
+			withOut = 1;
+		}
 		// String sql="call crm.proc_pager(?,?)";
 		// jdbcTemplate.call(, declaredParameters)
 		return this.jdbcTemplate.query(sql, new Object[] {
-				Constant.CHANCE_REMOVED, Constant.CHANCE_REMOVED, start, end },
+				Constant.CHANCE_REMOVED, withOut, start, end },
 				new RowMapper<Chance>() {
 
 					@Override
@@ -97,6 +100,13 @@ public class ChanceDaoImpl implements ChanceDao {
 					}
 				});
 		// return null;
+	}
+
+	/**
+	 * 返回除被标记为删除的销售机会外所有的记录
+	 */
+	public List<Chance> list(int page, int pageSize) {
+		return this.list(page, pageSize, Constant.CHANCE_REMOVED);
 	}
 
 	/*
@@ -201,7 +211,12 @@ public class ChanceDaoImpl implements ChanceDao {
 
 	@Override
 	public int getTotalCount() {
-		String sql = "select count(*) from chance where state !=1";
+		String sql = "select count(*) from chance where state !=0";
+		return jdbcTemplate.queryForInt(sql);
+	}
+
+	public int getTotalCountWithoutUnassgin() {
+		String sql = "select count(*) from chance where state !=0 and state !=1";
 		return jdbcTemplate.queryForInt(sql);
 	}
 

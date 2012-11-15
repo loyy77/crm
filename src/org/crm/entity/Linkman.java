@@ -2,7 +2,7 @@ package org.crm.entity;
 
 public class Linkman {
 	private int id;
-	private int customerId;
+	private Customer customerId;
 	private String name;
 	private String sex;
 	private String position;
@@ -15,7 +15,13 @@ public class Linkman {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Linkman(int id, int customerId, String name, String sex,
+	public Linkman(String name, String tel) {
+		super();
+		this.name = name;
+		this.tel = tel;
+	}
+
+	public Linkman(int id, Customer customerId, String name, String sex,
 			String position, String tel, String mobile, String memo) {
 		super();
 		this.id = id;
@@ -36,11 +42,11 @@ public class Linkman {
 		this.id = id;
 	}
 
-	public int getCustomerId() {
+	public Customer getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(Customer customerId) {
 		this.customerId = customerId;
 	}
 

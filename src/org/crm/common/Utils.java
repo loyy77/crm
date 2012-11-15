@@ -6,6 +6,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Utils {
+	/**
+	 * 获得当前时间 格式为 yyyy-MM-dd HH:mm:ss
+	 * 
+	 * @return
+	 */
 	public String getNowDate() {
 
 		SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

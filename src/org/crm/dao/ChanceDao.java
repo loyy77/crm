@@ -23,6 +23,8 @@ public interface ChanceDao {
 
 	public abstract List<Chance> list(int page, int pageSize);
 
+	public abstract List<Chance> list(int page, int pageSize, int state);
+
 	/**
 	 * 鍒犻櫎涓�釜鏈轰細锛堜笉鏄洿鎺ユ墽琛岀墿鐞锛� * @param id
 	 * 
@@ -53,6 +55,8 @@ public interface ChanceDao {
 	 * @return
 	 */
 	public abstract int getTotalCount();
+
+	public abstract int getTotalCountWithoutUnassgin();
 
 	public abstract boolean assign(Chance chance);
 

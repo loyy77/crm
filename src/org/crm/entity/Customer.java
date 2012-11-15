@@ -29,6 +29,11 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Customer(String name) {
+		super();
+		this.name = name;
+	}
+
 	public Customer(int id, String name, String region, int managerId,
 			String managerName, int levelLabel, int satisfy, int credit,
 			String addr, String zip, String tel, String fax, String website,
