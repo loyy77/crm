@@ -119,7 +119,22 @@ $().ready(function(){
     		  
     		
 
-    	  }else if(item.id==4){//退后
+    	  }else if(item.id==4){
+    		  var chanceId=getSelected();
+    		  if(!chanceId)return;
+    		  $.ligerDialog.confirm("确定执行开发失败操作吗？",function(rst){
+    			  if(!rst)return;
+    			  $.post("chance/doDevFail",{'chanceId':chanceId},function(data){
+    				  if(data=="fail"){
+    					  $.ligerDialog.tip({title:'操作提示',content:'操作失败'});
+    				  }else{
+    					  $.ligerDialog.tip({title:'操作提示',content:'操作成功'});
+    				  }
+    				  
+    			  });
+    		  });
+    	  }
+    	  else if(item.id==5){//退后
     		  
     		  history.back();
     		  if(flag){
@@ -140,8 +155,10 @@ $().ready(function(){
        { id:2,text: '执行计划', click: itemclick },
        { line:true },
        { id:3,text: '开发成功', click: itemclick },
+       { line:true },
+       { id:4,text: '开发失败', click: itemclick },
        { line:true},
-       { id:4,text: '返回列表', click : itemclick}
+       { id:5,text: '返回列表', click : itemclick}
   
    ]
    }); 

@@ -12,6 +12,8 @@ public class Calc1 {
 		System.out.println(fun(N));
 		System.out.println(fun1(N));
 		System.out.println(fun2(N));
+		fun3();
+		fun4();
 	}
 
 	// 迭代
@@ -36,4 +38,26 @@ public class Calc1 {
 	public static double fun2(double N) {
 		return (N * 0.5) * (N + 1);
 	}
+
+	// /两数交换
+	public static void fun3() {
+		int x = 10, y = 20;
+		x = x + y;
+		System.out.println(x);
+		y = x - y;
+		System.out.println(y);
+		x = x - y;
+		System.out.println(x);
+
+		System.out.println(x + "," + y);
+	}
+
+	public static void fun4() {
+		int x = 10, y = 20;
+		x = x ^ y;
+		y = x ^ y;
+		x = x ^ y;
+		System.out.println(x + "," + y);
+	}
+
 }

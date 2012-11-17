@@ -8,14 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-
 @SessionAttributes(Constant.CURRENT_USER)
 public class UsersController {
 	Logger log = Logger.getLogger(UsersController.class);
@@ -23,10 +20,8 @@ public class UsersController {
 	@Autowired
 	private UsersBiz usersBiz;
 
-
-	
-	@RequestMapping(value="/user/toLogin")
-	public String toLogin(){
+	@RequestMapping(value = "/user/toLogin")
+	public String toLogin() {
 		return "login";
 	}
 
@@ -38,8 +33,8 @@ public class UsersController {
 	 * @return
 	 */
 	// @RequestMapping("/login")
-	@RequestMapping(value="/user/login")
-	public String proccessSubmit( Users user, BindingResult result, Model model) {
+	@RequestMapping(value = "/user/login")
+	public String proccessSubmit(Users user, BindingResult result, Model model) {
 		log.debug("ÓÃ»§µÇÂ¼");
 
 		Users curruser = usersBiz.login(user.getLoginName(),

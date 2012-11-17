@@ -68,4 +68,29 @@ public interface Constant {
 	 */
 	public static final int CHANCE_DEV_Failure = 4;
 
+	/**
+	 * 客户信息状态
+	 */
+	public static final int CUSTOMER_STATE_NORMAL = 1;
+	public static final int CUSTOMER_STATE_ZZZ = 2;
+	public static final int CUSTOMER_STATE_XXX = 3;
+
+	/**
+	 * 客户满意度
+	 */
+
+	public static final int CUSTOMER_STATISFY_ONE = 1;
+	public static final int CUSTOMER_STATISFY_TWO = 2;
+	public static final int CUSTOMER_STATISFY_THREE = 3;
+	public static final int CUSTOMER_STATISFY_FOUR = 4;
+	public static final int CUSTOMER_STATISFY_FIVE = 5;
+	/**
+	 * 客户信用度
+	 */
+	public static final int CUSTOMER_CREDIT_ONE = 1;
+	public static final int CUSTOMER_CREDIT_TWO = 2;
+	public static final int CUSTOMER_CREDIT_THREE = 3;
+	public static final int CUSTOMER_CREDIT_FOUR = 4;
+	public static final int CUSTOMER_CREDIT_FIVE = 5;
+
 }

@@ -6,7 +6,7 @@ public class Customer {
 	private String region;
 	private int managerId;
 	private String managerName;
-	private int levelLabel;
+	private String levelLabel;
 	private int satisfy;
 	private int credit;
 	private String addr;
@@ -15,7 +15,7 @@ public class Customer {
 	private String fax;
 	private String website;
 	private String licence;
-	private String chiefatain;
+	private String chieftain;
 	private double bankroll;
 	private double turnover;
 	private String bank;
@@ -35,7 +35,7 @@ public class Customer {
 	}
 
 	public Customer(int id, String name, String region, int managerId,
-			String managerName, int levelLabel, int satisfy, int credit,
+			String managerName, String levelLabel, int satisfy, int credit,
 			String addr, String zip, String tel, String fax, String website,
 			String licence, String chiefatain, double bankroll,
 			double turnover, String bank, String account, String localTax,
@@ -55,7 +55,7 @@ public class Customer {
 		this.fax = fax;
 		this.website = website;
 		this.licence = licence;
-		this.chiefatain = chiefatain;
+		this.chieftain = chiefatain;
 		this.bankroll = bankroll;
 		this.turnover = turnover;
 		this.bank = bank;
@@ -105,11 +105,11 @@ public class Customer {
 		this.managerName = managerName;
 	}
 
-	public int getLevelLabel() {
+	public String getLevelLabel() {
 		return levelLabel;
 	}
 
-	public void setLevelLabel(int levelLabel) {
+	public void setLevelLabel(String levelLabel) {
 		this.levelLabel = levelLabel;
 	}
 
@@ -177,12 +177,12 @@ public class Customer {
 		this.licence = licence;
 	}
 
-	public String getChiefatain() {
-		return chiefatain;
+	public String getChieftain() {
+		return chieftain;
 	}
 
-	public void setChiefatain(String chiefatain) {
-		this.chiefatain = chiefatain;
+	public void setChieftain(String chieftain) {
+		this.chieftain = chieftain;
 	}
 
 	public double getBankroll() {

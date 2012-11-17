@@ -102,31 +102,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 nodeWidth: 120,
                 btnClickToToggleOnly:false, 
                 attribute: ['nodename', 'url'],
-                data: [
-                       { text: '营销管理',
-				children : [ {
-					text : '销售机会管理',
-					url : 'chance/toList'
-				}, {
-					text : '客户开发计划',
-					url :  'chance/toDevList'
-				}, {
-					text : '节点1.3',
-					children : [ {
-						text : '节点1.3.1'
-					}, {
-						text : '节点1.3.2'
-					} ]
-				}, {
-					text : '节点1.4'
-				} ]
-			}, {
-				text : '节点2'
-			}, {
-				text : '节点3'
-			}, {
-				text : '节点4'
-			} ],
+                data: [{text:'客户关系管理系统',children:	[
+                   { text: '营销管理',
+       				children : [ {
+       					text : '销售机会管理',
+       					url : 'chance/toList'
+       				}, {
+       					text : '客户开发计划',
+       					url :  'chance/toDevList'
+       				} ]
+       			}, {
+       				text : '客户管理',children:[{text:'客户信息管理',url:'cust/toList'},{text:'客户流失管理',url:'##'}]
+       			}, {
+       				text : '节点3',children:[{text:'11',url:'#'}]
+       			}, {
+       				text : '节点4',children:[{text:'11'}]
+       			} ]}]
+                	
+                ,
+			
+			
 			onSelect : function(node) {
 				if (!node.data.url)
 					return;

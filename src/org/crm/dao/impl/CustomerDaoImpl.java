@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.crm.common.Constant;
 import org.crm.dao.CustomerDao;
 import org.crm.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	private JdbcTemplate jdbcTemplate;
 
 	/*
-	 * (non-Javadoc)
+	 * 添加后返回 编号 (non-Javadoc)
 	 * 
 	 * @see org.crm.dao.impl.CustomerDao#add(org.crm.entity.Customer)
 	 */
@@ -35,7 +36,6 @@ public class CustomerDaoImpl implements CustomerDao {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection conn)
 					throws SQLException {
-				// TODO Auto-generated method stub
 				PreparedStatement ps = conn.prepareStatement(sql,
 						new String[] { "id" });
 				ps.setString(1, customerName);
@@ -52,6 +52,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	 */
 	@Override
 	public boolean update(Customer customer) {
+		String sql = "update customer set name=?,region=?,managerId=?,managerName=?,levelLabel=?,satisfy=?,credit=?,addr=?,zip=?,tel=?,fax=?,website=?,licence=?,chiefatain=?,bankroll=?,turnover=?,bank=?,account=?,localTax=?,nationalTax=?,state=? where id=?";
 		return false;
 	}
 
@@ -62,20 +63,86 @@ public class CustomerDaoImpl implements CustomerDao {
 	 */
 	@Override
 	public boolean delete(int id) {
-		return false;
+
+		String sql = "delete from customer where id=?";
+
+		return jdbcTemplate.update(sql, id) == 1 ? true : false;
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see org.crm.dao.impl.CustomerDao#find()
 	 */
-	@Override
-	public List<Customer> find() {
-		List list = null;
+	public List<Customer> findSmall() {
+		List<Customer> list = null;
+		// jdbcTemplate.execute("set names=utf8 ;");
+		String sql = "select id,name,levellabel,managername,region,state from customer where state =?";
+		list = jdbcTemplate.query(sql,
+				new Object[] { Constant.CUSTOMER_STATE_NORMAL },
+				new RowMapper<Customer>() {
+					@Override
+					public Customer mapRow(ResultSet rs, int arg1)
+							throws SQLException {
+						Customer c = new Customer();
+
+						c.setId(rs.getInt("id"));
+						c.setLevelLabel(rs.getString("levellabel"));
+
+						c.setManagerName(rs.getString("managerName"));
+						c.setName(rs.getString("name"));
+
+						c.setRegion(rs.getString("region"));
+						c.setState(rs.getInt("state"));
+						return c;
+					}
+				});
 		return list;
 	}
 
+	@Override
+	public List<Customer> find() {
+		List<Customer> list = null;
+		jdbcTemplate.execute("set names=utf8 ;");
+		String sql = "select * from customer where state =?";
+		list = jdbcTemplate.query(sql,
+				new Object[] { Constant.CUSTOMER_STATE_NORMAL },
+				new RowMapper<Customer>() {
+					@Override
+					public Customer mapRow(ResultSet rs, int arg1)
+							throws SQLException {
+						Customer c = new Customer();
+						c.setAccount(rs.getString("account"));
+						c.setAddr(rs.getString("addr"));
+						c.setBank(rs.getString("bank"));
+						c.setBankroll(rs.getDouble("bankroll"));
+						c.setChieftain(rs.getString("chieftain"));
+						c.setCredit(rs.getInt("credit"));
+						c.setFax(rs.getString("fax"));
+						c.setId(rs.getInt("id"));
+						c.setLevelLabel(rs.getString("levellabel"));
+						c.setLicence(rs.getString("licence"));
+						c.setLocalTax(rs.getString("localTax"));
+						c.setManagerId(rs.getInt("managerId"));
+						c.setManagerName(rs.getString("managerName"));
+						c.setName(rs.getString("name"));
+						c.setNationalTax(rs.getString("nationaltax"));
+						c.setRegion(rs.getString("region"));
+						c.setSatisfy(rs.getInt("satisfy"));
+						c.setState(rs.getInt("state"));
+						c.setTel(rs.getString("tel"));
+						c.setTurnover(rs.getDouble("turnover"));
+						c.setWebsite(rs.getString("website"));
+						c.setZip(rs.getString("zip"));
+						return c;
+					}
+				});
+		return list;
+	}
+
+	/**
+	 * 只获得客户的编号和名字
+	 */
 	public Customer getCustomerSmall(int id) {
 		return jdbcTemplate.queryForObject(
 				"select id,name from customer where id=?", new Object[] { id },
@@ -99,9 +166,8 @@ public class CustomerDaoImpl implements CustomerDao {
 	 */
 	@Override
 	public Customer get(int id) {
-		return jdbcTemplate.queryForObject(
-				"select * from ccustomer where id=?", new Object[] { id },
-				new RowMapper<Customer>() {
+		return jdbcTemplate.queryForObject("select * from customer where id=?",
+				new Object[] { id }, new RowMapper<Customer>() {
 
 					@Override
 					public Customer mapRow(ResultSet rs, int arg1)
@@ -110,12 +176,12 @@ public class CustomerDaoImpl implements CustomerDao {
 						c.setAccount(rs.getString("account"));
 						c.setAddr(rs.getString("addr"));
 						c.setBank(rs.getString("bank"));
-						c.setBankroll(rs.getDouble("bankrool"));
-						c.setChiefatain(rs.getString("chiefatain"));
+						c.setBankroll(rs.getDouble("bankroll"));
+						c.setChieftain(rs.getString("chieftain"));
 						c.setCredit(rs.getInt("credit"));
 						c.setFax(rs.getString("fax"));
 						c.setId(rs.getInt("id"));
-						c.setLevelLabel(rs.getInt("levellabel"));
+						c.setLevelLabel(rs.getString("levellabel"));
 						c.setLicence(rs.getString("licence"));
 						c.setLocalTax(rs.getString("localTax"));
 						c.setManagerId(rs.getInt("managerId"));
@@ -132,5 +198,19 @@ public class CustomerDaoImpl implements CustomerDao {
 						return c;
 					}
 				});
+	}
+
+	@Override
+	public boolean updateSatate(int id, int stateId) {
+		String sql = "update customer set state=? where id=?";
+
+		return jdbcTemplate.update(sql, stateId, id) == 1 ? true : false;
+	}
+
+	@Override
+	public int getTotalCount() {
+		String sql = "select count(id) from customer where state=1";
+
+		return jdbcTemplate.queryForInt(sql);
 	}
 }

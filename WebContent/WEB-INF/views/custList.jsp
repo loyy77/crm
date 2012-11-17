@@ -29,11 +29,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        
     <script type="text/javascript">
 
-   $().ready(function(){
-   if($("#op").val()=="unassign"){
-   	$.ligerDialog.error("您操作的销售机会还没有指派销售人员，缺乏执行计划的条件。");
-   }
-   });
         $(f_initGrid);
         var manager, g;
         function f_initGrid()
@@ -41,18 +36,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             g = manager = $("#maingrid").ligerGrid({
                 columns:  [ 
 			{ display: '编号', name: 'id', align: 'center', width: 50 }, 
-			{ display: '公司名', name: 'customerName', minWidth: 120 }, 
-			{ display: '概要', name: 'title', minWidth: 150,align:'left' },  
-			{ display: '联系人', name: 'linkMan', minWidth: 140 }, 
-			{ display: '联系电话', name: 'linkPhone', minWidth: 140 },  
-			{ display: '创建日期', name: 'createDate', minWidth: 140 },
+			{ display: '名称', name: 'name', minWidth: 120 }, 
+			{ display: '地区', name: 'region', minWidth: 150 },  
+			{ display: '客户经理', name: 'managerName', minWidth: 140 }, 
+			{ display: '客户等级', name: 'levelLabel', minWidth: 140 },  
 			{ display: '状态', name: 'state', minWidth: 140 },
-			{ display: '指定人',name:'assignId',minWidth:140,hide:1} 
 			],dataAction: 'server',
 				usePager:true,      
 				pageSizeOptions: [5, 10, 15, 20,30,50], 		
 				pageSize:10,		
-                url:"chance/doDevList",
+                url:"cust/list",
                 width: '99%'
             });   
         }
@@ -66,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     {
         var manager = $("#maingrid").ligerGetGridManager();
         var row = manager.getSelectedRow();
-        if (!row) { alert('请选择行'); return; }
+        if (!row) { alert('请选择要操作的行'); return; }
         return row.id;
        // alert(JSON.stringify(row));
     }
@@ -83,29 +76,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  function itemclick(item)
         {
 			var flag=true;
-    		
-		  if(item.id==1){//制定计划
-			  
-			  
-			 var chanceId= getSelected();
-		  if(!chanceId)return;
-			  window.location.href="plan/toDevAdd?chanceId="+chanceId;
-				// var m= $.ligerDialog.open({ height: 420,width:550,url: '../chance/toChanceAdd' });
-      			//m.target="home";
+		  if(item.id==1){//编辑
+			 var custId= getSelected();
+		 // alert(custId);
+		  if(!custId)return;
+			 window.location.href="cust/toCustEdit?custId="+custId;
       	  }else if(item.text=="执行计划"||item.id==2){
-      		  
       		  var chanceId=getSelected();
       		  if(!chanceId)return;
       		  	window.location.href="plan/toDevPlan?chanceId="+chanceId;
       	  }else if(item.id==3){ //开发成功
       		  var userId=$("#userId").val();
       		  var assignId=getAssignId();
-      		  
       			var bb=userId==assignId;
-      		
       			var chanceId=getSelected();
-          		//alert(chanceId);
-          		
           		$.ligerDialog.confirm("确定销售机会:"+chanceId+"为开发成功吗？",function (r) {
           			if(r){
           				//window.location.href="chance/doDevSuccess?chanceId="+chanceId;
@@ -118,14 +102,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           					}else{
           						$.ligerDialog.error("操作失败！");
           					}
-          					
           				});
           			}
           		});
-      		 
-      		  
-      		
-
       	  }else if(item.id==4){
       		  
       		 var chanceId=getSelected();
@@ -156,18 +135,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $(function ()
        {
             $("#toptoolbar").ligerToolBar({ items: [
-                { id:1,text: '制定计划', click: itemclick , icon:'add'},
+                { id:1,text: '编辑', click: itemclick , icon:'add'},
                 { line:true },
-                { id:2,text: '执行计划', click: itemclick },
+                { id:2,text: '联系人', click: itemclick },
                 { line:true },
-                { id:3,text: '开发成功', click: itemclick },
-                
+                { id:3,text: '交往记录', click: itemclick },
                 { line:true },
-                { id:4,text: '开发失败', click: itemclick },
-                
-              //  { line:true},
-             //   { id:4,text: '指派', click : itemclick}
-           
+                { id:4,text: '历史订单', click: itemclick },
+               { line:true},
+               { id:5,text: '删除', click : itemclick}
             ]
             }); 
             

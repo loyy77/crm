@@ -23,6 +23,14 @@ public interface CustomerDao {
 	public abstract boolean update(Customer customer);
 
 	/**
+	 * 根据编号更改状态
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public abstract boolean updateSatate(int id, int stateId);
+
+	/**
 	 * 删除
 	 * 
 	 * @param id
@@ -36,6 +44,8 @@ public interface CustomerDao {
 	 * @return
 	 */
 	public abstract List<Customer> find();
+
+	public List<Customer> findSmall();
 
 	/**
 	 * 根据编号获得
@@ -52,4 +62,6 @@ public interface CustomerDao {
 	 * @return customer对象只有id和name属性
 	 */
 	public abstract Customer getCustomerSmall(int id);
+
+	public abstract int getTotalCount();
 }

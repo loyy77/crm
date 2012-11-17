@@ -65,6 +65,7 @@ public class ChanceController {
 	}
 
 	/**
+	 * 销售机会的列表
 	 * 
 	 * @param model
 	 * @return
@@ -102,6 +103,7 @@ public class ChanceController {
 	}
 
 	/**
+	 * 根据id删除销售机会
 	 * 
 	 * @return
 	 */
@@ -119,6 +121,8 @@ public class ChanceController {
 	}
 
 	/**
+	 * 修改销售机会
+	 * 
 	 * @param chance
 	 * @return
 	 */
@@ -145,6 +149,16 @@ public class ChanceController {
 		return "error";
 	}
 
+	/**
+	 * 执行指派操作
+	 * 
+	 * @param session
+	 * @param user
+	 * @param chanceId
+	 * @param chance
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/chance/doChanceAssign")
 	public String doChanceAssign(HttpSession session, Users user,
 			String chanceId, Chance chance, Model model) {
@@ -170,7 +184,7 @@ public class ChanceController {
 	}
 
 	/**
-	 * 杞埌chanceList.jsp
+	 * 显示chanceList.jsp
 	 * 
 	 * @return
 	 */
@@ -181,6 +195,8 @@ public class ChanceController {
 	}
 
 	/**
+	 * 转到销售机会添加页面
+	 * 
 	 * @param request
 	 * @param user
 	 * @param model
@@ -206,6 +222,8 @@ public class ChanceController {
 	}
 
 	/**
+	 * 转到销售机会修改页面
+	 * 
 	 * @param model
 	 * @return
 	 */
@@ -245,6 +263,14 @@ public class ChanceController {
 		return "devList";
 	}
 
+	/**
+	 * 开发计划的列表（分页）
+	 * 
+	 * @param model
+	 * @param page
+	 * @param pagesize
+	 * @return
+	 */
 	@RequestMapping("/chance/doDevList")
 	public @ResponseBody
 	String doDevList(Model model, String page, String pagesize) {
@@ -304,7 +330,7 @@ public class ChanceController {
 	/**
 	 * 开发失败
 	 */
-
+	@RequestMapping("/plan/doDevFail")
 	public @ResponseBody
 	String devFail(String chanceId) {
 		return chanceBiz.devFailure(Integer.valueOf(chanceId)) ? "success"
