@@ -9,7 +9,7 @@
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
-			<param-value>gbk</param-value>
+			<param-value>GBK</param-value>
 		</init-param>
 		<!--强制编码 -->
 		<init-param>

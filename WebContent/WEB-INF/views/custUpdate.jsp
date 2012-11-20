@@ -46,13 +46,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var flag=true;
 		  if(item.id==1){//编辑
 			 var custId= getSelected();
-		 // alert(custId);
 		  if(!custId)return;
 			 window.location.href="cust/toCustEdit?custId="+custId;
-      	  }else if(item.text=="执行计划"||item.id==2){
-      		  var chanceId=getSelected();
-      		  if(!chanceId)return;
-      		  	window.location.href="plan/toDevPlan?chanceId="+chanceId;
+      	  }else if(item.id==2){//联系人
+      		//	alert("linkman.toList");
+      		  var custId=	  $("#custId").val();
+      		  if(!custId)return;
+      		  	window.location.href="linkman/toList?custId="+custId;
       	  }else if(item.id==3){ //开发成功
       		  var userId=$("#userId").val();
       		  var assignId=getAssignId();
@@ -92,6 +92,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	  else if(item.id==5){//保存
       		alert("保存"+ $("#custId").val());
       		
+      	  }else if(item.id==6){
+      		  window.location.href="cust/toList";
       	  }
         }
     	//工具条
@@ -106,7 +108,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 { line:true },
                 { id:4,text: '历史订单', click: itemclick },
                { line:true},
-               { id:5,text: '保存', click : itemclick}
+               { id:5,text: '保存', click : itemclick},
+               { line:true},
+               { id:6,text: '返回到列表', click : itemclick}
             ]
             }); 
             
@@ -185,6 +189,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	$("select").addClass("l-text");
     //	$("td:odd").css("text-align","center");
     //$("tr + td").css("text-align","center");
+    
+        var result=$("#result").val();
+        if(result=="success"){
+        	$.ligerDialog.alert("更新成功");
+        }else if(result=="fail"){
+        	$.ligerDialog.alert("保存失败");
+        }
     });
     </script>
 <style type="text/css">
@@ -195,6 +206,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
 </head>
 <body  style="padding:0px">  
+<input type="hidden" id="result" value="${result }">
 <input type="hidden" id="op" value="${op}" />
 <input type="hidden" id="custId" value="${customer.id }"/>
  <!-- 工具条 ，该工具条包含 增加、修改、删除  -->
@@ -203,7 +215,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
    <div id="d-form" class="d-form">
-   <form id="myform">
+   <form id="myform" action="cust/update" method="post">
    		<table id="t-main" class="t-main" cellspacing="4" cellpadding="5">
    			
    			<tr>
@@ -211,30 +223,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    				
    			</tr>
    			<tr>
+   				<input type="hidden" name="id" value="${customer.id }"/>
    				<td class="tb-tr-odd">客户编号</td>
    				<td align="left">${customer.id }</td>
    				<td class="tb-tr-odd">名称</td>
-   				<td><input type="text" value="${customer.name }"/></td>
+   				<td><input name="name" type="text" value="${customer.name }"/></td>
    			</tr>
-   			<tr>
+   			<tr> 
    				<td class="tb-tr-odd">地区</td>
-   				<td><select>
+   				<td><select name="region">
    				<c:forEach var="r" items="${regionList }">
-   					<option value="${r.dictValue }">${r.dictItem }</option>
+   					<option value="${r.dictValue }" <c:if test="${r.dictItem==customer.region }">selected</c:if> >${r.dictItem }</option>
    				</c:forEach>
    				
    				</select></td>
    				<td class="tb-tr-odd">客户经理</td>
-   				<td><select>
-   					<option></option>
+   				<td>
+   		
+   				<select name="managerId">
+   				<c:forEach var="cm" items="${custManagerList }">
+   					<option value="${cm.userId }" <c:if test="${customer.managerId==cm.userId}">selected</c:if>>${cm.trueName }</option>
+   				</c:forEach>
+   					
    				</select></td>
    			</tr>
    			<tr>
    				<td class="tb-tr-odd">客户等级</td>
-   				<td><select>
+   				<td><select name="levelLabel">
    				<c:forEach var="l" items="${custLevel }">
    					
-   				<option value="${l.dictValue }">${l.dictItem }</option>
+   				<option value="${l.dictValue }" <c:if test="${l.dictItem==customer.levelLabel }">selected</c:if>>${l.dictItem }</option>
    				</c:forEach>
    					
    				</select></td>
@@ -243,20 +261,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			</tr>
    			<tr>
    				<td class="tb-tr-odd">客户满意度</td>
-   				<td><select>
-   					<option value="1">☆</option>
-   					<option value="2">☆☆</option>
-   					<option value="3" selected>☆☆☆</option>
-   					<option value="4">☆☆☆☆</option>
-   					<option value="5">☆☆☆☆☆</option>
+   				<td><select name="satisfy">
+   				
+   				<c:forEach begin="1" end="5" step="1" varStatus="index" var="s">
+   					<option value="${s }"<c:if test="${customer.satisfy==s}">selected</c:if>><c:forEach begin="1" end="${s }">☆</c:forEach></option>
+   				</c:forEach>
+   					
    				</select></td>
    				<td class="tb-tr-odd">客户信用度</td>
-   				<td><select>
-   				<option value="1">☆</option>
-   					<option value="2">☆☆</option>
-   					<option value="3" selected>☆☆☆</option>
-   					<option value="4">☆☆☆☆</option>
-   					<option value="5">☆☆☆☆☆</option>
+   				<td><select name="credit">
+   					<c:forEach begin="1" end="5" step="1" varStatus="index" var="s">
+   					<option value="${s }"<c:if test="${customer.credit==s}">selected</c:if>><c:forEach begin="1" end="${s }">☆</c:forEach></option>
+   				</c:forEach>
    				</select></td>
    			</tr>
    			
@@ -267,19 +283,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		
    			<tr>
    				<td class="tb-tr-odd">地址</td>
-   				<td><input value="${customer.addr }"/></td>
+   				<td><input name="addr" value="${customer.addr }"/></td>
    				<td class="tb-tr-odd">邮编</td>
-   				<td><input value="${customer.zip }"/></td>
+   				<td><input name="zip" value="${customer.zip }"/></td>
    			</tr>
    			<tr>
    				<td class="tb-tr-odd">电话</td>
-   				<td><input value="${customer.tel }"/></td>
+   				<td><input name="tel" value="${customer.tel }"/></td>
    				<td class="tb-tr-odd">传真</td>
-   				<td><input value="${customer.fax }"/></td>
+   				<td><input name="fax" value="${customer.fax }"/></td>
    			</tr>
    			<tr>
    				<td class="tb-tr-odd">网址</td>
-   				<td><input type="text" value="${customer.website }"/></td>
+   				<td><input name="website" type="text" value="${customer.website }"/></td>
    				<td></td>
    				<td></td>
    			</tr>
@@ -294,30 +310,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		
    			<tr>
    				<td class="tb-tr-odd">营业执照注册号</td>
-   				<td><input value="${customer.licence }"/></td>
+   				<td><input name="licence" value="${customer.licence }"/></td>
    				<td class="tb-tr-odd">法人</td>
-   				<td><input value="${customer.chieftain }"/></td>
+   				<td><input name="chieftain" value="${customer.chieftain }"/></td>
    			</tr>
    			<tr>
    				<td class="tb-tr-odd">注册资金（万元）</td>
-   				<td><input value="${customer.bankroll }"/></td>
+   				<td><input name="bankroll" value="${customer.bankroll }"/></td>
    				<td class="tb-tr-odd">年营业额</td>
-   				<td><input value="${customer.turnover }"/></td>
+   				<td><input name="turnover" value="${customer.turnover }"/></td>
    			</tr>
    			<tr>
    				<td class="tb-tr-odd">开户银行</td>
-   				<td><input value="${customer.bank }"/></td>
+   				<td><input name="bank" value="${customer.bank }"/></td>
    				<td class="tb-tr-odd">银行帐号</td>
-   				<td><input value="${customer.account }"/></td>
+   				<td><input name="account" value="${customer.account }"/></td>
    			</tr>
    			<tr>
    				<td class="tb-tr-odd">地税登记号</td>
-   				<td><input value="${customer.localTax }"/></td>
+   				<td><input name="localTax" value="${customer.localTax }"/></td>
    				<td class="tb-tr-odd">国税登记号</td>
-   				<td><input value="${customer.nationalTax }"/></td>
+   				<td><input name="nationalTax" value="${customer.nationalTax }"/></td>
    			</tr>
    			
    		</table>
+   		
+   		<input type="submit" value="保存" />
    </form> 
    		</div>
 </div>

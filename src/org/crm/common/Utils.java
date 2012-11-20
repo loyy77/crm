@@ -27,4 +27,26 @@ public class Utils {
 		}
 		return null;
 	}
+
+	/**
+	 * 格式化json为ligerGrid能识别的格式
+	 * 
+	 * @param source
+	 * @param totalCount
+	 *            总记录数
+	 * @return
+	 */
+	public String formatLigerGridJSON(String source, int totalCount) {
+		String rst = "";
+		StringBuffer sb = new StringBuffer();
+		sb.append("{\"Rows\":");
+		sb.append(source);
+		sb.append(",");
+		sb.append("\"total\":");
+		sb.append(totalCount);
+		sb.append("}");
+		rst = sb.toString();
+		return rst;
+
+	}
 }

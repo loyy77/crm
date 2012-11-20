@@ -20,4 +20,7 @@ public class DictBiz {
 		return dictDao.findByDictType("客户等级");
 	}
 
+	public String getDictItemValueById(int id) {
+		return dictDao.findById(id);
+	}
 }

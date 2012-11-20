@@ -30,17 +30,27 @@ public class UsersInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest req, HttpServletResponse resp,
 			Object arg2, ModelAndView modelAndView) throws Exception {
-		if (!this.preHandle(req, resp, arg2)) {
-			log.debug("post...............................");
-			modelAndView.setViewName("redirect:/user/toLogin");
-		}
+
 	}
 
 	@Override
 	public boolean preHandle(HttpServletRequest req,
 			HttpServletResponse respon, Object arg2) throws Exception {
-		req.setCharacterEncoding("utf-8");
-		respon.setContentType("text/html;charset=utf-8");
+
+		log.debug(req.getServletPath());
+
+		if (req.getServletPath().startsWith("/user")) {
+			return true;
+
+		}
+
+		req.setCharacterEncoding("gbk");
+		respon.setContentType("text/html;charset=gbk");
+		// ajax的请求编码改为 utf-8
+		if (isAjaxRequest(req)) {
+			req.setCharacterEncoding("utf-8");
+			respon.setContentType("text/html;charset=utf-8");
+		}
 		HttpSession session = req.getSession();
 		Users user = (Users) session.getAttribute(Constant.CURRENT_USER);
 		log.debug("进入拦截器1，" + user);
@@ -57,9 +67,17 @@ public class UsersInterceptor implements HandlerInterceptor {
 			out.close();
 			return false;
 		} else {
+
 			return true;
 		}
 
+	}
+
+	// 是否是ajax请求
+	public static boolean isAjaxRequest(HttpServletRequest req) {
+		String requestedWith = req.getHeader("X-Requested-With");
+		return requestedWith != null ? "XMLHttpRequest".equals(requestedWith)
+				: false;
 	}
 
 }

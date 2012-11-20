@@ -25,4 +25,8 @@ public class UsersBiz {
 	public Users getById(int id) {
 		return usersDao.getById(id);
 	}
+
+	public List<Users> findCustomerManager() {
+		return usersDao.findCustomerManager();
+	}
 }

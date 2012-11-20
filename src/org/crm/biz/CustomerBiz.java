@@ -23,4 +23,8 @@ public class CustomerBiz {
 	public Customer get(int id) {
 		return customerDao.get(id);
 	}
+
+	public boolean udpate(Customer customer) {
+		return customerDao.update(customer);
+	}
 }

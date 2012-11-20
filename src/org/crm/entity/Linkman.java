@@ -98,4 +98,11 @@ public class Linkman {
 		this.memo = memo;
 	}
 
+	@Override
+	public String toString() {
+		return "Linkman [id=" + id + ", customerId=" + customerId + ", name="
+				+ name + ", sex=" + sex + ", position=" + position + ", tel="
+				+ tel + ", mobile=" + mobile + ", memo=" + memo + "]";
+	}
+
 }

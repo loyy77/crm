@@ -16,6 +16,21 @@ public class Customer {
 	private String website;
 	private String licence;
 	private String chieftain;
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", name=" + name + ", region=" + region
+				+ ", managerId=" + managerId + ", managerName=" + managerName
+				+ ", levelLabel=" + levelLabel + ", satisfy=" + satisfy
+				+ ", credit=" + credit + ", addr=" + addr + ", zip=" + zip
+				+ ", tel=" + tel + ", fax=" + fax + ", website=" + website
+				+ ", licence=" + licence + ", chieftain=" + chieftain
+				+ ", bankroll=" + bankroll + ", turnover=" + turnover
+				+ ", bank=" + bank + ", account=" + account + ", localTax="
+				+ localTax + ", nationalTax=" + nationalTax + ", state="
+				+ state + "]";
+	}
+
 	private double bankroll;
 	private double turnover;
 	private String bank;

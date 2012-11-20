@@ -41,4 +41,24 @@ public class DictDaoImpl implements DictDao {
 				});
 	}
 
+	@Override
+	public String findById(int id) {
+		String sql = "select dictItem from dict where dictValue=? and dictType=?";
+
+		Dict d = jdbcTemplate.queryForObject(sql, new Object[] { id, "客户等级" },
+				new RowMapper<Dict>() {
+
+					@Override
+					public Dict mapRow(ResultSet rs, int arg1)
+							throws SQLException {
+						Dict d = new Dict();
+
+						d.setDictItem(rs.getString("dictItem"));
+
+						return d;
+					}
+				});
+		return d.getDictItem();
+	}
+
 }

@@ -36,16 +36,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             g = manager = $("#maingrid").ligerGrid({
                 columns:  [ 
 			{ display: '编号', name: 'id', align: 'center', width: 50 }, 
-			{ display: '名称', name: 'name', minWidth: 120 }, 
-			{ display: '地区', name: 'region', minWidth: 150 },  
-			{ display: '客户经理', name: 'managerName', minWidth: 140 }, 
-			{ display: '客户等级', name: 'levelLabel', minWidth: 140 },  
-			{ display: '状态', name: 'state', minWidth: 140 },
+			{ display: '姓名', name: 'name', minWidth: 120 }, 
+			{ display: '性別', name: 'sex', minWidth: 150 },  
+			{ display: '职位', name: 'position', minWidth: 140 }, 
+			{ display: '办公电话', name: 'tel', minWidth: 140 },  
+			{ display: '手机', name: 'mobile', minWidth: 140 },
+			{ display: '备注', name: 'memo', minWidth: 140 },
 			],dataAction: 'server',
-				usePager:true,      
+				usePager:false,      
 				pageSizeOptions: [5, 10, 15, 20,30,50], 		
 				pageSize:10,		
-                url:"cust/list",
+                url:"linkman/list?custId="+$("#custId").val(),
                 width: '99%'
             });   
         }
@@ -76,24 +77,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  function itemclick(item)
         {
 			var flag=true;
-		  if(item.id==1){//编辑
-			 var custId= getSelected();
-		 // alert(custId);
-		  if(!custId)return;
-			 window.location.href="cust/toCustEdit?custId="+custId;
-      	  }else if(item.id==2){//联系人
-      		  var custId=getSelected();
+		  if(item.id==1){//新建联系人
+			 var custId= $("#custId").val();
+		  	if(!custId)return;
+			 window.location.href="linkman/toEdit?custId="+custId;
+      	  }else if(item.id==2){//编辑联系人信息
+      		  var custId=$("#custId").val();
+      			var linkmanId=getSelected();
+      			//alert(linkmanId);
       		  if(!custId)return;
-      		  	window.location.href="linkman/toList?custId="+custId;
-      	  }else if(item.id==3){ //开发成功
-      		  var userId=$("#userId").val();
-      		  var assignId=getAssignId();
-      			var bb=userId==assignId;
-      			var chanceId=getSelected();
-          		$.ligerDialog.confirm("确定销售机会:"+chanceId+"为开发成功吗？",function (r) {
+      		  	window.location.href="linkman/toUpdate?op=update&custId="+custId+"&linkmanId="+linkmanId;
+      	  }else if(item.id==3){ 
+      		 
+      		
+      			var linkmanId=getSelected();
+          		$.ligerDialog.confirm("确定编号为:"+linkmanId+"的联系人信息吗？",function (r) {
           			if(r){
           				//window.location.href="chance/doDevSuccess?chanceId="+chanceId;
-          				$.post("chance/doDevSuccess",{'chanceId':chanceId},function(data){
+          				$.post("linkman/del",{'linkmanId':linkmanId},function(data){
           					if(data=="success"){
           						$.ligerDialog.success("操作成功！");
           						//重载数据
@@ -106,21 +107,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           			}
           		});
       	  }else if(item.id==4){
-      		  
-      		 var chanceId=getSelected();
-   		  if(!chanceId)return;
-   		  $.ligerDialog.confirm("确定执行开发失败操作吗？",function(rst){
-   			  if(!rst)return;
-   			  $.post("chance/doDevFail",{'chanceId':chanceId},function(data){
-   				  if(data=="fail"){
-   					  $.ligerDialog.tip({title:'操作提示',content:'操作失败'});
-   				  }else{
-   					  $.ligerDialog.tip({title:'操作提示',content:'操作成功'});
-   				  }
-   				  
-   			  });
-   		  });
+   
       	  }
+		  
+		  
       	  else if(item.text=='指派'){
       		  if(flag){
       			  var chanceId=getSelected();
@@ -135,15 +125,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $(function ()
        {
             $("#toptoolbar").ligerToolBar({ items: [
-                { id:1,text: '编辑', click: itemclick , icon:'add'},
+                { id:1,text: '新建', click: itemclick , icon:'add'},
                 { line:true },
-                { id:2,text: '联系人', click: itemclick },
+                { id:2,text: '编辑', click: itemclick },
                 { line:true },
-                { id:3,text: '交往记录', click: itemclick },
-                { line:true },
+                { id:3,text: '删除', click: itemclick }//,
+               /*  { line:true },
                 { id:4,text: '历史订单', click: itemclick },
                { line:true},
-               { id:5,text: '删除', click : itemclick}
+               { id:5,text: '删除', click : itemclick} */
             ]
             }); 
             
@@ -153,10 +143,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 </head>
 <body  style="padding:0px">  
+<input type="hidden" id="customerId" value="${customer.id }"/>
+<input type="hidden" id="custId" value="${custId }"	/>
 <input type="hidden" id="op" value="${op}" />
  <div class="l-clear"></div>
  <!-- 工具条 ，该工具条包含 增加、修改、删除  -->
   <div id="toptoolbar" style="width:99%"></div>  
+  <table width="600px" style="margin:2px;"><tr style="line-height:24px;"><td bgcolor="#B0E0E6" width="90px;" align="center">客户编号</td><td align="center" width="100px;">${customer.id }</td><td bgcolor="#B0E0E6" width="90px;" align="center">客户名称</td><td align="left" style="padding-left: 5px;">${customer.name }</td></tr></table>
+  
  <!-- 表格，数据展示的主要区域 -->
   <div id="maingrid" style="margin-top:0px"></div> <br />
   <div style="display:none;">
@@ -164,21 +158,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   
 </div>
+<input type="hidden" id="result" value="${result }"/>
 </body>
 </html>
  <!-- g data total ttt -->
   <script type="text/javascript">
   $().ready(function(){
+	  var result = $("#result").val();
+		if (result == "success") {
+			$.ligerDialog.alert("更新成功");
+		} else if (result == "fail") {
+			$.ligerDialog.alert("操作失败");
+		}
 		
-  			var result=$("#result").val();
-  			//alert(result);
-  			if(result=='success'){
-  				$.ligerDialog.success('操作成功！');
-  			}
-  		
-  	});
-	  
-
-//  alert("win");
-  
+  });
   </script>

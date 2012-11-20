@@ -7,14 +7,13 @@ import org.crm.entity.Users;
 public interface UsersDao {
 
 	/**
-	 * 锟斤拷锟斤拷没锟� *
+	 * 
 	 * 
 	 * @param user
 	 */
 	public abstract void add(Users user);
 
 	/**
-	 * 锟斤拷锟斤拷锟矫伙拷锟斤拷息锟斤拷锟缴革拷锟铰碉拷锟斤拷锟斤拷锟叫ｏ拷锟斤拷录锟斤拷锟诫，锟斤拷实锟斤拷锟斤拷锟缴拷锟脚ｏ拷锟斤拷牵锟� *
 	 * 
 	 * @param user
 	 */
@@ -26,6 +25,8 @@ public interface UsersDao {
 	 * @return 锟斤拷锟斤拷锟矫伙拷锟斤拷锟叫憋拷
 	 */
 	public abstract List<Users> findAll();
+
+	public abstract List<Users> findCustomerManager();
 
 	/**
 	 * 通锟斤拷锟矫伙拷锟侥憋拷挪锟窖� *

@@ -166,6 +166,7 @@ $().ready(function(){
     <!--  数据统计代码 --></div>
     <input type="hidden" id="result" name="${result }"/>
     <input type="hidden" id="chanceId" value="${chance.id }"/>
+    <input type="hidden" id="userId" value="${curruser.userId }"/>
 </body>
 
 
@@ -177,7 +178,8 @@ $().ready(function(){
 			
 			if(op=="update"){
 				$("#Button1").val("保存修改");
-				$("#form1").attr("action","chance/doChanceModify");
+				$("#form1").attr("action","chance/doChanceModify?userId="+$("#userId").val());
+				
 			}else if(op=='assign'){
 				
 				$("input[type='text']").attr("readonly","true"); 

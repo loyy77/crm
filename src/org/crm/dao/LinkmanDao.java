@@ -37,6 +37,8 @@ public interface LinkmanDao {
 	 */
 	public abstract List<Linkman> find();
 
+	public List<Linkman> findByCustId(int custId);
+
 	/**
 	 * 根据编号获得
 	 * 
@@ -44,5 +46,7 @@ public interface LinkmanDao {
 	 * @return
 	 */
 	public abstract Linkman get(int id);
+
+	public abstract int getTotalCount();
 
 }

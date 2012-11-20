@@ -51,9 +51,18 @@ public class CustomerDaoImpl implements CustomerDao {
 	 * @see org.crm.dao.impl.CustomerDao#update(org.crm.entity.Customer)
 	 */
 	@Override
-	public boolean update(Customer customer) {
-		String sql = "update customer set name=?,region=?,managerId=?,managerName=?,levelLabel=?,satisfy=?,credit=?,addr=?,zip=?,tel=?,fax=?,website=?,licence=?,chiefatain=?,bankroll=?,turnover=?,bank=?,account=?,localTax=?,nationalTax=?,state=? where id=?";
-		return false;
+	public boolean update(Customer c) {
+		String sql = "update customer set name=?,region=?,managerId=?,managerName=?,levelLabel=?,satisfy=?,credit=?,addr=?,zip=?,tel=?,fax=?,website=?,licence=?,chieftain=?,bankroll=?,turnover=?,bank=?,account=?,localTax=?,nationalTax=? where id=?";
+
+		return jdbcTemplate.update(
+				sql,
+				new Object[] { c.getName(), c.getRegion(), c.getManagerId(),
+						c.getManagerName(), c.getLevelLabel(), c.getSatisfy(),
+						c.getCredit(), c.getAddr(), c.getZip(), c.getTel(),
+						c.getFax(), c.getWebsite(), c.getLicence(),
+						c.getChieftain(), c.getBankroll(), c.getTurnover(),
+						c.getBank(), c.getAccount(), c.getLocalTax(),
+						c.getNationalTax(), c.getId() }) == 1 ? true : false;
 	}
 
 	/*
@@ -103,7 +112,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public List<Customer> find() {
 		List<Customer> list = null;
-		jdbcTemplate.execute("set names=utf8 ;");
+		// jdbcTemplate.execute("set names=utf8 ;");
 		String sql = "select * from customer where state =?";
 		list = jdbcTemplate.query(sql,
 				new Object[] { Constant.CUSTOMER_STATE_NORMAL },

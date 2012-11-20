@@ -14,4 +14,6 @@ public interface DictDao {
 	 */
 	public abstract List<Dict> findByDictType(String dictType);
 
+	public abstract String findById(int id);
+
 }

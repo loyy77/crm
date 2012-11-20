@@ -127,12 +127,13 @@ public class ChanceController {
 	 * @return
 	 */
 	@RequestMapping("/chance/doChanceModify")
-	public String doChanceModify(@ModelAttribute("user") Users user,
-			Chance chance, Model model) {
+	public String doChanceModify(String userId, Users user, Chance chance,
+			Model model) {
 
 		log.debug("执行修改销售机会");
-
+		user = usersBiz.getById(Integer.valueOf(userId));
 		log.debug("user:" + user);
+		log.debug(chance);
 		int roleId = user.getRoleId();
 		// 管理员和销售主管
 		if (roleId == Constant.ROLE_ADMIN
@@ -144,6 +145,8 @@ public class ChanceController {
 				return this.toList(model);
 			}
 
+		} else {
+			log.debug("权限不够");
 		}
 		log.debug("出错，执行修改销售机会");
 		return "error";
@@ -235,6 +238,7 @@ public class ChanceController {
 		model.addAttribute("chance", chance);
 		model.addAttribute("op", "update");
 		model.addAttribute("assignList", usersBiz.list());
+
 		return "chanceAdd";
 	}
 

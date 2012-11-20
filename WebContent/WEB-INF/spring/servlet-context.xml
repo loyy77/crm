@@ -44,6 +44,8 @@ http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 		<mvc:interceptor>
 			<mvc:mapping path="/plan/*" />
 			<mvc:mapping path="/chance/*" />
+			<mvc:mapping path="/cust/*" />
+			<mvc:mapping path="/linkman/*"/>
 			<bean class="org.crm.web.interceptor.UsersInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
