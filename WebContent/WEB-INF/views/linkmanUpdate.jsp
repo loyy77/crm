@@ -201,15 +201,16 @@ line-height:24px;
 							src="resources/ligerUI/skins/icons/communication.gif" /></td>
 					</tr>
 					<tr>
-						<input type="hidden" name="id" value="${linkman.id }"/>
+					<c:if test="${linkman.id!=null }">	<input type="hidden" name="id" value="${linkman.id }"/> </c:if>
 						<td class="tb-tr-odd"><input type="hidden" name="customerId" value="${custId }" />姓名</td>
 						<td align="left"><input name="name" type="text" value="${linkman.name }" /></td>
 						<td class="tb-tr-odd">性别</td>
 						<td align="left" >
 								男
-								<input  checked  type="radio" name="sex" value="男" />
+								${linkman.sex  }
+								<input <c:if test="${linkman.sex=='男'}">checked</c:if> <c:if test="${linkman.sex==null}">checked</c:if>  type="radio" name="sex" value="男" />
 								女
-								<input type="radio" name="sex" value="女"  />
+								<input <c:if test="${linkman.sex=='女'}">checked</c:if> type="radio" name="sex" value="女"  />
 								
 							
 						</td>

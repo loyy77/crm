@@ -87,6 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		  	window.location.href="linkman/toUpdate?op=update&custId="+custId+"&linkmanId="+linkmanId;
       	  }else if(item.id==3){ 
       			var linkmanId=getSelected();
+      			if(!linkmanId)return;
           		$.ligerDialog.confirm("确定编号为:"+linkmanId+"的联系人信息吗？",function (r) {
           			if(r){
           				//window.location.href="chance/doDevSuccess?chanceId="+chanceId;
