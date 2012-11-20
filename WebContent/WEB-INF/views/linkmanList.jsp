@@ -71,12 +71,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           return row.assignId;
     }
     
-
-    
     	//每个按钮响应的事件
 	  function itemclick(item)
         {
-			var flag=true;
+		
 		  if(item.id==1){//新建联系人
 			 var custId= $("#custId").val();
 		  	if(!custId)return;
@@ -88,8 +86,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		  if(!custId)return;
       		  	window.location.href="linkman/toUpdate?op=update&custId="+custId+"&linkmanId="+linkmanId;
       	  }else if(item.id==3){ 
-      		 
-      		
       			var linkmanId=getSelected();
           		$.ligerDialog.confirm("确定编号为:"+linkmanId+"的联系人信息吗？",function (r) {
           			if(r){
@@ -106,19 +102,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           				});
           			}
           		});
-      	  }else if(item.id==4){
-   
-      	  }
-		  
-		  
-      	  else if(item.text=='指派'){
-      		  if(flag){
-      			  var chanceId=getSelected();
-          		  if(!chanceId)return;
-          		  	window.location.href="chance/toChanceAssign?chanceId="+chanceId;
-      			  
-      		  }
-      		
+      	  }else if(item.id==4){//返回客户信息列表页面
+      		  window.location.href="cust/toList";
       	  }
         }
     	//工具条
@@ -129,11 +114,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 { line:true },
                 { id:2,text: '编辑', click: itemclick },
                 { line:true },
-                { id:3,text: '删除', click: itemclick }//,
-               /*  { line:true },
-                { id:4,text: '历史订单', click: itemclick },
-               { line:true},
-               { id:5,text: '删除', click : itemclick} */
+                { id:3,text: '删除', click: itemclick },
+                { line:true },
+                { id:4,text: '返回客户信息列表', click: itemclick }//,
+           
             ]
             }); 
             
