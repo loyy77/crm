@@ -144,7 +144,7 @@ $().ready(function(){
                <%--  <form:input path="assignId.trueName" name="assignId.loginName" type="text" id="assignId" readonly="true" ltype="text" /> --%>
                 	<!-- itemValue="${trueName}" itemLabel="${id}" -->  
 			
-                	<select id="assignId.userId" name="assignId.userId" title="在这里指派" class="l-text">
+                	<select id="assignId.userId" name="assignId.userId" title="在这里指派" class="l-text" disabled="disabled">
                 <option value="0">未指派</option>
 					<c:forEach var="u" items="${assignList }">
 							

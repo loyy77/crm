@@ -38,13 +38,17 @@ public class UsersInterceptor implements HandlerInterceptor {
 			HttpServletResponse respon, Object arg2) throws Exception {
 
 		log.debug(req.getServletPath());
-
+		//下面这句解决iframe session丢失的问题
+	
+		
+//		忽略对URL “/user”的拦截 
 		if (req.getServletPath().startsWith("/user")) {
 			return true;
 
 		}
-
 		req.setCharacterEncoding("gbk");
+		respon.setHeader("P3P", "CP=CAO PSA OUR");
+		
 		respon.setContentType("text/html;charset=gbk");
 		// ajax的请求编码改为 utf-8
 		if (isAjaxRequest(req)) {
@@ -64,10 +68,11 @@ public class UsersInterceptor implements HandlerInterceptor {
 					+ "/user/toLogin'");
 			// out.write("$.ligerDialog.warn('丢失登录状态，请重新登录。。')");
 			out.write("</script>");
+			out.flush();
 			out.close();
 			return false;
 		} else {
-
+			log.debug("检测到用户登录，放行。");
 			return true;
 		}
 

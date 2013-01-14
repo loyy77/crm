@@ -86,6 +86,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		  if(!custId)return;
       		  	window.location.href="linkman/toList?custId="+custId;
       	  }else if(item.id==3){ //开发成功
+      		  alert("待开发")
+      	  return;
       		  var userId=$("#userId").val();
       		  var assignId=getAssignId();
       			var bb=userId==assignId;
@@ -106,10 +108,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           			}
           		});
       	  }else if(item.id==4){
-      		  
+      		  alert("待开发");return;
       		 var chanceId=getSelected();
    		  if(!chanceId)return;
-   		  $.ligerDialog.confirm("确定执行开发失败操作吗？",function(rst){
+   		  $.ligerDialog.confirm("待开发",function(rst){
+   			  /*
    			  if(!rst)return;
    			  $.post("chance/doDevFail",{'chanceId':chanceId},function(data){
    				  if(data=="fail"){
@@ -119,9 +122,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    				  }
    				  
    			  });
+   			  */
    		  });
       	  }
-      	  else if(item.text=='指派'){
+      	  else if(item.id==5){
+      		  alert("待开发");return;
       		  if(flag){
       			  var chanceId=getSelected();
           		  if(!chanceId)return;
