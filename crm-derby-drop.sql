@@ -1,0 +1,10 @@
+drop table chance;
+drop table customer;
+drop table dict;
+drop table linkman;
+drop table plan;
+drop table rights;
+drop table role;
+drop table role_rights;
+drop table users;
+drop table activity;
