@@ -24,6 +24,10 @@ public class UsersController {
 	public String toLogin() {
 		return "login";
 	}
+    @RequestMapping(value = "/user/toMain")
+    public String toMain(Users user, Model model){
+        return "main";
+    }
 
 	/**
 	 * 
@@ -37,7 +41,17 @@ public class UsersController {
 	public String proccessSubmit(Users user, BindingResult result, Model model) {
 		log.debug("用户登录");
 
-		Users curruser = usersBiz.login(user.getLoginName(),
+     /*
+       if(null!=user){
+
+         //  curruser=user;
+           System.out.println("user = " + user);
+           model.addAttribute(Constant.CURRENT_USER, user);
+           return "main";
+
+       }
+*/
+        Users   curruser= usersBiz.login(user.getLoginName(),
 				user.getLoginPass());
 		if (null != curruser && curruser.getUserId() > 0
 				&& curruser.getLoginName().trim().length() > 1) {
@@ -47,7 +61,7 @@ public class UsersController {
 			return "main";
 		}
 
-		return "login";
+        return "login";
 
 	}
 
@@ -55,15 +69,18 @@ public class UsersController {
 	 * 
 	 * 
 	 */
-	@RequestMapping("/login1")
+	@RequestMapping("/user/login1")
 	public @ResponseBody
 	String ajaxLogin(Users user, Model model) {
 		Users curruser = usersBiz.login(user.getLoginName(),
 				user.getLoginPass());
 		if (null != curruser && curruser.getUserId() > 0
 				&& curruser.getLoginName().trim().length() > 1) {
-			model.addAttribute("user", curruser);
-			return "true";
+			model.addAttribute(Constant.CURRENT_USER, curruser);
+            System.out.println("Ajax!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            log.debug("ajax登入成功,");
+           // return this.toMain(user,model);
+            return "true";
 		} else {
 			return "false";
 		}

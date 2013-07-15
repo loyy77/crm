@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         .login-btn{margin-left:50px;width:114px; height:29px; color:#E9FFFF; line-height:29px; background:url('resources/images/login/login-btn.gif') no-repeat; border:none; overflow:hidden; cursor:pointer;}
         #txtUsername,#txtPassword{ width:191px;} 
         #logincopyright{ text-align:center; color:White; margin-top:50px;}
-    	.div-msg{color:red;text-align:left;}
+    	.div-msg{color:red;text-align:left;width: 200px;}
     </style>
 
 </HEAD>
@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="panel-c">
                 <div class="panel-c-l">
                    
-                    <table cellpadding="0" cellspacing="0" border="0" >
+                    <table cellpadding="0" cellspacing="0" border="0" width="400px" >
                         <tbody>
                          <tr>
                             <td align="left" colspan="3"> 
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </td>
                             </tr> 
                             <tr>
-                            <td align="right">’À∫≈£∫</td><td align="left"><input type="text" name="loginName" id="loginName" class="login-text" /></td><td width="100px"><div id="msgLoginName"></div></td>
+                            <td align="right">’À∫≈£∫</td><td align="left"><input type="text" name="loginName" id="loginName" class="login-text" /></td><td width="160px"><div id="msgLoginName"></div></td>
                             </tr>
                             <tr>
                             <td align="right">√‹¬Î£∫</td><td align="left"><input type="password" name="loginPass" id="loginPass" class="login-text" /></td><td><div id="msgLoginPass"></div></td>
@@ -68,7 +68,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <td align="left" colspan="3">
                                 <input type="button" id="btnLogin" value="µ«¬Ω" class="login-btn" />
                             </td>
-                            </tr> 
+                            </tr>
+
+                        <tr>
+                            <td colspan="3" style="text-align: left">
+                                    <div id="msg-rst" ></div>
+
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

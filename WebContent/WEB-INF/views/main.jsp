@@ -112,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        					url :  'chance/toDevList'
        				} ]
        			}, {
-       				text : '客户管理',children:[{text:'客户信息管理',url:'cust/toList'},{text:'客户流失管理',url:'##'}]
+       				text : '客户管理',children:[{text:'客户信息管理',url:'cust/toList'},{text:'客户流失管理1',url:'javascript:alert("hello,god!")'}]
        			}, {
        				text : '节点3',children:[{text:'11',url:'#'}]
        			}, {
