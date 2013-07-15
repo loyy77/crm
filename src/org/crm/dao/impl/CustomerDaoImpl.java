@@ -81,7 +81,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	/**
 	 * (non-Javadoc)
 	 * 
-	 * @see org.crm.dao.impl.CustomerDao#find()
+	 * @see org.crm.dao.impl.CustomerDaoImpl#findSmall()
 	 */
 	public List<Customer> findSmall() {
 		List<Customer> list = null;
