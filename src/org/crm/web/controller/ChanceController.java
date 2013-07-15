@@ -49,7 +49,7 @@ public class ChanceController {
 
 	/**
 	 * 
-	 * @param request
+	 * @param user
 	 * @param chance
 	 * @return
 	 */
@@ -311,10 +311,7 @@ public class ChanceController {
 	 * 开发成功
 	 * 
 	 * @param chanceId
-	 * @param linkmanName
-	 * @param linkmanTel
-	 * @param customerName
-	 * @return
+	 * @return ajax 是否成功了
 	 */
 	@RequestMapping("/chance/doDevSuccess")
 	public @ResponseBody
