@@ -41,16 +41,6 @@ public class UsersController {
 	public String proccessSubmit(Users user, BindingResult result, Model model) {
 		log.debug("用户登录");
 
-     /*
-       if(null!=user){
-
-         //  curruser=user;
-           System.out.println("user = " + user);
-           model.addAttribute(Constant.CURRENT_USER, user);
-           return "main";
-
-       }
-*/
         Users   curruser= usersBiz.login(user.getLoginName(),
 				user.getLoginPass());
 		if (null != curruser && curruser.getUserId() > 0
@@ -64,6 +54,20 @@ public class UsersController {
         return "login";
 
 	}
+
+    /**
+     * 用户退出
+     * @param user
+     * @return 转到登陆页面
+     */
+    @RequestMapping("/user/exit")
+    public String userExit(Users user){
+        if(null!=user){
+            user=null;
+        }
+
+        return "login";
+    }
 
 	/**
 	 * 
