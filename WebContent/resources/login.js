@@ -35,21 +35,15 @@ function doLogin(){
 		data:[{'loginName':loginName},{'loginPass':loginPass}],
             beforeSend:function(xhr, settings)
             {
+             //   $("#msg-rst").html("<span>loading....</span>")
              //   alert("ajax");
                 // 如果是postData方式传参，则需要设置请求参数
-                xhr.setRequestHeader("ajax-encoding", "YES");
-            },
-		success:function(data){
-            //alert(date);
+               // xhr.setRequestHeader("ajax-encoding", "YES");
+                $("#msgLoginName").html("<span>登陆中...</span>");
+           },
+		    success:function(data){
 			if(data=="false"){
-               // alert(data);
-				//alert("登录失败,账号或密码错误！")
-
-               // $("#msg-rst").html("<span class='div-msg'>登录失败,账号或密码错误！</span>");
                 $("#msgLoginName").html("<span class='div-msg'>登录失败,账号或密码错误！</span>");
-
-
-
                 $("#loginName").focus();
 				return;
 			}else{
@@ -61,7 +55,11 @@ function doLogin(){
             }
 			
 			
-		},error:function(result){
+		},
+            complete:function(){
+                $("#msgLoginName").html("");
+            }
+            ,error:function(result){
 			alert("登录失败，系统错误"+result);
 		}
 	}

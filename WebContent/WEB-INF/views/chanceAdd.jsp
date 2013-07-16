@@ -24,9 +24,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="/crm/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
     <script src="/crm/ligerUI/js/plugins/ligerRadio.js" type="text/javascript"></script>
     <script src="/crm/ligerUI/js/plugins/ligerSpinner.js" type="text/javascript"></script>
-    <script src="/crm/ligerUI/js/plugins/ligerTextBox.js" type="text/javascript"></script> 
+    <script src="/crm/ligerUI/js/plugins/ligerTextBox.js" type="text/javascript"></script>
+    -->
     <script src="/crm/ligerUI/js/plugins/ligerTip.js" type="text/javascript"></script>
--->
+
 
     <script src="resources/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
     <script src="resources/jquery-validation/jquery.metadata.js" type="text/javascript"></script> 
@@ -92,39 +93,42 @@ $().ready(function(){
 
 <div id="tt"></div>
 <input id="op" type="hidden" value="${op}"/>
-    <form:form name="form1" id="form1" method="post" action="chance/doChance" modelAttribute="chance">
+    <form:form name="form1" id="form1" method="post" action="chance/doChance?userId=${curruser.userId}" modelAttribute="chance">
 <div>
 </div>
         <table cellpadding="0" cellspacing="0" class="l-table-edit" border=0 >
             <tr>
                 <td align="right" class="l-table-edit-td">编号：</td>
                 <td align="left" class="l-table-edit-td"><form:input readonly="true" path="id" name="id" type="text" id="id"  title="系统自动生成" ltype="text" /></td>
-                <td align="left">机会来源：</td>
-                <td align="left"><form:input path="source" name="source" type="text" id="source" ltype="text" /></td>
+
             </tr>
+
+            <tr>  <td align="right" class="l-table-edit-td">机会来源：</td>
+                <td align="left"  class="l-table-edit-td"><form:input path="source" name="source" type="text" id="source" ltype="text" /></td></tr>
             <tr>
                 <td  align="right" class="l-table-edit-td" valign="top">客户名称：</td>
                  <td align="left" class="l-table-edit-td" ><form:input path="customerName"  name="customerName" type="text" id="customerName" ltype="text" />*
-                 </td><td align="left">成功几率：</td> 
-                  <td align="left"><form:input path="rate" name="rate" type="text" id="rate" ltype="text" title="0-100之间的整数"/>*</td>
-            </tr>   
-            
-            <tr>
-                <td align="right" class="l-table-edit-td"   valign="top"  >概要：</td>
-                <td align="left" class="l-table-edit-td" colspan="3">
-                  <form:input path="title" name="title" type="text" id="title" ltype="text" />*
-                </td>
-            </tr>  
+                  </tr>
+            <tr> </td><td align="right" class="l-table-edit-td">成功几率：</td>
+                <td align="left"  class="l-table-edit-td"><form:input path="rate" name="rate" type="text" value="60" id="rate" ltype="text" title="0-100之间的整数"/>*</td>
+            </tr>
+
                  
            <tr>
                 <td align="right" class="l-table-edit-td" valign="top">&nbsp;联系人：</td>
                  <td align="left" class="l-table-edit-td" ><form:input path="linkMan" name="linkman" type="text" id="linkman" ltype="text" />
                  </td>
-                 <td align="left">联系电话：</td> 
-                  <td align="left"><form:input path="linkPhone" name="linkPhone" type="text" id="linkPhone" ltype="text" class="required"/></td>
-            </tr>   
-            
-              <tr>
+                     </tr>
+            <tr><td align="left" class="l-table-edit-td">联系电话：</td>
+                <td align="left"  class="l-table-edit-td"><form:input path="linkPhone" name="linkPhone" type="text" id="linkPhone" ltype="text" class="required"/></td>
+            </tr>
+            <tr>
+                <td align="right" class="l-table-edit-td"   valign="top"  >概要：</td>
+                <td align="left" class="l-table-edit-td" colspan="3">
+                    <form:input path="title" name="title" type="text" id="title" title="不能为空" ltype="text" />*
+                </td>
+            </tr>
+            <tr>
                 <td align="right" class="l-table-edit-td">机会描述：</td>
                 <td align="left" class="l-table-edit-td" colspan="3"> 
              <%--    <form:textarea path="description"   /> --%>
@@ -133,7 +137,10 @@ $().ready(function(){
             </tr>
            <tr>
                 <td align="right" class="l-table-edit-td">创建人：</td>
-                <td align="left" class="l-table-edit-td"><form:input value="${user.loginName }" name="createId.loginName" type="text" id="createId" ltype="text" readonly="true" path="createId.loginName" />*</td>
+                <td align="left" class="l-table-edit-td">
+                    <form:input value="${curruser.loginName }" name="createId.loginName" type="text" id="createId" ltype="text" readonly="true" path="createId.loginName" />
+
+                    *</td>
                 <td align="left">创建日期：</td>
                 <td align="left"><form:input path="createDate" name="assignDate" type="text" id="assignDate" readonly="true" ltype="text" />*</td>
             </tr>
@@ -144,7 +151,7 @@ $().ready(function(){
                <%--  <form:input path="assignId.trueName" name="assignId.loginName" type="text" id="assignId" readonly="true" ltype="text" /> --%>
                 	<!-- itemValue="${trueName}" itemLabel="${id}" -->  
 			
-                	<select id="assignId.userId" name="assignId.userId" title="在这里指派" class="l-text" disabled="disabled">
+                	<select id="assignId.userId" onchange="javascript:alert('请转到指派页面操作该项,')" name="assignId.userId" title="在这里指派" class="l-text">
                 <option value="0">未指派</option>
 					<c:forEach var="u" items="${assignList }">
 							
@@ -166,7 +173,10 @@ $().ready(function(){
     <!--  数据统计代码 --></div>
     <input type="hidden" id="result" name="${result }"/>
     <input type="hidden" id="chanceId" value="${chance.id }"/>
-    <input type="hidden" id="userId" value="${curruser.userId }"/>
+
+
+
+<input type="hidden" id="userId" name="userId" value="${curruser.userId }"/>
 </body>
 
 
@@ -178,6 +188,10 @@ $().ready(function(){
 			
 			if(op=="update"){
 				$("#Button1").val("保存修改");
+             //   $("#assignId\\.userId").disabled="disabled";
+                $("#assignId\\.userId").attr("disabled","true");
+
+           //     $(jQuery('assignId\\.userId')).disabled="disabled";
 				$("#form1").attr("action","chance/doChanceModify?userId="+$("#userId").val());
 				
 			}else if(op=='assign'){
@@ -186,7 +200,10 @@ $().ready(function(){
 				$("input[type='text']").attr("disabled","true");
 				$("textarea").attr("disabled","true");
 				$("#Button1").val("保存指派");
-				$("#form1").attr("action","chance/doChanceAssign?chanceId="+$("#chanceId").val());
+
+                // document.getElementById("assignId.userId").disable=false;
+
+                $("#form1").attr("action","chance/doChanceAssign?chanceId="+$("#chanceId").val());
 				
 			}
 			

@@ -2,6 +2,7 @@ package org.crm.web.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -23,6 +24,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import sun.net.httpserver.HttpServerImpl;
 
 @Controller
 @SessionAttributes("user")
@@ -53,11 +55,14 @@ public class ChanceController {
 	 * @param chance
 	 * @return
 	 */
-	@RequestMapping("/chance/doChance")
-	public String proccessChanceSubmit(Chance chance,
-			@ModelAttribute("user") Users user) {
+
+	@RequestMapping(value="/chance/doChance",params={"userId"})
+	public String proccessChanceSubmit(HttpServletRequest request,Chance chance,
+                                       @ModelAttribute Users user) {
 		// Users u = new Users();
 		// // u.setUserId(99999);
+
+        String userId=request.getParameter("userId");
 		chance.setAssignId(null);
 		chance.setCreateId(user);
 		chanceBiz.add(chance);
