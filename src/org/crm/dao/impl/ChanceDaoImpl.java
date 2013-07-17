@@ -51,10 +51,11 @@ public class ChanceDaoImpl implements ChanceDao {
 	 */
 	@Override
 	public List<Chance> list() {
-		String sql = "select id,customerName,title,linkMan,linkPhone,createDate from chance where state !=?";
+		String sql = "select id,customerName,title,linkMan,linkPhone,createDate from chance where state=?";
 
 		return jdbcTemplate.query(sql,
-				new Object[] { Constant.CHANCE_REMOVED },
+				new Object[] { Constant.CHANCE_ASSIGN},
+
 				new ChanceMapperSimple());
 	}
 
@@ -67,14 +68,14 @@ public class ChanceDaoImpl implements ChanceDao {
 		int start = (page - 1) * pageSize;
 		int end = pageSize;
 		int withOut = Constant.CHANCE_REMOVED; // 1 ,排除被删除和没有指派的销售任务
-		String sql = "select * from chance  where state !=? and state !=? limit ?,?";
+		String sql = "select * from chance  where state !=? and state!=? and state !=? and state!=? limit ?,?";
 		if (state == Constant.CHANCE_UNASSIGN) {
 			withOut = 1;
 		}
 		// String sql="call crm.proc_pager(?,?)";
 		// jdbcTemplate.call(, declaredParameters)
 		return this.jdbcTemplate.query(sql, new Object[] {
-				Constant.CHANCE_REMOVED, withOut, start, end },
+				Constant.CHANCE_REMOVED, withOut,Constant.CHANCE_DEV_SUCCESS,Constant.CHANCE_DEV_Failure, start, end },
 				new RowMapper<Chance>() {
 
 					@Override

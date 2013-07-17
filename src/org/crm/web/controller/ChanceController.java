@@ -330,6 +330,7 @@ public class ChanceController {
 				chance.getCustomerName())) {
 			return "fail";
 		}
+
 		return "success";
 	}
 

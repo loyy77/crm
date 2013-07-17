@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<c:url value="/resources/ligerUI/js/plugins/ligerTextBox.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/resources/ligerUI/js/plugins/ligerCheckBox.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/resources/ligerUI/js/plugins/ligerComboBox.js"/>" type="text/javascript"></script>
-    <script src="<c:url value="/resources/ligerUI/js/plugins/ligerGrid.js"/>"  type="text/javascript" charset="gbk></script>
+    <script src="<c:url value="/resources/ligerUI/js/plugins/ligerGrid.js"/>"  type="text/javascript" ></script>
     <script src="<c:url value="/resources/ligerUI/js/plugins/ligerDateEditor.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/resources/ligerUI/js/plugins/ligerSpinner.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/resources/ligerUI/js/plugins/ligerToolBar.js"/>" type="text/javascript"></script>
@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			{ display: '地区', name: 'region', minWidth: 150 },  
 			{ display: '客户经理', name: 'managerName', minWidth: 140 }, 
 			{ display: '客户等级', name: 'levelLabel', minWidth: 140 },  
-			{ display: '状态', name: 'state', minWidth: 140 },
+			{ display: '状态', name: 'state', minWidth: 140 }
 			],dataAction: 'server',
 				usePager:true,      
 				pageSizeOptions: [5, 10, 15, 20,30,50], 		

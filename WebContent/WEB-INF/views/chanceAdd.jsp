@@ -195,7 +195,7 @@ $().ready(function(){
 				$("#form1").attr("action","chance/doChanceModify?userId="+$("#userId").val());
 				
 			}else if(op=='assign'){
-				
+                $("#assignId\\.userId").attr("onchange","");
 				$("input[type='text']").attr("readonly","true"); 
 				$("input[type='text']").attr("disabled","true");
 				$("textarea").attr("disabled","true");
