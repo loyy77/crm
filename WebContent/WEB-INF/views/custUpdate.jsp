@@ -192,7 +192,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
         var result=$("#result").val();
         if(result=="success"){
-        	$.ligerDialog.alert("更新成功");
+        var r=	$.ligerDialog.alert("更新成功");
+         //   $.post("/cust/toList");
+       if(r){window.location.href="/cust/toList";}
         }else if(result=="fail"){
         	$.ligerDialog.alert("保存失败");
         }

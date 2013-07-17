@@ -85,9 +85,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		  var custId=getSelected();
       		  if(!custId)return;
       		  	window.location.href="linkman/toList?custId="+custId;
-      	  }else if(item.id==3){ //开发成功
-      		  alert("待开发")
-      	  return;
+      	  }else if(item.id==3){ //交往记录
+      		  alert("开发中-交往记录")
+      	      return;
+              var row=$("#maingrid").ligerGetGridManager().getSelectedRow();
+
+              if (!row) { alert('请选择要操作的行'); return; }
+              var custId=row.id;
+               window.location.href="";
+
+
+              /////
       		  var userId=$("#userId").val();
       		  var assignId=getAssignId();
       			var bb=userId==assignId;

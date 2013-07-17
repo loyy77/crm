@@ -83,7 +83,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		  var custId=$("#custId").val();
       			var linkmanId=getSelected();
       			//alert(linkmanId);
-      		  if(!custId)return;
+            //  alert(linkmanId);
+            //  alert(custId)
+      		  if(custId=="undefined" || linkmanId=="undefined")return;
       		  	window.location.href="linkman/toUpdate?op=update&custId="+custId+"&linkmanId="+linkmanId;
       	  }else if(item.id==3){ 
       			var linkmanId=getSelected();
