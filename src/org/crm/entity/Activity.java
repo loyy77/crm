@@ -1,13 +1,24 @@
 package org.crm.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Activity {
 	private int id;
 	private int customerId;
 	private Date atvDate;
 	private String place;
-	private String description;
+    private String title;
+
+    public Activity(int id,int customerId, Date atvDate, String place, String title, String description) {
+        this.id=id;
+        this.customerId = customerId;
+        this.atvDate = atvDate;
+        this.place = place;
+        this.title = title;
+        this.description = description;
+    }
+
+    private String description;
 
 	public int getId() {
 		return id;
@@ -17,6 +28,13 @@ public class Activity {
 		this.id = id;
 	}
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 	public int getCustomerId() {
 		return customerId;
 	}
