@@ -29,7 +29,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	 */
 	@Override
 	public int add(final String customerName) {
-		final String sql = "insert into customer(name) values(?)";
+		final String sql = "insert into customer(name,state) values(?,1)";//Ä¬ÈÏ×´Ì¬Îª1£¨ÆÕÍ¨£©
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 
