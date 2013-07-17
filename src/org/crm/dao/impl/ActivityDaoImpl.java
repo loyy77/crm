@@ -2,11 +2,13 @@ package org.crm.dao.impl;
 
 import org.crm.dao.ActivityDao;
 import org.crm.entity.Activity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +23,9 @@ import java.util.List;
  * Time: ÏÂÎç4:57
  * To change this template use File | Settings | File Templates.
  */
+@Component
 public class ActivityDaoImpl implements ActivityDao{
+    @Autowired
     private JdbcTemplate jdbcTemplate;
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
@@ -30,7 +34,7 @@ public class ActivityDaoImpl implements ActivityDao{
 
     @Override
     public int add(final Activity a) {
-    final String sql="insert into activity(customerId,atvDate,place,title,description) values(?,?,?,?,?)";
+    final String sql="insert into activity(id,customerId,atvDate,place,title,description) values(?,?,?,?,?,?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(new PreparedStatementCreator() {
 
@@ -39,11 +43,12 @@ public class ActivityDaoImpl implements ActivityDao{
                     throws SQLException {
                 PreparedStatement ps = conn.prepareStatement(sql,
                         new String[] { "id" });
-                ps.setInt(1, a.getCustomerId());
-                ps.setDate(2, a.getAtvDate());
-                ps.setString(3, a.getPlace());
-                ps.setString(4,a.getTitle());
-                ps.setString(5,a.getDescription());
+                ps.setInt(1,a.getId());
+                ps.setInt(2, a.getCustomerId());
+                ps.setDate(3, a.getAtvDate());
+                ps.setString(4, a.getPlace());
+                ps.setString(5,a.getTitle());
+                ps.setString(6,a.getDescription());
 
                 return ps;
             }
@@ -57,7 +62,7 @@ public class ActivityDaoImpl implements ActivityDao{
 
     @Override
     public boolean update(Activity a) {
-        return jdbcTemplate.update("update activity set customerId=?,atvDate=?,place=?,title=?,description=? where id=?",new Object[]{a.getCustomerId(),a.getAtvDate(),a.getPlace(),a.getTitle(),a.getDescription()})>0?true:false;  //To change body of implemented methods use File | Settings | File Templates.
+        return jdbcTemplate.update("update activity set customerId=?,atvDate=?,place=?,title=?,description=? where id=?",new Object[]{a.getCustomerId(),a.getAtvDate(),a.getPlace(),a.getTitle(),a.getDescription(),a.getId()})>0?true:false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -65,7 +70,7 @@ public class ActivityDaoImpl implements ActivityDao{
         return jdbcTemplate.queryForObject("select id,customerId,atvDate,place,title,description from activity where id=?",new Object[]{id}, new RowMapper<Activity>() {
             @Override
             public Activity mapRow(ResultSet resultSet, int i) throws SQLException {
-                Activity a= new Activity(resultSet.getInt("id"),resultSet.getInt("customerId"),resultSet.getDate("ctvDate"),resultSet.getString("place"), resultSet.getString("description"));
+                Activity a= new Activity(resultSet.getInt("id"),resultSet.getInt("customerId"),resultSet.getDate("atvDate"),resultSet.getString("place"), resultSet.getString("description"));
 
                 return a;
             }
@@ -74,7 +79,7 @@ public class ActivityDaoImpl implements ActivityDao{
 
     @Override
     public List<Activity> listByCustomerId(int customerId) {
-        String sql="select id,customerId,ctvDate,place,description from activity ";
+        String sql="select id,customerId,atvDate,place,description from activity ";
         if(customerId>0)
         sql +="where customerId=?";
 
@@ -82,7 +87,7 @@ public class ActivityDaoImpl implements ActivityDao{
         return jdbcTemplate.query(sql,new Object[]{customerId},new RowMapper<Activity>() {
             @Override
             public Activity mapRow(ResultSet resultSet, int i) throws SQLException {
-                Activity a= new Activity(resultSet.getInt("id"),resultSet.getInt("customerId"),resultSet.getDate("ctvDate"),resultSet.getString("place"), resultSet.getString("description"));
+                Activity a= new Activity(resultSet.getInt("id"),resultSet.getInt("customerId"),resultSet.getDate("atvDate"),resultSet.getString("place"), resultSet.getString("description"));
 
                 return a;   //To change body of implemented methods use File | Settings | File Templates.
         }
