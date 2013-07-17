@@ -17,7 +17,7 @@ public interface ActivityDao {
     boolean del(int id);
     boolean update(Activity a);
     Activity get(int id);
-    List<Activity> listByCustomerId(int customerId);
+    List<Activity> listByCustomerId(int customerId,int page,int pagesize);
      List<Activity> list();
 
 

@@ -1,10 +1,7 @@
 package org.crm.web.controller;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import org.crm.biz.ChanceBiz;
 import org.crm.biz.UsersBiz;
@@ -22,9 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.WebRequest;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import sun.net.httpserver.HttpServerImpl;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @SessionAttributes("user")
@@ -71,7 +68,7 @@ public class ChanceController {
 
 	/**
 	 * 销售机会的列表
-	 * 
+	 * ajax
 	 * @param model
 	 * @return
 	 */

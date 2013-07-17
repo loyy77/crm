@@ -78,10 +78,8 @@ public class ActivityDaoImpl implements ActivityDao{
     }
 
     @Override
-    public List<Activity> listByCustomerId(int customerId) {
-        String sql="select id,customerId,atvDate,place,description from activity ";
-        if(customerId>0)
-        sql +="where customerId=?";
+    public List<Activity> listByCustomerId(int customerId,int page,int pagesize) {
+        String sql="select id,customerId,atvDate,place,description from activity  where customerId=?";
 
 
         return jdbcTemplate.query(sql,new Object[]{customerId},new RowMapper<Activity>() {
@@ -96,6 +94,17 @@ public class ActivityDaoImpl implements ActivityDao{
 
     @Override
     public List<Activity> list() {
-        return this.listByCustomerId(-1);  //To change body of implemented methods use File | Settings | File Templates.
-    }
+        String sql="select id,customerId,atvDate,place,description from activity ";
+
+
+
+        return jdbcTemplate.query(sql,new RowMapper<Activity>() {
+            @Override
+            public Activity mapRow(ResultSet resultSet, int i) throws SQLException {
+                Activity a= new Activity(resultSet.getInt("id"),resultSet.getInt("customerId"),resultSet.getDate("atvDate"),resultSet.getString("place"), resultSet.getString("description"));
+
+                return a;   //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
+        }
 }

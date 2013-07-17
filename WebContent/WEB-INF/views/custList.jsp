@@ -86,35 +86,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		  if(!custId)return;
       		  	window.location.href="linkman/toList?custId="+custId;
       	  }else if(item.id==3){ //交往记录
-      		  alert("开发中-交往记录")
-      	      return;
+      		 // alert("开发中-交往记录")
+      	    //  return;
               var row=$("#maingrid").ligerGetGridManager().getSelectedRow();
 
               if (!row) { alert('请选择要操作的行'); return; }
               var custId=row.id;
-               window.location.href="";
+              alert(custId);
+               window.location.href="atv/toList?custId="+custId;
 
 
-              /////
-      		  var userId=$("#userId").val();
-      		  var assignId=getAssignId();
-      			var bb=userId==assignId;
-      			var chanceId=getSelected();
-          		$.ligerDialog.confirm("确定销售机会:"+chanceId+"为开发成功吗？",function (r) {
-          			if(r){
-          				//window.location.href="chance/doDevSuccess?chanceId="+chanceId;
-          				$.post("chance/doDevSuccess",{'chanceId':chanceId},function(data){
-          					if(data=="success"){
-          						$.ligerDialog.success("操作成功！");
-          						//重载数据
-          						var m=$("#maingrid").ligerGetGridManager();
-          						m.loadData();
-          					}else{
-          						$.ligerDialog.error("操作失败！");
-          					}
-          				});
-          			}
-          		});
       	  }else if(item.id==4){
       		  alert("待开发");return;
       		 var chanceId=getSelected();
