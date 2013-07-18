@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
               if (!row) { alert('请选择要操作的行'); return; }
               var custId=row.id;
-              alert(custId);
+             // alert(custId);
                window.location.href="atv/toList?custId="+custId;
 
 

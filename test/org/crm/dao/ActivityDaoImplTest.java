@@ -2,6 +2,7 @@ package org.crm.dao;
 
 import junit.framework.Assert;
 import org.crm.entity.Activity;
+import org.crm.entity.Customer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,9 @@ public class ActivityDaoImplTest {
       java.util.  Date now=new java.util.Date();
         java.sql.Timestamp ts=new Timestamp(now.getTime());
         System.out.println(ts);
-       Activity a=new Activity(9999,1,new Date(now.getTime()),"asdasd","asd","asd");
+        Customer customer=new Customer();
+        customer.setId(1);
+       Activity a=new Activity(9999,customer,new Date(now.getTime()),"asdasd","asd","asd");
        int rst= activityDao.add(a);
         Assert.assertTrue(rst>0);
        a=activityDao.get(9999);

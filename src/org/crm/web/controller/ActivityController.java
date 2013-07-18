@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -30,11 +31,13 @@ private ActivityBiz activityBiz;
 
     @RequestMapping(value = "atv/list",params = {"custId"})
 
-    public   @ResponseBody String list( HttpServletRequest req,@RequestParam String custId,Model model){
-custId=(String)req.getSession().getAttribute("custId");
+    public   @ResponseBody String list(HttpSession session, HttpServletRequest req,@RequestParam String custId,Model model){
+       session= req.getSession();
+        custId=(String)session.getAttribute("custId");
         System.out.println("custId = " + custId);
-       List<Activity> list=activityBiz.list();
-        list=activityBiz.listByCustomerId(Integer.parseInt(custId),0,0);
+       List<Activity>   list=activityBiz.listByCustomerId(Integer.parseInt(custId),0,0);
+        session.removeAttribute("custId");
+        model.addAttribute("custId",custId);
         ObjectMapper om=new ObjectMapper();
         String rr="";
         try {
@@ -44,7 +47,7 @@ custId=(String)req.getSession().getAttribute("custId");
         }
         String rst="{\"Rows\":";
         rst+=rr;
-        rst+= ",total:3}";
+        rst+= ",total:3}"; //todo total 3
 
         return rst;
     }

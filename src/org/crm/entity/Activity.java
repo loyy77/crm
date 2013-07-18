@@ -4,12 +4,21 @@ import java.sql.Date;
 
 public class Activity {
 	private int id;
-	private int customerId;
+	private Customer customerId;
+    private String customerName;
 	private Date atvDate;
 	private String place;
     private String title;
 
-    public Activity(int id,int customerId, Date atvDate, String place, String title, String description) {
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String custmerName) {
+        this.customerName = custmerName;
+    }
+
+    public Activity(int id,Customer customerId, Date atvDate, String place, String title, String description) {
         this.id=id;
         this.customerId = customerId;
         this.atvDate = atvDate;
@@ -35,11 +44,11 @@ public class Activity {
     public void setTitle(String title) {
         this.title = title;
     }
-	public int getCustomerId() {
+	public Customer getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(Customer customerId) {
 		this.customerId = customerId;
 	}
 
@@ -67,7 +76,7 @@ public class Activity {
 		this.description = description;
 	}
 
-	public Activity(int id, int customerId, Date atvDate, String place,
+	public Activity(int id, Customer customerId, Date atvDate, String place,
 			String description) {
 		super();
 		this.id = id;
