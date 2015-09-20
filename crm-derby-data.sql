@@ -1,78 +1,78 @@
 
 
-INSERT INTO chance VALUES (default,'±¨Ö½','°¢Àï°Í°Í',87,'111','ÂíÔÆ','0571-12345678','ÏúÊÛ½»Ò×ÏµÍ³',1,'2009-07-20 00:00:00',3,'2009-10-12 00:00:00',3);
-INSERT INTO chance VALUES (default,'µçÊÓ¹ã¸æ','Î¢Èí',90,'222','±È¶û¸Ç×Ó','010-22222222','ÏúÊÛ²Ù×÷ÏµÍ³',2,'2009-10-01 00:00:00',3,'2009-10-12 00:00:00',4);
-INSERT INTO chance VALUES (default,'ÍøÂç¹ã¸æ','¹ãÖÝÒ×´ï¿Æ¼¼ÓÐÏÞ¹«Ë¾',89,'444','Íõ¹¦·¢','0711-32234234','ÏúÊÛÒ©Æ·',3,'2009-02-18 00:00:00',4,'2009-10-14 00:00:00',3);
-INSERT INTO chance VALUES (default,'Ã½Ìå¹ã¸æ','½­ËÕË´Ìì¹ã¸æÓÐÏÞ¹«Ë¾',78,'555','ÕÔÐ¡Ë§','025-12345678','ÏúÊÛ¹ã¸æ´´Òâ',2,'2007-12-16 00:00:00',4,'2007-12-16 00:00:00',2);
-INSERT INTO chance VALUES (default,'»§Íâ´«µ¥¹ã¸æ','ÐìÖÝº£ÔÆµçÄÔ´óÊÀ½ç',90,'ÏúÊÛ´òÓ¡Ö½','ÕÅÏÈÉú','0516-34213412','ÏúÊÛ´òÓ¡Ö½',2,'2007-12-16 00:00:00',NULL,NULL,1);
-INSERT INTO chance VALUES (default,'µçÊÓÃ½Ìå','ÐìÖÝÓÃÓÑÈí¼þ',78,'ÏúÊÛËéÖ½»ú','ÍõÏÈÉú','0516-65753459','ÏúÊÛËéÖ½»ú',2,'2007-12-16 00:00:00',4,'2007-12-16 00:00:00',2);
-INSERT INTO chance VALUES (default,'ÅóÓÑ¿Ú±®','É½¶«¼ÃÄÏÔì±Ò³§',87,'ÂôÖ½','Ç®ÏÈÉú','0627-21321312','Ôì±ÒÐèÒªÖ½£¬Âô¸øËûÖ½',4,'2007-12-16 00:00:00',NULL,NULL,1);
-INSERT INTO chance VALUES (default,'Ð¡µÀÏûÏ¢','±£ÃÜ',99,'²»ÖªµÀ','²»Çå³þ','²»¸æËßÄã','Äã²Â²Â',2,'2007-12-16 00:00:00',NULL,NULL,1);
-INSERT INTO chance VALUES (default,'ÍâÐÇÈË¸æËßÎÒµÄ','¹þµÏË¹',20,'ÒªÂòÊ¯ÓÍ','ÅË¶àÀ­','²»Çå³þ','Òª°ÑµØÇòµÄÊ¯ÓÍÈ«²¿Âò¹â\r\n¹þ¹þ',1,'2009-10-21 00:00:00',NULL,NULL,1);
+INSERT INTO chance VALUES (default,'æŠ¥çº¸','é˜¿é‡Œå·´å·´',87,'111','é©¬äº‘','0571-12345678','é”€å”®äº¤æ˜“ç³»ç»Ÿ',1,'2009-07-20 00:00:00',3,'2009-10-12 00:00:00',3);
+INSERT INTO chance VALUES (default,'ç”µè§†å¹¿å‘Š','å¾®è½¯',90,'222','æ¯”å°”ç›–å­','010-22222222','é”€å”®æ“ä½œç³»ç»Ÿ',2,'2009-10-01 00:00:00',3,'2009-10-12 00:00:00',4);
+INSERT INTO chance VALUES (default,'ç½‘ç»œå¹¿å‘Š','å¹¿å·žæ˜“è¾¾ç§‘æŠ€æœ‰é™å…¬å¸',89,'444','çŽ‹åŠŸå‘','0711-32234234','é”€å”®è¯å“',3,'2009-02-18 00:00:00',4,'2009-10-14 00:00:00',3);
+INSERT INTO chance VALUES (default,'åª’ä½“å¹¿å‘Š','æ±Ÿè‹èˆœå¤©å¹¿å‘Šæœ‰é™å…¬å¸',78,'555','èµµå°å¸…','025-12345678','é”€å”®å¹¿å‘Šåˆ›æ„',2,'2007-12-16 00:00:00',4,'2007-12-16 00:00:00',2);
+INSERT INTO chance VALUES (default,'æˆ·å¤–ä¼ å•å¹¿å‘Š','å¾å·žæµ·äº‘ç”µè„‘å¤§ä¸–ç•Œ',90,'é”€å”®æ‰“å°çº¸','å¼ å…ˆç”Ÿ','0516-34213412','é”€å”®æ‰“å°çº¸',2,'2007-12-16 00:00:00',NULL,NULL,1);
+INSERT INTO chance VALUES (default,'ç”µè§†åª’ä½“','å¾å·žç”¨å‹è½¯ä»¶',78,'é”€å”®ç¢Žçº¸æœº','çŽ‹å…ˆç”Ÿ','0516-65753459','é”€å”®ç¢Žçº¸æœº',2,'2007-12-16 00:00:00',4,'2007-12-16 00:00:00',2);
+INSERT INTO chance VALUES (default,'æœ‹å‹å£ç¢‘','å±±ä¸œæµŽå—é€ å¸åŽ‚',87,'å–çº¸','é’±å…ˆç”Ÿ','0627-21321312','é€ å¸éœ€è¦çº¸ï¼Œå–ç»™ä»–çº¸',4,'2007-12-16 00:00:00',NULL,NULL,1);
+INSERT INTO chance VALUES (default,'å°é“æ¶ˆæ¯','ä¿å¯†',99,'ä¸çŸ¥é“','ä¸æ¸…æ¥š','ä¸å‘Šè¯‰ä½ ','ä½ çŒœçŒœ',2,'2007-12-16 00:00:00',NULL,NULL,1);
+INSERT INTO chance VALUES (default,'å¤–æ˜Ÿäººå‘Šè¯‰æˆ‘çš„','å“ˆè¿ªæ–¯',20,'è¦ä¹°çŸ³æ²¹','æ½˜å¤šæ‹‰','ä¸æ¸…æ¥š','è¦æŠŠåœ°çƒçš„çŸ³æ²¹å…¨éƒ¨ä¹°å…‰\r\nå“ˆå“ˆ',1,'2009-10-21 00:00:00',NULL,NULL,1);
 
  
 
 
-INSERT INTO dict VALUES (default,'·þÎñÀàÐÍ','×ÉÑ¯','×ÉÑ¯',true);
-INSERT INTO dict VALUES (default,'·þÎñÀàÐÍ','½¨Òé','½¨Òé',true);
-INSERT INTO dict VALUES (default,'·þÎñÀàÐÍ','Í¶Ëß','Í¶Ëß',true);
-INSERT INTO dict VALUES (default,'¿Í»§µÈ¼¶','ÆÕÍ¨¿Í»§','1',false);
-INSERT INTO dict VALUES (default,'¿Í»§µÈ¼¶','ÖØµã¿ª·¢¿Í»§','2',false);
-INSERT INTO dict VALUES (default,'¿Í»§µÈ¼¶','´ó¿Í»§','3',false);
-INSERT INTO dict VALUES (default,'¿Í»§µÈ¼¶','ºÏ×÷»ï°é','4',false);
-INSERT INTO dict VALUES (default,'¿Í»§µÈ¼¶','Õ½ÂÔºÏ×÷»ï°é','5',false);
-INSERT INTO dict VALUES (default,'µØÇø','½­ËÕ','½­ËÕ',true);
-INSERT INTO dict VALUES (default,'µØÇø','±±¾©','±±¾©',true);
-INSERT INTO dict VALUES (default,'µØÇø','»ª±±','»ª±±',true);
-INSERT INTO dict VALUES (default,'µØÇø','ÉÏº£','ÉÏº£',true);
-INSERT INTO dict VALUES (default,'µØÇø','¹ãÖÝ','¹ãÖÝ',true);
-INSERT INTO dict VALUES (default,'µØÇø','ÐìÖÝ','ÐìÖÝ',true);
-INSERT INTO dict VALUES (default,'µØÇø','ÄÏ¾©','ÄÏ¾©',true);
+INSERT INTO dict VALUES (default,'æœåŠ¡ç±»åž‹','å’¨è¯¢','å’¨è¯¢',true);
+INSERT INTO dict VALUES (default,'æœåŠ¡ç±»åž‹','å»ºè®®','å»ºè®®',true);
+INSERT INTO dict VALUES (default,'æœåŠ¡ç±»åž‹','æŠ•è¯‰','æŠ•è¯‰',true);
+INSERT INTO dict VALUES (default,'å®¢æˆ·ç­‰çº§','æ™®é€šå®¢æˆ·','1',false);
+INSERT INTO dict VALUES (default,'å®¢æˆ·ç­‰çº§','é‡ç‚¹å¼€å‘å®¢æˆ·','2',false);
+INSERT INTO dict VALUES (default,'å®¢æˆ·ç­‰çº§','å¤§å®¢æˆ·','3',false);
+INSERT INTO dict VALUES (default,'å®¢æˆ·ç­‰çº§','åˆä½œä¼™ä¼´','4',false);
+INSERT INTO dict VALUES (default,'å®¢æˆ·ç­‰çº§','æˆ˜ç•¥åˆä½œä¼™ä¼´','5',false);
+INSERT INTO dict VALUES (default,'åœ°åŒº','æ±Ÿè‹','æ±Ÿè‹',true);
+INSERT INTO dict VALUES (default,'åœ°åŒº','åŒ—äº¬','åŒ—äº¬',true);
+INSERT INTO dict VALUES (default,'åœ°åŒº','åŽåŒ—','åŽåŒ—',true);
+INSERT INTO dict VALUES (default,'åœ°åŒº','ä¸Šæµ·','ä¸Šæµ·',true);
+INSERT INTO dict VALUES (default,'åœ°åŒº','å¹¿å·ž','å¹¿å·ž',true);
+INSERT INTO dict VALUES (default,'åœ°åŒº','å¾å·ž','å¾å·ž',true);
+INSERT INTO dict VALUES (default,'åœ°åŒº','å—äº¬','å—äº¬',true);
 
 
 
-INSERT INTO linkman VALUES (default,2,'ÍõêØÖ®','ÄÐ','ÃØÊé','0516-4567878','13814423344','Ï²»¶Êé·¨');
-INSERT INTO linkman VALUES (default,1,'ÕÔÐ¡Ë§','ÄÐ','´óÄÚ×Ü¹Ü','010-1111111','111111111','zdasdasd');
-INSERT INTO linkman VALUES (default,1,'Ã«Î¯Ô±','ÄÐ','Ö÷Ï¯','0516-212122','2121231','2132123');
+INSERT INTO linkman VALUES (default,2,'çŽ‹æ›¦ä¹‹','ç”·','ç§˜ä¹¦','0516-4567878','13814423344','å–œæ¬¢ä¹¦æ³•');
+INSERT INTO linkman VALUES (default,1,'èµµå°å¸…','ç”·','å¤§å†…æ€»ç®¡','010-1111111','111111111','zdasdasd');
+INSERT INTO linkman VALUES (default,1,'æ¯›å§”å‘˜','ç”·','ä¸»å¸­','0516-212122','2121231','2132123');
 
 
-INSERT INTO plan VALUES (default,4,'2009-05-12 00:00:00','Ê×´Î¼ûÃæ','¶Ô·½ÁªÏµÈËµÄ³¤ÏàÕæÊÇ¹í¸«Éñ¹¤');
-INSERT INTO plan VALUES (default,4,'2007-12-21 00:00:00','Ò»Æð³Ô·¹£¬¸¯°Ü','¸¯°ÜµÄ²»´í£¬´ó¼Ò¶¼ºÜ¿ªÐÄ');
-INSERT INTO plan VALUES (default,2,'2007-12-20 00:00:00','½Ì±È¶û¸Ç×Ó½²ÆÕÍ¨»°','±È¶û¸Ç×ÓÌ«±¿£¬ÔõÃ´½ÌÒ²²»»á£¬·ÅÆú');
-INSERT INTO plan VALUES (default,1,'2007-12-20 00:00:00','°ïÂíÔÆÕûÈÝ£¬ÊµÔÚÌ«ðâí×ÁË','ÕûºÃÁË£¬ÂíÔÆºÜ¿ªÐÄ');
-INSERT INTO plan VALUES (default,8,'2007-12-20 00:00:00','ºÍ¿Í»§¼ûÃæ',NULL);
-INSERT INTO plan VALUES (default,5,'2009-10-23 00:00:00','ÐÂ¼Æ»®',NULL);
+INSERT INTO plan VALUES (default,4,'2009-05-12 00:00:00','é¦–æ¬¡è§é¢','å¯¹æ–¹è”ç³»äººçš„é•¿ç›¸çœŸæ˜¯é¬¼æ–§ç¥žå·¥');
+INSERT INTO plan VALUES (default,4,'2007-12-21 00:00:00','ä¸€èµ·åƒé¥­ï¼Œè…è´¥','è…è´¥çš„ä¸é”™ï¼Œå¤§å®¶éƒ½å¾ˆå¼€å¿ƒ');
+INSERT INTO plan VALUES (default,2,'2007-12-20 00:00:00','æ•™æ¯”å°”ç›–å­è®²æ™®é€šè¯','æ¯”å°”ç›–å­å¤ªç¬¨ï¼Œæ€Žä¹ˆæ•™ä¹Ÿä¸ä¼šï¼Œæ”¾å¼ƒ');
+INSERT INTO plan VALUES (default,1,'2007-12-20 00:00:00','å¸®é©¬äº‘æ•´å®¹ï¼Œå®žåœ¨å¤ªç–´ç¢œäº†','æ•´å¥½äº†ï¼Œé©¬äº‘å¾ˆå¼€å¿ƒ');
+INSERT INTO plan VALUES (default,8,'2007-12-20 00:00:00','å’Œå®¢æˆ·è§é¢',NULL);
+INSERT INTO plan VALUES (default,5,'2009-10-23 00:00:00','æ–°è®¡åˆ’',NULL);
 
 
-INSERT INTO rights VALUES (default,0,'ÓªÏú¹ÜÀí','','ÓªÏú¹ÜÀí');
-INSERT INTO rights VALUES (default,1,'ÏúÊÛ»ú»á¹ÜÀí','chance.do?op=toList','ÏúÊÛ»ú»á¹ÜÀí');
-INSERT INTO rights VALUES (default,1,'¿Í»§¿ª·¢¼Æ»®','plan.do?op=toList','¿Í»§¿ª·¢¼Æ»®');
-INSERT INTO rights VALUES (default,0,'¿Í»§¹ÜÀí','','¿Í»§¹ÜÀí');
-INSERT INTO rights VALUES (default,4,'¿Í»§ÐÅÏ¢¹ÜÀí','customer.do?op=toList','¿Í»§ÐÅÏ¢¹ÜÀí');
-INSERT INTO rights VALUES (default,4,'¿Í»§Á÷Ê§¹ÜÀí','','¿Í»§Á÷Ê§¹ÜÀí');
-INSERT INTO rights VALUES (default,0,'·þÎñ¹ÜÀí','','·þÎñ¹ÜÀí');
-INSERT INTO rights VALUES (default,7,'·þÎñ´´½¨','','·þÎñ´´½¨');
-INSERT INTO rights VALUES (default,7,'·þÎñ·ÖÅä','','·þÎñ·ÖÅä');
-INSERT INTO rights VALUES (default,7,'·þÎñ´¦Àí','','·þÎñ´¦Àí');
-INSERT INTO rights VALUES (default,7,'·þÎñ·´À¡','','·þÎñ·´À¡');
-INSERT INTO rights VALUES (default,7,'·þÎñ¹éµµ','','·þÎñ¹éµµ');
-INSERT INTO rights VALUES (default,0,'Í³¼Æ±¨±í','','Í³¼Æ±¨±í');
-INSERT INTO rights VALUES (default,13,'¿Í»§¹±Ï×·ÖÎö','','¿Í»§¹±Ï×·ÖÎö');
-INSERT INTO rights VALUES (default,13,'¿Í»§¹¹³É·ÖÎö','','¿Í»§¹¹³É·ÖÎö');
-INSERT INTO rights VALUES (default,13,'¿Í»§·þÎñ·ÖÎö','','¿Í»§·þÎñ·ÖÎö');
-INSERT INTO rights VALUES (default,13,'¿Í»§Á÷Ê§·ÖÎö','','¿Í»§Á÷Ê§·ÖÎö');
-INSERT INTO rights VALUES (default,0,'»ù´¡Êý¾Ý','','»ù´¡Êý¾Ý');
-INSERT INTO rights VALUES (default,18,'Êý¾Ý×Öµä¹ÜÀí','','Êý¾Ý×Öµä¹ÜÀí');
-INSERT INTO rights VALUES (default,18,'²éÑ¯²úÆ·ÐÅÏ¢','','²éÑ¯²úÆ·ÐÅÏ¢');
-INSERT INTO rights VALUES (default,18,'²éÑ¯¿â´æ','','²éÑ¯¿â´æ');
-INSERT INTO rights VALUES (default,0,'È¨ÏÞ¹ÜÀí','','È¨ÏÞ¹ÜÀí');
-INSERT INTO rights VALUES (default,22,'ÓÃ»§¹ÜÀí','users.do?op=toList','ÓÃ»§¹ÜÀí');
-INSERT INTO rights VALUES (default,22,'½ÇÉ«¹ÜÀí','role.do?op=toList','½ÇÉ«¹ÜÀí');
+INSERT INTO rights VALUES (default,0,'è¥é”€ç®¡ç†','','è¥é”€ç®¡ç†');
+INSERT INTO rights VALUES (default,1,'é”€å”®æœºä¼šç®¡ç†','chance.do?op=toList','é”€å”®æœºä¼šç®¡ç†');
+INSERT INTO rights VALUES (default,1,'å®¢æˆ·å¼€å‘è®¡åˆ’','plan.do?op=toList','å®¢æˆ·å¼€å‘è®¡åˆ’');
+INSERT INTO rights VALUES (default,0,'å®¢æˆ·ç®¡ç†','','å®¢æˆ·ç®¡ç†');
+INSERT INTO rights VALUES (default,4,'å®¢æˆ·ä¿¡æ¯ç®¡ç†','customer.do?op=toList','å®¢æˆ·ä¿¡æ¯ç®¡ç†');
+INSERT INTO rights VALUES (default,4,'å®¢æˆ·æµå¤±ç®¡ç†','','å®¢æˆ·æµå¤±ç®¡ç†');
+INSERT INTO rights VALUES (default,0,'æœåŠ¡ç®¡ç†','','æœåŠ¡ç®¡ç†');
+INSERT INTO rights VALUES (default,7,'æœåŠ¡åˆ›å»º','','æœåŠ¡åˆ›å»º');
+INSERT INTO rights VALUES (default,7,'æœåŠ¡åˆ†é…','','æœåŠ¡åˆ†é…');
+INSERT INTO rights VALUES (default,7,'æœåŠ¡å¤„ç†','','æœåŠ¡å¤„ç†');
+INSERT INTO rights VALUES (default,7,'æœåŠ¡åé¦ˆ','','æœåŠ¡åé¦ˆ');
+INSERT INTO rights VALUES (default,7,'æœåŠ¡å½’æ¡£','','æœåŠ¡å½’æ¡£');
+INSERT INTO rights VALUES (default,0,'ç»Ÿè®¡æŠ¥è¡¨','','ç»Ÿè®¡æŠ¥è¡¨');
+INSERT INTO rights VALUES (default,13,'å®¢æˆ·è´¡çŒ®åˆ†æž','','å®¢æˆ·è´¡çŒ®åˆ†æž');
+INSERT INTO rights VALUES (default,13,'å®¢æˆ·æž„æˆåˆ†æž','','å®¢æˆ·æž„æˆåˆ†æž');
+INSERT INTO rights VALUES (default,13,'å®¢æˆ·æœåŠ¡åˆ†æž','','å®¢æˆ·æœåŠ¡åˆ†æž');
+INSERT INTO rights VALUES (default,13,'å®¢æˆ·æµå¤±åˆ†æž','','å®¢æˆ·æµå¤±åˆ†æž');
+INSERT INTO rights VALUES (default,0,'åŸºç¡€æ•°æ®','','åŸºç¡€æ•°æ®');
+INSERT INTO rights VALUES (default,18,'æ•°æ®å­—å…¸ç®¡ç†','','æ•°æ®å­—å…¸ç®¡ç†');
+INSERT INTO rights VALUES (default,18,'æŸ¥è¯¢äº§å“ä¿¡æ¯','','æŸ¥è¯¢äº§å“ä¿¡æ¯');
+INSERT INTO rights VALUES (default,18,'æŸ¥è¯¢åº“å­˜','','æŸ¥è¯¢åº“å­˜');
+INSERT INTO rights VALUES (default,0,'æƒé™ç®¡ç†','','æƒé™ç®¡ç†');
+INSERT INTO rights VALUES (default,22,'ç”¨æˆ·ç®¡ç†','users.do?op=toList','ç”¨æˆ·ç®¡ç†');
+INSERT INTO rights VALUES (default,22,'è§’è‰²ç®¡ç†','role.do?op=toList','è§’è‰²ç®¡ç†');
 
-INSERT INTO role VALUES (default,'¹ÜÀíÔ±','ÓµÓÐËùÓÐÈ¨ÏÞ',true);
-INSERT INTO role VALUES (default,'ÏúÊÛÖ÷¹Ü','´´½¨¡¢Ö¸ÅÉÏúÊÛ»ú»á',true);
-INSERT INTO role VALUES (default,'¿Í»§¾­Àí','´´½¨¡¢Ö´ÐÐÖ¸ÅÉµÄÏúÊÛ»ú»á',true);
-INSERT INTO role VALUES (default,'¸ß¼¶¹ÜÀíÔ±','²¿ÃÅ¸ß¼¶Ö÷¹ÜÓµÓÐµÄÈ¨ÏÞ',true);
+INSERT INTO role VALUES (default,'ç®¡ç†å‘˜','æ‹¥æœ‰æ‰€æœ‰æƒé™',true);
+INSERT INTO role VALUES (default,'é”€å”®ä¸»ç®¡','åˆ›å»ºã€æŒ‡æ´¾é”€å”®æœºä¼š',true);
+INSERT INTO role VALUES (default,'å®¢æˆ·ç»ç†','åˆ›å»ºã€æ‰§è¡ŒæŒ‡æ´¾çš„é”€å”®æœºä¼š',true);
+INSERT INTO role VALUES (default,'é«˜çº§ç®¡ç†å‘˜','éƒ¨é—¨é«˜çº§ä¸»ç®¡æ‹¥æœ‰çš„æƒé™',true);
 
 
 INSERT INTO role_right VALUES (1,1);
@@ -115,24 +115,24 @@ INSERT INTO role_right VALUES (5,3);
 INSERT INTO role_right VALUES (6,3);
 
 
-INSERT INTO customer VALUES (default,'´Ïº£ÐÅÏ¢¿Æ¼¼ÓÐÏÞ¹«Ë¾','±±¾©',3,'Ó£ÌÒÐ¡Íæ×Ó',3,'´ó¿Í»§',5,5,'±±¾©ÊÐº£µíÇø','123456','010-12345678','111111','http://www.chkj.com','111','ÂíÀÏÊ¦',1000,3232,'ÖÐ¹ú¹¤ÉÌÒøÐÐ','2134432234','23124435','45345345',1);
-INSERT INTO customer VALUES (default,'±±¾©Ã÷¿Æ¿Æ¼¼ÓÐÏÞ¹«Ë¾','±±¾©',3,'Ó£ÌÒÐ¡Íæ×Ó',2,'ÖØµã¿ª·¢¿Í»§',4,3,'±±¾©ÊÐÐûÎäÇø','154321','010-65432187','222222','http://www.sad.net','2133','ÕÔÐ¡Ë§',200,3324,'ÖÐ¹ú½»Í¨ÒøÐÐ','32424323','2344234','3234234',1);
-INSERT INTO customer VALUES (default,'Ì«ÑôÒ©Òµ','»ª±±',4,'¶£µ±»úÆ÷Ã¨',1,'ÆÕÍ¨¿Í»§',3,4,'ºÓ±±ÀÈ·»','4212321','6456456','456456','http://www.163.com','','',0,0,'ÖÐ¹úÅ©ÒµÒøÐÐ','','','',1);
-INSERT INTO customer VALUES (default,'ÔÆÄÏÌìºÓÑÌ²Ý¹«Ë¾','¹ãÖÝ',3,'Ó£ÌÒÐ¡Íæ×Ó',2,'ÖØµã¿ª·¢¿Í»§',2,4,'ÔÆÄÏÀ¥Ã÷','12312','456456456','678678','http://www.yunnan.com','','',2000,80,'ÖÐ¹ú½¨ÉèÒøÐÐ','','','',2);
-INSERT INTO customer VALUES (default,'±±¾©ÌìÇÅÐÅÏ¢ÓÐÏÞ¹«Ë¾','±±¾©',4,'¶£µ±»úÆ÷Ã¨',3,'´ó¿Í»§',1,4,'±±¾©ÊÐÊ¯¾°É½Çø','13223','456456456','45645678','http://sina.com','asdasdasd','ÍõÎ÷Ö®',200,100,'»¨ÆìÒøÐÐ','33243','234234','234234',3);
-INSERT INTO customer VALUES (default,'±±¾©°×ÓðÓÐÏÞÔðÈÎ¹«Ë¾','±±¾©',3,'Ó£ÌÒÐ¡Íæ×Ó',5,'Õ½ÂÔºÏ×÷»ï°é',4,4,'±±¾©ÊÐÎ÷³ÇÇø','12312','456456456','678678','http://www.163.com','','',0,0,'ÕÐÉÌÒøÐÐ','','','',1);
-INSERT INTO customer VALUES (default,'±±¾©Éñ¹âÅàÑµ','±±¾©',4,'¶£µ±»úÆ÷Ã¨',3,'´ó¿Í»§',5,3,'±±¾©ÊÐº£µíÇø','213123','45645645','768678','http://zbaccp.com','','',0,0,'ÆÕ·¢ÒøÐÐ','','','',2);
-INSERT INTO customer VALUES (default,'Î«·»ÇàÄñ»ª¹â','»ª±±',3,'Ó£ÌÒÐ¡Íæ×Ó',2,'ÖØµã¿ª·¢¿Í»§',4,5,'É½¶«Ê¡Î«·»ÊÐ','213123','645645645','768678','http://sina.com','','',0,0,'½­ËÕÒøÐÐ','','','',1);
-INSERT INTO customer VALUES (default,'ÇàÄñÎÞÏÞÊýÂë','ÐìÖÝ',4,'¶£µ±»úÆ÷Ã¨',4,'ºÏ×÷»ï°é',3,4,'½­ËÕÊ¡ÐìÖÝÊÐ¹ÄÂ¥Çø','213233','645645645','678678','http://www.86516.com','','',0,0,'Å©´åÐÅÓÃÉç','','','',1);
-INSERT INTO customer VALUES (default,'¿óÒµ´óÑ§','ÐìÖÝ',3,'Ó£ÌÒÐ¡Íæ×Ó',5,'Õ½ÂÔºÏ×÷»ï°é',5,5,'½­ËÕÊ¡ÐìÖÝÊÐÈªÉ½Çø','123123','6456456456','678678','http://sina.com','','',0,0,'ÉçÇøÒøÐÐ','','','',1);
+INSERT INTO customer VALUES (default,'èªæµ·ä¿¡æ¯ç§‘æŠ€æœ‰é™å…¬å¸','åŒ—äº¬',3,'æ¨±æ¡ƒå°çŽ©å­',3,'å¤§å®¢æˆ·',5,5,'åŒ—äº¬å¸‚æµ·æ·€åŒº','123456','010-12345678','111111','http://www.chkj.com','111','é©¬è€å¸ˆ',1000,3232,'ä¸­å›½å·¥å•†é“¶è¡Œ','2134432234','23124435','45345345',1);
+INSERT INTO customer VALUES (default,'åŒ—äº¬æ˜Žç§‘ç§‘æŠ€æœ‰é™å…¬å¸','åŒ—äº¬',3,'æ¨±æ¡ƒå°çŽ©å­',2,'é‡ç‚¹å¼€å‘å®¢æˆ·',4,3,'åŒ—äº¬å¸‚å®£æ­¦åŒº','154321','010-65432187','222222','http://www.sad.net','2133','èµµå°å¸…',200,3324,'ä¸­å›½äº¤é€šé“¶è¡Œ','32424323','2344234','3234234',1);
+INSERT INTO customer VALUES (default,'å¤ªé˜³è¯ä¸š','åŽåŒ—',4,'å®å½“æœºå™¨çŒ«',1,'æ™®é€šå®¢æˆ·',3,4,'æ²³åŒ—å»ŠåŠ','4212321','6456456','456456','http://www.163.com','','',0,0,'ä¸­å›½å†œä¸šé“¶è¡Œ','','','',1);
+INSERT INTO customer VALUES (default,'äº‘å—å¤©æ²³çƒŸè‰å…¬å¸','å¹¿å·ž',3,'æ¨±æ¡ƒå°çŽ©å­',2,'é‡ç‚¹å¼€å‘å®¢æˆ·',2,4,'äº‘å—æ˜†æ˜Ž','12312','456456456','678678','http://www.yunnan.com','','',2000,80,'ä¸­å›½å»ºè®¾é“¶è¡Œ','','','',2);
+INSERT INTO customer VALUES (default,'åŒ—äº¬å¤©æ¡¥ä¿¡æ¯æœ‰é™å…¬å¸','åŒ—äº¬',4,'å®å½“æœºå™¨çŒ«',3,'å¤§å®¢æˆ·',1,4,'åŒ—äº¬å¸‚çŸ³æ™¯å±±åŒº','13223','456456456','45645678','http://sina.com','asdasdasd','çŽ‹è¥¿ä¹‹',200,100,'èŠ±æ——é“¶è¡Œ','33243','234234','234234',3);
+INSERT INTO customer VALUES (default,'åŒ—äº¬ç™½ç¾½æœ‰é™è´£ä»»å…¬å¸','åŒ—äº¬',3,'æ¨±æ¡ƒå°çŽ©å­',5,'æˆ˜ç•¥åˆä½œä¼™ä¼´',4,4,'åŒ—äº¬å¸‚è¥¿åŸŽåŒº','12312','456456456','678678','http://www.163.com','','',0,0,'æ‹›å•†é“¶è¡Œ','','','',1);
+INSERT INTO customer VALUES (default,'åŒ—äº¬ç¥žå…‰åŸ¹è®­','åŒ—äº¬',4,'å®å½“æœºå™¨çŒ«',3,'å¤§å®¢æˆ·',5,3,'åŒ—äº¬å¸‚æµ·æ·€åŒº','213123','45645645','768678','http://zbaccp.com','','',0,0,'æ™®å‘é“¶è¡Œ','','','',2);
+INSERT INTO customer VALUES (default,'æ½åŠé’é¸ŸåŽå…‰','åŽåŒ—',3,'æ¨±æ¡ƒå°çŽ©å­',2,'é‡ç‚¹å¼€å‘å®¢æˆ·',4,5,'å±±ä¸œçœæ½åŠå¸‚','213123','645645645','768678','http://sina.com','','',0,0,'æ±Ÿè‹é“¶è¡Œ','','','',1);
+INSERT INTO customer VALUES (default,'é’é¸Ÿæ— é™æ•°ç ','å±±ä¸œ',4,'å®å½“æœºå™¨çŒ«',4,'åˆä½œä¼™ä¼´',3,4,'æ±Ÿè‹çœå¾å·žå¸‚é¼“æ¥¼åŒº','213233','645645645','678678','http://www.86516.com','','',0,0,'å†œæ‘ä¿¡ç”¨ç¤¾','','','',1);
+INSERT INTO customer VALUES (default,'çŸ¿ä¸šå¤§å­¦','å¾å·ž',3,'æ¨±æ¡ƒå°çŽ©å­',5,'æˆ˜ç•¥åˆä½œä¼™ä¼´',5,5,'æ±Ÿè‹çœå¾å·žå¸‚æ³‰å±±åŒº','123123','6456456456','678678','http://sina.com','','',0,0,'ç¤¾åŒºé“¶è¡Œ','','','',1);
 
 
 
-INSERT INTO users VALUES (default,'admin','ÂíÖ¾¹ú','123',true,1);
-INSERT INTO users VALUES (default,'mike','À¯±ÊÐ¡ÐÂ','321',false,2);
-INSERT INTO users VALUES (default,'jack','Ó£ÌÒÐ¡Íæ×Ó','111',false,3);
-INSERT INTO users VALUES (default,'tom','¶£µ±»úÆ÷Ã¨','321',true,3);
-INSERT INTO users VALUES (default,'supper','¶¯¸Ð³¬ÈË','111',true,NULL);
+INSERT INTO users VALUES (default,'admin','æŽå¿—','123',true,1);
+INSERT INTO users VALUES (default,'mike','èœ¡ç¬”å°æ–°','321',false,2);
+INSERT INTO users VALUES (default,'jack','æ¨±æ¡ƒå°çŽ©å­','111',false,3);
+INSERT INTO users VALUES (default,'tom','å®å½“æœºå™¨çŒ«','321',true,3);
+INSERT INTO users VALUES (default,'supper','åŠ¨æ„Ÿè¶…äºº','111',true,NULL);
 
 ALTER TABLE activity
   ADD FOREIGN KEY (customerId) REFERENCES customer (id);
